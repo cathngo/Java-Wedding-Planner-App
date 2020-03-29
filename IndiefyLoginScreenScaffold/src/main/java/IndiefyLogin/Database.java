@@ -11,71 +11,63 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Database {
     
     public static Connection conn;
-    
+
     public static void openConnection() {
         if (conn == null) {
             try {
-                conn = DriverManager.getConnection("jdbc:sqlite:Indiefy.db");
+                conn = DriverManager.getConnection("jdbc:sqlite:indiefyDB.db");
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
         }
     }
-    
-    /* Note that this method is called from the LoginScreen Controller */
-    public boolean tryLogin(String username, String password) {
-        
-        // Assume that the user will enter incorrect credentials
-        boolean loginSuccessful = false;
-        
+
+    public ResultSet getResultSet(String sqlstatement) throws SQLException {
+        openConnection();
+        java.sql.Statement statement = conn.createStatement();
+        ResultSet RS = statement.executeQuery(sqlstatement);
+        return RS;
+    }
+
+    public void insertStatement(String insert_query) throws SQLException {
+        java.sql.Statement stmt = null;
+        openConnection();
         try {
-            // Open the connection
-
-            // Use a Prepared Statement to query the database to check entered credentials
-
-            
-            // Check the Result Set to see if the query returned a tuple, what should happen then?
-            
-            // Close the Result Set
-               
+            System.out.println("Database opened successfully");
+            stmt = conn.createStatement();
+            System.out.println("The query was: " + insert_query);
+            stmt.executeUpdate(insert_query);
+            stmt.close();
+            conn.commit();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
         }
-        
-        return loginSuccessful;
+        stmt.close();
     }
     
-
-    
-    public static void createLoginTable() throws SQLException {
-        
-        // Initialise your Prepared Statement to create the LOGIN table
+    public static void createLoginTable() {
         PreparedStatement createLoginTable = null;
-
-       //Initialise your Prepared Statement to add data to the LOGIN table
-        PreparedStatement insertData = null;
-        // Initialise your Result Set
+        PreparedStatement insertDemoData = null;
         ResultSet rs = null;
-        // Open the connection
         openConnection();
-        
         try {
             System.out.println("Checking LOGIN table ");
-            // Check if the Login Table exists
             DatabaseMetaData dbmd = conn.getMetaData();
             rs = dbmd.getTables(null, null, "LOGIN", null);
             if (!rs.next()) {
-                // Use the connection to create the Prepared Statement that will create the LOGIN table, and then and execute it
                 createLoginTable = conn.prepareStatement("CREATE TABLE LOGIN (USERNAME VARCHAR(100), PASSWORD VARCHAR(100))");
                 createLoginTable.execute();
                 System.out.println("LOGIN table created");
-                insertData = conn.prepareStatement("INSERT INTO LOGIN(USERNAME,PASSWORD) " + "VALUES ('Pretentious', 'Hipster')");
-                insertData.execute();
-               
+                insertDemoData = conn.prepareStatement("INSERT INTO LOGIN(USERNAME,PASSWORD) "
+                        + "VALUES ('Pretentious','Hipster')");
+                insertDemoData.execute();
             } else {
                 System.out.println("LOGIN table exists");
             }
@@ -83,5 +75,34 @@ public class Database {
             e.printStackTrace();
         }
     }
+    
+        public static void createMusicTable() {
+        PreparedStatement createMusicTable = null;
+        PreparedStatement insertDemoData = null;
+        ResultSet rs = null;
+        openConnection();
+        try {
+            System.out.println("Checking MUSICLIST table ");
+            DatabaseMetaData dbmd = conn.getMetaData();
+            rs = dbmd.getTables(null, null, "MUSICLIST", null);
+            if (!rs.next()) {
+                createMusicTable = conn.prepareStatement("CREATE TABLE MUSICLIST (ALBUM VARCHAR(100), ARTIST VARCHAR(100), GENRE VARCHAR(50), YEAR VARCHAR(4))");
+                createMusicTable.execute();
+                System.out.println("MUSIC table created");
+                insertDemoData = conn.prepareStatement("INSERT INTO MUSICLIST(ALBUM,ARTIST,GENRE,YEAR) "
+                        + "VALUES ('Map of the Soul','BTS','K-Pop','2020'), "
+                        + "('Eternal Atake','Lil Uzi Vert','Hip-Hop/Rap','2020'), "
+                        + "('After Hours','The Weeknd','R&B/Soul','2020'), "
+                        + "'Prince Charming','Higher Brothers','Hip-Hop/Rap','2020'");
+                insertDemoData.execute();
+            } else {
+                System.out.println("MUSICLIST table exists");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    
 }
+     

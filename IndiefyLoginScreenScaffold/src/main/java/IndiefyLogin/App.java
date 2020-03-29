@@ -5,8 +5,8 @@
  */
 package IndiefyLogin;
 
+import java.sql.SQLException;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,34 +14,27 @@ import javafx.stage.Stage;
 
 public class App extends Application {
     
-    /* What should happen when you first start the program? */
     @Override
     public void start(Stage stage) throws Exception {
-        //Initiate the database
         loadDatabase();
-        /* Add the four lines of code to load an FXML into a scene, attach it to a stage, 
-        and show the stage */
         Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
         
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
-        
         stage.show();
- 
     }
-    
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
-    private void loadDatabase() {
-       //What method should we be calling from the Database class?
-       DatabaseLoader.openConnection();
-
+    private void loadDatabase() throws SQLException {
+       Database.createLoginTable();
+       Database.createMusicTable();
     }
     
-
-
 }

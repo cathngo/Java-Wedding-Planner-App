@@ -5,8 +5,15 @@
  */
 package IndiefyLogin;
 
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -14,26 +21,55 @@ import javafx.fxml.FXML;
  */
 public class LoginScreenController {
 
-    //Initiate JavaFX nodes (visual elements), how do we connect these variables to the FXML view?
+    @FXML
+    private Label loginOutput;
 
-    // Initiate the database class
+    @FXML
+    private TextField username;
 
-    /* What should happen when you click the login button?
-       How do we connect this function to the FXML view? */
+    @FXML
+    private PasswordField pword;
+    
+    @FXML
+    private Button nextBtn;
+
+    Database d = new Database();
+    
+    PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+
+    @FXML
     private void handleLoginButtonAction(ActionEvent event) {
-        
-        // Get the user's input from the GUI
-
-        if (d.tryLogin(user, password)) {
-          // What should the user see when the login is successful?
-        } else {
-          // What should the user see when the login is unsuccessful?
+        String user = username.getText().trim();
+        String password = pword.getText();
+        try {
+            ResultSet rs = d.getResultSet("SELECT * FROM LOGIN WHERE "
+                    + "USERNAME = '" + user + "' "
+                    + "AND PASSWORD = '" + password + "'");
+            if (!rs.next()) {
+                loginOutput.setText("Incorrect username or password");
+                loginOutput.setVisible(true);
+            } else {
+                loginOutput.setText("Login successful");
+                loginOutput.setVisible(true);
+                nextBtn.setVisible(true);
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
+
+    }
+    
+    @FXML
+    private void handleNextButtonAction(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "MusicList.fxml");
     }
 
     @FXML
     public void initialize() {
-       // What should the user see when the screen loads?
+        System.out.println("calling init");
+        loginOutput.setVisible(false);
+        nextBtn.setVisible(false);
     }
 
 }

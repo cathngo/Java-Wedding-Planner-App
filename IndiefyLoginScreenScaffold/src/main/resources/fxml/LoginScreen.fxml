@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import java.net.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button fx:id="btn" layoutX="271.0" layoutY="295.0" mnemonicParsing="false" text="LOGIN" />
-      <TextField fx:id="tf" layoutX="217.0" layoutY="200.0" promptText="USERNAME" AnchorPane.bottomAnchor="173.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="216.0" AnchorPane.topAnchor="200.0">
-         <font>
-            <Font name="System Italic" size="13.0" />
-         </font></TextField>
-      <PasswordField fx:id="ps" layoutX="217.0" layoutY="240.0" promptText="PASSWORD" />
-      <Label alignment="CENTER" layoutX="205.0" layoutY="97.0" opacity="0.79" prefHeight="76.0" prefWidth="190.0" text="Indiefy" textOverrun="CENTER_ELLIPSIS">
-         <font>
-            <Font name="AppleGothic Regular" size="53.0" />
-         </font>
-      </Label>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@Resources/LoginScreen.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IndiefyLogin.LoginScreenController">
+    <children>
+      <TextField id="TextField" fx:id="username" layoutX="199.0" layoutY="139.0" />
+      <PasswordField fx:id="pword" layoutX="199.0" layoutY="200.0" />
+      <Button layoutX="264.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" text="Login" />
+      <Label fx:id="loginOutput" layoutX="61.0" layoutY="339.0" text="Label" />
+      <Button fx:id="nextBtn" layoutX="470.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleNextButtonAction" text="Next &gt;&gt;&gt;" />
+      <Label layoutX="234.0" layoutY="53.0" styleClass="label-header" text="INDIEFY" />
    </children>
 </AnchorPane>
