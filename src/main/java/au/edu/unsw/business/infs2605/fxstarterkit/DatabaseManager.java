@@ -19,7 +19,6 @@ public class DatabaseManager {
     private static final String TABLE_NAME_FOR_ADMIN = "admin";
     private static final String TABLE_NAME_FOR_INVITATION = "invitation";
     private static final String TABLE_NAME_FOR_RSVP = "rsvp";
-    private static Connection conn;
     private static Connection sharedConnection;
     
 
@@ -251,7 +250,9 @@ public class DatabaseManager {
             e.printStackTrace();
         } finally {
             return wasThisMethodSuccessful;
+            
         }
+        
         
     }
     private static boolean rsvpData() {
@@ -314,6 +315,7 @@ public class DatabaseManager {
             return wasThisMethodSuccessful;
         }
         }
+       
 }
 
         
