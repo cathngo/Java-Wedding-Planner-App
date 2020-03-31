@@ -12,14 +12,6 @@ import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public static void main(String[] args) throws SQLException{
-    openConnect(); // creates connection and connects to database, creates pets table
-    insertPets(); //calls insert pets method - inserts pets into the database
-    printAllPets();	//prints the pets
-    getPets("Cat"); //calls the method
-getPets("Frog");
-						
-	}
 
 public class DatabaseManager {
     private static final String TABLE_NAME_FOR_EVENT = "event";
