@@ -12,6 +12,14 @@ import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+public static void main(String[] args) throws SQLException{
+    openConnect(); // creates connection and connects to database, creates pets table
+    insertPets(); //calls insert pets method - inserts pets into the database
+    printAllPets();	//prints the pets
+    getPets("Cat"); //calls the method
+getPets("Frog");
+						
+	}
 
 public class DatabaseManager {
     private static final String TABLE_NAME_FOR_EVENT = "event";
@@ -254,6 +262,27 @@ public class DatabaseManager {
         }
         
     }
+    
+    public static void printAllTables() throws SQLException{
+		//create connection
+		//create statement
+		//write the SQL query and the java code to retrieve and print out all pets in the database
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:DatabaseManager.db");
+		Statement st = conn.createStatement();
+		String selectQuery = "SELECT * FROM TABLE_NAME_FOR_EVENT;";
+		// since it returns something, need a resultset
+		//rs is the returned set when selectquery is executed
+		//executequery is used when there is smthing returning
+		ResultSet rs = st.executeQuery(selectQuery);
+		//this loops through the resultset rs, row by row
+		//getString() gets the nth column of that row, starting from 1 (not 0)
+		while (rs.next()){
+			System.out.println(rs.getString(2) + ", " + rs.getString(3) + ", " + rs.getString(4) + ", " + rs.getString(5));
+		}
+		st.close();
+		conn.close();
+
+	}
     private static boolean rsvpData() {
         boolean wasThisMethodSuccessful = false;
         try {
@@ -315,6 +344,7 @@ public class DatabaseManager {
         }
         }
 }
+
 
         
         
