@@ -20,6 +20,7 @@ public class DatabaseManager {
     private static final String TABLE_NAME_FOR_INVITATION = "invitation";
     private static final String TABLE_NAME_FOR_RSVP = "rsvp";
     private static Connection conn;
+    private static Connection sharedConnection;
     
 
 
@@ -312,6 +313,9 @@ public class DatabaseManager {
         } finally {
             return wasThisMethodSuccessful;
         }
-        
         }
+}
+
+        
+        
     
