@@ -157,7 +157,7 @@ public class DatabaseManager {
         }
     }
 
-    public static boolean eventData() {
+    private static boolean eventData() {
         boolean wasThisMethodSuccessful = false;
         try {
             DatabaseManager.openConnection();
