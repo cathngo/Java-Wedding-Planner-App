@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -28,7 +29,6 @@ public class MenuController {
     private Button btn_events;
     @FXML
     private Button btn_guests;
-
     @FXML
     private BorderPane borderpane;
     @FXML
@@ -37,7 +37,9 @@ public class MenuController {
     private Button btn_runsheets;
     @FXML
     private Button btn_abouts;
-
+    @FXML
+    private ImageView close;
+  
     @FXML
     private void close(MouseEvent event) {
         Stage stage = (Stage) borderpane.getScene().getWindow();

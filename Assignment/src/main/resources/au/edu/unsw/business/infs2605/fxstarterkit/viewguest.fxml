@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
+              <items>
+                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="67.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Guests" textFill="#8fdca9" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Guests" textFill="#8fdca9" />
+              </items>
+            </ToolBar>
+            <AnchorPane prefHeight="49.0" prefWidth="600.0">
+               <children>
+                  <Text layoutX="34.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jayden So" wrappingWidth="257.984375">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="265.0" prefWidth="600.0">
+               <children>
+                  <TableView layoutX="29.0" layoutY="33.0" prefHeight="69.0" prefWidth="542.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
+                     <columns>
+                        <TableColumn prefWidth="100.0" text="Guest ID" />
+                        <TableColumn prefWidth="56.0" text="Gender" />
+                        <TableColumn prefWidth="119.0" text="Email" />
+                        <TableColumn prefWidth="141.0" text="Phone Number" />
+                        <TableColumn prefWidth="125.0" text="Access Code" />
+                     </columns>
+                  </TableView>
+                  <Text layoutX="30.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Details" />
+                  <Text layoutX="30.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Details" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="79.0" prefWidth="600.0">
+               <children>
+                  <Button layoutX="29.0" layoutY="18.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit" textFill="WHITE" />
+                  <Button layoutX="432.0" layoutY="18.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite Guests" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

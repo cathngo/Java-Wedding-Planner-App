@@ -22,7 +22,7 @@ public class DatabaseManager {
     private static Connection conn;
     private static Connection sharedConnection;
 
-    private static boolean openConnection() {
+    static boolean openConnection() {
         boolean wasThisMethodSuccessful = false;
         try {
             DatabaseManager.sharedConnection = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
@@ -45,7 +45,7 @@ public class DatabaseManager {
             return wasThisMethodSuccessful;
         }
     }
-
+    
     private static boolean createEvent() {
         boolean wasThisMethodSuccessful = false;
         try {
@@ -96,8 +96,10 @@ public class DatabaseManager {
         boolean wasThisMethodSuccessful = false;
         try {
             DatabaseManager.openConnection();
+            
             String createTableSql = "CREATE TABLE " + DatabaseManager.TABLE_NAME_FOR_ADMIN + " ("
                     + "admin_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + "admin_name TEXT, "
                     + "admin_username TEXT, "
                     + "admin_password TEXT) ";
 
@@ -229,17 +231,20 @@ public class DatabaseManager {
     private static boolean adminData() {
         boolean wasThisMethodSuccessful = false;
         try {
+            
             DatabaseManager.openConnection();
             String sqlString = "INSERT INTO " + DatabaseManager.TABLE_NAME_FOR_ADMIN
-                    + " (admin_username, admin_password)"
-                    + " VALUES (?, ?)";
+                    + " (admin_name, admin_username, admin_password)"
+                    + " VALUES (?, ?, ?)";
             PreparedStatement psmt = sharedConnection.prepareStatement(sqlString);
+            String[] adminName = {"Blair Wang", "Cat Ngo", "Jayden So", "Sandy Qiu", "Mimi Chen", "Kathy Xu", "Sam Smith"};
             String[] adminUsername = {"admin462", "admin29138", "admin239", "admin2019", "admin39108", "admin2020", "admin1239"};
             String[] adminPassword = {"hello21", "chocolate23", "yellowblue34", "2019admin434", "password0394", "apples231", "secure092"};
 
-            for (int i = 0; i < adminUsername.length; i++) {
-                psmt.setString(1, adminUsername[i]);
-                psmt.setString(2, adminPassword[i]);
+            for (int i = 0; i < adminName.length; i++) {
+                psmt.setString(1, adminName[i]);
+                psmt.setString(2, adminUsername[i]);
+                psmt.setString(3, adminPassword[i]);
 
                 boolean wasThisRoundSuccessful = psmt.execute();
                 wasThisMethodSuccessful = (wasThisMethodSuccessful && wasThisRoundSuccessful);
@@ -320,10 +325,10 @@ public class DatabaseManager {
     }
 
     public static void setupDatabaseOnFirstRun() throws SQLException {
-
         // check if we need to setup database
         DatabaseManager.openConnection();
         DatabaseMetaData dbmd = DatabaseManager.sharedConnection.getMetaData();
+
         ResultSet rs = dbmd.getTables(null, null, DatabaseManager.TABLE_NAME_FOR_EVENT, null);
         ResultSet rs1 = dbmd.getTables(null, null, DatabaseManager.TABLE_NAME_FOR_GUEST, null);
         ResultSet rs2 = dbmd.getTables(null, null, DatabaseManager.TABLE_NAME_FOR_ADMIN, null);
@@ -371,10 +376,10 @@ public class DatabaseManager {
 
     }
 
-    public static void printEvent() throws SQLException {
+    public static String printObjectsInTable(String table) throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
         Statement st = conn.createStatement();
-        ResultSet resultSet = st.executeQuery("SELECT * from event");
+        ResultSet resultSet = st.executeQuery("SELECT * from " + table);
         ResultSetMetaData rsmd = resultSet.getMetaData();
         int columnsNumber = rsmd.getColumnCount();
         while (resultSet.next()) {
@@ -387,77 +392,49 @@ public class DatabaseManager {
             }
             System.out.println("");
         }
+        return table;
     }
 
-    public static void printGuest() throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-        Statement st = conn.createStatement();
-        ResultSet resultSet = st.executeQuery("SELECT * from guest");
-        ResultSetMetaData rsmd = resultSet.getMetaData();
-        int columnsNumber = rsmd.getColumnCount();
-        while (resultSet.next()) {
-            for (int i = 1; i <= columnsNumber; i++) {
-                if (i > 1) {
-                    System.out.print("| ");
-                }
-                String columnValue = resultSet.getString(i);
-                System.out.print(rsmd.getColumnName(i) + ": " + columnValue);
-            }
-            System.out.println("");
-        }
-    }
 
-    public static void printAdmin() throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-        Statement st = conn.createStatement();
-        ResultSet resultSet = st.executeQuery("SELECT * from admin");
-        ResultSetMetaData rsmd = resultSet.getMetaData();
-        int columnsNumber = rsmd.getColumnCount();
-        while (resultSet.next()) {
-            for (int i = 1; i <= columnsNumber; i++) {
-                if (i > 1) {
-                    System.out.print("| ");
-                }
-                String columnValue = resultSet.getString(i);
-                System.out.print(rsmd.getColumnName(i) + ": " + columnValue);
+    
+    public static Guest fetchGuestByCode(String accessCode) {
+        Guest preparedReturn = null;
+        try {
+            DatabaseManager.openConnection();
+            String sqlString = "SELECT * FROM " + DatabaseManager.TABLE_NAME_FOR_GUEST
+                    + " WHERE guest_access_code = ?";
+            PreparedStatement psmt = sharedConnection.prepareStatement(sqlString);
+            psmt.setString(1, accessCode);
+            ResultSet rs = psmt.executeQuery();
+            
+            while (rs.next()){
+                preparedReturn = new Guest(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
             }
-            System.out.println("");
+            
         }
+        catch (SQLException e) {
+        }
+        return preparedReturn;
     }
-
-    public static void printInvitation() throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-        Statement st = conn.createStatement();
-        ResultSet resultSet = st.executeQuery("SELECT * from invitation");
-        ResultSetMetaData rsmd = resultSet.getMetaData();
-        int columnsNumber = rsmd.getColumnCount();
-        while (resultSet.next()) {
-            for (int i = 1; i <= columnsNumber; i++) {
-                if (i > 1) {
-                    System.out.print("| ");
-                }
-                String columnValue = resultSet.getString(i);
-                System.out.print(rsmd.getColumnName(i) + ": " + columnValue);
+    
+    public static Admin fetchAdminByUser(String username, String password){
+        Admin preparedReturn = null;
+        DatabaseManager.openConnection();
+        try{
+            String sqlString = "SELECT * FROM " + DatabaseManager.TABLE_NAME_FOR_ADMIN
+                    + " WHERE admin_username = ? AND admin_password = ?";
+            PreparedStatement psmt = sharedConnection.prepareStatement(sqlString);
+            psmt.setString(1, username);
+            psmt.setString(2, password);
+            ResultSet rs = psmt.executeQuery();
+            
+            while (rs.next()){
+                preparedReturn = new Admin(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
             }
-            System.out.println("");
         }
-    }
-
-    public static void printRsvp() throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-        Statement st = conn.createStatement();
-        ResultSet resultSet = st.executeQuery("SELECT * from rsvp");
-        ResultSetMetaData rsmd = resultSet.getMetaData();
-        int columnsNumber = rsmd.getColumnCount();
-        while (resultSet.next()) {
-            for (int i = 1; i <= columnsNumber; i++) {
-                if (i > 1) {
-                    System.out.print("| ");
-                }
-                String columnValue = resultSet.getString(i);
-                System.out.print(rsmd.getColumnName(i) + ": " + columnValue);
-            }
-            System.out.println("");
+        catch (SQLException e) {
+            e.printStackTrace();
         }
+        return preparedReturn;
     }
 }
