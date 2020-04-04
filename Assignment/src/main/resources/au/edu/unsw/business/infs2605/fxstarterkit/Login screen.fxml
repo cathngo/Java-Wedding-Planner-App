@@ -55,7 +55,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnForgotPassword" layoutX="143.0" layoutY="153.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="108.0" style="-fx-background-color: TRANSPARENT;" text="Forgot your password?" underline="true">
+            <Button fx:id="btnForgotPassword" layoutX="132.0" layoutY="153.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="127.0" style="-fx-background-color: TRANSPARENT;" text="Forgot your password?" underline="true">
                <font>
                   <Font size="9.0" />
                </font>
@@ -74,5 +74,10 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <ImageView fx:id="close" fitHeight="22.0" fitWidth="22.0" layoutX="576.0" layoutY="1.0" onMouseClicked="#close">
+         <image>
+            <Image url="@../../../../../../../../../images/close-icon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
