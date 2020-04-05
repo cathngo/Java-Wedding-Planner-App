@@ -70,7 +70,6 @@
             <ImageView fitHeight="217.0" fitWidth="280.0" layoutX="10.0" layoutY="85.0">
                <image>
                   <Image url="@../../../../../../../../../images/app-logo.png" />
-                  <Image url="@../../../../../../../../images/app-logo.png" />
                </image>
             </ImageView>
          </children>
@@ -78,7 +77,6 @@
       <ImageView fx:id="close" fitHeight="22.0" fitWidth="22.0" layoutX="576.0" layoutY="1.0" onMouseClicked="#close">
          <image>
             <Image url="@../../../../../../../../../images/close-icon.png" />
-            <Image url="@images/app%-%logo.png"/>
          </image>
       </ImageView>
    </children>
