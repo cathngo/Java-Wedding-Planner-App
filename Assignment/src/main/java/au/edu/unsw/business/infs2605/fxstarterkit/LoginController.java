@@ -34,6 +34,9 @@ public class LoginController {
     private Label lblIncorrectAccessCode;
     
     
+    
+    
+    
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
@@ -45,6 +48,7 @@ public class LoginController {
         lblIncorrectAccessCode.setVisible(false);
         
     }
+    
     
  
     @FXML
@@ -99,5 +103,5 @@ public class LoginController {
             lblIncorrectAccessCode.setText("Error: enter credentials");
             lblIncorrectAccessCode.setVisible(true);
         }
-    }   
+    }
 }
