@@ -55,7 +55,7 @@ public class DatabaseManager {
                     + "event_name TEXT, "
                     + "event_venue TEXT, "
                     + "event_address TEXT, "
-                    + "event_function TEXT, "
+                    + "event_description TEXT, "
                     + "event_date TEXT, "
                     + "event_start_time TEXT, "
                     + "event_end_time TEXT) ";
@@ -164,13 +164,13 @@ public class DatabaseManager {
         try {
             DatabaseManager.openConnection();
             String sqlString = "INSERT INTO " + TABLE_NAME_FOR_EVENT
-                    + " (event_name, event_venue, event_address, event_function, event_date, event_start_time, event_end_time)"
+                    + " (event_name, event_venue, event_address, event_description, event_date, event_start_time, event_end_time)"
                     + " VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement psmt = sharedConnection.prepareStatement(sqlString);
             String[] eventName = {"Alan's Birthday", "Fiona's Wedding", "Friday Disco", "Jack's Party", "Surprise Party", "Julie's Wedding", "Liam's Party"};
             String[] eventVenue = {"Alan's House ", "Cropley House", "Island Club", "Jack's House", "Hill Park", "Violet Hall", "Liam's House"};
             String[] eventAddress = {"21 Hop St, Yellow Hills NSW 2831 ", "1 Cropley Rd, Cropley NSW 2314", "Pira Rd, Pyrmont NSW 2009", "2 Mun Ave, Carl NSW 2128", "23 Hill Rd, Leign NSW 2134", "2 Line St, Viole NSW 2134", "23 Liam Rd, Sunny NSW 2342"};
-            String[] eventFunction = {"Birthday Party", "Wedding", "Disco", "Party", "Birthday Party", "Wedding", "Birthday Party"};
+            String[] eventDescription = {"It’s my birthday party! Reserve the date. Don’t arrive late!", "It’s my wedding! Reserve the date. Don’t arrive late!", "It’s my disco party! Reserve the date. Don’t arrive late!", "It’s my party! Reserve the date. Don’t arrive late!", "It’s Jack's birthday party! Reserve the date. Don’t arrive late!", "It’s my wedding! Reserve the date. Don’t arrive late!", "It’s my birthday party! Reserve the date. Don’t arrive late!"};
             String[] eventDate = {"12/4/2020", "4/4/2020", "12/6/2020", "15/8/2020", "5/5/2020", "30/9/2020", "28/12/2020"};
             String[] startTime = {"12:00pm", "10:00am", "9:00pm", "7:00pm", "4:00pm", "11:00am", "7:00pm"};
             String[] endTime = {"3:00pm", "3:00pm", "12:00am", "11:00pm", "7:00pm", "4:00pm", "11:00pm"};
@@ -178,7 +178,7 @@ public class DatabaseManager {
                 psmt.setString(1, eventName[i]);
                 psmt.setString(2, eventVenue[i]);
                 psmt.setString(3, eventAddress[i]);
-                psmt.setString(4, eventFunction[i]);
+                psmt.setString(4, eventDescription[i]);
                 psmt.setString(5, eventDate[i]);
                 psmt.setString(6, startTime[i]);
                 psmt.setString(7, endTime[i]);

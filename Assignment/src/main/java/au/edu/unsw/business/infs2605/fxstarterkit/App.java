@@ -25,9 +25,10 @@ public class App extends Application {
         scene = new Scene(loadFXML("Login screen"));
         stage.setScene(scene);
         stage.show();
-        DatabaseManager.printObjectsInTable("guest");
         DatabaseManager.setupDatabaseOnFirstRun();
-        DatabaseManager.printObjectsInTable("admin");
+        DatabaseManager.printObjectsInTable("event");
+   
+        //DatabaseManager.printObjectsInTable("admin");
  
     }
 
