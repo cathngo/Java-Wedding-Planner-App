@@ -77,10 +77,13 @@ public class DatabaseManager {
             DatabaseManager.openConnection();
             String createTableSql = "CREATE TABLE " + DatabaseManager.TABLE_NAME_FOR_GUEST + " ("
                     + "guest_id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + "guest_name TEXT, "
+                    + "guest_fname TEXT, "
+                    + "guest_lname TEXT, "
                     + "guest_email TEXT, "
                     + "guest_phone TEXT, "
-                    + "guest_access_code TEXT) ";
+                    + "guest_access_code TEXT, "
+                    + "guest_gender TEXT) ";
+            
 
             Statement smt = sharedConnection.createStatement();
             wasThisMethodSuccessful = smt.execute(createTableSql);
@@ -204,19 +207,22 @@ public class DatabaseManager {
         try {
             DatabaseManager.openConnection();
             String sqlString = "INSERT INTO " + DatabaseManager.TABLE_NAME_FOR_GUEST
-                    + " (guest_name, guest_email, guest_phone, guest_access_code)"
-                    + " VALUES (?, ?, ?, ?)";
+                    + " (guest_fname, guest_lname, guest_email, guest_phone, guest_access_code, guest_gender)"
+                    + " VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement psmt = sharedConnection.prepareStatement(sqlString);
-            String[] guestName = {"Peter Kim", "William Wong", "Kelly Lu", "Alex O'Connor", "Jane Nguyen", "Vanessa Chor", "Phil So"};
+            String[] guestFname = {"Peter", "William", "Kelly", "Alex", "Jane", "Vanessa", "Phil"};
+            String[] guestLname = {"Kim", "Wong", "Lu", "O'Connor", "Nguyen", "Chor", "So"};
             String[] guestEmail = {"Peter21@gmail.com ", "Will2093@gmail.com", "Kelly234@gmail.com", "Alex002@hotmail.com", "Jane_12@gmail.com", "Van23@gmail.com", "Phil.G@gmail.com"};
             String[] guestPhone = {"0409378231", "0439827365", "0427836472", "0426837645", "0498378265", "0498786375", "0401109387"};
             String[] guestCode = {"PeterKim2341", "WilliamWong9837", "KellyLu0193", "AlexOConnor9283", "JaneNguyen2938", "VanessaChor0283", "PhilSo2983"};
-
-            for (int i = 0; i < guestName.length; i++) {
-                psmt.setString(1, guestName[i]);
-                psmt.setString(2, guestEmail[i]);
-                psmt.setString(3, guestPhone[i]);
-                psmt.setString(4, guestCode[i]);
+            String[] guestGender = {"Male", "Male", "Female", "Male", "Female", "Female", "Male"};
+            for (int i = 0; i < guestFname.length; i++) {
+                psmt.setString(1, guestFname[i]);
+                psmt.setString(2, guestLname[i]);
+                psmt.setString(3, guestEmail[i]);
+                psmt.setString(4, guestPhone[i]);
+                psmt.setString(5, guestCode[i]);
+                psmt.setString(6, guestGender[i]);
                 boolean wasThisRoundSuccessful = psmt.execute();
                 wasThisMethodSuccessful = (wasThisMethodSuccessful && wasThisRoundSuccessful);
 

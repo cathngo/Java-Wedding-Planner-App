@@ -28,7 +28,7 @@ public class App extends Application {
         DatabaseManager.setupDatabaseOnFirstRun();
         DatabaseManager.printObjectsInTable("event");
    
-        //DatabaseManager.printObjectsInTable("admin");
+        DatabaseManager.printObjectsInTable("guest");
  
     }
 
