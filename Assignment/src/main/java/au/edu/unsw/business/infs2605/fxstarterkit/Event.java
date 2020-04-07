@@ -11,4 +11,5 @@ package au.edu.unsw.business.infs2605.fxstarterkit;
  */
 public class Event {
     
+    
 }
