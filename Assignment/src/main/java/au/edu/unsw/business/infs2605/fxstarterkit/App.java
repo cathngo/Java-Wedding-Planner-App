@@ -6,6 +6,7 @@
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -22,13 +23,14 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        scene = new Scene(loadFXML("createEvent"));
+        scene = new Scene(loadFXML("Events"));
         stage.setScene(scene);
         stage.show();
         DatabaseManager.setupDatabaseOnFirstRun();
         DatabaseManager.printObjectsInTable("event");
    
         DatabaseManager.printObjectsInTable("guest");
+       
  
     }
 
@@ -41,7 +43,8 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+       
         launch();
     }
 
