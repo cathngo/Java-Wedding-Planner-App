@@ -17,13 +17,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+
 /**
  * FXML Controller class
  *
  * @author honesyuu
  */
 public class GuestsController implements Initializable {
-
 
     @FXML
     private TableView<?> tableGuests;
@@ -39,10 +39,11 @@ public class GuestsController implements Initializable {
     private Button btnViewGuests;
     @FXML
     private AnchorPane guestsPane;
+
     /**
      * Initializes the controller class.
-     */   
-    
+     */
+
     @FXML
     private void loadInviteGuest(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("invitateguest.fxml"));
@@ -60,10 +61,10 @@ public class GuestsController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("viewguest.fxml"));
         guestsPane.getChildren().setAll(pane);
     }
-    
-        @Override
+
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    } 
+    }
 
 }
