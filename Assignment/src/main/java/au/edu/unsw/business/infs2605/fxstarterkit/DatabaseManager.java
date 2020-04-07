@@ -81,7 +81,9 @@ public class DatabaseManager {
                     + "guest_lname TEXT, "
                     + "guest_email TEXT, "
                     + "guest_phone TEXT, "
+                    + "diet_require TEXT, "
                     + "guest_access_code TEXT, "
+                   
                     + "guest_gender TEXT) ";
             
 
@@ -149,7 +151,7 @@ public class DatabaseManager {
                     + "rsvp_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + "decision TEXT, "
                     + "date_time TEXT, "
-                    + "diet_require TEXT, "
+              
                     + "invitation_id INTEGER, "
                     + "FOREIGN KEY(invitation_id) REFERENCES invitation(invitation_id)) ";
 
@@ -207,14 +209,15 @@ public class DatabaseManager {
         try {
             DatabaseManager.openConnection();
             String sqlString = "INSERT INTO " + DatabaseManager.TABLE_NAME_FOR_GUEST
-                    + " (guest_fname, guest_lname, guest_email, guest_phone, guest_access_code, guest_gender)"
-                    + " VALUES (?, ?, ?, ?, ?, ?)";
+                    + " (guest_fname, guest_lname, guest_email, guest_phone, guest_access_code, diet_require, guest_gender)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement psmt = sharedConnection.prepareStatement(sqlString);
             String[] guestFname = {"Peter", "William", "Kelly", "Alex", "Jane", "Vanessa", "Phil"};
             String[] guestLname = {"Kim", "Wong", "Lu", "O'Connor", "Nguyen", "Chor", "So"};
             String[] guestEmail = {"Peter21@gmail.com ", "Will2093@gmail.com", "Kelly234@gmail.com", "Alex002@hotmail.com", "Jane_12@gmail.com", "Van23@gmail.com", "Phil.G@gmail.com"};
             String[] guestPhone = {"0409378231", "0439827365", "0427836472", "0426837645", "0498378265", "0498786375", "0401109387"};
             String[] guestCode = {"PeterKim2341", "WilliamWong9837", "KellyLu0193", "AlexOConnor9283", "JaneNguyen2938", "VanessaChor0283", "PhilSo2983"};
+            String[] dietRequire = {"N/A", "Peanut Allergy", "Vegan", "N/A", "Vegetarian", "N/A", "N/A"};
             String[] guestGender = {"Male", "Male", "Female", "Male", "Female", "Female", "Male"};
             for (int i = 0; i < guestFname.length; i++) {
                 psmt.setString(1, guestFname[i]);
@@ -222,7 +225,8 @@ public class DatabaseManager {
                 psmt.setString(3, guestEmail[i]);
                 psmt.setString(4, guestPhone[i]);
                 psmt.setString(5, guestCode[i]);
-                psmt.setString(6, guestGender[i]);
+                psmt.setString(6, dietRequire[i]);
+                psmt.setString(7, guestGender[i]);
                 boolean wasThisRoundSuccessful = psmt.execute();
                 wasThisMethodSuccessful = (wasThisMethodSuccessful && wasThisRoundSuccessful);
 
@@ -306,19 +310,19 @@ public class DatabaseManager {
         try {
             DatabaseManager.openConnection();
             String sqlString = "INSERT INTO " + DatabaseManager.TABLE_NAME_FOR_RSVP
-                    + " (decision, date_time, diet_require, invitation_id)"
-                    + " VALUES (?,?,?,?)";
+                    + " (decision, date_time, invitation_id)"
+                    + " VALUES (?,?,?)";
             PreparedStatement psmt = sharedConnection.prepareStatement(sqlString);
             String[] decision = {"Yes", "Yes", "No", "No", "", "Yes", "No"};
             String[] date_time = {"12/3/2020", "14/2/2020", "23/5/2020", "2/4/2020", "16/6/2020", "15/8/2020", "17/9/2020"};
-            String[] diet_require = {"N/A", "Peanut Allergy", "Vegan", "N/A", "Vegetarian", "N/A", "N/A"};
+            
             int[] invitation_id = {1, 2, 3, 4, 5, 6, 7};
 
             for (int i = 0; i < invitation_id.length; i++) {
                 psmt.setString(1, decision[i]);
                 psmt.setString(2, date_time[i]);
-                psmt.setString(3, diet_require[i]);
-                psmt.setInt(4, invitation_id[i]);
+      
+                psmt.setInt(3, invitation_id[i]);
 
                 boolean wasThisRoundSuccessful = psmt.execute();
                 wasThisMethodSuccessful = (wasThisMethodSuccessful && wasThisRoundSuccessful);
