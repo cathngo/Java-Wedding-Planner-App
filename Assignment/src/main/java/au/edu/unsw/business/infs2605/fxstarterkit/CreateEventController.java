@@ -31,6 +31,8 @@ public class CreateEventController {
     TextField startTime;
     @FXML
     TextField endTime;
+    @FXML
+    TextField instructions;
 
     
      @FXML
@@ -43,14 +45,15 @@ public class CreateEventController {
         String Date = eventDate.getText();
         String sTime = startTime.getText();
         String eTime = endTime.getText();
+        String eInstructions = instructions.getText();
     
         
        
         try{
              Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
              String query = "INSERT INTO event" 
-                    + " (event_name, event_address, event_description, event_date, event_start_time, event_end_time)"
-                    + " VALUES (?, ?, ?, ?, ?, ?)";
+                    + " (event_name, event_address, event_description, event_date, event_start_time, event_end_time, event_instructions)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
         
              PreparedStatement psmt = conn.prepareStatement(query);
              
@@ -62,6 +65,7 @@ public class CreateEventController {
              psmt.setString(4, Date); 
              psmt.setString(5, sTime);
              psmt.setString(6, eTime); 
+             psmt.setString(7, eInstructions); 
              
              psmt.executeUpdate();
              psmt.close();

@@ -58,7 +58,8 @@ public class DatabaseManager {
                     + "event_description TEXT, "
                     + "event_date TEXT, "
                     + "event_start_time TEXT, "
-                    + "event_end_time TEXT) ";
+                    + "event_end_time TEXT, "
+                 + "event_instructions TEXT)";
 
             Statement smt = sharedConnection.createStatement();
             wasThisMethodSuccessful = smt.execute(createTableSql);
@@ -119,7 +120,7 @@ public class DatabaseManager {
             DatabaseManager.openConnection();
             String createTableSql = "CREATE TABLE " + DatabaseManager.TABLE_NAME_FOR_INVITATION + " ("
                     + "invitation_id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + "instructions TEXT, "
+             
                     + "event_id INTEGER, "
                     + "guest_id INTEGER, "
                     + "admin_id INTEGER, "
@@ -164,16 +165,17 @@ public class DatabaseManager {
         try {
             DatabaseManager.openConnection();
             String sqlString = "INSERT INTO " + TABLE_NAME_FOR_EVENT
-                    + " (event_name, event_address, event_description, event_date, event_start_time, event_end_time)"
-                    + " VALUES (?, ?, ?, ?, ?, ?)";
+                    + " (event_name, event_address, event_description, event_date, event_start_time, event_end_time, event_instructions)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement psmt = sharedConnection.prepareStatement(sqlString);
             String[] eventName = {"Alan's Birthday", "Fiona's Wedding", "Friday Disco", "Jack's Party", "Surprise Party", "Julie's Wedding", "Liam's Party"};
-           
+            
             String[] eventAddress = {"21 Hop St, Yellow Hills NSW 2831 ", "1 Cropley Rd, Cropley NSW 2314", "Pira Rd, Pyrmont NSW 2009", "2 Mun Ave, Carl NSW 2128", "23 Hill Rd, Leign NSW 2134", "2 Line St, Viole NSW 2134", "23 Liam Rd, Sunny NSW 2342"};
             String[] eventDescription = {"It’s my birthday party! Reserve the date. Don’t arrive late!", "It’s my wedding! Reserve the date. Don’t arrive late!", "It’s my disco party! Reserve the date. Don’t arrive late!", "It’s my party! Reserve the date. Don’t arrive late!", "It’s Jack's birthday party! Reserve the date. Don’t arrive late!", "It’s my wedding! Reserve the date. Don’t arrive late!", "It’s my birthday party! Reserve the date. Don’t arrive late!"};
             String[] eventDate = {"12/4/2020", "4/4/2020", "12/6/2020", "15/8/2020", "5/5/2020", "30/9/2020", "28/12/2020"};
             String[] startTime = {"12:00pm", "10:00am", "9:00pm", "7:00pm", "4:00pm", "11:00am", "7:00pm"};
             String[] endTime = {"3:00pm", "3:00pm", "12:00am", "11:00pm", "7:00pm", "4:00pm", "11:00pm"};
+            String[] eventInstructions = {"Please leave shoes at the door", "", "Please Bring Your ID", "No need to bring a present!", "Please arrive on time!", "", ""};
             for (int i = 0; i < eventName.length; i++) {
                 psmt.setString(1, eventName[i]);
 
@@ -182,6 +184,7 @@ public class DatabaseManager {
                 psmt.setString(4, eventDate[i]);
                 psmt.setString(5, startTime[i]);
                 psmt.setString(6, endTime[i]);
+                psmt.setString(7, eventInstructions[i]);
                 boolean wasThisRoundSuccessful = psmt.execute();
                 wasThisMethodSuccessful = (wasThisMethodSuccessful && wasThisRoundSuccessful);
             }
@@ -265,19 +268,19 @@ public class DatabaseManager {
         try {
             DatabaseManager.openConnection();
             String sqlString = "INSERT INTO " + DatabaseManager.TABLE_NAME_FOR_INVITATION
-                    + " (instructions, event_id, guest_id, admin_id)"
-                    + " VALUES (?,?,?,?)";
+                    + " (event_id, guest_id, admin_id)"
+                    + " VALUES (?,?,?)";
             PreparedStatement psmt = sharedConnection.prepareStatement(sqlString);
-            String[] instructions = {"Please leave shoes at the door", "", "Please Bring Your ID", "No need to bring a present!", "Please arrive on time!", "", ""};
+           
             int[] event_id = {1, 2, 3, 4, 5, 6, 7};
             int[] guest_id = {1, 2, 3, 4, 5, 6, 7};
             int[] admin_id = {1, 2, 3, 4, 5, 6, 7};
 
-            for (int i = 0; i < instructions.length; i++) {
-                psmt.setString(1, instructions[i]);
-                psmt.setInt(2, event_id[i]);
-                psmt.setInt(3, guest_id[i]);
-                psmt.setInt(4, admin_id[i]);
+            for (int i = 0; i < event_id.length; i++) {
+     
+                psmt.setInt(1, event_id[i]);
+                psmt.setInt(2, guest_id[i]);
+                psmt.setInt(3, admin_id[i]);
 
                 boolean wasThisRoundSuccessful = psmt.execute();
                 wasThisMethodSuccessful = (wasThisMethodSuccessful && wasThisRoundSuccessful);
