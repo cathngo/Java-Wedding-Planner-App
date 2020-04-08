@@ -27,7 +27,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
     
      @FXML
     private TableView<Event> viewGuestTable;
-   
+   @FXML
+    private TableColumn<Event,Integer> col_eventId;
     @FXML
     private TableColumn<Event,String> col_eventName;
    @FXML
@@ -51,16 +52,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
             ResultSet rs = conn.createStatement().executeQuery("select * from event");
             
             while (rs.next()){
-                oblist.add(new Event( rs.getString("event_name"),
-                 rs.getString("event_date"), rs.getString("event_start_time"),
-                rs.getString("event_end_time"), rs.getString("event_instructions")));
+                oblist.add(new Event( rs.getInt("event_id"),
+                 rs.getString("event_name"), rs.getString("event_date"), rs.getString("event_start_time"),
+                rs.getString("event_end_time")));
             }
             
         }catch(Exception e){
             System.out.println("table not created");
         }
         
-        
+          col_eventId.setCellValueFactory(new PropertyValueFactory<>("event_id"));
         col_eventName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
         
  
