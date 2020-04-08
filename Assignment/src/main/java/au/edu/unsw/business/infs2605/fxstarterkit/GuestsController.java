@@ -68,13 +68,7 @@ public class GuestsController implements Initializable {
                  rs.getString("guest_lname"),
               rs.getString("guest_email")));
             }
-            
-        }catch(Exception e){
-            System.out.println("table not created");
-        }
-        
-        
-        col_firstName.setCellValueFactory(new PropertyValueFactory<>("guest_fname"));
+             col_firstName.setCellValueFactory(new PropertyValueFactory<>("guest_fname"));
         
  
         col_lastName.setCellValueFactory(new PropertyValueFactory<>("guest_lname"));
@@ -82,6 +76,12 @@ public class GuestsController implements Initializable {
        
         
         guest_table.setItems(guestList);
+        }catch(Exception e){
+            System.out.println("table not created");
+        }
+        
+        
+       
     }
         
    

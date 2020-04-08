@@ -27,6 +27,7 @@ public class Event {
         this.event_date = event_date;
         this.event_start_time = event_start_time;
         this.event_end_time = event_end_time;
+   
     }
 
     public int getEvent_id() {

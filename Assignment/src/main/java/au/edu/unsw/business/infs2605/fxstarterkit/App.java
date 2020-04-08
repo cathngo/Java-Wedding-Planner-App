@@ -23,11 +23,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-<<<<<<< HEAD
-        scene = new Scene(loadFXML("Login screen"));
-=======
+
+     
         scene = new Scene(loadFXML("Events"));
->>>>>>> 0cd7958ef9dbe7f9d4cbb5663158c17b9e218e37
+
         stage.setScene(scene);
         stage.show();
         DatabaseManager.setupDatabaseOnFirstRun();
