@@ -28,28 +28,27 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="265.0" prefWidth="600.0">
+            <AnchorPane prefHeight="259.0" prefWidth="600.0">
                <children>
-                  <TableView layoutX="29.0" layoutY="43.0" prefHeight="58.0" prefWidth="542.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
+                  <Text fill="#5b5959" layoutX="28.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Details" />
+                  <TableView layoutX="28.0" layoutY="25.0" prefHeight="71.0" prefWidth="547.0">
+                    <columns>
+                      <TableColumn prefWidth="97.0" text="Guest ID" />
+                      <TableColumn prefWidth="53.0" text="Gender" />
+                        <TableColumn prefWidth="133.0" text="Acces Code" />
+                        <TableColumn prefWidth="138.0" text="Email" />
+                        <TableColumn prefWidth="125.0" text="Phone Number" />
+                    </columns>
+                  </TableView>
+                  <Text fill="#5b5959" layoutX="28.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Details" />
+                  <TableView layoutX="28.0" layoutY="143.0" prefHeight="71.0" prefWidth="547.0">
                      <columns>
-                        <TableColumn prefWidth="100.0" text="Guest ID" />
-                        <TableColumn prefWidth="56.0" text="Gender" />
-                        <TableColumn prefWidth="119.0" text="Email" />
-                        <TableColumn prefWidth="141.0" text="Phone Number" />
-                        <TableColumn prefWidth="125.0" text="Access Code" />
+                        <TableColumn prefWidth="230.0" text="Event Name" />
+                        <TableColumn prefWidth="234.0" text="Date" />
+                        <TableColumn prefWidth="82.0" text="RSVP" />
                      </columns>
                   </TableView>
-                  <Text fill="#827f7f" layoutX="29.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Details" />
-                  <Text fill="#827f7f" layoutX="29.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invited Events" wrappingWidth="160.96219271743917" />
-                  <TableView layoutX="29.0" layoutY="154.0" prefHeight="97.0" prefWidth="542.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
-                     <columns>
-                        <TableColumn prefWidth="306.0" text="Event Name" />
-                        <TableColumn prefWidth="127.0" text="Date" />
-                        <TableColumn prefWidth="108.0" text="RSVP" />
-                     </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
+               </children></AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
                   <Button layoutX="29.0" layoutY="18.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit" textFill="WHITE" />

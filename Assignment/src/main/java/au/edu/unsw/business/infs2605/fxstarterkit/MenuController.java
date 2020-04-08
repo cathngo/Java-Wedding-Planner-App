@@ -37,15 +37,7 @@ public class MenuController {
     private Button btn_runsheets;
     @FXML
     private Button btn_abouts;
-    @FXML
-    private ImageView close;
   
-    @FXML
-    private void close(MouseEvent event) {
-        Stage stage = (Stage) borderpane.getScene().getWindow();
-        stage.close();
-    }
-
     @FXML
     private void dashboard(MouseEvent event) {
         loadPage("admindashboard");

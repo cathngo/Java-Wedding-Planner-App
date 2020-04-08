@@ -26,6 +26,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("guests"));
         stage.setScene(scene);
         stage.show();
+        
         DatabaseManager.setupDatabaseOnFirstRun();
         DatabaseManager.printObjectsInTable("event");
    

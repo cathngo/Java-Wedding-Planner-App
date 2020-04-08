@@ -116,9 +116,4 @@ public class GuestsController implements Initializable {
         guestsPane.getChildren().setAll(pane);
     }
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
-
 }
