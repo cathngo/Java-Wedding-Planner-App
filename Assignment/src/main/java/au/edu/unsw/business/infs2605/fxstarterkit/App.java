@@ -23,12 +23,13 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        scene = new Scene(loadFXML("guests"));
+        scene = new Scene(loadFXML("Login screen"));
         stage.setScene(scene);
         stage.show();
         DatabaseManager.setupDatabaseOnFirstRun();
+        //use this for testing and viewing table content
         DatabaseManager.printObjectsInTable("event");
-   
+        DatabaseManager.printObjectsInTable("admin");
         DatabaseManager.printObjectsInTable("guest");
        
  
