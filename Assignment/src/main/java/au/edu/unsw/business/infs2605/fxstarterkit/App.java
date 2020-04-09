@@ -25,7 +25,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
     
         
-        scene = new Scene(loadFXML("A_ViewGuestDashboard"));
+        scene = new Scene(loadFXML("A_ViewGuestInviteEvent"));
 
         stage.setScene(scene);
         stage.show();

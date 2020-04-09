@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -24,21 +25,21 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 
     public class A_ViewEventInviteGuestController implements Initializable{
-    
      @FXML
-    private TableView<Event> viewGuestTable;
-   @FXML
-    private TableColumn<Event,Integer> col_eventId;
+    private TableView<Guest> existingGuestTable;
+   
     @FXML
-    private TableColumn<Event,String> col_eventName;
-   @FXML
-    private TableColumn<Event,String> col_eventDate;
+    private TableColumn<Guest,String> col_fname;
     @FXML
-    private TableColumn<Event,String> col_startTime;
+    private TableColumn<Guest,String> col_lname;
+   
     @FXML
-    private TableColumn<Event,String> col_endTime;
-    
-    ObservableList<Event>oblist = FXCollections.observableArrayList();
+    private AnchorPane guestsPane;
+     
+
+
+   
+    ObservableList<Guest>guestList = FXCollections.observableArrayList();
     
     
 
@@ -49,26 +50,22 @@ import javafx.scene.control.cell.PropertyValueFactory;
         // TODO
         try{
             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs = conn.createStatement().executeQuery("select * from event");
+            ResultSet rs = conn.createStatement().executeQuery("select * from guest");
             
             while (rs.next()){
-                oblist.add(new Event( rs.getInt("event_id"),
-                 rs.getString("event_name"), rs.getString("event_date"), rs.getString("event_start_time"),
-                rs.getString("event_end_time")));
+                guestList.add(new Guest( rs.getString("guest_fname"),
+             
+              rs.getString("guest_lname")));
+           
             }
             
         }catch(Exception e){
             System.out.println("table not created");
         }
         
-          col_eventId.setCellValueFactory(new PropertyValueFactory<>("event_id"));
-        col_eventName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
         
- 
-        col_eventDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
-        col_startTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
-        col_endTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
-        
-        viewGuestTable.setItems(oblist);
+        col_fname.setCellValueFactory(new PropertyValueFactory<>("guest_fname"));
+        col_lname.setCellValueFactory(new PropertyValueFactory<>("guest_lname"));
+        existingGuestTable.setItems(guestList);
     }
 }

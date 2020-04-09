@@ -32,6 +32,12 @@ public class Guest {
         this.guest_email = guest_email;
         this.guest_id = guest_id;
         }
+        
+        //A_ViewEventInviteGuestController uses this
+        public Guest(String guest_fname, String guest_lname){
+        this.guest_fname = guest_fname;
+        this.guest_lname = guest_lname;
+        }
 
     public String getGuest_fname() {
         return guest_fname;
