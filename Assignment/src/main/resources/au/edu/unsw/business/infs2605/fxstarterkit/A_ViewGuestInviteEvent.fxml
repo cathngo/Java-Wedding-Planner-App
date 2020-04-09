@@ -45,6 +45,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
+                  <Button fx:id="btn_back" layoutX="29.0" layoutY="18.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
+                  <Button fx:id="btn_inviteevent" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite To Event" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>
