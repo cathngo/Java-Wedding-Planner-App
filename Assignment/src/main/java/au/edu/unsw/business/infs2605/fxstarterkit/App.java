@@ -41,7 +41,7 @@ public class App extends Application {
 
 
      
-        scene = new Scene(loadFXML("Events"));
+        scene = new Scene(loadFXML("guestList"));
 
 
         stage.setScene(scene);
