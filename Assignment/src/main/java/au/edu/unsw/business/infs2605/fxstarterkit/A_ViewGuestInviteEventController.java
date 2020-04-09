@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -30,6 +31,10 @@ public class A_ViewGuestInviteEventController implements Initializable{
     private TableColumn<TableGuestList,String> col_fname;
     @FXML
     private TableColumn<TableGuestList,String> col_lname;
+   
+    @FXML
+    private AnchorPane guestsPane;
+     
 
 
    

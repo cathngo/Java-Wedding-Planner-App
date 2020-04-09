@@ -13,11 +13,13 @@ public class TableGuest {
     String guest_fname;
     String guest_lname;
     String guest_email;
+    int guest_id;
 
-    public TableGuest(String guest_fname, String guest_lname, String guest_email) {
+    public TableGuest(String guest_fname, String guest_lname, String guest_email, int guest_id) {
         this.guest_fname = guest_fname;
         this.guest_lname = guest_lname;
         this.guest_email = guest_email;
+        this.guest_id = guest_id;
     }
 
     public String getGuest_fname() {
@@ -44,6 +46,14 @@ public class TableGuest {
         this.guest_email = guest_email;
     }
 
-    
+    public int getGuest_id() {
+        return guest_id;
+    }
+
+    public void setGuest_id(int guest_id) {
+        this.guest_id = guest_id;
+    }
+
+   
             
 }
