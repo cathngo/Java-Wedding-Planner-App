@@ -42,11 +42,11 @@ public class A_ViewGuestProfileController {
     private Text guestGender;
     @FXML
     private Text guestPhone;
-    private TableGuest selectedGuest;
+    private Guest selectedGuest;
     
     
 
-    public void passData(TableGuest guest) throws SQLException {
+    public void passData(Guest guest) throws SQLException {
         selectedGuest = guest;
         
 

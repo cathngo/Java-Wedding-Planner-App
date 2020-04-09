@@ -1,4 +1,3 @@
-
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
 import java.io.IOException;
@@ -20,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 /**
  * FXML Controller class
  *
@@ -27,8 +27,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class A_ViewGuestDashboardController implements Initializable {
 
-
-   
     @FXML
     private Button btnInviteGuest;
     @FXML
@@ -37,23 +35,19 @@ public class A_ViewGuestDashboardController implements Initializable {
     private Button btnViewGuests;
     @FXML
     private AnchorPane guestsPane;
-      @FXML
-    private TableView<TableGuest> guest_table;
-   @FXML
-    private TableColumn<TableGuest,Integer> col_guestId;
     @FXML
-    private TableColumn<TableGuest,String> col_firstName;
-   @FXML
-    private TableColumn<TableGuest,String> col_lastName;
+    private TableView<Guest> guest_table;
     @FXML
-    private TableColumn<TableGuest,String> col_guestEmail;
-   
-    ObservableList<TableGuest>guestList = FXCollections.observableArrayList();
-    
-    
+    private TableColumn<Guest, Integer> col_guestId;
+    @FXML
+    private TableColumn<Guest, String> col_firstName;
+    @FXML
+    private TableColumn<Guest, String> col_lastName;
+    @FXML
+    private TableColumn<Guest, String> col_guestEmail;
 
-  
-     
+    ObservableList<Guest> guestList = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -62,26 +56,24 @@ public class A_ViewGuestDashboardController implements Initializable {
             ResultSet rs = conn.createStatement().executeQuery("select * from guest");
 
             while (rs.next()) {
-                guestList.add(new TableGuest(rs.getString("guest_fname"),
+                guestList.add(new Guest(rs.getString("guest_fname"),
                         rs.getString("guest_lname"), rs.getString("guest_email"),
                         rs.getInt("guest_id")));
             }
             col_firstName.setCellValueFactory(new PropertyValueFactory<>("guest_fname"));
             col_lastName.setCellValueFactory(new PropertyValueFactory<>("guest_lname"));
             col_guestEmail.setCellValueFactory(new PropertyValueFactory<>("guest_email"));
-             col_guestId.setCellValueFactory(new PropertyValueFactory<>("guest_id"));
+            col_guestId.setCellValueFactory(new PropertyValueFactory<>("guest_id"));
             guest_table.setItems(guestList);
         } catch (Exception e) {
             System.out.println("table not created");
         }
 
     }
-        
-   
+
     /**
      * Initializes the controller class.
-     */   
-    
+     */
     @FXML
     private void loadInviteGuest(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewGuestInviteEvent.fxml"));
@@ -96,16 +88,12 @@ public class A_ViewGuestDashboardController implements Initializable {
 
     @FXML
     private void loadViewGuest(ActionEvent event) throws IOException, SQLException {
-        
-        
-      
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestProfile.fxml"));
-        AnchorPane pane = (AnchorPane)loader.load();
+        AnchorPane pane = (AnchorPane) loader.load();
         A_ViewGuestProfileController controller = loader.getController();
         controller.passData(guest_table.getSelectionModel().getSelectedItem());
         guestsPane.getChildren().setAll(pane);
     }
-    
-       
 
 }

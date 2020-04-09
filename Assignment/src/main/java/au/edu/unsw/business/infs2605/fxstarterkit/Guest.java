@@ -10,14 +10,14 @@ package au.edu.unsw.business.infs2605.fxstarterkit;
  * @author Mimi
  */
 public class Guest {
-    private String guest_id;
+    private int guest_id;
     private String guest_fname;
     private String guest_lname;
     private String guest_email;
     private String guest_phone;
     private String guest_access_code;
 
-    public Guest(String guest_id, String guest_fname, String guest_lname, String guest_email, String guest_phone, String guest_access_code) {
+    public Guest(int guest_id, String guest_fname, String guest_lname, String guest_email, String guest_phone, String guest_access_code) {
         this.guest_id = guest_id;
         this.guest_fname = guest_fname;
         this.guest_lname = guest_lname;
@@ -25,11 +25,18 @@ public class Guest {
         this.guest_phone = guest_phone;
         this.guest_access_code = guest_access_code;
     }
-    
-        public Guest(String guest_fname, String guest_lname, String guest_email) {
+        //viewguestdashboardcontroller uses this
+        public Guest(String guest_fname, String guest_lname, String guest_email, int guest_id) {
         this.guest_fname = guest_fname;
         this.guest_lname = guest_lname;
         this.guest_email = guest_email;
+        this.guest_id = guest_id;
+        }
+        
+        //A_ViewEventInviteGuestController uses this
+        public Guest(String guest_fname, String guest_lname){
+        this.guest_fname = guest_fname;
+        this.guest_lname = guest_lname;
         }
 
     public String getGuest_fname() {
@@ -48,11 +55,11 @@ public class Guest {
         this.guest_lname = guest_lname;
     }
     
-    public String getGuest_id() {
+    public int getGuest_id() {
         return guest_id;
     }
 
-    public void setGuest_id(String guest_id) {
+    public void setGuest_id(int guest_id) {
         this.guest_id = guest_id;
     }
 
