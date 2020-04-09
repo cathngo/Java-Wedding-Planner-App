@@ -1,4 +1,5 @@
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 
 
+
 /**
  *
  * @author cathy
@@ -29,10 +31,12 @@ public class A_ViewGuestProfileController implements Initializable{
         
     }
     
+
     @FXML
     private void loadInviteGuest(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewGuestInviteEvent.fxml"));
         viewGuestPane.getChildren().setAll(pane);
     }
     
+
 }

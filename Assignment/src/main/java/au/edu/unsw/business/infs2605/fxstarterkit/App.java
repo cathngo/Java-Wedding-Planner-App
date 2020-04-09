@@ -23,30 +23,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
-
-
-        scene = new Scene(loadFXML("Login screen"));
-        scene = new Scene(loadFXML("Events"));
-
-
      
-        scene = new Scene(loadFXML("Events"));
-
-
-
-     
-        scene = new Scene(loadFXML("Events"));
-
-
-
-     
-        scene = new Scene(loadFXML("guestList"));
-
+        scene = new Scene(loadFXML("Login"));
 
         stage.setScene(scene);
         stage.show();
-        
         DatabaseManager.setupDatabaseOnFirstRun();
         //use this for testing and viewing table content
         DatabaseManager.printObjectsInTable("event");

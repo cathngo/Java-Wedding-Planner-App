@@ -22,7 +22,7 @@ import javafx.scene.text.Text;
  *
  * @author cathy
  */
-public class ViewEventController {
+public class A_ViewEventController {
 
     @FXML
     private Text eventName;
