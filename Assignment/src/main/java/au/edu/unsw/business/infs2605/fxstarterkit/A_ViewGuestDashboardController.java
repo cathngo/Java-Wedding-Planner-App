@@ -38,17 +38,17 @@ public class A_ViewGuestDashboardController implements Initializable {
     @FXML
     private AnchorPane guestsPane;
       @FXML
-    private TableView<TableGuest> guest_table;
+    private TableView<Guest> guest_table;
    @FXML
-    private TableColumn<TableGuest,Integer> col_guestId;
+    private TableColumn<Guest,Integer> col_guestId;
     @FXML
-    private TableColumn<TableGuest,String> col_firstName;
+    private TableColumn<Guest,String> col_firstName;
    @FXML
-    private TableColumn<TableGuest,String> col_lastName;
+    private TableColumn<Guest,String> col_lastName;
     @FXML
-    private TableColumn<TableGuest,String> col_guestEmail;
+    private TableColumn<Guest,String> col_guestEmail;
    
-    ObservableList<TableGuest>guestList = FXCollections.observableArrayList();
+    ObservableList<Guest>guestList = FXCollections.observableArrayList();
     
     
 
@@ -62,7 +62,7 @@ public class A_ViewGuestDashboardController implements Initializable {
             ResultSet rs = conn.createStatement().executeQuery("select * from guest");
 
             while (rs.next()) {
-                guestList.add(new TableGuest(rs.getString("guest_fname"),
+                guestList.add(new Guest(rs.getString("guest_fname"),
                         rs.getString("guest_lname"), rs.getString("guest_email"),
                         rs.getInt("guest_id")));
             }
