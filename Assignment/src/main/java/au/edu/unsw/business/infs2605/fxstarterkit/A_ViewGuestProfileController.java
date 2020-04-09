@@ -42,6 +42,7 @@ public class A_ViewGuestProfileController {
     private Text guestGender;
     @FXML
     private Text guestPhone;
+    
     private Guest selectedGuest;
     
     

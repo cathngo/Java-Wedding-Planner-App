@@ -75,8 +75,11 @@ public class A_ViewGuestDashboardController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    private void loadInviteGuest(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewGuestInviteEvent.fxml"));
+    private void loadInviteGuest(ActionEvent event) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestInviteEvent.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+        A_ViewGuestInviteEventController controller = loader.getController();
+        controller.passData(guest_table.getSelectionModel().getSelectedItem());
         guestsPane.getChildren().setAll(pane);
     }
 
