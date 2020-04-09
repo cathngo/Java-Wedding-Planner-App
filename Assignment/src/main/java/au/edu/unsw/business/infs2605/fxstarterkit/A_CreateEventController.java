@@ -5,12 +5,16 @@
  */
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -33,6 +37,8 @@ public class A_CreateEventController {
     TextField endTime;
     @FXML
     TextField instructions;
+    @FXML
+    private AnchorPane eventPane;
 
     
      @FXML
@@ -80,4 +86,9 @@ public class A_CreateEventController {
         } 
     
 }
+    @FXML
+    private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewEventInviteGuest.fxml"));
+        eventPane.getChildren().setAll(pane);
+    }
 }
