@@ -28,21 +28,8 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="259.0" prefWidth="600.0">
             <AnchorPane prefHeight="279.0" prefWidth="600.0">
                <children>
-                  <Text fill="#5b5959" layoutX="28.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Details" />
-                  <TableView layoutX="28.0" layoutY="25.0" prefHeight="71.0" prefWidth="547.0">
-                    <columns>
-                      <TableColumn prefWidth="97.0" text="Guest ID" />
-                      <TableColumn prefWidth="53.0" text="Gender" />
-                        <TableColumn prefWidth="133.0" text="Acces Code" />
-                        <TableColumn prefWidth="138.0" text="Email" />
-                        <TableColumn prefWidth="125.0" text="Phone Number" />
-                    </columns>
-                  </TableView>
-                  <Text fill="#5b5959" layoutX="28.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Details" />
-                  <TableView layoutX="28.0" layoutY="143.0" prefHeight="71.0" prefWidth="547.0">
                   <Text layoutX="28.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest ID:">
                      <font>
                         <Font name="System Bold" size="14.0" />
