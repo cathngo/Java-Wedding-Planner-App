@@ -41,12 +41,15 @@ public class A_ViewEventController {
     @FXML
     private Text eventInstructions;
     @FXML
+    private Text eventId;
+    @FXML
     private AnchorPane eventPane;
 
     private Event selectedEvent;
 
     public void passData(Event event) throws SQLException {
         selectedEvent = event;
+        eventId.setText(Integer.toString(selectedEvent.getEvent_id()));
         eventName.setText(selectedEvent.getEvent_name());
         eventDate.setText(selectedEvent.getEvent_date());
         eventTime.setText(selectedEvent.getEvent_start_time() + " - " + selectedEvent.getEvent_end_time());
@@ -75,6 +78,15 @@ public class A_ViewEventController {
         controller.passData(eventName.getText());
         eventPane.getChildren().setAll(pane);
     }
-  
+  @FXML
+    private void btnEditWasClicked(ActionEvent event) throws IOException, SQLException {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_EditEvent.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+        A_EditEventController controller = loader.getController();
+        controller.passData(Integer.parseInt(eventId.getText()));
+      controller.getEventId(Integer.parseInt(eventId.getText()));
+        eventPane.getChildren().setAll(pane);
+    }
 }
 
