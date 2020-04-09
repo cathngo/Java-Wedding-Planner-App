@@ -33,10 +33,11 @@
                <children>
                   <TableView fx:id="viewGuestTable" layoutX="29.0" layoutY="34.0" prefHeight="212.0" prefWidth="542.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
                      <columns>
-                        <TableColumn fx:id="col_eventName" prefWidth="232.0" text="Event Name" />
-                        <TableColumn fx:id="col_eventDate" prefWidth="115.0" text="Date" />
-                        <TableColumn fx:id="col_startTime" prefWidth="97.0" text="Time Start" />
-                        <TableColumn fx:id="col_endTime" prefWidth="97.0" text="Time End" />
+                        <TableColumn fx:id="col_eventId" prefWidth="52.40002250671387" text="Id" />
+                        <TableColumn fx:id="col_eventName" prefWidth="161.2000503540039" text="Name" />
+                        <TableColumn fx:id="col_eventDate" prefWidth="121.5999755859375" text="Date" />
+                        <TableColumn fx:id="col_startTime" prefWidth="100.79998779296875" text="Time Start" />
+                        <TableColumn fx:id="col_endTime" prefWidth="105.19998168945312" text="Time End" />
                      </columns>
                   </TableView>
                   <TextField layoutX="422.0" layoutY="1.0" text="Search" />

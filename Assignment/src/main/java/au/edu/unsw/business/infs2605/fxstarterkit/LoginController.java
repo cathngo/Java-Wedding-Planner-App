@@ -6,6 +6,7 @@
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
 import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -33,7 +34,10 @@ public class LoginController {
     @FXML
     private Label lblIncorrectAccessCode;
     
-    
+    PageSwitcher pageSwitcher = new PageSwitcher();
+    DatabaseManager database = new DatabaseManager();
+
+        
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
@@ -48,7 +52,7 @@ public class LoginController {
     
  
     @FXML
-    private void btnLoginWasClicked() throws Exception {
+    private void btnLoginWasClicked(ActionEvent event) throws Exception {
         String username = txtUsername.getText();
         String password = pwfPassword.getText();
         String accessCode = pwfAccessCode.getText();
@@ -72,8 +76,10 @@ public class LoginController {
                 //returns the guest object
                 //need to put in pageswitcher
                 Guest user = DatabaseManager.fetchGuestByCode(accessCode);
-                lblIncorrectAccessCode.setText("correct code");
-                lblIncorrectAccessCode.setVisible(true);
+                //tests if login works
+                //lblIncorrectAccessCode.setText("Login success!");
+                //lblIncorrectAccessCode.setVisible(true);
+                pageSwitcher.switchPage(event, "AdminDashboard.fxml");
             }
         }       
          //if user enters admin details
@@ -86,10 +92,12 @@ public class LoginController {
             }
             else {
                 //returns admin object
-                //need to put in pageswitcher
                 Admin user = DatabaseManager.fetchAdminByUser(username, password);
-                lblIncorrectAccessCode.setText("correct credentials yay");//delete later
-                lblIncorrectAccessCode.setVisible(true);
+                
+                //lblIncorrectAccessCode.setText("correct credentials yay");//delete later
+                //lblIncorrectAccessCode.setVisible(true);
+                pageSwitcher.switchPage(event, "Menu.fxml");
+
             }
         }
         else{
@@ -99,5 +107,6 @@ public class LoginController {
             lblIncorrectAccessCode.setText("Error: enter credentials");
             lblIncorrectAccessCode.setVisible(true);
         }
-    }   
+    }
+
 }

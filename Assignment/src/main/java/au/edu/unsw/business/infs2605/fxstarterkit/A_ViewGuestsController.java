@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,20 +23,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 /**
  * FXML Controller class
  *
  * @author honesyuu
  */
-public class GuestsController implements Initializable {
-    
-    @FXML
-    private TableView<?> tableGuests;
-    @FXML
-    private TableColumn<?, ?> nameColumn;
-    @FXML
-    private TableColumn<?, ?> emailColumn;
+public class A_ViewGuestsController implements Initializable {
 
 
    
@@ -64,7 +55,7 @@ public class GuestsController implements Initializable {
     
 
   
-     
+    //fill in the 'guests' table 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -77,13 +68,7 @@ public class GuestsController implements Initializable {
                  rs.getString("guest_lname"),
               rs.getString("guest_email")));
             }
-            
-        }catch(Exception e){
-            System.out.println("table not created");
-        }
-        
-        
-        col_firstName.setCellValueFactory(new PropertyValueFactory<>("guest_fname"));
+             col_firstName.setCellValueFactory(new PropertyValueFactory<>("guest_fname"));
         
  
         col_lastName.setCellValueFactory(new PropertyValueFactory<>("guest_lname"));
@@ -91,29 +76,34 @@ public class GuestsController implements Initializable {
        
         
         guest_table.setItems(guestList);
+        }catch(Exception e){
+            System.out.println("table not created");
+        }
+        
+        
+       
     }
         
    
-    /**
-     * Initializes the controller class.
-     */   
-    
+    //page switcher
     @FXML
     private void loadInviteGuest(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("invitateguest.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewGuestInviteEvent.fxml"));
         guestsPane.getChildren().setAll(pane);
     }
 
     @FXML
     private void loadCreateGuest(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("createguest.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_CreateGuest.fxml"));
         guestsPane.getChildren().setAll(pane);
     }
 
     @FXML
     private void loadViewGuest(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("viewguest.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewGuestProfile.fxml"));
         guestsPane.getChildren().setAll(pane);
     }
     
+       
+
 }

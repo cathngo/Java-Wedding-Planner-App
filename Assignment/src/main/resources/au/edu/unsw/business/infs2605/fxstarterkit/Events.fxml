@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.YourEventsController">
+<AnchorPane fx:id="eventPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.YourEventsController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -23,12 +23,13 @@
             </AnchorPane>
             <AnchorPane prefHeight="241.0" prefWidth="600.0">
                <children>
-                  <TableView fx:id="event_table" layoutX="24.0" layoutY="21.0" prefHeight="200.0" prefWidth="542.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
+                  <TableView fx:id="eventTable" layoutX="24.0" layoutY="21.0" prefHeight="200.0" prefWidth="542.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
                     <columns>
-                      <TableColumn fx:id="col_eventName" prefWidth="226.0" text="Name" />
-                      <TableColumn fx:id="col_eventDate" prefWidth="133.0" text="Date" />
-                        <TableColumn fx:id="col_startTime" prefWidth="91.0" text="Time Start" />
-                        <TableColumn fx:id="col_endTime" prefWidth="91.0" text="Time End" />
+                      <TableColumn fx:id="col_eId" prefWidth="56.39999198913574" text="Id" />
+                      <TableColumn fx:id="col_eName" prefWidth="143.20001983642578" text="Name" />
+                        <TableColumn fx:id="col_eDate" prefWidth="132.79998779296875" text="Date" />
+                        <TableColumn fx:id="col_eStartTime" prefWidth="115.199951171875" text="Time Start" />
+                        <TableColumn fx:id="col_eEndTime" prefWidth="92.80001831054688" text="Time End" />
                     </columns>
                   </TableView>
                </children>
@@ -37,7 +38,7 @@
                <children>
                   <Button layoutX="229.0" layoutY="31.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite Guests" textFill="WHITE" />
                   <Button layoutX="26.0" layoutY="31.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create New Event" textFill="WHITE" />
-                  <Button layoutX="425.0" layoutY="31.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Details" textFill="WHITE" />
+                  <Button fx:id="btnViewDetails" layoutX="425.0" layoutY="31.0" mnemonicParsing="false" onAction="#loadViewDetails" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Details" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>
