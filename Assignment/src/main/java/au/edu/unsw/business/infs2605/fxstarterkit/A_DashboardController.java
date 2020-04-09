@@ -22,7 +22,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author honesyuu
  */
-public class AdminDashboardController implements Initializable {
+public class A_DashboardController implements Initializable {
 
     @FXML
     private Button btn_guestspg;
@@ -41,19 +41,19 @@ public class AdminDashboardController implements Initializable {
     //link buttons to change the anchorpane
     @FXML
     private void loadInvitation(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("invitation.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_CreateInvitation.fxml"));
         dashboardPane.getChildren().setAll(pane);
     }
 
     @FXML
     private void loadGuests(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("guests.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewGuestDashboard.fxml"));
         dashboardPane.getChildren().setAll(pane);
     }
 
     @FXML
     private void loadEvent(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("events.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllEvents.fxml"));
         dashboardPane.getChildren().setAll(pane);
     }
     

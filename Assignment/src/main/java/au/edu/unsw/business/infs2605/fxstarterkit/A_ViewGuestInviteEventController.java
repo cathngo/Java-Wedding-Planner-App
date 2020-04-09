@@ -22,7 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author cathy
  */
-public class EventInviteGuestController implements Initializable{
+public class A_ViewGuestInviteEventController implements Initializable{
       @FXML
     private TableView<TableGuestList> existingGuestTable;
    

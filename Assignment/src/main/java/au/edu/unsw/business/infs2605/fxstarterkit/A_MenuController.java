@@ -21,7 +21,7 @@ import javafx.stage.Stage;
  *
  * @author honesyuu
  */
-public class MenuController {
+public class A_MenuController {
 
     @FXML
     private Button btn_dashboard;
@@ -48,32 +48,32 @@ public class MenuController {
 
     @FXML
     private void dashboard(MouseEvent event) {
-        loadPage("admindashboard");
+        loadPage("A_Dashboard");
     }
 
     @FXML
     private void events(MouseEvent event) {
-        loadPage("events");
+        loadPage("A_ViewAllEvents");
     }
 
     @FXML
     private void guests(MouseEvent event) {
-        loadPage("guests");
+        loadPage("A_ViewGuestDashboard");
     }
 
     @FXML
     private void invitation(MouseEvent event) {
-        loadPage("invitation");
+        loadPage("A_CreateInvitation");
     }
 
     @FXML
     private void runsheets(MouseEvent event) {
-        loadPage("runsheets");
+        loadPage("A_CreateRunsheet");
     }
 
     @FXML
     private void abouts(MouseEvent event) {
-        loadPage("abouts");
+        loadPage("About");
     }
 
     private void loadPage(String page) {
@@ -81,7 +81,7 @@ public class MenuController {
         try {
             FXMLLoader.load(getClass().getResource(page + ".fxml"));
         } catch (IOException ex) {
-            Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(A_MenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderpane.setCenter(root);
     }

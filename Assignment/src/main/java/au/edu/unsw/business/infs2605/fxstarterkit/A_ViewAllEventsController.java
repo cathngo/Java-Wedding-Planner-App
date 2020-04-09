@@ -33,7 +33,7 @@ import javafx.stage.Stage;
  *
  * @author cathy
  */
-public class YourEventsController implements Initializable{
+public class A_ViewAllEventsController implements Initializable{
     
      @FXML
     private TableView<Event> eventTable;
@@ -93,9 +93,9 @@ public class YourEventsController implements Initializable{
     private void loadViewDetails(ActionEvent event) throws IOException, SQLException{
         
     
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewEvent.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEvent.fxml"));
         AnchorPane pane = (AnchorPane)loader.load();
-        ViewEventController controller = loader.getController();
+        A_ViewEventController controller = loader.getController();
         controller.passData(eventTable.getSelectionModel().getSelectedItem());
         eventPane.getChildren().setAll(pane);
         
