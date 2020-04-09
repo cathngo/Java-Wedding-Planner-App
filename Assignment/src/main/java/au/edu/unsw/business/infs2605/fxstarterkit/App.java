@@ -25,8 +25,14 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
 
 
+
         scene = new Scene(loadFXML("Login screen"));
         scene = new Scene(loadFXML("Events"));
+
+
+     
+        scene = new Scene(loadFXML("Events"));
+
 
 
      
