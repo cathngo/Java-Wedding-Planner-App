@@ -11,33 +11,49 @@ package au.edu.unsw.business.infs2605.fxstarterkit;
  */
 public class Guest {
     private String guest_id;
-    private String guest_name;
+    private String guest_fname;
+    private String guest_lname;
     private String guest_email;
     private String guest_phone;
     private String guest_access_code;
 
-    public Guest(String guest_id, String guest_name, String guest_email, String guest_phone, String guest_access_code) {
+    public Guest(String guest_id, String guest_fname, String guest_lname, String guest_email, String guest_phone, String guest_access_code) {
         this.guest_id = guest_id;
-        this.guest_name = guest_name;
+        this.guest_fname = guest_fname;
+        this.guest_lname = guest_lname;
         this.guest_email = guest_email;
         this.guest_phone = guest_phone;
         this.guest_access_code = guest_access_code;
     }
+    
+        public Guest(String guest_fname, String guest_lname, String guest_email) {
+        this.guest_fname = guest_fname;
+        this.guest_lname = guest_lname;
+        this.guest_email = guest_email;
+        }
 
+    public String getGuest_fname() {
+        return guest_fname;
+    }
+
+    public void setGuest_fname(String guest_fname) {
+        this.guest_fname = guest_fname;
+    }
+
+    public String getGuest_lname() {
+        return guest_lname;
+    }
+
+    public void setGuest_lname(String guest_lname) {
+        this.guest_lname = guest_lname;
+    }
+    
     public String getGuest_id() {
         return guest_id;
     }
 
     public void setGuest_id(String guest_id) {
         this.guest_id = guest_id;
-    }
-
-    public String getGuest_name() {
-        return guest_name;
-    }
-
-    public void setGuest_name(String guest_name) {
-        this.guest_name = guest_name;
     }
 
     public String getGuest_email() {
