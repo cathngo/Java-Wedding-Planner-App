@@ -25,6 +25,7 @@ import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -38,7 +39,11 @@ public class A_ViewEventGuestListController implements Initializable{
     private ObservableList<PieChart.Data> pieChartData;
     @FXML
     private AnchorPane eventPane;
-
+    
+    @FXML
+    private Text eventName;
+    
+   
        public void getRsvpData() throws SQLException {
         pieChartData = FXCollections.observableArrayList();
 
@@ -83,8 +88,12 @@ public class A_ViewEventGuestListController implements Initializable{
         
     }
     @FXML
-    private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException {
-       AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewEventInviteGuest.fxml"));
+    private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
+     
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventInviteGuest.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+        A_ViewEventInviteGuestController controller = loader.getController();
+        controller.passData(eventName.getText());
         eventPane.getChildren().setAll(pane);
     }
     @FXML
@@ -92,5 +101,9 @@ public class A_ViewEventGuestListController implements Initializable{
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewEvent.fxml"));
         eventPane.getChildren().setAll(pane);
     }
-    
+    public void passData(String name) throws SQLException {
+       
+        eventName.setText(name);
+        
+    }
 }

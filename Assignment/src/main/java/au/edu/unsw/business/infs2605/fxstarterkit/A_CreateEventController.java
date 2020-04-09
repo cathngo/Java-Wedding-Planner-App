@@ -87,8 +87,12 @@ public class A_CreateEventController {
     
 }
     @FXML
-    private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewEventInviteGuest.fxml"));
+    private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
+     
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventInviteGuest.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+        A_ViewEventInviteGuestController controller = loader.getController();
+        controller.passData(eventName.getText());
         eventPane.getChildren().setAll(pane);
     }
 }

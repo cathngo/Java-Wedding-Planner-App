@@ -25,7 +25,7 @@
             </ToolBar>
             <AnchorPane prefHeight="49.0" prefWidth="600.0">
                <children>
-                  <Text layoutX="27.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandy's Birthday" wrappingWidth="257.984375">
+                  <Text fx:id="eventName" layoutX="27.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandy's Birthday" wrappingWidth="257.984375">
                      <font>
                         <Font size="28.0" />
                      </font>
