@@ -79,7 +79,7 @@ public class LoginController {
                 //tests if login works
                 //lblIncorrectAccessCode.setText("Login success!");
                 //lblIncorrectAccessCode.setVisible(true);
-                pageSwitcher.switchPage(event, "A_Dashboard.fxml");
+                pageSwitcher.switchPage(event, "A_Menu.fxml");
             }
         }       
          //if user enters admin details
@@ -96,7 +96,7 @@ public class LoginController {
                 
                 //lblIncorrectAccessCode.setText("correct credentials yay");//delete later
                 //lblIncorrectAccessCode.setVisible(true);
-                pageSwitcher.switchPage(event, "A_Dashboard.fxml");
+                pageSwitcher.switchPage(event, "A_Menu.fxml");
 
             }
         }

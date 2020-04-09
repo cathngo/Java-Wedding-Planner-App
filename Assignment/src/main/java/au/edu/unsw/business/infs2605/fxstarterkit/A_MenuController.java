@@ -5,77 +5,91 @@
  */
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+
+
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-
 /**
  *
  * @author honesyuu
  */
-public class A_MenuController {
-
+public class A_MenuController implements Initializable {
+ 
     @FXML
-    private Button btn_dashboard;
-    @FXML
-    private Button btn_events;
-    @FXML
-    private Button btn_guests;
-    @FXML
-    private BorderPane borderpane;
-    @FXML
-    private Button btn_invitation;
-    @FXML
-    private Button btn_runsheets;
-    @FXML
-    private Button btn_abouts;
+    private BorderPane bp;
     
     @FXML
-    private void dashboard(MouseEvent event) {
+    private AnchorPane ap;
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        
+    }
+    
+    
+    @FXML
+    private void home(MouseEvent event) {
+        bp.setCenter(ap);
+        
+    }
+    
+    @FXML
+    private void openDashboard(MouseEvent event) {
         loadPage("A_Dashboard");
+        
     }
-
+    
     @FXML
-    private void events(MouseEvent event) {
+    private void openEvents(MouseEvent event) {
         loadPage("A_ViewAllEvents");
+        
     }
-
+    
     @FXML
-    private void guests(MouseEvent event) {
+    private void openGuests(MouseEvent event) {
         loadPage("A_ViewGuestDashboard");
+        
     }
-
+    
     @FXML
-    private void invitation(MouseEvent event) {
+    private void openInvitation(MouseEvent event) {
         loadPage("A_CreateInvitation");
+        
     }
-
+    
     @FXML
-    private void runsheets(MouseEvent event) {
-        loadPage("A_CreateRunsheet");
+    private void openRunsheets(MouseEvent event) {
+        loadPage("A_Dashboard");
+        
     }
-
+    
     @FXML
-    private void abouts(MouseEvent event) {
+    private void openAbouts(MouseEvent event) {
         loadPage("About");
+        
     }
-
-    private void loadPage(String page) {
+    
+    private void loadPage(String page){
         Parent root = null;
         try {
-            FXMLLoader.load(getClass().getResource(page + ".fxml"));
+            root = FXMLLoader.load(getClass().getResource(page + ".fxml"));
         } catch (IOException ex) {
             Logger.getLogger(A_MenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        borderpane.setCenter(root);
-    }
+    bp.setCenter(root);
+}
 
 }
+
+
+

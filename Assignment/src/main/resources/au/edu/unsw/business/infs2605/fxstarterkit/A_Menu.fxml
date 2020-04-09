@@ -8,37 +8,43 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="borderpane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_MenuController">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_MenuController">
    <left>
       <VBox prefHeight="357.0" prefWidth="124.0" style="-fx-background-color: #89BD96#89BD96 #89BD96#89BD96;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btn_dashboard" mnemonicParsing="false" onMouseClicked="#dashboard" prefHeight="55.0" prefWidth="147.0" style="-fx-background-color: #0000;" text="Dashboard" textFill="WHITE">
+            <Button fx:id="btn_home" mnemonicParsing="false" onMouseClicked="#home" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Home" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btn_events" mnemonicParsing="false" onMouseClicked="#events" prefHeight="55.0" prefWidth="153.0" style="-fx-background-color: #0000;" text="Events" textFill="WHITE">
+            <Button fx:id="btn_dashboard" mnemonicParsing="false" onMouseClicked="#openDashboard" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Dashboard" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btn_guests" mnemonicParsing="false" onMouseClicked="#guests" prefHeight="55.0" prefWidth="152.0" style="-fx-background-color: #0000;" text="Guests" textFill="WHITE">
+            <Button fx:id="btn_events" mnemonicParsing="false" onMouseClicked="#openEvents" prefHeight="76.0" prefWidth="153.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Events" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btn_invitation" mnemonicParsing="false" onMouseClicked="#invitation" prefHeight="55.0" prefWidth="152.0" style="-fx-background-color: #0000;" text="Invitation" textFill="WHITE">
+            <Button fx:id="btn_guests" mnemonicParsing="false" onMouseClicked="#openGuests" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Guests" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btn_runsheets" mnemonicParsing="false" onMouseClicked="#runsheets" prefHeight="55.0" prefWidth="152.0" style="-fx-background-color: #0000;" text="Runsheets" textFill="WHITE">
+            <Button fx:id="btn_invitation" mnemonicParsing="false" onMouseClicked="#openInvitation" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Invitation" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btn_abouts" mnemonicParsing="false" onMouseClicked="#abouts" prefHeight="55.0" prefWidth="152.0" style="-fx-background-color: #0000;" text="Abouts" textFill="WHITE">
+            <Button fx:id="btn_runsheets" mnemonicParsing="false" onMouseClicked="#openRunsheets" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Runsheets" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_abouts" mnemonicParsing="false" onMouseClicked="#openAbouts" prefHeight="90.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Abouts" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
@@ -49,26 +55,31 @@
    <top>
       <HBox prefHeight="54.0" prefWidth="600.0" style="-fx-background-color: #9FD9AD#9FD9AD;" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="54.0" prefWidth="604.0">
+            <AnchorPane prefHeight="54.0" prefWidth="902.0">
                <children>
-                  <ImageView fitHeight="37.0" fitWidth="108.0" layoutX="246.0" layoutY="9.0">
-                     <image>
-                        <Image url="@../../../../../../../../../images/app-name.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="41.0" fitWidth="61.0" layoutX="508.0" layoutY="7.0">
+                  <ImageView fitHeight="41.0" fitWidth="61.0" layoutX="832.0" layoutY="7.0">
                      <image>
                         <Image url="@../../../../../../../../../images/avatar-icon.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="close" fitHeight="22.0" fitWidth="22.0" layoutX="575.0" layoutY="3.0" onMouseClicked="#close">
-                     <image>
-                        <Image url="@../../../../../../../../../images/close-icon.png" />
-                     </image>
-                  </ImageView>
+                  <Text fill="WHITE" layoutX="416.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INVO">
+                     <font>
+                        <Font name="American Typewriter" size="38.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </children>
       </HBox>
    </top>
+   <center>
+      <AnchorPane fx:id="ap" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="170.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Invo!">
+               <font>
+                  <Font size="61.0" />
+               </font></Text>
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>
