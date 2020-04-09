@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -12,6 +13,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_ViewEventGuestListController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -27,6 +29,11 @@
                   <Text layoutX="27.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandy's Birthday" wrappingWidth="257.984375">
                      <font>
                         <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="393.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RSVP">
+                     <font>
+                        <Font size="18.0" />
                      </font>
                   </Text>
                </children>
@@ -48,6 +55,11 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
+                  <VBox fx:id="vbox" layoutX="248.0" layoutY="-10.0" prefHeight="265.0" prefWidth="346.0">
+                     <children>
+                        <PieChart fx:id="pieChart" prefWidth="346.0" />
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">

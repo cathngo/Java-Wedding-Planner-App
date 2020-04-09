@@ -23,11 +23,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="241.0" prefWidth="600.0">
                <children>
-                  <TableView fx:id="guest_table" layoutX="24.0" layoutY="21.0" prefHeight="200.0" prefWidth="542.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
                      <columns>
-                        <TableColumn fx:id="col_firstName" prefWidth="141.5999813079834" text="First Name" />
-                        <TableColumn fx:id="col_lastName" prefWidth="149.20001220703125" text="Last Name" />
-                        <TableColumn fx:id="col_guestEmail" prefWidth="249.60000610351562" text="Email" />
                      </columns>
                   </TableView>
                </children>

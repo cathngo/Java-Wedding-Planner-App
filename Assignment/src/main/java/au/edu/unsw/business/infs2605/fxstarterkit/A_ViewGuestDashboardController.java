@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
 import java.io.IOException;
@@ -91,19 +87,19 @@ public class A_ViewGuestDashboardController implements Initializable {
     
     @FXML
     private void loadInviteGuest(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewGuestInviteEvent.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("inviteguest.fxml"));
         guestsPane.getChildren().setAll(pane);
     }
 
     @FXML
     private void loadCreateGuest(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_CreateGuest.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("createGuest.fxml"));
         guestsPane.getChildren().setAll(pane);
     }
 
     @FXML
     private void loadViewGuest(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewGuestProfile.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("viewguest.fxml"));
         guestsPane.getChildren().setAll(pane);
     }
     

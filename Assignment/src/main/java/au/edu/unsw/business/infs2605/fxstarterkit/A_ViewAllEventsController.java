@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -93,7 +94,7 @@ public class A_ViewAllEventsController implements Initializable{
     private void loadViewDetails(ActionEvent event) throws IOException, SQLException{
         
     
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEvent.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewEvent.fxml"));
         AnchorPane pane = (AnchorPane)loader.load();
         A_ViewEventController controller = loader.getController();
         controller.passData(eventTable.getSelectionModel().getSelectedItem());
@@ -103,12 +104,3 @@ public class A_ViewAllEventsController implements Initializable{
        
         }
 }
-
-
-        
-    
-    
-    
-  
-   
-
