@@ -84,7 +84,7 @@
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
                   <Button layoutX="29.0" layoutY="18.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit" textFill="WHITE" />
-                  <Button layoutX="432.0" layoutY="18.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="RSVP" textFill="WHITE" />
+                  <Button fx:id="btnGuestList" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnGuestListWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Guest List" textFill="WHITE" />
                   <Circle fill="#bfbdbd" layoutX="291.0" layoutY="46.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
                   <Circle fill="WHITE" layoutX="309.0" layoutY="46.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
                </children>

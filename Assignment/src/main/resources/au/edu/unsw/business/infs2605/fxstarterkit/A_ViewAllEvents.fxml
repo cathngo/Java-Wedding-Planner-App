@@ -36,9 +36,9 @@
             </AnchorPane>
             <AnchorPane prefHeight="94.0" prefWidth="600.0">
                <children>
-                  <Button layoutX="229.0" layoutY="31.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite Guests" textFill="WHITE" />
-                  <Button layoutX="26.0" layoutY="31.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create New Event" textFill="WHITE" />
-                  <Button fx:id="btnViewDetails" layoutX="425.0" layoutY="31.0" mnemonicParsing="false" onAction="#loadViewDetails" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Details" textFill="WHITE" />
+                  <Button fx:id="btnInviteGuests" layoutX="229.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnInviteGuestsWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite Guests" textFill="WHITE" />
+                  <Button fx:id="btnCreateNewEvent" layoutX="26.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnCreateNewEventWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create New Event" textFill="WHITE" />
+                  <Button fx:id="btnViewDetails" layoutX="425.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Details" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

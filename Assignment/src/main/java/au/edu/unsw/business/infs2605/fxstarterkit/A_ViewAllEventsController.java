@@ -91,16 +91,27 @@ public class A_ViewAllEventsController implements Initializable{
     
     
     @FXML
-    private void loadViewDetails(ActionEvent event) throws IOException, SQLException{
+    private void btnViewDetailsWasClicked(ActionEvent event) throws IOException, SQLException{
         
     
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewEvent.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEvent.fxml"));
         AnchorPane pane = (AnchorPane)loader.load();
         A_ViewEventController controller = loader.getController();
         controller.passData(eventTable.getSelectionModel().getSelectedItem());
         eventPane.getChildren().setAll(pane);
-        
-      
-       
+    
         }
+    
+    @FXML
+    private void btnCreateNewEventWasClicked(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_CreateEvent.fxml"));
+        eventPane.getChildren().setAll(pane);
+    }
+    
+    @FXML
+    private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewEventInviteGuest.fxml"));
+        eventPane.getChildren().setAll(pane);
+    }
+    
 }

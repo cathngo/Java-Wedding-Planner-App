@@ -5,6 +5,7 @@
  */
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,10 +17,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -32,6 +36,8 @@ public class A_ViewEventGuestListController implements Initializable{
     private PieChart pieChart;
     @FXML
     private ObservableList<PieChart.Data> pieChartData;
+    @FXML
+    private AnchorPane eventPane;
 
        public void getRsvpData() throws SQLException {
         pieChartData = FXCollections.observableArrayList();
@@ -75,6 +81,16 @@ public class A_ViewEventGuestListController implements Initializable{
         
       
         
+    }
+    @FXML
+    private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException {
+       AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewEventInviteGuest.fxml"));
+        eventPane.getChildren().setAll(pane);
+    }
+    @FXML
+    private void btnBackWasClicked(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewEvent.fxml"));
+        eventPane.getChildren().setAll(pane);
     }
     
 }
