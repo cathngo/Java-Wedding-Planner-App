@@ -9,6 +9,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -37,6 +39,10 @@ public class A_ViewGuestInviteEventController implements Initializable {
     private TableColumn<Event, String> col_startTime;
     @FXML
     private TableColumn<Event, String> col_endTime;
+    @FXML
+    private Text guestName;
+    
+    private Guest selectedGuest;
 
     ObservableList<Event> oblist = FXCollections.observableArrayList();
 
@@ -62,7 +68,18 @@ public class A_ViewGuestInviteEventController implements Initializable {
         col_eventDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
         col_startTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
         col_endTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
-
+        
         viewGuestTable.setItems(oblist);
     }
+    
+    public void passData(Guest guest) throws SQLException {
+        selectedGuest = guest;
+        guestName.setText(selectedGuest.getGuest_fname() + "  " + selectedGuest.getGuest_lname());
+
+        }
+    
+    public void passGuestName(String name){
+        guestName.setText(name);
+    }
+        
 }

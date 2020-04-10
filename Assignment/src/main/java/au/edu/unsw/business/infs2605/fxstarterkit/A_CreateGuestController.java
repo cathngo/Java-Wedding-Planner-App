@@ -5,13 +5,17 @@
  */
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -19,19 +23,21 @@ import javafx.scene.control.TextField;
  */
 public class A_CreateGuestController {
       @FXML
-    TextField fname;
+    private TextField fname;
     @FXML
-    TextField lname;
+    private TextField lname;
     @FXML
-    TextField number;
+    private TextField number;
     @FXML
-    TextField email;
+    private TextField email;
     @FXML
-    TextField diet;
+    private TextField diet;
     @FXML
-    RadioButton rb1;
+    private RadioButton rb1;
     @FXML
-    RadioButton rb2;
+    private RadioButton rb2;
+    @FXML
+    private AnchorPane guestsPane;
    
 
     
@@ -39,7 +45,6 @@ public class A_CreateGuestController {
     public void btnCreateGuestWasClicked() throws SQLException{
 
         String FirstName = fname.getText();
-
         String LastName = lname.getText();
         String Phone = number.getText();
         String Email = email.getText();
@@ -54,27 +59,30 @@ public class A_CreateGuestController {
 
 
 
-        if (rb1.isSelected()){
+        
        
         try{
              Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
              String query = "INSERT INTO guest" 
-                    + " (guest_fname, guest_lname, guest_phone, guest_email, diet_require, guest_gender, guest_access_code)"
+                    + " (guest_fname, guest_lname, guest_phone, guest_email, diet_require, guest_access_code, guest_gender)"
                     + " VALUES (?, ?, ?, ?, ?, ?, ?)";
         
              PreparedStatement psmt = conn.prepareStatement(query);
              
              
              psmt.setString(1, FirstName);
-     
              psmt.setString(2, LastName);
              psmt.setString(3, Phone);
              psmt.setString(4, Email); 
              psmt.setString(5, Dietary);
-             psmt.setString(6, Male); 
-             psmt.setString(7, guestCode);
-           
+             psmt.setString(6, guestCode); 
              
+            if (rb1.isSelected()) {
+                psmt.setString(7, Male);
+            } else if (rb2.isSelected()) {
+                psmt.setString(7, Female);
+            }
+
              psmt.executeUpdate();
              psmt.close();
        
@@ -86,38 +94,14 @@ public class A_CreateGuestController {
             System.out.println("data not inserted");
         }
            
-        } else if (rb2.isSelected()){
-             try{
-             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-             String query = "INSERT INTO guest" 
-                    + " (guest_fname, guest_lname, guest_phone, guest_email, diet_require, guest_gender, guest_access_code)"
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
-        
-             PreparedStatement psmt = conn.prepareStatement(query);
-             
-             
-             psmt.setString(1, FirstName);
      
-             psmt.setString(2, LastName);
-             psmt.setString(3, Phone);
-             psmt.setString(4, Email); 
-             psmt.setString(5, Dietary);
-             psmt.setString(6, Female); 
-             psmt.setString(7, guestCode);
-           
-             
-             psmt.executeUpdate();
-             psmt.close();
-       
-             conn.close();
-             System.out.println("data inserted successfully");
-             
-        } catch(Exception e){
-            e.printStackTrace();
-            System.out.println("data not inserted");
-        }
-        }
+        
     
 }
+    @FXML
+    private void btnBackWasClicked(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewGuestDashboard.fxml"));
+        guestsPane.getChildren().setAll(pane);
+    }
 
 }
