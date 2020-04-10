@@ -12,19 +12,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="guestsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_CreateGuestController">
+<AnchorPane fx:id="guestsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_EditGuestController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
                 <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Guests" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Create Event" textFill="#8fdca9" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Edit Event" textFill="#8fdca9" />
               </items>
             </ToolBar>
             <AnchorPane prefHeight="49.0" prefWidth="600.0">
                <children>
-                  <Text layoutX="27.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Guest" wrappingWidth="257.984375">
+                  <Text layoutX="27.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Guest" wrappingWidth="257.984375">
                      <font>
                         <Font size="28.0" />
                      </font>
@@ -62,7 +62,7 @@
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
                   <Button fx:id="btnBack" layoutX="29.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
-                  <Button fx:id="createGuest" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnCreateGuestWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create" textFill="WHITE" />
+                  <Button fx:id="btnUpdateGuest" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnUpdateGuestWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Update" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

@@ -42,6 +42,8 @@ public class A_ViewGuestProfileController {
     private Text guestGender;
     @FXML
     private Text guestPhone;
+    @FXML
+    private AnchorPane guestsPane;
     
     private Guest selectedGuest;
     
@@ -76,5 +78,27 @@ public class A_ViewGuestProfileController {
         
        
     }
+    @FXML
+    private void btnInviteGuestWasClicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestInviteEvent.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+        A_ViewGuestInviteEventController controller = loader.getController();
+        controller.passGuestName(guestName.getText());
+        guestsPane.getChildren().setAll(pane);
+    }
+    @FXML
+    private void btnEditGuestWasClicked(ActionEvent event) throws IOException, SQLException {
+        
+        try{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_EditGuest.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+        A_EditGuestController controller = loader.getController();
+        controller.passData(Integer.parseInt(guestId.getText()));
+        controller.getGuestId(Integer.parseInt(guestId.getText()));
+        guestsPane.getChildren().setAll(pane);
+        } catch(Exception e){
+            e.printStackTrace();
+    }
 
-}    
+}
+}

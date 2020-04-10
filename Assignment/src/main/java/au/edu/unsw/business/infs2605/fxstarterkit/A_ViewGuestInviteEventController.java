@@ -77,5 +77,9 @@ public class A_ViewGuestInviteEventController implements Initializable {
         guestName.setText(selectedGuest.getGuest_fname() + "  " + selectedGuest.getGuest_lname());
 
         }
+    
+    public void passGuestName(String name){
+        guestName.setText(name);
+    }
         
 }
