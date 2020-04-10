@@ -28,8 +28,6 @@ public class App extends Application {
 
         scene = new Scene(loadFXML("Login"));
 
-        scene = new Scene(loadFXML("A_ViewGuestInviteEvent"));
-
         stage.setScene(scene);
         stage.show();
         DatabaseManager.setupDatabaseOnFirstRun();
