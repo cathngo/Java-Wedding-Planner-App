@@ -37,7 +37,7 @@ import javafx.util.Callback;
  *
  * @author cathy
  */
-public class A_ViewEventGuestListController implements Initializable{
+public class A_ViewEventGuestListController {
     
     @FXML
     private PieChart pieChart;
@@ -60,22 +60,43 @@ public class A_ViewEventGuestListController implements Initializable{
     
     
    
-       public void getRsvpData() throws SQLException {
+       public void getRsvpData(int id) throws SQLException {
         pieChartData = FXCollections.observableArrayList();
 
         try {
             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs1 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) FROM rsvp where decision = 'Yes' ");
+            ResultSet rs1 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) " +
+            "FROM rsvp r " +
+            "JOIN invitation i ON i.invitation_id = r.invitation_id " +
+            "JOIN event e ON e.event_id = i.event_id " +
+            "JOIN guest g ON g.guest_id = i.guest_id " +
+            "WHERE r.decision = 'Yes' " +
+            "AND e.event_id ='"+id+"'");
 
-            ResultSet rs2 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) FROM rsvp where decision = 'No' ");
+            ResultSet rs2 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) " +
+            "FROM rsvp r " +
+            "JOIN invitation i ON i.invitation_id = r.invitation_id " +
+            "JOIN event e ON e.event_id = i.event_id " +
+            "JOIN guest g ON g.guest_id = i.guest_id " +
+            "WHERE r.decision = 'No' " +
+            "AND e.event_id ='"+id+"'");
 
-            ResultSet rs3 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) FROM rsvp where decision = '' ");
+            ResultSet rs3 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) " +
+            "FROM rsvp r " +
+            "JOIN invitation i ON i.invitation_id = r.invitation_id " +
+            "JOIN event e ON e.event_id = i.event_id " +
+            "JOIN guest g ON g.guest_id = i.guest_id " +
+            "WHERE r.decision = '' " +
+            "AND e.event_id ='"+id+"'");
 
             pieChartData.add(new PieChart.Data("Yes", rs1.getInt("COUNT(rsvp_id)")));
             pieChartData.add(new PieChart.Data("No", rs2.getInt("COUNT(rsvp_id)")));
-           pieChartData.add(new PieChart.Data("Unsure", rs3.getInt("COUNT(rsvp_id)")));
+            pieChartData.add(new PieChart.Data("Unsure", rs3.getInt("COUNT(rsvp_id)")));
+
+            pieChart.setData(pieChartData);
+            pieChart.setLabelsVisible(true);
           
-       ;
+       
 
 
         } catch (Exception e) {
@@ -87,28 +108,9 @@ public class A_ViewEventGuestListController implements Initializable{
     }
 
     
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO
-        
-       
-       
-        
-        
-        try {
-            getRsvpData();
-        } catch (SQLException ex) {
-            Logger.getLogger(A_ViewEventGuestListController.class.getName()).log(Level.SEVERE, null, ex);
-            
-        }
-       pieChart.setData(pieChartData);
-       pieChart.setLabelsVisible(true);
-      
-        
-        
-      
-        
-    }
+    
+    
+    
     @FXML
     private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
      

@@ -77,6 +77,7 @@ public class A_ViewEventController {
         A_ViewEventGuestListController controller = loader.getController();
         controller.passData(eventName.getText());
         controller.getEventId(Integer.parseInt(eventId.getText()));
+        controller.getRsvpData(Integer.parseInt(eventId.getText()));
         eventPane.getChildren().setAll(pane);
     }
   @FXML
