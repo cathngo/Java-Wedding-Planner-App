@@ -38,11 +38,11 @@
                      <font>
                         <Font size="15.0" />
                      </font></Text>
-                  <TableView layoutX="28.0" layoutY="154.0" prefHeight="99.0" prefWidth="547.0">
+                  <TableView fx:id="event_details_table" layoutX="28.0" layoutY="154.0" prefHeight="99.0" prefWidth="547.0">
                      <columns>
-                        <TableColumn prefWidth="230.0" text="Event Name" />
-                        <TableColumn prefWidth="234.0" text="Date" />
-                        <TableColumn prefWidth="82.0" text="RSVP" />
+                        <TableColumn fx:id="col_eventName" prefWidth="230.0" text="Event Name" />
+                        <TableColumn fx:id="col_eventDate" prefWidth="234.0" text="Date" />
+                        <TableColumn fx:id="col_eventRsvp" prefWidth="82.0" text="RSVP" />
                      </columns>
                   </TableView>
                   <Text layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">

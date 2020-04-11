@@ -96,6 +96,7 @@ public class A_ViewGuestDashboardController implements Initializable {
         AnchorPane pane = (AnchorPane) loader.load();
         A_ViewGuestProfileController controller = loader.getController();
         controller.passData(guest_table.getSelectionModel().getSelectedItem());
+        controller.getGuestId(guest_table.getSelectionModel().getSelectedItem());
         guestsPane.getChildren().setAll(pane);
     }
 
