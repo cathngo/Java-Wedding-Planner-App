@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,9 +25,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
 
 /**
  *
@@ -39,9 +45,19 @@ public class A_ViewEventGuestListController implements Initializable{
     private ObservableList<PieChart.Data> pieChartData;
     @FXML
     private AnchorPane eventPane;
-    
     @FXML
     private Text eventName;
+    @FXML
+    private TableView<RSVPGuestWrapper> rsvp_table;
+    @FXML
+    private TableColumn <RSVPGuestWrapper, String> col_guestName;
+    @FXML
+    private TableColumn <RSVPGuestWrapper, String> col_decision;
+    
+    ObservableList<RSVPGuestWrapper>rsvpList = FXCollections.observableArrayList();
+    
+  
+    
     
    
        public void getRsvpData() throws SQLException {
@@ -73,6 +89,12 @@ public class A_ViewEventGuestListController implements Initializable{
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        // TODO
+        
+       
+       
+        
+        
         try {
             getRsvpData();
         } catch (SQLException ex) {
@@ -106,4 +128,47 @@ public class A_ViewEventGuestListController implements Initializable{
         eventName.setText(name);
         
     }
+    
+    public void getEventId(int id){
+      
+         try{
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT g.guest_fname, g.guest_lname, r.decision " +
+            "FROM guest g " +
+            "JOIN invitation i ON g.guest_id = i.guest_id " +
+            "JOIN rsvp r ON r.invitation_id = i.invitation_id " +
+            "JOIN event e ON e.event_id = i.event_id " +
+            "WHERE e.event_id ='"+id+"'");
+            
+          
+
+            
+            
+             while (rs.next()) {
+                 rsvpList.add(new RSVPGuestWrapper(rs.getString("guest_fname"),
+                         rs.getString("guest_lname"), rs.getString("decision")));
+             }
+             col_guestName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RSVPGuestWrapper, String>, ObservableValue<String>>() {
+                 @Override
+                 public ObservableValue<String> call(
+                         TableColumn.CellDataFeatures<RSVPGuestWrapper, String> p) {
+                     return new SimpleStringProperty(p.getValue().getGuest_fname()
+                             + " " + p.getValue().getGuest_lname());
+                 }
+             });
+             col_decision.setCellValueFactory(new PropertyValueFactory<>("decision"));
+            
+        
+ 
+        
+        rsvp_table.setItems(rsvpList);
+        }catch(Exception e){
+            System.out.println("table not created");
+            e.printStackTrace();
+        }
+        
+        
+       
+    }
+    
 }

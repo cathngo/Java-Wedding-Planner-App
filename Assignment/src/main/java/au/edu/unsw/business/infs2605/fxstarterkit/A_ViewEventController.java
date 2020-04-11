@@ -76,6 +76,7 @@ public class A_ViewEventController {
         AnchorPane pane = (AnchorPane) loader.load();
         A_ViewEventGuestListController controller = loader.getController();
         controller.passData(eventName.getText());
+        controller.getEventId(Integer.parseInt(eventId.getText()));
         eventPane.getChildren().setAll(pane);
     }
   @FXML
@@ -84,8 +85,8 @@ public class A_ViewEventController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_EditEvent.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
         A_EditEventController controller = loader.getController();
-        controller.passData(Integer.parseInt(eventId.getText()));
-      controller.getEventId(Integer.parseInt(eventId.getText()));
+        controller.getEventId(Integer.parseInt(eventId.getText()));
+        controller.passData(Integer.parseInt(eventId.getText()));      
         eventPane.getChildren().setAll(pane);
     }
 }

@@ -76,7 +76,7 @@ public class A_EditEventController {
              psmt.close();
              conn.close();
              
-             System.out.println("data updated successfully");
+             System.out.println("data updated successfully for event id =" + eventId);
              
         } catch(Exception e){
             System.out.println("data not inserted");

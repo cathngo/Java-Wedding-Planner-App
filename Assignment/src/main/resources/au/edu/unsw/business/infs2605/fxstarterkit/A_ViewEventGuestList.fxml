@@ -41,10 +41,10 @@
                <children>
                   <ScrollPane layoutX="29.0" layoutY="18.0" prefHeight="219.0" prefWidth="214.0">
                      <content>
-                        <TableView prefHeight="353.0" prefWidth="195.0">
+                        <TableView fx:id="rsvp_table" prefHeight="353.0" prefWidth="195.0">
                           <columns>
-                            <TableColumn prefWidth="139.85591506958008" text="Guest" />
-                            <TableColumn prefWidth="54.644073486328125" text="RSVP" />
+                            <TableColumn fx:id="col_guestName" prefWidth="139.85591506958008" text="Guest" />
+                            <TableColumn fx:id="col_decision" prefWidth="54.644073486328125" text="RSVP" />
                           </columns>
                         </TableView>
                      </content>
