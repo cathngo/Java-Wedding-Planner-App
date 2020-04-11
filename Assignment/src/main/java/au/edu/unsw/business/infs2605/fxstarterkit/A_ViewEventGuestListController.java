@@ -106,11 +106,14 @@ public class A_ViewEventGuestListController {
         
 
     }
-
+    //pageswitchbreadcrumb
+    @FXML
+     private void backToViewEvent(ActionEvent event) throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewEvent.fxml"));
+        eventPane.getChildren().setAll(pane); 
+     }
     
-    
-    
-    
+    //pageswitchbutton
     @FXML
     private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
      

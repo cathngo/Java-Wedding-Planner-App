@@ -79,7 +79,9 @@ import javafx.scene.text.Text;
         existingGuestTable.setItems(guestList);
     }
     
-  @FXML
+    
+    
+    @FXML
     private void btnInviteNewGuestWasClicked(ActionEvent event) throws IOException {
         
     }
@@ -90,5 +92,12 @@ import javafx.scene.text.Text;
         eventName.setText(name);
         
     }
+   
+   //pageswitchbreadcrumb
+   @FXML
+     private void backToGuestList(ActionEvent event) throws IOException, SQLException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewEventGuestList.fxml"));
+        eventPane.getChildren().setAll(pane); 
+     }
     
 }

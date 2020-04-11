@@ -19,7 +19,7 @@
               <items>
                 <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events" />
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="95.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Events" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="95.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Guest List" />
+                  <Button mnemonicParsing="false" onAction="#backToGuestList" prefHeight="27.0" prefWidth="95.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Guest List" />
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="105.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Invite Guests" textFill="#8fdca9" />
               </items>
             </ToolBar>
