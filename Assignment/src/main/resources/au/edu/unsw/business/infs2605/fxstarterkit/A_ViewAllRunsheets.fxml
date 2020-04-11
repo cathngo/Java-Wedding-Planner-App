@@ -9,13 +9,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_CreateInvitationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_ViewAllRunsheetsController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
             <AnchorPane prefHeight="65.0" prefWidth="600.0">
                <children>
-                  <Text layoutX="25.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Invitation" wrappingWidth="257.984375">
+                  <Text layoutX="25.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Runsheets" wrappingWidth="257.984375">
                      <font>
                         <Font size="32.0" />
                      </font>
@@ -40,7 +40,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="94.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnCreateInvitation" layoutX="415.0" layoutY="9.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create Invitation" textFill="WHITE" />
+                  <Button fx:id="btnViewRunsheet" layoutX="415.0" layoutY="9.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Runsheet" textFill="WHITE" />
+                  <Button fx:id="btnCreateRunsheet" layoutX="37.0" layoutY="9.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create Runsheet" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>
