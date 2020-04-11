@@ -69,6 +69,8 @@ import javafx.scene.text.Text;
            
             }
             
+            conn.close();
+            rs.close();
         }catch(Exception e){
             System.out.println("table not created");
         }
@@ -77,6 +79,8 @@ import javafx.scene.text.Text;
         col_fname.setCellValueFactory(new PropertyValueFactory<>("guest_fname"));
         col_lname.setCellValueFactory(new PropertyValueFactory<>("guest_lname"));
         existingGuestTable.setItems(guestList);
+        
+        
     }
     
   @FXML

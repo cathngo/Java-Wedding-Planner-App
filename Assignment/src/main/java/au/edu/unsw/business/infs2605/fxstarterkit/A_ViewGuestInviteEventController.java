@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -43,6 +44,7 @@ public class A_ViewGuestInviteEventController implements Initializable {
     private Text guestName;
     
     private Guest selectedGuest;
+    private int guestId;
 
     ObservableList<Event> oblist = FXCollections.observableArrayList();
 
@@ -58,7 +60,8 @@ public class A_ViewGuestInviteEventController implements Initializable {
                         rs.getString("event_name"), rs.getString("event_date"), rs.getString("event_start_time"),
                         rs.getString("event_end_time")));
             }
-
+        conn.close();
+        rs.close();
         } catch (Exception e) {
             System.out.println("table not created");
         }
@@ -81,5 +84,30 @@ public class A_ViewGuestInviteEventController implements Initializable {
     public void passGuestName(String name){
         guestName.setText(name);
     }
-        
+    
+    public void getGuestId(int id){
+        this.guestId = id;
+    }
+     @FXML
+     public void btnInviteToEventWasClicked(ActionEvent event) throws SQLException{
+         try{
+         int eventId = viewGuestTable.getSelectionModel().getSelectedItem().getEvent_id();
+         
+         
+         Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+         int rs = conn.createStatement().executeUpdate("INSERT INTO invitation (event_id, guest_id) VALUES ("+eventId+", "+guestId+")");
+         conn.close();
+       
+         
+         System.out.println("succesfully updated");
+
+     }catch(Exception e){
+         System.out.println("unsuccessful");
+             System.out.println("eventId:" + viewGuestTable.getSelectionModel().getSelectedItem().getEvent_id());
+             System.out.println("guestid:" + guestId);
+         e.printStackTrace();
+         
+   
+     }
+}
 }

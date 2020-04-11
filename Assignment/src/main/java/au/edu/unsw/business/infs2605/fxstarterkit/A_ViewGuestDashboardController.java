@@ -65,6 +65,9 @@ public class A_ViewGuestDashboardController implements Initializable {
             col_guestEmail.setCellValueFactory(new PropertyValueFactory<>("guest_email"));
             col_guestId.setCellValueFactory(new PropertyValueFactory<>("guest_id"));
             guest_table.setItems(guestList);
+            
+            conn.close();
+            rs.close();
         } catch (Exception e) {
             System.out.println("table not created");
         }

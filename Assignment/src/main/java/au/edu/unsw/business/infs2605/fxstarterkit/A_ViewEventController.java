@@ -65,7 +65,11 @@ public class A_ViewEventController {
             eventAddress.setText(location);
             eventDesc.setText(description);
             eventInstructions.setText(instructions);
+        
         }
+        
+        conn.close();
+        rs.close();
 
     }
     

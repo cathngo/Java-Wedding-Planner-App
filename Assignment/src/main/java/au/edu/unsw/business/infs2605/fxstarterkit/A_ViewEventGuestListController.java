@@ -81,22 +81,25 @@ public class A_ViewEventGuestListController {
             "WHERE r.decision = 'No' " +
             "AND e.event_id ='"+id+"'");
 
-            ResultSet rs3 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) " +
-            "FROM rsvp r " +
-            "JOIN invitation i ON i.invitation_id = r.invitation_id " +
+            ResultSet rs3 = conn.createStatement().executeQuery("SELECT COUNT(g.guest_id) " +
+            "FROM guest g " +
+            "JOIN invitation i ON g.guest_id = i.guest_id " +
+            "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id " +
             "JOIN event e ON e.event_id = i.event_id " +
-            "JOIN guest g ON g.guest_id = i.guest_id " +
-            "WHERE r.decision = '' " +
-            "AND e.event_id ='"+id+"'");
+            "WHERE e.event_id ='"+id+"'" +
+            "AND r.decision IS NULL");
 
             pieChartData.add(new PieChart.Data("Yes", rs1.getInt("COUNT(rsvp_id)")));
             pieChartData.add(new PieChart.Data("No", rs2.getInt("COUNT(rsvp_id)")));
-            pieChartData.add(new PieChart.Data("Unsure", rs3.getInt("COUNT(rsvp_id)")));
+            pieChartData.add(new PieChart.Data("Unsure", rs3.getInt("COUNT(g.guest_id)")));
 
             pieChart.setData(pieChartData);
             pieChart.setLabelsVisible(true);
           
-       
+            conn.close();
+            rs1.close();
+            rs2.close();
+            rs3.close();
 
 
         } catch (Exception e) {
@@ -138,7 +141,7 @@ public class A_ViewEventGuestListController {
             ResultSet rs = conn.createStatement().executeQuery("SELECT g.guest_fname, g.guest_lname, r.decision " +
             "FROM guest g " +
             "JOIN invitation i ON g.guest_id = i.guest_id " +
-            "JOIN rsvp r ON r.invitation_id = i.invitation_id " +
+            "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id " +
             "JOIN event e ON e.event_id = i.event_id " +
             "WHERE e.event_id ='"+id+"'");
             
@@ -164,6 +167,9 @@ public class A_ViewEventGuestListController {
  
         
         rsvp_table.setItems(rsvpList);
+        
+        conn.close();
+        rs.close();
         }catch(Exception e){
             System.out.println("table not created");
             e.printStackTrace();

@@ -84,7 +84,8 @@ public class A_ViewGuestProfileController {
             guestAccessCode.setText(code);
 
         }
-
+        conn.close();
+        rs.close();
     }
 
     public void getGuestId(Guest guest) throws SQLException {
@@ -95,7 +96,7 @@ public class A_ViewGuestProfileController {
             ResultSet rs = conn.createStatement().executeQuery("SELECT e.event_name, e.event_date, r.decision "
                     + "FROM event e "
                     + "JOIN invitation i ON e.event_id = i.event_id "
-                    + "JOIN rsvp r ON r.invitation_id = i.invitation_id "
+                    + "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id "
                     + "JOIN guest g ON g.guest_id = i.guest_id "
                     + "WHERE g.guest_id = '" + selectedGuest.getGuest_id() + "'");
 
@@ -108,10 +109,14 @@ public class A_ViewGuestProfileController {
             col_eventRsvp.setCellValueFactory(new PropertyValueFactory<>("decision"));
 
             event_details_table.setItems(eventDetailsList);
+            
+            conn.close();
+            rs.close();
         } catch (Exception e) {
             System.out.println("table not created");
             e.printStackTrace();
         }
+        
     }
 
     @FXML
@@ -120,6 +125,7 @@ public class A_ViewGuestProfileController {
         AnchorPane pane = (AnchorPane) loader.load();
         A_ViewGuestInviteEventController controller = loader.getController();
         controller.passGuestName(guestName.getText());
+        controller.getGuestId(Integer.parseInt(guestId.getText()));
         guestsPane.getChildren().setAll(pane);
     }
 
@@ -138,4 +144,6 @@ public class A_ViewGuestProfileController {
         }
 
     }
+    
+    
 }

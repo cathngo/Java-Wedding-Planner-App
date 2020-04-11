@@ -78,6 +78,9 @@ public class A_ViewAllEventsController implements Initializable{
  
         
         eventTable.setItems(eventList);
+        
+        conn.close();
+        rs.close();
         }catch(Exception e){
             System.out.println("table not created");
         }
