@@ -67,9 +67,9 @@
       </AnchorPane>
       <AnchorPane layoutX="-4.0" layoutY="-6.0" prefHeight="406.0" prefWidth="305.0" style="-fx-background-color: #8FDCA9#8FDCA9;">
          <children>
-            <ImageView fitHeight="197.0" fitWidth="233.0" layoutX="36.0" layoutY="105.0">
+            <ImageView fitHeight="238.0" fitWidth="289.0" layoutX="8.0" layoutY="76.0">
                <image>
-                  <Image url="@../../../../../../../../../images/Screen%20Shot%202020-04-02%20at%204.42.16%20pm.png" />
+                  <Image url="@../../../../../../../../../images/app-logo.png" />
                </image>
             </ImageView>
          </children>
