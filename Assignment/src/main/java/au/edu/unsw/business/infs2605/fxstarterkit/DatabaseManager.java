@@ -313,7 +313,7 @@ public class DatabaseManager {
                     + " (decision, date_time, invitation_id)"
                     + " VALUES (?,?,?)";
             PreparedStatement psmt = sharedConnection.prepareStatement(sqlString);
-            String[] decision = {"Yes", "Yes", "No", "No", "", "Yes", "No"};
+            String[] decision = {"Yes", "Yes", "No", "No", null , "Yes", null};
             String[] date_time = {"12/3/2020", "14/2/2020", "23/5/2020", "2/4/2020", "16/6/2020", "15/8/2020", "17/9/2020"};
             
             int[] invitation_id = {1, 2, 3, 4, 5, 6, 7};
