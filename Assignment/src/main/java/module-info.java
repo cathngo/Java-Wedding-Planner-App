@@ -9,6 +9,8 @@ module au.edu.unsw.business.infs2605.fxstarterkit {
     requires javafx.graphics;
     requires java.sql;
     requires java.base;
+    
+    requires org.apache.pdfbox;
 
     opens au.edu.unsw.business.infs2605.fxstarterkit to javafx.fxml;
     exports au.edu.unsw.business.infs2605.fxstarterkit;

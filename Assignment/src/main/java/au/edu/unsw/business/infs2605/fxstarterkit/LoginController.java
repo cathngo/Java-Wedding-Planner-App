@@ -18,7 +18,8 @@ import javafx.scene.control.TextField;
  * @author jaydenso
  */
 public class LoginController {
-    
+    public static Guest guestUser;
+    public static Admin adminUser;
     @FXML 
     private TextField txtUsername;
     
@@ -74,11 +75,7 @@ public class LoginController {
             }
             else {
                 //returns the guest object
-                //need to put in pageswitcher
-                Guest user = DatabaseManager.fetchGuestByCode(accessCode);
-                //tests if login works
-                //lblIncorrectAccessCode.setText("Login success!");
-                //lblIncorrectAccessCode.setVisible(true);
+                guestUser = DatabaseManager.fetchGuestByCode(accessCode);
                 pageSwitcher.switchPage(event, "A_Menu.fxml");
             }
         }       
@@ -92,10 +89,7 @@ public class LoginController {
             }
             else {
                 //returns admin object
-                Admin user = DatabaseManager.fetchAdminByUser(username, password);
-                
-                //lblIncorrectAccessCode.setText("correct credentials yay");//delete later
-                //lblIncorrectAccessCode.setVisible(true);
+                adminUser = DatabaseManager.fetchAdminByUser(username, password);
                 pageSwitcher.switchPage(event, "A_Menu.fxml");
 
             }

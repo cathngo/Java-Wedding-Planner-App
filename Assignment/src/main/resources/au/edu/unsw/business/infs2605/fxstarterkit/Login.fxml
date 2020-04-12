@@ -69,7 +69,7 @@
          <children>
             <ImageView fitHeight="238.0" fitWidth="289.0" layoutX="8.0" layoutY="76.0">
                <image>
-                  <Image url="@../../../../../../../../../images/app-logo.png" />
+                  <Image url="@images/app-logo.png" />
                </image>
             </ImageView>
          </children>
