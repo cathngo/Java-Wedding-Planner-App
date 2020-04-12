@@ -39,20 +39,22 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <TableView layoutX="294.0" layoutY="30.0" prefHeight="193.0" prefWidth="251.0">
+                  <TableView fx:id="guestListTable" layoutX="294.0" layoutY="30.0" prefHeight="193.0" prefWidth="251.0">
                     <columns>
-                      <TableColumn prefWidth="150.61843872070312" text="Guest" />
-                        <TableColumn prefWidth="98.08355712890625" text="Remove" />
+                      <TableColumn fx:id="col_guestListFname" prefWidth="87.60003662109375" text="First Name" />
+                        <TableColumn fx:id="col_guestListLname" prefWidth="90.79998779296875" text="Last Name" />
+                        <TableColumn fx:id="col_remove" prefWidth="71.99990844726562" text="Remove" />
                     </columns>
                   </TableView>
                   <ListView layoutX="44.0" layoutY="34.0" prefHeight="193.0" prefWidth="200.0" />
                   <TableView fx:id="existingGuestTable" layoutX="44.0" layoutY="27.0" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                      <TableColumn fx:id="col_fname" prefWidth="91.19998931884766" text="First Name" />
-                        <TableColumn fx:id="col_lname" prefWidth="108.0" text="Last Name" />
+                      <TableColumn fx:id="col_fname" prefWidth="74.39999389648438" text="First Name" />
+                        <TableColumn fx:id="col_lname" prefWidth="73.59998321533203" text="Last Name" />
+                        <TableColumn fx:id="col_select" prefWidth="50.39996337890625" text="Select" />
                     </columns>
                   </TableView>
-                  <Button layoutX="136.0" layoutY="229.0" mnemonicParsing="false" text="Add to Guest List" />
+                  <Button fx:id="btnAddToGuestList" layoutX="136.0" layoutY="229.0" mnemonicParsing="false" onAction="#btnAddToGuestListWasClicked" text="Add to Guest List" />
                   <Text layoutX="44.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Existing Guests">
                      <font>
                         <Font size="18.0" />
