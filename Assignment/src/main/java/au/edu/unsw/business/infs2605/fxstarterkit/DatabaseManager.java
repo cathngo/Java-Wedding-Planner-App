@@ -421,7 +421,7 @@ public class DatabaseManager {
             ResultSet rs = psmt.executeQuery();
             
             while (rs.next()){
-                preparedReturn = new Guest(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+                preparedReturn = new Guest(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
             }
             
         }
@@ -442,7 +442,7 @@ public class DatabaseManager {
             ResultSet rs = psmt.executeQuery();
             
             while (rs.next()){
-                preparedReturn = new Admin(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                preparedReturn = new Admin(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
             }
         }
         catch (SQLException e) {

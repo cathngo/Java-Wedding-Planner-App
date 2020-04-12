@@ -10,23 +10,26 @@ package au.edu.unsw.business.infs2605.fxstarterkit;
  * @author jaydenso
  */
 public class Admin {
-    private String admin_id;
+    private int admin_id;
     private String admin_name;
     private String admin_username;
     private String admin_password;
 
-    public Admin(String admin_id, String admin_name, String admin_username, String admin_password) {
+    public Admin(int admin_id, String admin_name, String admin_username, String admin_password) {
         this.admin_id = admin_id;
         this.admin_name = admin_name;
         this.admin_username = admin_username;
         this.admin_password = admin_password;
     }
-
-    public String getAdmin_id() {
+    //use this to find the admin id of current user after they log in
+    //Admin user is stored in login controller as a publicly accessible variable
+    //call LoginController.adminUser.getAdmin_id()
+    public int getAdmin_id() {
         return admin_id;
     }
 
-    public void setAdmin_id(String admin_id) {
+    
+    public void setAdmin_id(int admin_id) {
         this.admin_id = admin_id;
     }
 
@@ -53,5 +56,5 @@ public class Admin {
     public void setAdmin_password(String admin_password) {
         this.admin_password = admin_password;
     }
-    
+      
 }
