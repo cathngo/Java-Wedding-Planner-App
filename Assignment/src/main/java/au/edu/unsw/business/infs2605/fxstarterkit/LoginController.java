@@ -76,7 +76,7 @@ public class LoginController {
             else {
                 //returns the guest object
                 guestUser = DatabaseManager.fetchGuestByCode(accessCode);
-                pageSwitcher.switchPage(event, "A_Menu.fxml");
+                pageSwitcher.switchPage(event, "G_Dashboard.fxml");
             }
         }       
          //if user enters admin details

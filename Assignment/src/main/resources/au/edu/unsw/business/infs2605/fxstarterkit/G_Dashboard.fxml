@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.G_DashboardController">
+<AnchorPane fx:id="dashboardPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.G_DashboardController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -29,15 +29,15 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="265.0" prefWidth="600.0">
+            <AnchorPane prefHeight="306.0" prefWidth="668.0">
                <children>
                   <ScrollPane layoutX="29.0" layoutY="18.0" prefHeight="219.0" prefWidth="279.0">
                      <content>
-                        <TableView prefHeight="353.0" prefWidth="261.0">
+                        <TableView fx:id="dashboard_table" prefHeight="353.0" prefWidth="261.0">
                           <columns>
-                            <TableColumn prefWidth="158.7093505859375" text="Event" />
-                            <TableColumn prefWidth="52.79063415527344" text="Date" />
-                              <TableColumn prefWidth="49.39479064941406" text="RSVP" />
+                            <TableColumn fx:id="col_eventName" prefWidth="158.7093505859375" text="Event" />
+                            <TableColumn fx:id="col_eventDate" prefWidth="52.79063415527344" text="Date" />
+                              <TableColumn fx:id="col_eventRsvp" prefWidth="49.39479064941406" text="RSVP" />
                           </columns>
                         </TableView>
                      </content>
@@ -49,11 +49,11 @@
                      </font>
                   </Text>
                   <Button layoutX="399.0" layoutY="143.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="107.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="RSVP to Events" textFill="WHITE" />
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="79.0" prefWidth="600.0">
-               <children>
-                  <Button layoutX="29.0" layoutY="18.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Details" textFill="WHITE" />
+                  <AnchorPane layoutX="8.0" layoutY="244.0" prefHeight="79.0" prefWidth="600.0">
+                     <children>
+                        <Button fx:id="btnViewDetails" layoutX="119.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Details" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
