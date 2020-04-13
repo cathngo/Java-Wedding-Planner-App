@@ -97,7 +97,7 @@ public class A_ViewGuestInviteEventController implements Initializable {
          
          
          Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-         int rs = conn.createStatement().executeUpdate("INSERT INTO invitation(event_id, guest_id, admin_id) SELECT '"+eventId+"', '"+guestId+"','"+LoginController.adminUser.getAdmin_id()+"' WHERE NOT EXISTS(SELECT 1 FROM invitation WHERE event_id ='"+eventId+"' AND guest_id ='"+guestId+"''"+LoginController.adminUser.getAdmin_id()+"')");
+         int rs = conn.createStatement().executeUpdate("INSERT INTO invitation(event_id, guest_id, admin_id) SELECT '"+eventId+"', '"+guestId+"','"+LoginController.adminUser.getAdmin_id()+"' WHERE NOT EXISTS(SELECT 1 FROM invitation WHERE event_id ='"+eventId+"' AND guest_id ='"+guestId+"')");
          
          
              conn.close();

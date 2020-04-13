@@ -164,7 +164,7 @@ import javafx.util.Callback;
         try{
         for (int i = 0; i < guestId.size(); i++){
             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-         int rs = conn.createStatement().executeUpdate("INSERT INTO invitation(event_id, guest_id, admin_id) SELECT '"+eventId+"', '"+guestId.get(i)+"','"+LoginController.adminUser.getAdmin_id()+"' WHERE NOT EXISTS(SELECT 1 FROM invitation WHERE event_id ='"+eventId+"' AND guest_id ='"+guestId.get(i)+"''"+LoginController.adminUser.getAdmin_id()+"')");
+         int rs = conn.createStatement().executeUpdate("INSERT INTO invitation(event_id, guest_id, admin_id) SELECT '"+eventId+"', '"+guestId.get(i)+"','"+LoginController.adminUser.getAdmin_id()+"' WHERE NOT EXISTS(SELECT 1 FROM invitation WHERE event_id ='"+eventId+"' AND guest_id ='"+guestId.get(i)+"')");
          
          
              conn.close();
