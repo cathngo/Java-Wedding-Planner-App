@@ -138,6 +138,7 @@ import javafx.util.Callback;
     
     @FXML
     void btnAddToListWasClicked(ActionEvent event) {
+        
         for (TablePosition<Guest, ?> pos : existingGuestTable.getSelectionModel().getSelectedCells()) {
 
             int row = pos.getRow();
@@ -157,9 +158,19 @@ import javafx.util.Callback;
         this.eventId = id;
     }
     
+    @FXML
+    public void btnInviteNewGuestWasClicked(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventInviteNewGuest.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+        A_ViewEventInviteNewGuestController controller = loader.getController();
+        controller.getEventId(eventId);
+        controller.passEventName(eventName.getText());
+        eventPane.getChildren().setAll(pane);
+    }
+    
     
     @FXML
-    void btnInviteToEventWasClicked(ActionEvent event) throws SQLException {
+    public void btnInviteToEventWasClicked(ActionEvent event) throws SQLException {
         
         try{
         for (int i = 0; i < guestId.size(); i++){
@@ -185,11 +196,5 @@ import javafx.util.Callback;
         
     }
    
-   //pageswitchbreadcrumb
-   @FXML
-     private void backToGuestList(ActionEvent event) throws IOException, SQLException{
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewEventGuestList.fxml"));
-        eventPane.getChildren().setAll(pane); 
-     }
-    
+   
 }
