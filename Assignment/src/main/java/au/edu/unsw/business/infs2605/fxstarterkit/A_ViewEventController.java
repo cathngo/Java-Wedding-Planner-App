@@ -83,6 +83,7 @@ public class A_ViewEventController {
         controller.getEventId(Integer.parseInt(eventId.getText()));
         controller.getRsvpData(Integer.parseInt(eventId.getText()));
         eventPane.getChildren().setAll(pane);
+        
     }
   @FXML
     private void btnEditWasClicked(ActionEvent event) throws IOException, SQLException {

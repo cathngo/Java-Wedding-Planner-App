@@ -56,6 +56,8 @@ public class A_ViewEventGuestListController {
     
     ObservableList<RSVPGuestWrapper>rsvpList = FXCollections.observableArrayList();
     
+    private int eventId;
+    
   
     
     
@@ -124,6 +126,7 @@ public class A_ViewEventGuestListController {
         AnchorPane pane = (AnchorPane) loader.load();
         A_ViewEventInviteGuestController controller = loader.getController();
         controller.passData(eventName.getText());
+        controller.getEventId(eventId);
         eventPane.getChildren().setAll(pane);
     }
     @FXML
@@ -138,6 +141,7 @@ public class A_ViewEventGuestListController {
     }
     
     public void getEventId(int id){
+        this.eventId = id;
       
          try{
             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
@@ -178,7 +182,7 @@ public class A_ViewEventGuestListController {
             e.printStackTrace();
         }
         
-        
+       ;
        
     }
     

@@ -38,10 +38,13 @@ public class Guest {
         }
         
         //A_ViewEventInviteGuestController uses this
-    public Guest(String guest_fname, String guest_lname){
+    public Guest(int guest_id, String guest_fname, String guest_lname){
+        this.guest_id = guest_id;
         this.guest_fname = guest_fname;
         this.guest_lname = guest_lname;
         }
+    
+    
 
     public String getGuest_fname() {
         return guest_fname;
