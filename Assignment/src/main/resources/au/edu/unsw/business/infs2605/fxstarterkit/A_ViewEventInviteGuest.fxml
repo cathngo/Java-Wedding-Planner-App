@@ -39,33 +39,26 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <TableView fx:id="guestListTable" layoutX="294.0" layoutY="30.0" prefHeight="193.0" prefWidth="251.0">
-                    <columns>
-                      <TableColumn fx:id="col_guestListFname" prefWidth="87.60003662109375" text="First Name" />
-                        <TableColumn fx:id="col_guestListLname" prefWidth="90.79998779296875" text="Last Name" />
-                        <TableColumn fx:id="col_remove" prefWidth="71.99990844726562" text="Remove" />
-                    </columns>
-                  </TableView>
                   <ListView layoutX="44.0" layoutY="34.0" prefHeight="193.0" prefWidth="200.0" />
                   <TableView fx:id="existingGuestTable" layoutX="44.0" layoutY="27.0" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                      <TableColumn fx:id="col_fname" prefWidth="74.39999389648438" text="First Name" />
-                        <TableColumn fx:id="col_lname" prefWidth="73.59998321533203" text="Last Name" />
-                        <TableColumn fx:id="col_select" prefWidth="50.39996337890625" text="Select" />
+                      <TableColumn fx:id="col_guestId" prefWidth="35.5999755859375" text="ID" />
+                        <TableColumn fx:id="col_guestName" prefWidth="164.00003814697266" text="Name" />
                     </columns>
                   </TableView>
-                  <Button fx:id="btnAddToGuestList" layoutX="136.0" layoutY="229.0" mnemonicParsing="false" onAction="#btnAddToGuestListWasClicked" text="Add to Guest List" />
+                  <Button fx:id="btnAddTotList" layoutX="136.0" layoutY="229.0" mnemonicParsing="false" onAction="#btnAddToListWasClicked" text="Add to Guest List" />
                   <Text layoutX="44.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Existing Guests">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button layoutX="493.0" layoutY="229.0" mnemonicParsing="false" text="Invite" />
+                  <Button fx:id="btnInviteToEvent" layoutX="446.0" layoutY="229.0" mnemonicParsing="false" onAction="#btnInviteToEventWasClicked" text="Invite To Event" />
+                  <ListView fx:id="guestListView" layoutX="300.0" layoutY="31.0" prefHeight="193.0" prefWidth="240.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnInviteNewGuest" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnInviteNewGuestWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite New Guest" textFill="WHITE" />
+                  <Button fx:id="btnInviteNewGuest" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite New Guest" textFill="WHITE" />
                   <Circle fill="WHITE" layoutX="291.0" layoutY="46.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
                   <Circle fill="#bfbdbd" layoutX="309.0" layoutY="46.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
                </children>
