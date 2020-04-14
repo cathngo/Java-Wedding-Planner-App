@@ -13,8 +13,8 @@
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Dashboard" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Details" textFill="#0a0a0a" />
+                <Button fx:id="btnDashboard" mnemonicParsing="false" onAction="#btnDashboardWasClicked" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Dashboard" />
+                  <Button fx:id="btnViewDetails" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Details" textFill="#0a0a0a" />
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="63.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; RSVP" textFill="#8fdca9" />
               </items>
             </ToolBar>
@@ -88,8 +88,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button layoutX="29.0" layoutY="18.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
-                  <Button layoutX="432.0" layoutY="18.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit" textFill="WHITE" />
+                  <Button fx:id="btnBack" layoutX="29.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnEdit" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnEditWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

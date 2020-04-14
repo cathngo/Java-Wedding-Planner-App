@@ -13,7 +13,7 @@
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Dashboard" />
+                <Button fx:id="btnDashboard" mnemonicParsing="false" onAction="#btnDashboardWasClicked" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Dashboard" />
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="105.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Details" textFill="#8fdca9" />
               </items>
             </ToolBar>

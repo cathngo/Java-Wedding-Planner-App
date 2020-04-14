@@ -73,13 +73,22 @@ public class G_ViewEventController {
     }
     @FXML
     public void btnViewRsvpWasClicked(ActionEvent event) throws IOException, SQLException{
-        System.out.println(eventId);
+       
         FXMLLoader loader = new FXMLLoader(getClass().getResource("G_ViewRSVP.fxml"));
         AnchorPane pane = (AnchorPane)loader.load();
         G_ViewRSVPController controller = loader.getController();
         controller.getEventId(eventId);
+        controller.passEventId(eventId);
         dashboardPane.getChildren().setAll(pane);
         
         
     }
+    @FXML
+    public void btnDashboardWasClicked(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("G_Dashboard.fxml"));
+        AnchorPane pane = (AnchorPane)loader.load();
+         dashboardPane.getChildren().setAll(pane);
 }
+}
+
+    

@@ -79,17 +79,21 @@ public class G_DashboardController implements Initializable {
         FXMLLoader viewEventloader = new FXMLLoader(getClass().getResource("G_ViewEvent.fxml"));
         AnchorPane pane = (AnchorPane)viewEventloader.load();
         G_ViewEventController viewEventController = viewEventloader.getController();
-        viewEventController.passEventId(eventId);
         viewEventController.getEventId(eventId);
+        viewEventController.passEventId(eventId);
         dashboardPane.getChildren().setAll(pane);
-        
-      
-        
-        
-        
-      
-    
+
         }
+    
+    @FXML
+    public void btnRsvpWasClicked(ActionEvent event) throws IOException, SQLException{
+        FXMLLoader viewEventloader = new FXMLLoader(getClass().getResource("G_SubmitRSVP.fxml"));
+        AnchorPane pane = (AnchorPane)viewEventloader.load();
+        G_SubmitRSVPController controller = viewEventloader.getController();
+        controller.getEventId(eventId);
+        controller.passEventId(eventId);
+        dashboardPane.getChildren().setAll(pane);
+    }
     
     
 }

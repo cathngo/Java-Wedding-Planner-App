@@ -48,7 +48,7 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button layoutX="399.0" layoutY="143.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="107.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="RSVP to Events" textFill="WHITE" />
+                  <Button fx:id="btnRsvp" layoutX="399.0" layoutY="143.0" mnemonicParsing="false" onAction="#btnRsvpWasClicked" prefHeight="52.0" prefWidth="107.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="RSVP to Event" textFill="WHITE" />
                   <AnchorPane layoutX="8.0" layoutY="244.0" prefHeight="79.0" prefWidth="600.0">
                      <children>
                         <Button fx:id="btnViewDetails" layoutX="119.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Details" textFill="WHITE" />

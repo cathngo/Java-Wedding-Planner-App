@@ -1,11 +1,14 @@
 
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
@@ -35,8 +38,9 @@ public class G_ViewRSVPController {
     @FXML
     private Text guestDiet;
     
+    private int eventId;
     
-    public void getEventId(int id) throws SQLException {
+    public void passEventId(int id) throws SQLException {
         
    
 
@@ -76,5 +80,46 @@ public class G_ViewRSVPController {
         rs.close();
 
     }
+    
+    public void getEventId(int id){
+        this.eventId = id;
+    }
+    
+   @FXML
+   public void btnBackWasClicked(ActionEvent event) throws IOException, SQLException{
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("G_ViewEvent.fxml"));
+        AnchorPane pane = (AnchorPane)loader.load();
+        G_ViewEventController controller = loader.getController();
+        controller.getEventId(eventId);
+        controller.passEventId(eventId);
+        dashboardPane.getChildren().setAll(pane);
+   }
+   @FXML
+   public void btnEditWasClicked(ActionEvent event) throws IOException, SQLException{
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("G_EditRSVP.fxml"));
+        AnchorPane pane = (AnchorPane)loader.load();
+        G_EditRSVPController controller = loader.getController();
+        controller.getEventId(eventId);
+        controller.passEventId(eventId);
+        dashboardPane.getChildren().setAll(pane);
+       
+   }
+   @FXML
+    public void btnDashboardWasClicked(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("G_Dashboard.fxml"));
+        AnchorPane pane = (AnchorPane)loader.load();
+         dashboardPane.getChildren().setAll(pane);
+}
+
+    @FXML
+   public void btnViewDetailsWasClicked(ActionEvent event) throws IOException, SQLException{
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("G_ViewEvent.fxml"));
+        AnchorPane pane = (AnchorPane)loader.load();
+        G_ViewEventController controller = loader.getController();
+        controller.getEventId(eventId);
+        controller.passEventId(eventId);
+        dashboardPane.getChildren().setAll(pane);
+   }
+   
 
 }
