@@ -1,42 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_CreateRunsheetController">
+<AnchorPane fx:id="runsheetPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_CreateRunsheetController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
-            <AnchorPane prefHeight="65.0" prefWidth="600.0">
+            <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
+              <items>
+                <Button mnemonicParsing="false" onAction="#btnRunsheetsWasClicked" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Runsheets" />
+                  <Button mnemonicParsing="false" onAction="#btnInviteGuestsWasClicked" prefHeight="27.0" prefWidth="122.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Select Event" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Create Runsheet" textFill="#8fdca9" />
+              </items>
+            </ToolBar>
+            <AnchorPane prefHeight="49.0" prefWidth="600.0">
                <children>
-                  <Text layoutX="25.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Runsheets" wrappingWidth="257.984375">
+                  <Text layoutX="27.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Runsheet for:" wrappingWidth="257.984375">
                      <font>
-                        <Font size="32.0" />
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="event_name" layoutX="300.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandy's Birthday" wrappingWidth="257.984375">
+                     <font>
+                        <Font size="28.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="274.0" prefWidth="600.0">
+            <AnchorPane prefHeight="265.0" prefWidth="600.0">
                <children>
-                  <TableView layoutX="24.0" layoutY="21.0" prefHeight="225.0" prefWidth="542.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
-                     <columns>
-                        <TableColumn prefWidth="216.0" text="Name" />
-                        <TableColumn prefWidth="137.0" text="Date" />
-                        <TableColumn prefWidth="99.0" text="Time Start" />
-                        <TableColumn prefWidth="89.0" text="Time End" />
-                     </columns>
-                  </TableView>
+                  <ScrollPane pickOnBounds="false" prefHeight="257.0" prefWidth="600.0">
+                     <content>
+                        <Pane pickOnBounds="false" prefHeight="501.0" prefWidth="582.0">
+                           <children>
+                              <Text layoutX="26.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="163.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Activity:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="26.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Instructions">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <ListView fx:id="runsheetList" layoutX="15.0" layoutY="88.0" prefHeight="354.0" prefWidth="561.0" />
+                              <Text layoutX="21.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Runsheet:" wrappingWidth="75.30490112304688">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="time" layoutX="71.0" layoutY="13.0" prefHeight="25.0" prefWidth="77.0" />
+                              <TextField fx:id="activity" layoutX="219.0" layoutY="13.0" prefHeight="27.0" prefWidth="268.0" />
+                              <Button layoutX="499.0" layoutY="13.0" mnemonicParsing="false" onAction="#btnAddItemsWasClicked" prefHeight="25.0" prefWidth="77.0" text="Add Items" />
+                           </children>
+                        </Pane>
+                     </content>
+                  </ScrollPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="94.0" prefWidth="600.0">
+            <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button layoutX="26.0" layoutY="23.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create Runsheet" textFill="WHITE" />
-                  <Button layoutX="425.0" layoutY="23.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Runsheet" textFill="WHITE" />
+                  <Button fx:id="btnInviteGuests" layoutX="29.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnCreateEvent" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnCreateRunsheetWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create Runsheet" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

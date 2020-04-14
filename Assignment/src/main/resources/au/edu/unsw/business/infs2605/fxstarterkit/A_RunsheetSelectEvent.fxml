@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="runsheetPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_RunsheetSelectEventController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
+               <items>
+                  <Button mnemonicParsing="false" onAction="#btnRunsheetsWasClicked" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Runsheets" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="108.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Select Event" textFill="#8fdca9" />
+               </items>
+            </ToolBar>
+            <AnchorPane prefHeight="241.0" prefWidth="600.0">
+               <children>
+                  <Text fx:id="eventName" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Event:" textAlignment="CENTER" wrappingWidth="239.59569183350038">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <TableView fx:id="eventTable" layoutX="29.0" layoutY="54.0" prefHeight="200.0" prefWidth="542.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
+                    <columns>
+                      <TableColumn fx:id="col_eId" prefWidth="56.39999198913574" text="ID" />
+                      <TableColumn fx:id="col_eName" prefWidth="143.20001983642578" text="Name" />
+                        <TableColumn fx:id="col_eStartTime" prefWidth="115.199951171875" text="Time Start" />
+                        <TableColumn fx:id="col_eEndTime" prefWidth="92.80001831054688" text="Time End" />
+                        <TableColumn fx:id="col_eDate" prefWidth="132.79998779296875" text="Date" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="94.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="btnCreateNewEvent" layoutX="26.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnViewDetails" layoutX="425.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnNextWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Next" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
