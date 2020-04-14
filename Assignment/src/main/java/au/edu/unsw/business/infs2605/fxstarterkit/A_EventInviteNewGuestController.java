@@ -30,7 +30,7 @@ import javafx.scene.text.Text;
  *
  * @author cathy
  */
-public class A_ViewEventInviteNewGuestController {
+public class A_EventInviteNewGuestController {
     
     @FXML
     private AnchorPane eventPane;
@@ -159,26 +159,7 @@ public class A_ViewEventInviteNewGuestController {
 
     }
     
-    @FXML
-    public void btnGuestListWasClicked(ActionEvent event) throws SQLException, IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventGuestList.fxml"));
-        AnchorPane pane = (AnchorPane) loader.load();
-        A_ViewEventGuestListController controller = loader.getController();
-        controller.passEventName(eventName.getText());
-        controller.getEventId(eventId);
-        controller.getRsvpData(eventId);
-        eventPane.getChildren().setAll(pane);
-    }
-    
-    @FXML
-     private void btnViewEventsWasClicked(ActionEvent event) throws IOException, SQLException{
-       FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEvent.fxml"));
-        AnchorPane pane = (AnchorPane)loader.load();
-        A_ViewEventController controller = loader.getController();
-        controller.passEventId(eventId);
-        eventPane.getChildren().setAll(pane);
-     }
-     
+ 
      @FXML
     public void btnEventsWasClicked(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllEvents.fxml"));
@@ -188,9 +169,9 @@ public class A_ViewEventInviteNewGuestController {
     @FXML
     private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
      
-       FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventInviteGuest.fxml"));
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("A_EventInviteGuest.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
-        A_ViewEventInviteGuestController controller = loader.getController();
+        A_EventInviteGuestController controller = loader.getController();
         controller.passData(eventName.getText());
         controller.getEventId(eventId);
         eventPane.getChildren().setAll(pane);

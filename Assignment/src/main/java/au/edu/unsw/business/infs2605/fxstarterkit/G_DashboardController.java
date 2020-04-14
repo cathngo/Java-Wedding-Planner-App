@@ -36,6 +36,7 @@ public class G_DashboardController implements Initializable {
     @FXML
     private AnchorPane dashboardPane;
     private int eventId;
+    private RSVPEventWrapper selectedEvent;
 
     ObservableList<RSVPEventWrapper> eventList = FXCollections.observableArrayList();
 
@@ -49,12 +50,12 @@ public class G_DashboardController implements Initializable {
                     + "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id "
                     + "JOIN guest g ON g.guest_id = i.guest_id "
                     + "WHERE g.guest_id = '" + LoginController.guestUser.getGuest_id() + "'");
-
+            
             while (rs.next()) {
                 eventList.add(new RSVPEventWrapper(rs.getString("event_name"),
                         rs.getString("event_date"), rs.getString("decision")));
                 
-                eventId = Integer.parseInt(rs.getString("event_id"));
+                
             }
             col_eventName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
             col_eventDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
@@ -74,16 +75,32 @@ public class G_DashboardController implements Initializable {
     
     @FXML
     private void btnViewDetailsWasClicked(ActionEvent event) throws IOException, SQLException{
+        selectedEvent = dashboard_table.getSelectionModel().getSelectedItem();
+        String date = selectedEvent.getEvent_date();
+        String name = selectedEvent.getEvent_name().replace("'","''");
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT event_id "
+                    + "FROM event "
+                    + "WHERE event_name ='"+name+"'"
+                    + "AND event_date='"+date+"'");
+            
+            eventId = rs.getInt(1);
+        }catch (Exception e){
+                    e.printStackTrace();
+                    }
         
-        //pass eventId to G_ViewEventController and switch panes
         FXMLLoader viewEventloader = new FXMLLoader(getClass().getResource("G_ViewEvent.fxml"));
         AnchorPane pane = (AnchorPane)viewEventloader.load();
         G_ViewEventController viewEventController = viewEventloader.getController();
         viewEventController.getEventId(eventId);
         viewEventController.passEventId(eventId);
         dashboardPane.getChildren().setAll(pane);
-
+       
+        
         }
+    
+        
     
     @FXML
     public void btnRsvpWasClicked(ActionEvent event) throws IOException, SQLException{

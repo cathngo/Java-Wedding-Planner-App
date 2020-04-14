@@ -25,7 +25,7 @@
                <children>
                   <TableView fx:id="eventTable" layoutX="24.0" layoutY="21.0" prefHeight="200.0" prefWidth="542.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
                     <columns>
-                      <TableColumn fx:id="col_eId" prefWidth="56.39999198913574" text="Id" />
+                      <TableColumn fx:id="col_eId" prefWidth="56.39999198913574" text="ID" />
                       <TableColumn fx:id="col_eName" prefWidth="143.20001983642578" text="Name" />
                         <TableColumn fx:id="col_eDate" prefWidth="132.79998779296875" text="Date" />
                         <TableColumn fx:id="col_eStartTime" prefWidth="115.199951171875" text="Time Start" />
