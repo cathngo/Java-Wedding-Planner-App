@@ -55,18 +55,18 @@
    <top>
       <HBox prefHeight="54.0" prefWidth="600.0" style="-fx-background-color: #9FD9AD#9FD9AD;" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="54.0" prefWidth="902.0">
+            <AnchorPane prefHeight="54.0" prefWidth="870.0">
                <children>
                   <ImageView fitHeight="41.0" fitWidth="61.0" layoutX="825.0" layoutY="6.0">
                      <image>
                         <Image url="@../../../../../../../../../images/avatar-icon.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" layoutX="416.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INVO">
-                     <font>
-                        <Font name="American Typewriter" size="38.0" />
-                     </font>
-                  </Text>
+                  <ImageView fitHeight="51.0" fitWidth="115.0" layoutX="377.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="390.0" AnchorPane.rightAnchor="390.0">
+                     <image>
+                        <Image url="@images/app-name.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>
@@ -75,9 +75,10 @@
    <center>
       <AnchorPane fx:id="ap" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="170.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Invo!">
+             
+            <Text fx:id="txtWelcome" layoutX="7.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Invo!" wrappingWidth="769.1249923706055">
                <font>
-                  <Font size="61.0" />
+                  <Font size="32.0" />
                </font></Text>
          </children>
       </AnchorPane>

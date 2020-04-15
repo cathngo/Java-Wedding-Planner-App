@@ -28,7 +28,7 @@
                </font>
             </Text>
             <PasswordField fx:id="pwfAccessCode" layoutX="58.0" layoutY="234.0" prefHeight="26.0" prefWidth="189.0" promptText="access code" />
-            <Button fx:id="btnLogin" layoutX="59.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnLoginWasClicked" opacity="0.96" prefHeight="32.0" prefWidth="192.0" style="-fx-background-color: #232323#232323;" text="LOGIN" textFill="#f7f6f6">
+            <Button fx:id="btnLogin" layoutX="59.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnLoginWasClicked" onMouseEntered="#btnHovered" onMouseExited="#btnExit" opacity="0.96" prefHeight="32.0" prefWidth="192.0" style="-fx-background-color: #232323#232323;" text="LOGIN" textFill="#f7f6f6">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

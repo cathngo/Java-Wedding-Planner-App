@@ -8,9 +8,11 @@ package au.edu.unsw.business.infs2605.fxstarterkit;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 
 /**
@@ -35,6 +37,10 @@ public class LoginController {
     @FXML
     private Label lblIncorrectAccessCode;
     
+    @FXML
+    private Button btnLogin;
+    
+    
     PageSwitcher pageSwitcher = new PageSwitcher();
     DatabaseManager database = new DatabaseManager();
 
@@ -48,10 +54,19 @@ public class LoginController {
     public void initialize(){
         lblIncorrectCredentials.setVisible(false);
         lblIncorrectAccessCode.setVisible(false);
-        
     }
     
- 
+    @FXML
+    private void btnHovered(MouseEvent event) throws Exception {
+        btnLogin.setStyle("-fx-background-color: #8FDCA9");
+    }
+    
+        @FXML
+    private void btnExit(MouseEvent event) throws Exception {
+        btnLogin.setStyle("-fx-background-color: #232323");
+    }
+
+    
     @FXML
     private void btnLoginWasClicked(ActionEvent event) throws Exception {
         String username = txtUsername.getText();
@@ -76,6 +91,7 @@ public class LoginController {
             else {
                 //returns the guest object
                 guestUser = DatabaseManager.fetchGuestByCode(accessCode);
+                System.out.println(guestUser.getGuest_id());
                 pageSwitcher.switchPage(event, "G_Dashboard.fxml");
             }
         }       
