@@ -92,7 +92,7 @@ public class LoginController {
                 //returns the guest object
                 guestUser = DatabaseManager.fetchGuestByCode(accessCode);
                 System.out.println(guestUser.getGuest_id());
-                pageSwitcher.switchPage(event, "G_Dashboard.fxml");
+                pageSwitcher.switchPage(event, "G_Menu.fxml");
             }
         }       
          //if user enters admin details
