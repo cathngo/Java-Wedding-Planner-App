@@ -69,7 +69,7 @@ public class A_MenuController implements Initializable {
     
     @FXML
     private void openRunsheets(MouseEvent event) {
-        loadPage("A_Dashboard");
+        loadPage("A_ViewAllRunsheets");
         
     }
     

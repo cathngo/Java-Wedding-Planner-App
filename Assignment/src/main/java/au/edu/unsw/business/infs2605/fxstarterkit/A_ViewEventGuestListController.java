@@ -113,11 +113,20 @@ public class A_ViewEventGuestListController {
     }
     //pageswitchbreadcrumb
     @FXML
-     private void backToViewEvent(ActionEvent event) throws IOException{
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewEvent.fxml"));
-        eventPane.getChildren().setAll(pane); 
+     private void btnViewEventsWasClicked(ActionEvent event) throws IOException, SQLException{
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEvent.fxml"));
+        AnchorPane pane = (AnchorPane)loader.load();
+        A_ViewEventController controller = loader.getController();
+        controller.passEventId(eventId);
+        eventPane.getChildren().setAll(pane);
      }
-    
+     
+      @FXML
+    void btnEventsWasClicked(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllEvents.fxml"));
+        eventPane.getChildren().setAll(pane);
+    }
+  
     //pageswitchbutton
     @FXML
     private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
@@ -134,7 +143,7 @@ public class A_ViewEventGuestListController {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewEvent.fxml"));
         eventPane.getChildren().setAll(pane);
     }
-    public void passData(String name) throws SQLException {
+    public void passEventName(String name) throws SQLException {
        
         eventName.setText(name);
         
@@ -182,7 +191,7 @@ public class A_ViewEventGuestListController {
             e.printStackTrace();
         }
         
-       ;
+       
        
     }
     

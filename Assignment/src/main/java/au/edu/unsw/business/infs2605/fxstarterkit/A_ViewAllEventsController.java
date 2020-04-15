@@ -54,12 +54,17 @@ public class A_ViewAllEventsController implements Initializable{
     ObservableList<Event>eventList = FXCollections.observableArrayList();
     
     
+    private int eventId;
+    
+    private String eventName;
+    
+    
 
   
      
    @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+         
         try{
             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
             ResultSet rs = conn.createStatement().executeQuery("select * from event");
@@ -83,8 +88,10 @@ public class A_ViewAllEventsController implements Initializable{
         rs.close();
         }catch(Exception e){
             System.out.println("table not created");
+            
         }
         
+       
         
        
     }
@@ -95,12 +102,14 @@ public class A_ViewAllEventsController implements Initializable{
     
     @FXML
     private void btnViewDetailsWasClicked(ActionEvent event) throws IOException, SQLException{
-        
+        Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
+        eventId = selectedEvent.getEvent_id();
+       
     
          FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEvent.fxml"));
         AnchorPane pane = (AnchorPane)loader.load();
         A_ViewEventController controller = loader.getController();
-        controller.passData(eventTable.getSelectionModel().getSelectedItem());
+        controller.passEventId(eventId);
         eventPane.getChildren().setAll(pane);
     
         }
@@ -112,9 +121,17 @@ public class A_ViewAllEventsController implements Initializable{
     }
     
     @FXML
-    private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewEventInviteGuest.fxml"));
+    private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
+        Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
+        eventName = selectedEvent.getEvent_name();
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("A_EventInviteGuest.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+        A_EventInviteGuestController controller = loader.getController();
+        controller.passData(eventName);
+        controller.getEventId(eventId);
         eventPane.getChildren().setAll(pane);
     }
+    
+     
     
 }

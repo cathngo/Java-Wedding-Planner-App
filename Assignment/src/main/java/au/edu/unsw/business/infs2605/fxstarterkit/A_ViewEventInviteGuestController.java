@@ -53,6 +53,8 @@ import javafx.util.Callback;
     private ListView<String> guestListView;
     
     private int eventId;
+    
+    private String event_name;
 
      
 
@@ -157,6 +159,37 @@ import javafx.util.Callback;
     public void getEventId(int id){
         this.eventId = id;
     }
+      @FXML
+    public void btnBackWasClicked(ActionEvent event) throws SQLException, IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventGuestList.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+        A_ViewEventGuestListController controller = loader.getController();
+        controller.passEventName(event_name);
+        controller.getEventId(eventId);
+        controller.getRsvpData(eventId);
+        eventPane.getChildren().setAll(pane);
+    }
+    
+    @FXML
+    public void btnGuestListWasClicked(ActionEvent event) throws SQLException, IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventGuestList.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+        A_ViewEventGuestListController controller = loader.getController();
+        controller.passEventName(event_name);
+        controller.getEventId(eventId);
+        controller.getRsvpData(eventId);
+        eventPane.getChildren().setAll(pane);
+    }
+    
+    @FXML
+     private void btnViewEventsWasClicked(ActionEvent event) throws IOException, SQLException{
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEvent.fxml"));
+        AnchorPane pane = (AnchorPane)loader.load();
+        A_ViewEventController controller = loader.getController();
+        controller.passEventId(eventId);
+        eventPane.getChildren().setAll(pane);
+     }
+     
     
     @FXML
     public void btnInviteNewGuestWasClicked(ActionEvent event) throws IOException{
@@ -164,7 +197,12 @@ import javafx.util.Callback;
         AnchorPane pane = (AnchorPane) loader.load();
         A_ViewEventInviteNewGuestController controller = loader.getController();
         controller.getEventId(eventId);
-        controller.passEventName(eventName.getText());
+        controller.passEventName(event_name);
+        eventPane.getChildren().setAll(pane);
+    }
+    @FXML
+    public void btnEventsWasClicked(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllEvents.fxml"));
         eventPane.getChildren().setAll(pane);
     }
     
@@ -191,7 +229,7 @@ import javafx.util.Callback;
     
     
    public void passData(String name) throws SQLException {
-       
+       this.event_name = name;
         eventName.setText(name);
         
     }

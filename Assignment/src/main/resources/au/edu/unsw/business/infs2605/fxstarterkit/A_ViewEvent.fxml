@@ -14,7 +14,7 @@
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events" />
+                <Button fx:id="btnEvents" mnemonicParsing="false" onAction="#btnEventsWasClicked" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events" />
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="95.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Events" textFill="#8fdca9" />
               </items>
             </ToolBar>
@@ -79,12 +79,12 @@
                         <Font size="12.0" />
                      </font>
                   </Text>
-                  <Text fx:id="n" layoutX="437.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event ID:">
+                  <Text layoutX="437.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event ID:">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fx:id="eventId" fill="#5e5e5e" layoutX="502.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="102">
+                  <Text fx:id="event_id" fill="#5e5e5e" layoutX="502.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="102">
                      <font>
                         <Font size="12.0" />
                      </font>
