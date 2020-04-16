@@ -1,7 +1,14 @@
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import static java.util.Collections.list;
 import javafx.collections.FXCollections;
@@ -98,7 +105,7 @@ public class A_CreateRunsheetController {
     }
 
     @FXML
-    void btnCreateRunsheetWasClicked(ActionEvent event) throws IOException {
+    void btnCreateRunsheetWasClicked(ActionEvent event) throws IOException, SQLException {
         
         //create pdf document
      
@@ -151,7 +158,12 @@ public class A_CreateRunsheetController {
         //Closing the document
         doc.close();
         System.out.println("successfully printed pdf");
+        
+        BLOB runsheet = new BLOB();
+        runsheet.updateRunsheet(eventId, "runsheet" + eventId + ".pdf");
+      
     }
+    
 
     @FXML
     void btnInviteGuestsWasClicked(ActionEvent event) throws IOException {
