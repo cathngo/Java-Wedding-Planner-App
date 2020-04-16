@@ -20,7 +20,6 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 /**
  *
- * @author jaydenso
  * @author mimi
  */
 public class A_InvitationPDFController {
