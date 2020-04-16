@@ -59,7 +59,8 @@ public class DatabaseManager {
                     + "event_date TEXT, "
                     + "event_start_time TEXT, "
                     + "event_end_time TEXT, "
-                 + "event_instructions TEXT)";
+                    + "event_instructions TEXT, "
+                    + "event_runsheet BLOB)";
 
             Statement smt = sharedConnection.createStatement();
             wasThisMethodSuccessful = smt.execute(createTableSql);

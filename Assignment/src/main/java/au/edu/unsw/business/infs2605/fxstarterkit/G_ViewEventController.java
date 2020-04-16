@@ -89,6 +89,19 @@ public class G_ViewEventController {
         AnchorPane pane = (AnchorPane)loader.load();
          dashboardPane.getChildren().setAll(pane);
 }
+    
+    @FXML
+    public void btnViewRunsheetWasClicked(ActionEvent event) throws IOException, SQLException{
+       try{
+           Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler " + ""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf");
+       }catch(Exception e){
+           System.out.println("unsuccessful");
+           e.printStackTrace();
+       }
+        
+        
+        
+    }
 }
 
     

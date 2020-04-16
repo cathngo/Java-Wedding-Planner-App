@@ -47,11 +47,6 @@
          <children>
             <AnchorPane prefHeight="54.0" prefWidth="902.0">
                <children>
-                  <ImageView fitHeight="41.0" fitWidth="61.0" layoutX="825.0" layoutY="6.0">
-                     <image>
-                        <Image url="@../../../../../../../../../images/avatar-icon.png" />
-                     </image>
-                  </ImageView>
                   <Text fill="WHITE" layoutX="416.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INVO">
                      <font>
                         <Font name="American Typewriter" size="38.0" />
@@ -63,6 +58,13 @@
       </HBox>
    </top>
    <center>
-      <AnchorPane fx:id="gap" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="gap" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="422.0" fitWidth="752.0" layoutX="10.0" layoutY="49.0">
+               <image>
+                  <Image url="@images/ghomepage.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
    </center>
 </BorderPane>

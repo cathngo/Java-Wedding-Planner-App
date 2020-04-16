@@ -1,7 +1,14 @@
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import static java.util.Collections.list;
 import javafx.collections.FXCollections;
@@ -98,19 +105,20 @@ public class A_CreateRunsheetController {
     }
 
     @FXML
-    void btnCreateRunsheetWasClicked(ActionEvent event) throws IOException {
+    void btnCreateRunsheetWasClicked(ActionEvent event) throws IOException, SQLException {
         
         //create pdf document
      
         PDDocument document = new PDDocument();
         
+        
         //create page
         PDPage my_page = new PDPage();
         document.addPage(my_page);
-        document.save("C:\\Users\\cathy\\OneDrive\\Desktop\\test\\runsheet" + eventId + ".pdf");
+        document.save(""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf");
         document.close();
         //load document
-        File file = new File("C:\\Users\\cathy\\OneDrive\\Desktop\\test\\runsheet" + eventId + ".pdf"); 
+        File file = new File(""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf"); 
         PDDocument doc = PDDocument.load(file);
         //get page
         PDPage page = doc.getPage(0);
@@ -118,15 +126,16 @@ public class A_CreateRunsheetController {
         PDPageContentStream contentStream = new PDPageContentStream(doc, page);
         contentStream.beginText();
         //set font
-        contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
+        contentStream.setFont(PDType1Font.TIMES_ROMAN, 30);
         //setting position for line
-        contentStream.newLineAtOffset(25, 500);
+        contentStream.newLineAtOffset(50, 700);
         //set leading
-        contentStream.setLeading(14.5f);
-      
-    
+        contentStream.setLeading(25f);
+        
         contentStream.showText("Runsheet for: " + eventName);
         contentStream.newLine();
+        
+        
         
         for (int i = 0; i < event_time.size(); i++){
         contentStream.showText(event_time.get(i) + ": " + event_activity.get(i));
@@ -135,19 +144,26 @@ public class A_CreateRunsheetController {
 
         //Ending the content stream
         contentStream.endText();
+       
 
         System.out.println("Content added");
 
         //Closing the content stream
         contentStream.close();
+       
 
         //Saving the document
-        doc.save(new File(("C:\\Users\\cathy\\OneDrive\\Desktop\\test\\runsheet" + eventId + ".pdf")));
+        doc.save(new File((""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf")));
 
         //Closing the document
         doc.close();
         System.out.println("successfully printed pdf");
+        
+        BLOB runsheet = new BLOB();
+        runsheet.updateRunsheet(eventId, "runsheet" + eventId + ".pdf");
+      
     }
+    
 
     @FXML
     void btnInviteGuestsWasClicked(ActionEvent event) throws IOException {

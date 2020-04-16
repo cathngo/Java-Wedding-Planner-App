@@ -46,7 +46,6 @@ public class G_MenuController implements Initializable {
     @FXML
     private void openGuestDashboard(MouseEvent event) {
         loadPage("G_Dashboard");
-        System.out.println(LoginController.guestUser.getGuest_email());
         
     }
     
