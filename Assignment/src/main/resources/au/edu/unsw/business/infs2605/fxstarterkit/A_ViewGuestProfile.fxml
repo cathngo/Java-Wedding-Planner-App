@@ -15,7 +15,7 @@
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="67.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Guests" />
+                <Button fx:id="btnGuests" mnemonicParsing="false" onAction="#btnGuestsWasClicked" prefHeight="27.0" prefWidth="67.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Guests" />
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Guests" textFill="#8fdca9" />
               </items>
             </ToolBar>
