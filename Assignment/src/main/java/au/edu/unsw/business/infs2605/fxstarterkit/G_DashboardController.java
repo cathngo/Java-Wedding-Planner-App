@@ -87,6 +87,8 @@ public class G_DashboardController implements Initializable {
                     + "AND event_date='"+date+"'");
             
             eventId = rs.getInt(1);
+            rs.close();
+            conn.close();
         }catch (Exception e){
                     e.printStackTrace();
                     }
@@ -107,6 +109,24 @@ public class G_DashboardController implements Initializable {
     
     @FXML
     public void btnRsvpWasClicked(ActionEvent event) throws IOException, SQLException{
+        selectedEvent = dashboard_table.getSelectionModel().getSelectedItem();
+        String date = selectedEvent.getEvent_date();
+        String name = selectedEvent.getEvent_name().replace("'","''");
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT event_id "
+                    + "FROM event "
+                    + "WHERE event_name ='"+name+"'"
+                    + "AND event_date='"+date+"'");
+            
+            eventId = rs.getInt(1);
+            rs.close();
+            conn.close();
+        }catch (Exception e){
+                    e.printStackTrace();
+                    }
+        
+        
         FXMLLoader viewEventloader = new FXMLLoader(getClass().getResource("G_SubmitRSVP.fxml"));
         AnchorPane pane = (AnchorPane)viewEventloader.load();
         G_SubmitRSVPController controller = viewEventloader.getController();

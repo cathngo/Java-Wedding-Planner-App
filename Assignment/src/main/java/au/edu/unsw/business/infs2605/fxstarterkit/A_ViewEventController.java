@@ -88,6 +88,8 @@ public class A_ViewEventController {
         controller.getRsvpData(eventId);
         eventPane.getChildren().setAll(pane);
         
+        System.out.println("guestLists event id:" + eventId);
+        
     }
   @FXML
     private void btnEditWasClicked(ActionEvent event) throws IOException, SQLException {
@@ -98,6 +100,8 @@ public class A_ViewEventController {
         controller.getEventId(eventId);
         controller.passData(eventId);      
         eventPane.getChildren().setAll(pane);
+        
+        System.out.println("edit event id:" + eventId);
     }
     
     @FXML

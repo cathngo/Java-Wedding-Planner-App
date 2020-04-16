@@ -40,15 +40,14 @@ public class A_ViewAllRunsheetsController implements Initializable{
     private TableColumn<Event,String> col_eStartTime;
     @FXML
     private TableColumn<Event,String> col_eEndTime;
-    @FXML
-    private AnchorPane eventPane;
+   
 
     ObservableList<Event>runsheetList = FXCollections.observableArrayList();
     
     
     private int eventId;
     
-    private String eventName;
+    
     
     
 

@@ -58,39 +58,41 @@ public class A_ViewGuestProfileController {
     private TableColumn<RSVPEventWrapper, String> col_eventRsvp;
 
     ObservableList<RSVPEventWrapper> eventDetailsList = FXCollections.observableArrayList();
+    
+    private int guest_id;
+    private String guest_name;
+    
 
-    private Guest selectedGuest;
-
-    public void passData(Guest guest) throws SQLException {
-        selectedGuest = guest;
+    public void loadGuestData(int id) throws SQLException {
+       
 
         Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM guest where guest_id =  " + selectedGuest.getGuest_id());
+        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM guest where guest_id =  " + id);
 
         while (rs.next()) {
             String fname = rs.getString("guest_fname");
             String lname = rs.getString("guest_lname");
-            String id = Integer.toString(rs.getInt("guest_id"));
+           
             String code = rs.getString("guest_access_code");
             String email = rs.getString("guest_email");
             String phone = rs.getString("guest_phone");
             String gender = rs.getString("guest_gender");
 
             guestName.setText(fname + " " + lname);
-            guestId.setText(id);
+            guestId.setText(Integer.toString(id));
             guestEmail.setText(email);
             guestPhone.setText(phone);
             guestGender.setText(gender);
             guestAccessCode.setText(code);
 
         }
+        System.out.println("loadguestData: " +id);
         conn.close();
         rs.close();
     }
 
-    public void getGuestId(Guest guest) throws SQLException {
-        selectedGuest = guest;
-
+    public void getGuestId(int id) throws SQLException {
+        this.guest_id = id;
         try {
             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
             ResultSet rs = conn.createStatement().executeQuery("SELECT e.event_name, e.event_date, r.decision "
@@ -98,7 +100,7 @@ public class A_ViewGuestProfileController {
                     + "JOIN invitation i ON e.event_id = i.event_id "
                     + "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id "
                     + "JOIN guest g ON g.guest_id = i.guest_id "
-                    + "WHERE g.guest_id = '" + selectedGuest.getGuest_id() + "'");
+                    + "WHERE g.guest_id = '" + id + "'");
 
             while (rs.next()) {
                 eventDetailsList.add(new RSVPEventWrapper(rs.getString("event_name"),
@@ -112,21 +114,29 @@ public class A_ViewGuestProfileController {
             
             conn.close();
             rs.close();
+            
+            System.out.println("getGuestId" + id);
         } catch (Exception e) {
             System.out.println("table not created");
             e.printStackTrace();
         }
         
     }
+    public void passGuestName(String name){
+        this.guest_name = name;
+        System.out.println("pass guest name" + name);
+    }
 
     @FXML
-    private void btnInviteGuestWasClicked(ActionEvent event) throws IOException {
+    private void btnInviteGuestWasClicked(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestInviteEvent.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
         A_ViewGuestInviteEventController controller = loader.getController();
-        controller.passGuestName(guestName.getText());
-        controller.getGuestId(Integer.parseInt(guestId.getText()));
+        controller.passGuestName(guest_name);
+        controller.getGuestId(guest_id);
         guestsPane.getChildren().setAll(pane);
+        
+        System.out.println("btninviteguest guestid " + guest_id + "guest name" + guest_name);
     }
 
     @FXML
@@ -136,13 +146,24 @@ public class A_ViewGuestProfileController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("A_EditGuest.fxml"));
             AnchorPane pane = (AnchorPane) loader.load();
             A_EditGuestController controller = loader.getController();
-            controller.passData(Integer.parseInt(guestId.getText()));
-            controller.getGuestId(Integer.parseInt(guestId.getText()));
+            controller.loadGuestData(guest_id);
+            controller.getGuestId(guest_id);
             guestsPane.getChildren().setAll(pane);
+            
+             System.out.println("btninviteguest guestid " + guest_id);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+    
+     @FXML
+    public void btnGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestDashboard.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+       
+        guestsPane.getChildren().setAll(pane);
+        
     }
     
     

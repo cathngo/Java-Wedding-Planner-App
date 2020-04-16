@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -25,6 +26,8 @@ import javafx.scene.text.Text;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDTrueTypeFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 public class A_CreateRunsheetController {
@@ -109,31 +112,31 @@ public class A_CreateRunsheetController {
         
         //create pdf document
      
-        PDDocument document = new PDDocument();
         
-        
-        //create page
-        PDPage my_page = new PDPage();
-        document.addPage(my_page);
-        document.save(""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf");
-        document.close();
-        //load document
-        File file = new File(""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf"); 
-        PDDocument doc = PDDocument.load(file);
-        //get page
+        File source = new File(""+System.getProperty("user.dir")+"\\src\\main\\resources\\au\\edu\\unsw\\business\\infs2605\\fxstarterkit\\images\\event_runsheet.pdf");
+        File dest = new File(""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf");
+        Files.copy(source.toPath(), dest.toPath());
+        PDDocument doc = PDDocument.load(dest);
         PDPage page = doc.getPage(0);
-        //preparing content stream
-        PDPageContentStream contentStream = new PDPageContentStream(doc, page);
+        
+        PDFont edoFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+"\\src\\main\\resources\\edo.ttf")));
+        PDFont JSFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+"\\src\\main\\resources\\JosefinSans-Light.ttf")));
+        PDPageContentStream contentStream = new PDPageContentStream(doc, page,true,true,true);
+        
+        //event name font
         contentStream.beginText();
-        //set font
-        contentStream.setFont(PDType1Font.TIMES_ROMAN, 30);
+        contentStream.setFont(edoFont,50);
+        contentStream.setNonStrokingColor(249,193,118);
+        contentStream.newLineAtOffset(67, 673);
+        contentStream.setLeading(55f);
+        contentStream.showText(eventName);
+        contentStream.newLine();
+        //description black font
+        contentStream.setFont(JSFont,22);
         //setting position for line
         contentStream.newLineAtOffset(50, 700);
-        //set leading
-        contentStream.setLeading(25f);
-        
-        contentStream.showText("Runsheet for: " + eventName);
-        contentStream.newLine();
+        contentStream.setNonStrokingColor(0,0,0);
+        contentStream.setLeading(32);
         
         
         
@@ -144,6 +147,7 @@ public class A_CreateRunsheetController {
 
         //Ending the content stream
         contentStream.endText();
+        
        
 
         System.out.println("Content added");
@@ -153,7 +157,7 @@ public class A_CreateRunsheetController {
        
 
         //Saving the document
-        doc.save(new File((""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf")));
+        doc.save(dest);
 
         //Closing the document
         doc.close();

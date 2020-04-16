@@ -87,7 +87,7 @@ public class A_EditGuestController {
      
         
     } 
-     public void passData(int guestId) throws SQLException {
+     public void loadGuestData(int guestId) throws SQLException {
         
         Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
         ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM guest where guest_id =  " + guestId);

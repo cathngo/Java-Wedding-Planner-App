@@ -152,6 +152,8 @@ public class A_ViewEventInviteNewGuestController {
             resultSet.close();
 
             conn.close();
+            
+            System.out.println("btninvitetoevent guestcode" + guestCode +"guest id" +guestId+ "event Id" + eventId +"adminId" + LoginController.adminUser.getAdmin_id());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -168,6 +170,8 @@ public class A_ViewEventInviteNewGuestController {
         controller.getEventId(eventId);
         controller.getRsvpData(eventId);
         eventPane.getChildren().setAll(pane);
+        
+         System.out.println("btn guestlist eventid:" + eventId);
     }
     
     @FXML
@@ -177,6 +181,8 @@ public class A_ViewEventInviteNewGuestController {
         A_ViewEventController controller = loader.getController();
         controller.passEventId(eventId);
         eventPane.getChildren().setAll(pane);
+        
+          System.out.println("btn guestlist eventid:" + eventId);
      }
      
      @FXML
@@ -194,6 +200,8 @@ public class A_ViewEventInviteNewGuestController {
         controller.passData(eventName.getText());
         controller.getEventId(eventId);
         eventPane.getChildren().setAll(pane);
+         System.out.println("btn invite guests eventid:" + eventId);
+        
     }
     public void getEventId(int id){
         this.eventId = id;

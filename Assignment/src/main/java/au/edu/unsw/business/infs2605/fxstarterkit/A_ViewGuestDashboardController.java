@@ -27,12 +27,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class A_ViewGuestDashboardController implements Initializable {
 
-    @FXML
-    private Button btnInviteGuest;
-    @FXML
-    private Button btnCreateNewGuest;
-    @FXML
-    private Button btnViewGuests;
+
     @FXML
     private AnchorPane guestsPane;
     @FXML
@@ -45,7 +40,10 @@ public class A_ViewGuestDashboardController implements Initializable {
     private TableColumn<Guest, String> col_lastName;
     @FXML
     private TableColumn<Guest, String> col_guestEmail;
-
+    @FXML
+    private int guestId;
+    private String guestName;
+    
     ObservableList<Guest> guestList = FXCollections.observableArrayList();
 
     @Override
@@ -79,11 +77,19 @@ public class A_ViewGuestDashboardController implements Initializable {
      */
     @FXML
     private void loadInviteGuest(ActionEvent event) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestInviteEvent.fxml"));
+        Guest selectedGuest = guest_table.getSelectionModel().getSelectedItem();
+        guestId = selectedGuest.getGuest_id();
+        String guestFname = selectedGuest.getGuest_fname();
+        String guestLname = selectedGuest.getGuest_lname();
+        guestName = guestFname +" "+ guestLname;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_GuestsInviteEvent.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
-        A_ViewGuestInviteEventController controller = loader.getController();
-        controller.passData(guest_table.getSelectionModel().getSelectedItem());
+        A_GuestsInviteEventController controller = loader.getController();
+        controller.passGuestName(guestName);
+        controller.getGuestId(guestId);
         guestsPane.getChildren().setAll(pane);
+        
+        System.out.println("load invite guest guest id: " + guestId +" guest name:" + guestName);
     }
 
     @FXML
@@ -94,13 +100,20 @@ public class A_ViewGuestDashboardController implements Initializable {
 
     @FXML
     private void loadViewGuest(ActionEvent event) throws IOException, SQLException {
-
+        Guest selectedGuest = guest_table.getSelectionModel().getSelectedItem();
+        guestId = selectedGuest.getGuest_id();
+        String guestFname = selectedGuest.getGuest_fname();
+        String guestLname = selectedGuest.getGuest_lname();
+        guestName = guestFname +" "+ guestLname;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestProfile.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
         A_ViewGuestProfileController controller = loader.getController();
-        controller.passData(guest_table.getSelectionModel().getSelectedItem());
-        controller.getGuestId(guest_table.getSelectionModel().getSelectedItem());
+        controller.loadGuestData(guestId);
+        controller.passGuestName(guestName);
+        controller.getGuestId(guestId);
         guestsPane.getChildren().setAll(pane);
+        
+        System.out.println("load view guest guest id: " + guestId +" guest name:" + guestName);
     }
 
 }

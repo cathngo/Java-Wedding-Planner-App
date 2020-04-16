@@ -28,7 +28,7 @@ import javafx.scene.text.Text;
  *
  * @author cathy
  */
-public class A_ViewGuestInviteEventController implements Initializable {
+public class A_GuestsInviteEventController implements Initializable {
 
     @FXML
     private TableView<Event> viewGuestTable;
@@ -121,28 +121,14 @@ public class A_ViewGuestInviteEventController implements Initializable {
      }
      }    
       @FXML
-    public void btnBackWasClicked(ActionEvent event) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestProfile.fxml"));
+    public void btnBackGuestWasClicked(ActionEvent event) throws IOException, SQLException {
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestDashboard.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
-        A_ViewGuestProfileController controller = loader.getController();
-        controller.loadGuestData(guestId);
-        controller.getGuestId(guestId);
+       
         guestsPane.getChildren().setAll(pane);
-        
-          System.out.println("btn back guestId" + guestId);
     }
     
-    @FXML
-    public void btnViewGuestWasClicked(ActionEvent event) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestProfile.fxml"));
-        AnchorPane pane = (AnchorPane) loader.load();
-        A_ViewGuestProfileController controller = loader.getController();
-        controller.loadGuestData(guestId);
-        controller.getGuestId(guestId);
-        guestsPane.getChildren().setAll(pane);
-        
-          System.out.println("btn back guestId" + guestId);
-    }
+    
     @FXML
     public void btnGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestDashboard.fxml"));

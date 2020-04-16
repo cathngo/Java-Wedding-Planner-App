@@ -126,7 +126,7 @@ public class G_EditRSVPController {
              if (rb1.isSelected()){
                  rsvpPsmt.setString(1, yes);
              }else if (rb2.isSelected()){
-                 rsvpPsmt.setString(2,no);
+                 rsvpPsmt.setString(1,no);
              }
              rsvpPsmt.execute();
              rsvpPsmt.close();

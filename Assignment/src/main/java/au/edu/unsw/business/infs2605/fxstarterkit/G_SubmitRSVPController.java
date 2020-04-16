@@ -98,16 +98,22 @@ public class G_SubmitRSVPController {
             "WHERE event_id ='"+eventId+"'" +
             "AND guest_id ='"+LoginController.guestUser.getGuest_id()+"'");
              invitationId = rs.getInt(1);
+           
              rs.close();
-             String RsvpQuery = "UPDATE rsvp SET decision = ? WHERE invitation_id ='"+invitationId+"'"; 
- 
+             String RsvpQuery = "INSERT INTO rsvp" 
+                    + " (decision, invitation_id)"
+                    + " VALUES (?, ?)";
+        
+             
              PreparedStatement rsvpPsmt = conn.prepareStatement(RsvpQuery);
              
              if (rb1.isSelected()){
                  rsvpPsmt.setString(1, Yes);
              }else if (rb2.isSelected()){
-                 rsvpPsmt.setString(2,No);
+                 rsvpPsmt.setString(1,No);
              }
+             
+             rsvpPsmt.setInt(2, invitationId);
              rsvpPsmt.execute();
              rsvpPsmt.close();
          
@@ -123,7 +129,7 @@ public class G_SubmitRSVPController {
              
              guestPsmt.execute();
              guestPsmt.close();
-             rs.close();
+             
            
              conn.close();
          }catch (Exception e){

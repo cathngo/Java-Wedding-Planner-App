@@ -63,6 +63,7 @@ public class A_ViewEventGuestListController {
     
    
        public void getRsvpData(int id) throws SQLException {
+           
         pieChartData = FXCollections.observableArrayList();
 
         try {
@@ -102,7 +103,8 @@ public class A_ViewEventGuestListController {
             rs1.close();
             rs2.close();
             rs3.close();
-
+            
+            System.out.println("pie chart eventId: " +id);
 
         } catch (Exception e) {
             System.out.println("unsuccessful");
@@ -119,6 +121,8 @@ public class A_ViewEventGuestListController {
         A_ViewEventController controller = loader.getController();
         controller.passEventId(eventId);
         eventPane.getChildren().setAll(pane);
+        
+        System.out.println("view events event id" + eventId);
      }
      
       @FXML
@@ -137,6 +141,8 @@ public class A_ViewEventGuestListController {
         controller.passData(eventName.getText());
         controller.getEventId(eventId);
         eventPane.getChildren().setAll(pane);
+        
+        System.out.println("inviteguests eventid:" + eventId);
     }
     @FXML
     private void btnBackWasClicked(ActionEvent event) throws IOException {
@@ -186,6 +192,8 @@ public class A_ViewEventGuestListController {
         
         conn.close();
         rs.close();
+        
+         System.out.println("rsvptable event Id " +eventId);
         }catch(Exception e){
             System.out.println("table not created");
             e.printStackTrace();

@@ -152,6 +152,7 @@ import javafx.util.Callback;
             newGuestList.add(fname + " " + lname);
             guestListView.setItems(newGuestList);
             
+            System.out.println("btnAddtoList guestId" +id);
             // etc etc etc
         }
     }
@@ -168,6 +169,8 @@ import javafx.util.Callback;
         controller.getEventId(eventId);
         controller.getRsvpData(eventId);
         eventPane.getChildren().setAll(pane);
+        
+         System.out.println("back eventid:" + eventId);
     }
     
     @FXML
@@ -179,6 +182,8 @@ import javafx.util.Callback;
         controller.getEventId(eventId);
         controller.getRsvpData(eventId);
         eventPane.getChildren().setAll(pane);
+        
+         System.out.println("btn guestlit eventid:" + eventId);
     }
     
     @FXML
@@ -188,6 +193,8 @@ import javafx.util.Callback;
         A_ViewEventController controller = loader.getController();
         controller.passEventId(eventId);
         eventPane.getChildren().setAll(pane);
+        
+        System.out.println("btn view events eventid:" + eventId);
      }
      
     
@@ -199,6 +206,8 @@ import javafx.util.Callback;
         controller.getEventId(eventId);
         controller.passEventName(event_name);
         eventPane.getChildren().setAll(pane);
+        
+        System.out.println("btn invite new guests eventid:" + eventId);
     }
     @FXML
     public void btnEventsWasClicked(ActionEvent event) throws IOException {
@@ -219,12 +228,16 @@ import javafx.util.Callback;
              conn.close();
          
          System.out.println("succesfully updated");
+         
+         System.out.println("btninvitetoevent event Id" + eventId + "guest id" + guestId.get(i) +"admin id" + LoginController.adminUser.getAdmin_id());
         }
         }catch (Exception e){
             System.out.println("unable to invite");
             e.printStackTrace();
+            
         }
        
+        
     }
     
     

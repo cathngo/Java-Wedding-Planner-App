@@ -111,6 +111,7 @@ public class A_ViewAllEventsController implements Initializable{
         A_ViewEventController controller = loader.getController();
         controller.passEventId(eventId);
         eventPane.getChildren().setAll(pane);
+        System.out.println("view details event id:" + eventId);
     
         }
     
@@ -123,6 +124,7 @@ public class A_ViewAllEventsController implements Initializable{
     @FXML
     private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
         Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
+        eventId = selectedEvent.getEvent_id();
         eventName = selectedEvent.getEvent_name();
        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_EventInviteGuest.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
@@ -130,6 +132,8 @@ public class A_ViewAllEventsController implements Initializable{
         controller.passData(eventName);
         controller.getEventId(eventId);
         eventPane.getChildren().setAll(pane);
+        
+        System.out.println("invite guests event id:" + eventId);
     }
     
      
