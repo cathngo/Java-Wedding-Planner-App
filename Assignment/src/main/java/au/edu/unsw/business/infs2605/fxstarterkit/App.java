@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 /**
  * JavaFX App
  */
+
+//REMINDER TO MAKE THE README
 public class App extends Application {
 
     private static Scene scene;
@@ -25,7 +27,8 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
     
         
-
+        //A_InvitationPDFController.createNewInvPDF();
+        
         scene = new Scene(loadFXML("Login"));
 
         stage.setScene(scene);
@@ -49,8 +52,7 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-    public static void main(String[] args) throws SQLException {
-       
+    public static void main(String[] args) throws SQLException {  
         launch();
     }
 
