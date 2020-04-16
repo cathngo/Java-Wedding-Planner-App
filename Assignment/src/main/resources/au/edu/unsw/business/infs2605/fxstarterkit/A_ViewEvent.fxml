@@ -8,95 +8,95 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="eventPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_ViewEventController">
+<AnchorPane fx:id="eventPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_ViewEventController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="540.0" prefWidth="771.0">
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button fx:id="btnEvents" mnemonicParsing="false" onAction="#btnEventsWasClicked" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="95.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Events" textFill="#8fdca9" />
+                <Button fx:id="btnEvents" mnemonicParsing="false" onAction="#btnEventsWasClicked" prefHeight="27.0" prefWidth="83.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="149.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Events" textFill="#8fdca9" />
               </items>
             </ToolBar>
-            <AnchorPane prefHeight="49.0" prefWidth="600.0">
+            <AnchorPane prefHeight="72.0" prefWidth="771.0">
                <children>
-                  <Text fx:id="eventName" layoutX="27.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandy's Birthday" wrappingWidth="257.984375">
+                  <Text fx:id="eventName" layoutX="21.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandy's Birthday" wrappingWidth="354.984375">
                      <font>
-                        <Font size="28.0" />
+                        <Font size="29.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="265.0" prefWidth="600.0">
+            <AnchorPane prefHeight="354.0" prefWidth="771.0">
                <children>
-                  <Text layoutX="26.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
+                  <Text layoutX="22.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="203.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="24.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="24.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="24.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Instructions">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="eventDate" fill="#5e5e5e" layoutX="79.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="02/04/2020">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="eventTime" fill="#5e5e5e" layoutX="264.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6pm - 9pm">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="eventAddress" fill="#5e5e5e" layoutX="22.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sydney Opera House, Bennelong Point, Sydney NSW 2000">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="eventDesc" fill="#5e5e5e" layoutX="23.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your birthday is the day of your birth! It’s the yearly anniversary that marks the day you were born. Not everyone celebrates, but a birthday is a good excuse for a party and cake." wrappingWidth="671.3779907226562">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="266.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+                  <Text fx:id="eventInstructions" fill="#5e5e5e" layoutX="24.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your birthday is the day of your birth! It’s the yearly anniversary that marks the day you were born. Not everyone celebrates, but a birthday is a good excuse for a party and cake." wrappingWidth="692.3779907226562">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="26.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location">
+                  <Text layoutX="421.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event ID:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text layoutX="24.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+                  <Text fx:id="event_id" fill="#5e5e5e" layoutX="516.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="102">
                      <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="23.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Instructions">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="eventDate" fill="#5e5e5e" layoutX="68.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="02/04/2020">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="eventTime" fill="#5e5e5e" layoutX="311.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6pm - 9pm">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="eventAddress" fill="#5e5e5e" layoutX="26.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sydney Opera House, Bennelong Point, Sydney NSW 2000">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="eventDesc" fill="#5e5e5e" layoutX="24.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your birthday is the day of your birth! It’s the yearly anniversary that marks the day you were born. Not everyone celebrates, but a birthday is a good excuse for a party and cake." wrappingWidth="551.3779907226562">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="eventInstructions" fill="#5e5e5e" layoutX="23.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your birthday is the day of your birth! It’s the yearly anniversary that marks the day you were born. Not everyone celebrates, but a birthday is a good excuse for a party and cake." wrappingWidth="551.3779907226562">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="437.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event ID:">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="event_id" fill="#5e5e5e" layoutX="502.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="102">
-                     <font>
-                        <Font size="12.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnEdit" layoutX="29.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnEditWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit" textFill="WHITE" />
-                  <Button fx:id="btnGuestList" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnGuestListWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Guest List" textFill="WHITE" />
-                  <Circle fill="#bfbdbd" layoutX="291.0" layoutY="46.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="309.0" layoutY="46.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
+                  <Button fx:id="btnEdit" layoutX="97.0" layoutY="22.0" mnemonicParsing="false" onAction="#btnEditWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit" textFill="WHITE" />
+                  <Button fx:id="btnGuestList" layoutX="554.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnGuestListWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Guest List" textFill="WHITE" />
+                  <Circle fill="#bfbdbd" layoutX="380.0" layoutY="50.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="409.0" layoutY="50.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
                </children>
             </AnchorPane>
          </children>

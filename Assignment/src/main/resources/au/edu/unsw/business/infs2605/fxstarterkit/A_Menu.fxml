@@ -13,40 +13,89 @@
    <left>
       <VBox prefHeight="357.0" prefWidth="124.0" style="-fx-background-color: #89BD96#89BD96 #89BD96#89BD96;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btn_home" mnemonicParsing="false" onMouseClicked="#home" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Home" textFill="WHITE">
+            <Button fx:id="btn_home" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#home" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Home" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="29.0">
+                     <image>
+                        <Image url="@images/home-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="btn_dashboard" mnemonicParsing="false" onMouseClicked="#openDashboard" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Dashboard" textFill="WHITE">
+            <Button fx:id="btn_dashboard" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openDashboard" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Dashboard" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="19.0">
+                     <image>
+                        <Image url="@images/dashboard-icon-min-1024x1024.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="btn_events" mnemonicParsing="false" onMouseClicked="#openEvents" prefHeight="76.0" prefWidth="153.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Events" textFill="WHITE">
+            <Button fx:id="btn_events" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openEvents" prefHeight="76.0" prefWidth="153.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Events" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="24.0">
+                     <image>
+                        <Image url="@images/events-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="btn_guests" mnemonicParsing="false" onMouseClicked="#openGuests" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Guests" textFill="WHITE">
+            <Button fx:id="btn_guests" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openGuests" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Guests" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0">
+                     <image>
+                        <Image url="@images/guests-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="btn_invitation" mnemonicParsing="false" onMouseClicked="#openInvitation" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Invitation" textFill="WHITE">
+            <Button fx:id="btn_invitation" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openInvitation" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Invitation" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="17.0">
+                     <image>
+                        <Image url="@images/invitation-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="btn_runsheets" mnemonicParsing="false" onMouseClicked="#openRunsheets" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Runsheets" textFill="WHITE">
+            <Button fx:id="btn_runsheets" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openRunsheets" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Runsheets" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="21.0">
+                     <image>
+                        <Image url="@images/Screen%20Shot%202020-04-16%20at%206.09.33%20pm.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="btn_abouts" mnemonicParsing="false" onMouseClicked="#openAbouts" prefHeight="90.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Abouts" textFill="WHITE">
+            <Button fx:id="btn_abouts" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openAbouts" prefHeight="90.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Abouts" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="27.0">
+                     <image>
+                        <Image url="@images/about-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
       </VBox>
@@ -61,13 +110,18 @@
                         <Image url="@images/app-name.png" />
                      </image>
                   </ImageView>
+                  <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="834.0" layoutY="11.0">
+                     <image>
+                        <Image url="@images/avatar-icon.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>
       </HBox>
    </top>
    <center>
-      <AnchorPane fx:id="ap" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="ap" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="771.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="425.0" fitWidth="745.0" layoutX="16.0" layoutY="54.0">
                <image>
