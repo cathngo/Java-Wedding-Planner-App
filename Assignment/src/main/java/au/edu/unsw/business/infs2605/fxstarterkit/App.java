@@ -35,7 +35,7 @@ public class App extends Application {
         stage.show();
         DatabaseManager.setupDatabaseOnFirstRun();
         //use this for testing and viewing table content
-        DatabaseManager.printObjectsInTable("event");
+        //DatabaseManager.printObjectsInTable("event");
         DatabaseManager.printObjectsInTable("admin");
         DatabaseManager.printObjectsInTable("guest");
         
