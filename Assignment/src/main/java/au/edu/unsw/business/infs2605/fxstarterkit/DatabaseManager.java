@@ -153,7 +153,7 @@ public class DatabaseManager {
                     + "decision TEXT, "
                     + "date_time TEXT, "
               
-                    + "invitation_id INTEGER, "
+                    + "invitation_id INTEGER UNIQUE, "
                     + "FOREIGN KEY(invitation_id) REFERENCES invitation(invitation_id)) ";
 
             Statement smt = sharedConnection.createStatement();

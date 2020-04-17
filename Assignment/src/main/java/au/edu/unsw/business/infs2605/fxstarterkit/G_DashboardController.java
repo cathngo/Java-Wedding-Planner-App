@@ -111,8 +111,10 @@ public class G_DashboardController implements Initializable {
         selectedEvent = dashboard_table.getSelectionModel().getSelectedItem();
             
        
+           
+       
         try {
-            
+            if (selectedEvent.getDecision() == null){
             String date = selectedEvent.getEvent_date();
             String name = selectedEvent.getEvent_name().replace("'", "''");
             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
@@ -130,7 +132,11 @@ public class G_DashboardController implements Initializable {
             controller.getEventId(eventId);
             controller.passEventId(eventId);
             dashboardPane.getChildren().setAll(pane);
-            
+            } else {
+            String header = "Error: You have already submitted an RSVP";
+            String content = "To change your response, go to 'Edit RSVP'";
+            Alertbox.AlertError(header, content);
+            }
              System.out.println("btnRsvp event id: " + eventId);
         } catch (Exception e) {
 
@@ -140,8 +146,49 @@ public class G_DashboardController implements Initializable {
             e.printStackTrace();
         
     } 
+       }
     
+    @FXML public void btnEditRsvpWasClicked(ActionEvent event) throws IOException {
+        selectedEvent = dashboard_table.getSelectionModel().getSelectedItem();
+            
+       
+           
+       
+        try {
+            if (selectedEvent.getDecision() != null){
+            String date = selectedEvent.getEvent_date();
+            String name = selectedEvent.getEvent_name().replace("'", "''");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT event_id "
+                    + "FROM event "
+                    + "WHERE event_name ='" + name + "'"
+                    + "AND event_date='" + date + "'");
+
+            eventId = rs.getInt(1);
+            rs.close();
+            conn.close();
+            FXMLLoader viewEventloader = new FXMLLoader(getClass().getResource("G_DashboardEditRSVP.fxml"));
+            AnchorPane pane = (AnchorPane) viewEventloader.load();
+            G_DashboardEditRSVPController controller = viewEventloader.getController();
+            controller.getEventId(eventId);
+            controller.passEventId(eventId);
+            dashboardPane.getChildren().setAll(pane);
+            } else {
+            String header = "Error: You have not yet submitted an RSVP";
+            String content = "To submit your response, go to 'RSVP to Event'";
+            Alertbox.AlertError(header, content);
+            }
+             System.out.println("btnRsvp event id: " + eventId);
+        } catch (Exception e) {
+
+            String header = "Unable to edit RSVP";
+            String content = "Please select an event from the table ";
+            Alertbox.AlertError(header, content);
+            e.printStackTrace();
+        
+    } 
+}
 }
 
-}
+
 

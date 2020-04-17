@@ -52,6 +52,7 @@
                   <AnchorPane layoutX="8.0" layoutY="244.0" prefHeight="79.0" prefWidth="600.0">
                      <children>
                         <Button fx:id="btnViewDetails" layoutX="119.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Details" textFill="WHITE" />
+                        <Button fx:id="btnRsvp1" layoutX="394.0" layoutY="-11.0" mnemonicParsing="false" onAction="#btnEditRsvpWasClicked" prefHeight="52.0" prefWidth="107.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit RSVP" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </children>
