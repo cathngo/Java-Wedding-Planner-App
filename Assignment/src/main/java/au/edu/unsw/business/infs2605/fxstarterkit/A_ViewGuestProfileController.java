@@ -134,6 +134,7 @@ public class A_ViewGuestProfileController {
         A_ViewGuestInviteEventController controller = loader.getController();
         controller.passGuestName(guest_name);
         controller.getGuestId(guest_id);
+       
         guestsPane.getChildren().setAll(pane);
         
         System.out.println("btninviteguest guestid " + guest_id + "guest name" + guest_name);
@@ -148,6 +149,7 @@ public class A_ViewGuestProfileController {
             A_EditGuestController controller = loader.getController();
             controller.loadGuestData(guest_id);
             controller.getGuestId(guest_id);
+            controller.getGuestName(guest_name);
             guestsPane.getChildren().setAll(pane);
             
              System.out.println("btninviteguest guestid " + guest_id);

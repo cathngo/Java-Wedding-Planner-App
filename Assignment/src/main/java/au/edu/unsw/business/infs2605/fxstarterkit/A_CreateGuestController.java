@@ -87,9 +87,15 @@ public class A_CreateGuestController {
              psmt.close();
        
              conn.close();
+             String header = "Guest created!";
+            String content = "Guest was successfully created!";
+            Alertbox.AlertInfo(header, content);
              System.out.println("data inserted successfully");
              
         } catch(Exception e){
+            String header = "Unable to create guest";
+            String content = "Please fill out all contents of 'create guest'";
+            Alertbox.AlertError(header, content);
             e.printStackTrace();
             System.out.println("data not inserted");
         }
@@ -102,6 +108,15 @@ public class A_CreateGuestController {
     private void btnBackWasClicked(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewGuestDashboard.fxml"));
         guestsPane.getChildren().setAll(pane);
+    }
+    
+    @FXML
+    public void btnGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestDashboard.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+       
+        guestsPane.getChildren().setAll(pane);
+        
     }
 
 }

@@ -116,7 +116,7 @@ public class A_InvitationPDFController {
                     contentStream.showText(thisLine);
                 }
                 if(string.charAt(y) == ' '){
-                    if((font.getStringWidth(string.substring(firstLetter,y)) / 1000 * 22)>width){
+                    if((font.getStringWidth(string.substring(firstLetter,y)) / 1000 * fontSize)>width){
                         contentStream.newLine();
                         thisLine = string.substring(firstLetter,lastLetter);
                         contentStream.showText(thisLine);

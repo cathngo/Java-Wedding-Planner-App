@@ -50,7 +50,7 @@ public class A_ViewGuestInviteEventController implements Initializable {
  
     
     private int guestId;
-   
+   private String guest_name;
     
 
     ObservableList<Event> oblist = FXCollections.observableArrayList();
@@ -83,7 +83,7 @@ public class A_ViewGuestInviteEventController implements Initializable {
     }
     
     public void passGuestName(String name) throws SQLException {
-       
+       this.guest_name = name;
         guestName.setText(name);
         System.out.println("passguestName" + name);
 
@@ -106,11 +106,16 @@ public class A_ViewGuestInviteEventController implements Initializable {
          
          
              conn.close();
-         
+         String header = "Invite Success";
+            String content = "Guest successfully invited to event!";
+            Alertbox.AlertInfo(header, content);
          System.out.println("succesfully updated");
           System.out.println("invitetoevent event id, guestid, admin id" + eventId +guestId+LoginController.adminUser.getAdmin_id());
 
      }catch(Exception e){
+         String header = "Invite Unsuccessful";
+            String content = "Please select an event from the table first";
+            Alertbox.AlertError(header, content);
          System.out.println("unsuccessful");
              System.out.println("eventId:" + viewGuestTable.getSelectionModel().getSelectedItem().getEvent_id());
              System.out.println("guestid:" + guestId);
@@ -127,6 +132,7 @@ public class A_ViewGuestInviteEventController implements Initializable {
         A_ViewGuestProfileController controller = loader.getController();
         controller.loadGuestData(guestId);
         controller.getGuestId(guestId);
+        controller.passGuestName(guest_name);
         guestsPane.getChildren().setAll(pane);
         
           System.out.println("btn back guestId" + guestId);

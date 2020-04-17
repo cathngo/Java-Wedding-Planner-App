@@ -18,6 +18,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -140,7 +142,7 @@ import javafx.util.Callback;
     
     @FXML
     void btnAddToListWasClicked(ActionEvent event) {
-        
+        try{
         for (TablePosition<Guest, ?> pos : existingGuestTable.getSelectionModel().getSelectedCells()) {
 
             int row = pos.getRow();
@@ -154,6 +156,11 @@ import javafx.util.Callback;
             
             System.out.println("btnAddtoList guestId" +id);
             // etc etc etc
+        }
+        }catch (Exception e){
+            String header = "Unable to add to guest list";
+            String content = "Please select existing guests first!";
+            Alertbox.AlertError(header, content);
         }
     }
     
@@ -226,12 +233,18 @@ import javafx.util.Callback;
          
          
              conn.close();
-         
+            
          System.out.println("succesfully updated");
          
          System.out.println("btninvitetoevent event Id" + eventId + "guest id" + guestId.get(i) +"admin id" + LoginController.adminUser.getAdmin_id());
         }
+        String header = "Invite success!";
+            String content = "Guests have been successfully invited to event";
+            Alertbox.AlertInfo(header, content);
         }catch (Exception e){
+            String header = "Invite unsuccessful";
+            String content = "Please select and add existing guests to guest list first!";
+            Alertbox.AlertError(header, content);
             System.out.println("unable to invite");
             e.printStackTrace();
             

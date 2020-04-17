@@ -77,7 +77,7 @@ public class G_EditRSVPController {
                rb1.setSelected(true);
            } else if (decision.equals(rb2.getText())){
                rb2.setSelected(true);
-           }
+           } 
            
         
             eventName.setText(name);
@@ -146,10 +146,15 @@ public class G_EditRSVPController {
              rs.close();
            
              conn.close();
-             
+             String header = "Update Success!";
+            String content = "RSVP was successfully edited!";
+            Alertbox.AlertInfo(header, content);
              
         } catch(Exception e){
             System.out.println("data not inserted");
+            String header = "Update Unsuccessful";
+            String content = "Please select if you can attend this event";
+            Alertbox.AlertError(header, content);
             e.printStackTrace();
         } 
     }
@@ -162,6 +167,8 @@ public class G_EditRSVPController {
         controller.getEventId(eventId);
         controller.passEventId(eventId);
         dashboardPane.getChildren().setAll(pane);
+        
+         System.out.println("btnBack event id: " + eventId);
     }
     @FXML
     public void btnRsvpWasClicked(ActionEvent event) throws IOException, SQLException{
@@ -171,6 +178,8 @@ public class G_EditRSVPController {
         controller.getEventId(eventId);
         controller.passEventId(eventId);
         dashboardPane.getChildren().setAll(pane);
+        
+         System.out.println("btnRsvp event id: " + eventId);
     }
     @FXML
    public void btnViewDetailsWasClicked(ActionEvent event) throws IOException, SQLException{
@@ -180,6 +189,8 @@ public class G_EditRSVPController {
         controller.getEventId(eventId);
         controller.passEventId(eventId);
         dashboardPane.getChildren().setAll(pane);
+        
+         System.out.println("btnViewDetails event id: " + eventId);
    }
    
   

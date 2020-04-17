@@ -93,16 +93,27 @@ public class G_ViewRSVPController {
         controller.getEventId(eventId);
         controller.passEventId(eventId);
         dashboardPane.getChildren().setAll(pane);
+        
+         System.out.println("btnBack event id: " + eventId);
    }
    @FXML
    public void btnEditWasClicked(ActionEvent event) throws IOException, SQLException{
+       
+       if (rsvpDecision.getText().equals("Yes") || rsvpDecision.getText().equals("No")){
        FXMLLoader loader = new FXMLLoader(getClass().getResource("G_EditRSVP.fxml"));
         AnchorPane pane = (AnchorPane)loader.load();
         G_EditRSVPController controller = loader.getController();
         controller.getEventId(eventId);
+        
         controller.passEventId(eventId);
         dashboardPane.getChildren().setAll(pane);
-       
+        
+         System.out.println("btnEdit event id: " + eventId);
+       }else {
+           String header = "Error: RSVP is null";
+            String content = "Please first submit an RSVP to this event from the dashboard!";
+            Alertbox.AlertError(header, content);
+       }
    }
    @FXML
     public void btnDashboardWasClicked(ActionEvent event) throws IOException{
@@ -119,6 +130,8 @@ public class G_ViewRSVPController {
         controller.getEventId(eventId);
         controller.passEventId(eventId);
         dashboardPane.getChildren().setAll(pane);
+        
+         System.out.println("btnViewDetails event id: " + eventId);
    }
    
 

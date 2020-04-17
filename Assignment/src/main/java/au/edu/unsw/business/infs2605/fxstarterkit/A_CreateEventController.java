@@ -77,10 +77,17 @@ public class A_CreateEventController {
              psmt.close();
        
              conn.close();
+             
+             String header = "Event created!";
+            String content = "Event was successfully created!";
+            Alertbox.AlertInfo(header, content);
              System.out.println("data inserted successfully");
              
         } catch(Exception e){
             e.printStackTrace();
+            String header = "Unable to create event";
+            String content = "Please fill out all contents of 'create event'";
+            Alertbox.AlertError(header, content);
             System.out.println("data not inserted");
            
         } 
@@ -95,4 +102,5 @@ public class A_CreateEventController {
         controller.passData(eventName.getText());
         eventPane.getChildren().setAll(pane);
     }
+    
 }

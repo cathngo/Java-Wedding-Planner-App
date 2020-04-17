@@ -130,10 +130,15 @@ public class G_SubmitRSVPController {
              guestPsmt.execute();
              guestPsmt.close();
              
-           
+           String header = "RSVP Success!";
+            String content = "RSVP was successfully submitted!";
+            Alertbox.AlertInfo(header, content);
              conn.close();
          }catch (Exception e){
              e.printStackTrace();
+             String header = "RSVP Unsuccessful";
+            String content = "Please select if you can attend this event or not";
+            Alertbox.AlertError(header, content);
          }
              
 }

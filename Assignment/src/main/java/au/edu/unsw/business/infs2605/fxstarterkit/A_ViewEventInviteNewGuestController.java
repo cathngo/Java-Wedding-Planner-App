@@ -131,11 +131,16 @@ public class A_ViewEventInviteNewGuestController {
         } catch(Exception e){
             e.printStackTrace();
             System.out.println("data not inserted");
+            String header = "Unable to add to guest list";
+            String content = "Please fill out all contents of 'create new guest'";
+            Alertbox.AlertError(header, content);
         }
+        
+        
         
        guestList.add(FirstName + " " + LastName);
        guestListView.setItems(guestList);
-     
+        
         
     }
 
@@ -154,8 +159,13 @@ public class A_ViewEventInviteNewGuestController {
             conn.close();
             
             System.out.println("btninvitetoevent guestcode" + guestCode +"guest id" +guestId+ "event Id" + eventId +"adminId" + LoginController.adminUser.getAdmin_id());
-
+            String header = "Invite success!";
+            String content = "Guests have been successfully invited to event";
+            Alertbox.AlertInfo(header, content);
         } catch (Exception e) {
+            String header = "Invite unsuccessful";
+            String content = "Please create and add a guest to the guest list first";
+            Alertbox.AlertError(header, content);
             e.printStackTrace();
         }
 

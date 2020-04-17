@@ -77,9 +77,14 @@ public class A_EditEventController {
              conn.close();
              
              System.out.println("data updated successfully for event id =" + eventId);
-             
+             String header = "Update Success!";
+            String content = "Successfully edited event!";
+            Alertbox.AlertInfo(header, content);
         } catch(Exception e){
             System.out.println("data not inserted");
+            String header = "Update Unsuccessful";
+            String content = "Please fill out all contents";
+            Alertbox.AlertError(header, content);
             e.printStackTrace();
         } 
     }

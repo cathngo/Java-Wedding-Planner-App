@@ -41,6 +41,7 @@ public class A_EditGuestController {
     private AnchorPane guestsPane;
     
     private int guestId;
+    private String guestName;
     
     @FXML
     public void btnUpdateGuestWasClicked(ActionEvent event){
@@ -76,10 +77,15 @@ public class A_EditGuestController {
              psmt.execute();
              psmt.close();
              conn.close();
-             
+            String header = "Update Success!";
+            String content = "Guest was successfully edited!";
+            Alertbox.AlertInfo(header, content);
              System.out.println("data updated successfully");
              
         } catch(Exception e){
+            String header = "Update Unsuccessful";
+            String content = "Please fill out all contents of 'edit guest'";
+            Alertbox.AlertError(header, content);
             System.out.println("data not inserted");
             e.printStackTrace();
         } 
@@ -125,9 +131,39 @@ public class A_EditGuestController {
         this.guestId = id;
     }
      
+     public void getGuestName(String name){
+         this.guestName = name;
+     }
+    
      @FXML
-     private void btnBackWasClicked(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewGuestProfile.fxml"));
-        guestsPane.getChildren().setAll(pane);
+     private void btnBackWasClicked(ActionEvent event) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestProfile.fxml"));
+            AnchorPane pane = (AnchorPane) loader.load();
+            A_ViewGuestProfileController controller = loader.getController();
+            controller.loadGuestData(guestId);
+            controller.passGuestName(guestName);
+            controller.getGuestId(guestId);
+            guestsPane.getChildren().setAll(pane);
     }
+     @FXML
+     private void btnViewGuestClicked(ActionEvent event) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestProfile.fxml"));
+            AnchorPane pane = (AnchorPane) loader.load();
+            A_ViewGuestProfileController controller = loader.getController();
+            controller.loadGuestData(guestId);
+            controller.passGuestName(guestName);
+            controller.getGuestId(guestId);
+            guestsPane.getChildren().setAll(pane);
+    }
+     @FXML
+    public void btnGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestDashboard.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+       
+        guestsPane.getChildren().setAll(pane);
+        
+    }
+     
+     
 }
+        

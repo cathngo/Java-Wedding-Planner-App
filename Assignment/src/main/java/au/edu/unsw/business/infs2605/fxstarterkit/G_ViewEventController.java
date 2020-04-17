@@ -81,6 +81,8 @@ public class G_ViewEventController {
         controller.passEventId(eventId);
         dashboardPane.getChildren().setAll(pane);
         
+         System.out.println("btnViewRsvp event id: " + eventId);
+        
         
     }
     @FXML

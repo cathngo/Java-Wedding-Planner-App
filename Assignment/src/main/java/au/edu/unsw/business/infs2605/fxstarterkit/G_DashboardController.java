@@ -1,10 +1,10 @@
-
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import static java.sql.JDBCType.NULL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -25,7 +25,7 @@ import javafx.scene.robot.Robot;
  * @author jaydenso
  */
 public class G_DashboardController implements Initializable {
-    
+
     @FXML
     private TableView<RSVPEventWrapper> dashboard_table;
     @FXML
@@ -43,7 +43,7 @@ public class G_DashboardController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-         try {
+        try {
             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
             ResultSet rs = conn.createStatement().executeQuery("SELECT e.event_id, e.event_name, e.event_date, r.decision "
                     + "FROM event e "
@@ -51,89 +51,97 @@ public class G_DashboardController implements Initializable {
                     + "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id "
                     + "JOIN guest g ON g.guest_id = i.guest_id "
                     + "WHERE g.guest_id = '" + LoginController.guestUser.getGuest_id() + "'");
-            
+
             while (rs.next()) {
                 eventList.add(new RSVPEventWrapper(rs.getString("event_name"),
                         rs.getString("event_date"), rs.getString("decision")));
-                
-                
+
             }
             col_eventName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
             col_eventDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
             col_eventRsvp.setCellValueFactory(new PropertyValueFactory<>("decision"));
 
             dashboard_table.setItems(eventList);
-            
+
             conn.close();
             rs.close();
         } catch (Exception e) {
             System.out.println("table not created");
             e.printStackTrace();
         }
-         
-      
+
     }
-    
+
     @FXML
-    private void btnViewDetailsWasClicked(ActionEvent event) throws IOException, SQLException{
-        selectedEvent = dashboard_table.getSelectionModel().getSelectedItem();
-        String date = selectedEvent.getEvent_date();
-        String name = selectedEvent.getEvent_name().replace("'","''");
+    private void btnViewDetailsWasClicked(ActionEvent event) throws IOException, SQLException {
+
         try {
+            selectedEvent = dashboard_table.getSelectionModel().getSelectedItem();
+            String date = selectedEvent.getEvent_date();
+            String name = selectedEvent.getEvent_name().replace("'", "''");
             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
             ResultSet rs = conn.createStatement().executeQuery("SELECT event_id "
                     + "FROM event "
-                    + "WHERE event_name ='"+name+"'"
-                    + "AND event_date='"+date+"'");
-            
+                    + "WHERE event_name ='" + name + "'"
+                    + "AND event_date='" + date + "'");
+
             eventId = rs.getInt(1);
             rs.close();
             conn.close();
-        }catch (Exception e){
-                    e.printStackTrace();
-                    }
-        
-        FXMLLoader viewEventloader = new FXMLLoader(getClass().getResource("G_ViewEvent.fxml"));
-        AnchorPane pane = (AnchorPane)viewEventloader.load();
-        G_ViewEventController viewEventController = viewEventloader.getController();
-        viewEventController.getEventId(eventId);
-        viewEventController.passEventId(eventId);
-        dashboardPane.getChildren().setAll(pane);
-       
-        
-        
-        
+
+            FXMLLoader viewEventloader = new FXMLLoader(getClass().getResource("G_ViewEvent.fxml"));
+            AnchorPane pane = (AnchorPane) viewEventloader.load();
+            G_ViewEventController viewEventController = viewEventloader.getController();
+            viewEventController.getEventId(eventId);
+            viewEventController.passEventId(eventId);
+            dashboardPane.getChildren().setAll(pane);
+            
+            System.out.println("btnViewDetails event id: " + eventId);
+        } catch (Exception e) {
+            String header = "Unable to view details of event";
+            String content = "Please select an event from the table ";
+            Alertbox.AlertError(header, content);
+            e.printStackTrace();
         }
-    
-        
-    
+
+    }
+
     @FXML
-    public void btnRsvpWasClicked(ActionEvent event) throws IOException, SQLException{
+    public void btnRsvpWasClicked(ActionEvent event) throws IOException, SQLException {
         selectedEvent = dashboard_table.getSelectionModel().getSelectedItem();
-        String date = selectedEvent.getEvent_date();
-        String name = selectedEvent.getEvent_name().replace("'","''");
+            
+       
         try {
+            
+            String date = selectedEvent.getEvent_date();
+            String name = selectedEvent.getEvent_name().replace("'", "''");
             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
             ResultSet rs = conn.createStatement().executeQuery("SELECT event_id "
                     + "FROM event "
-                    + "WHERE event_name ='"+name+"'"
-                    + "AND event_date='"+date+"'");
-            
+                    + "WHERE event_name ='" + name + "'"
+                    + "AND event_date='" + date + "'");
+
             eventId = rs.getInt(1);
             rs.close();
             conn.close();
-        }catch (Exception e){
-                    e.printStackTrace();
-                    }
+            FXMLLoader viewEventloader = new FXMLLoader(getClass().getResource("G_SubmitRSVP.fxml"));
+            AnchorPane pane = (AnchorPane) viewEventloader.load();
+            G_SubmitRSVPController controller = viewEventloader.getController();
+            controller.getEventId(eventId);
+            controller.passEventId(eventId);
+            dashboardPane.getChildren().setAll(pane);
+            
+             System.out.println("btnRsvp event id: " + eventId);
+        } catch (Exception e) {
+
+            String header = "Unable to RSVP to event";
+            String content = "Please select an event from the table ";
+            Alertbox.AlertError(header, content);
+            e.printStackTrace();
         
-        
-        FXMLLoader viewEventloader = new FXMLLoader(getClass().getResource("G_SubmitRSVP.fxml"));
-        AnchorPane pane = (AnchorPane)viewEventloader.load();
-        G_SubmitRSVPController controller = viewEventloader.getController();
-        controller.getEventId(eventId);
-        controller.passEventId(eventId);
-        dashboardPane.getChildren().setAll(pane);
-    }
-    
+    } 
     
 }
+
+}
+
