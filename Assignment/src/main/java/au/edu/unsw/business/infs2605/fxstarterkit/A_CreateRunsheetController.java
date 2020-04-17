@@ -129,7 +129,9 @@ public class A_CreateRunsheetController {
         contentStream.setNonStrokingColor(249,193,118);
         contentStream.newLineAtOffset(67, 650);
         contentStream.setLeading(18f);
-        contentStream.showText(eventName);
+       
+       
+        A_InvitationPDFController.insertTextColumn(contentStream, eventName , edoFont , 45, 400, 35);
         contentStream.newLine();
         //description black font
         
@@ -142,7 +144,7 @@ public class A_CreateRunsheetController {
     
 
         for (int i = 0; i < event_time.size(); i++) {
-        A_InvitationPDFController.insertTextColumn(contentStream, event_time.get(i) + ": " + event_activity.get(i), JSFont, 14, 750, 14);
+        A_InvitationPDFController.insertTextColumn(contentStream, event_time.get(i) + ": " + event_activity.get(i), JSFont, 14, 450, 14);
         //contentStream.showText(event_time.get(i) + ": " + event_activity.get(i));
         contentStream.newLine();
         }
@@ -164,9 +166,11 @@ public class A_CreateRunsheetController {
         //Closing the document
         doc.close();
         System.out.println("successfully printed pdf");
-        
-        //BLOB runsheet = new BLOB();
-        //runsheet.updateRunsheet(eventId, "runsheet" + eventId + ".pdf");
+        String header = "Runsheet Success!";
+        String content = "Runsheet was successfully created!";
+        Alertbox.AlertInfo(header, content);
+        BLOB runsheet = new BLOB();
+        runsheet.updateRunsheet(eventId, "runsheet" + eventId + ".pdf");
       
     }
     

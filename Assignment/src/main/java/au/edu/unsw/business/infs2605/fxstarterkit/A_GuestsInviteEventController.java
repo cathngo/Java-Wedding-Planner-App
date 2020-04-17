@@ -67,15 +67,11 @@ public class A_GuestsInviteEventController implements Initializable {
                         rs.getString("event_name"), rs.getString("event_date"), rs.getString("event_start_time"),
                         rs.getString("event_end_time")));
             }
-            String header = "Invite Success";
-            String content = "Guest successfully invited to event!";
-            Alertbox.AlertInfo(header, content);
+            
         conn.close();
         rs.close();
         } catch (Exception e) {
-            String header = "Invite Unsuccessful";
-            String content = "Please select an event from the table first";
-            Alertbox.AlertError(header, content);
+           
             System.out.println("table not created");
         }
 
@@ -112,11 +108,16 @@ public class A_GuestsInviteEventController implements Initializable {
          
          
              conn.close();
-         
+         String header = "Invite Success";
+            String content = "Guest successfully invited to event!";
+            Alertbox.AlertInfo(header, content);
          System.out.println("succesfully updated");
           System.out.println("invitetoevent event id, guestid, admin id" + eventId +guestId+LoginController.adminUser.getAdmin_id());
 
      }catch(Exception e){
+          String header = "Invite Unsuccessful";
+            String content = "Please select an event from the table first";
+            Alertbox.AlertError(header, content);
          System.out.println("unsuccessful");
              System.out.println("eventId:" + viewGuestTable.getSelectionModel().getSelectedItem().getEvent_id());
              System.out.println("guestid:" + guestId);
