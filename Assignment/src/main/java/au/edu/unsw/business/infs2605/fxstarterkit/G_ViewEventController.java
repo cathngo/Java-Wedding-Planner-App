@@ -36,36 +36,23 @@ public class G_ViewEventController {
     private int eventId;
     
     public void passEventId(int id) throws SQLException {
-        
+        this.eventId = id;
    
 
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM event where event_id ='"+id+"'");
-
-        while (rs.next()) {
-            
-            String name = rs.getString("event_name");
-            String date = rs.getString("event_date");
-            String sTime = rs.getString("event_start_time");
-            String eTime = rs.getString("event_end_time");
-            String location = rs.getString("event_address");
-            String description = rs.getString("event_description");
-            String instructions = rs.getString("event_instructions");
-            
+        Event myEvent = DatabaseManager.getEventsByEventId(id);
         
-            eventName.setText(name);
-            eventDate.setText(date);
-            eventTime.setText(sTime + " - " + eTime);
-            eventAddress.setText(location);
-            eventDesc.setText(description);
-            eventInstructions.setText(instructions);
+            eventName.setText(myEvent.getEvent_name());
+            eventDate.setText(myEvent.getEvent_date());
+            eventTime.setText(myEvent.getEvent_start_time() + " - " + myEvent.getEvent_end_time());
+            eventAddress.setText(myEvent.getEvent_address());
+            eventDesc.setText(myEvent.getEvent_description());
+            eventInstructions.setText(myEvent.getEvent_instructions());
         
         }
         
-        conn.close();
-        rs.close();
+       
 
-    }
+    
     
     public void getEventId(int id){
         this.eventId = id;

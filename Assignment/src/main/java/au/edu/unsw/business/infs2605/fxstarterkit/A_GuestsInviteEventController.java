@@ -29,7 +29,7 @@ import javafx.scene.text.Text;
  * @author cathy
  */
 public class A_GuestsInviteEventController implements Initializable {
-
+    
     @FXML
     private TableView<Event> viewGuestTable;
     @FXML
@@ -47,102 +47,80 @@ public class A_GuestsInviteEventController implements Initializable {
     @FXML
     private AnchorPane guestsPane;
     
- 
-    
     private int guestId;
-   
     
-
     ObservableList<Event> oblist = FXCollections.observableArrayList();
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs = conn.createStatement().executeQuery("select * from event");
-
-            while (rs.next()) {
-                oblist.add(new Event(rs.getInt("event_id"),
-                        rs.getString("event_name"), rs.getString("event_date"), rs.getString("event_start_time"),
-                        rs.getString("event_end_time")));
-            }
-            
-        conn.close();
-        rs.close();
+            viewGuestTable.setItems(DatabaseManager.getEvents());
+            col_eventId.setCellValueFactory(new PropertyValueFactory<>("event_id"));
+            col_eventName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
+            col_eventDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
+            col_startTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
+            col_endTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
         } catch (Exception e) {
-           
+            
             System.out.println("table not created");
+            e.printStackTrace();
         }
-
-        col_eventId.setCellValueFactory(new PropertyValueFactory<>("event_id"));
-        col_eventName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
-        col_eventDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
-        col_startTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
-        col_endTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
         
-        viewGuestTable.setItems(oblist);
     }
     
     public void passGuestName(String name) throws SQLException {
-       
+        
         guestName.setText(name);
         System.out.println("passguestName" + name);
-
-        }
+        
+    }
     
-   
-    
-    public void getGuestId(int id){
+    public void getGuestId(int id) {
         this.guestId = id;
         System.out.println("getguestId " + id);
     }
-     @FXML
-     public void btnInviteToEventWasClicked(ActionEvent event) throws SQLException{
-         try{
-         int eventId = viewGuestTable.getSelectionModel().getSelectedItem().getEvent_id();
-         
-         
-         Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-         int rs = conn.createStatement().executeUpdate("INSERT INTO invitation(event_id, guest_id, admin_id) SELECT '"+eventId+"', '"+guestId+"','"+LoginController.adminUser.getAdmin_id()+"' WHERE NOT EXISTS(SELECT 1 FROM invitation WHERE event_id ='"+eventId+"' AND guest_id ='"+guestId+"')");
-         
-         
-             conn.close();
-         String header = "Invite Success";
+
+    @FXML
+    public void btnInviteToEventWasClicked(ActionEvent event) throws SQLException {
+        try {
+            int eventId = viewGuestTable.getSelectionModel().getSelectedItem().getEvent_id();
+            DatabaseManager.inviteToEvent(eventId, guestId);
+            
+            String header = "Invite Success";
             String content = "Guest successfully invited to event!";
             Alertbox.AlertInfo(header, content);
-         System.out.println("succesfully updated");
-          System.out.println("invitetoevent event id, guestid, admin id" + eventId +guestId+LoginController.adminUser.getAdmin_id());
-
-     }catch(Exception e){
-          String header = "Invite Unsuccessful";
+            System.out.println("succesfully updated");
+            System.out.println("invitetoevent event id, guestid, admin id" + eventId + guestId + LoginController.adminUser.getAdmin_id());
+            
+        } catch (Exception e) {
+            String header = "Invite Unsuccessful";
             String content = "Please select an event from the table first";
             Alertbox.AlertError(header, content);
-         System.out.println("unsuccessful");
-             System.out.println("eventId:" + viewGuestTable.getSelectionModel().getSelectedItem().getEvent_id());
-             System.out.println("guestid:" + guestId);
-             System.out.println(LoginController.adminUser.getAdmin_id());
-         e.printStackTrace();
-         
+            System.out.println("unsuccessful");
+            System.out.println("eventId:" + viewGuestTable.getSelectionModel().getSelectedItem().getEvent_id());
+            System.out.println("guestid:" + guestId);
+            System.out.println(LoginController.adminUser.getAdmin_id());
+            e.printStackTrace();
             
-     }
-     }    
-      @FXML
+        }
+    }    
+
+    @FXML
     public void btnBackGuestWasClicked(ActionEvent event) throws IOException, SQLException {
-       FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestDashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestDashboard.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
-       
+        
         guestsPane.getChildren().setAll(pane);
     }
-    
     
     @FXML
     public void btnGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestDashboard.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
-       
+        
         guestsPane.getChildren().setAll(pane);
         
     }
-
+    
 }

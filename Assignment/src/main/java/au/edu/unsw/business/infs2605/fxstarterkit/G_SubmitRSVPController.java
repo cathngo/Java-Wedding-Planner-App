@@ -47,29 +47,18 @@ public class G_SubmitRSVPController {
     private int eventId;
 
     private int invitationId;
+    private int guestId;
 
     public void passEventId(int id) throws SQLException {
 
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-        ResultSet eventRs = conn.createStatement().executeQuery("SELECT * FROM event where event_id ='" + id + "'");
+        this.eventId = id;
 
-        while (eventRs.next()) {
+        Event myEvent = DatabaseManager.getEventsByEventId(id);
 
-            String name = eventRs.getString("event_name");
-            String date = eventRs.getString("event_date");
-            String sTime = eventRs.getString("event_start_time");
-            String eTime = eventRs.getString("event_end_time");
-            String location = eventRs.getString("event_address");
-
-            eventName.setText(name);
-            eventDate.setText(date);
-            eventTime.setText(sTime + " - " + eTime);
-            eventAddress.setText(location);
-
-        }
-
-        eventRs.close();
-        conn.close();
+        eventName.setText(myEvent.getEvent_name());
+        eventDate.setText(myEvent.getEvent_date());
+        eventTime.setText(myEvent.getEvent_start_time() + " - " + myEvent.getEvent_end_time());
+        eventAddress.setText(myEvent.getEvent_address());
 
     }
 
@@ -83,40 +72,20 @@ public class G_SubmitRSVPController {
         String Yes = rb1.getText();
         String No = rb2.getText();
         String diet = guestDiet.getText();
+        guestId = LoginController.guestUser.getGuest_id();
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs = conn.createStatement().executeQuery("SELECT invitation_id "
-                    + "FROM invitation "
-                    + "WHERE event_id ='" + eventId + "'"
-                    + "AND guest_id ='" + LoginController.guestUser.getGuest_id() + "'");
-            invitationId = rs.getInt(1);
-
-            rs.close();
-            String RsvpQuery = "INSERT OR IGNORE INTO rsvp"
-                    + " (decision, invitation_id)"
-                    + " VALUES (?, ?)";
-
-            PreparedStatement rsvpPsmt = conn.prepareStatement(RsvpQuery);
+            invitationId = DatabaseManager.getInvitationId(eventId, guestId);
 
             if (rb1.isSelected()) {
-                rsvpPsmt.setString(1, Yes);
+
+                DatabaseManager.submitRSVP(invitationId, Yes);
             } else if (rb2.isSelected()) {
-                rsvpPsmt.setString(1, No);
+
+                DatabaseManager.submitRSVP(invitationId, No);
             }
 
-            rsvpPsmt.setInt(2, invitationId);
-            rsvpPsmt.execute();
-            rsvpPsmt.close();
-
-            String guestQuery = "UPDATE guest SET diet_require = ? WHERE guest_id ='" + LoginController.guestUser.getGuest_id() + "'";
-
-            PreparedStatement guestPsmt = conn.prepareStatement(guestQuery);
-            guestPsmt.setString(1, diet);
-
-            guestPsmt.execute();
-            guestPsmt.close();
-            conn.close();
+            DatabaseManager.updateGuestDiet(guestId, diet);
 
             String header = "RSVP Success!";
             String content = "RSVP was successfully submitted!";

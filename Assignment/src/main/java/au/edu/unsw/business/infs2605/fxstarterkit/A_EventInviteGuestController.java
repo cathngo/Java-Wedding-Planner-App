@@ -67,76 +67,64 @@ import javafx.util.Callback;
 
   
      
-    @Override
+     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        try{
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs = conn.createStatement().executeQuery("select * from guest");
-            
-            while (rs.next()){
-                guestList.add(new Guest(rs.getInt("guest_id"),rs.getString("guest_fname"),
-              rs.getString("guest_lname")));
-           
-            }
-            
-            conn.close();
-            rs.close();
-            
+        try {
+            existingGuestTable.setItems(DatabaseManager.getGuests());
+
             existingGuestTable.addEventFilter(MouseEvent.MOUSE_PRESSED, evt -> {
-            Node node = evt.getPickResult().getIntersectedNode();
+                Node node = evt.getPickResult().getIntersectedNode();
 
-            // go up from the target node until a row is found or it's clear the
-            // target node wasn't a node.
-            while (node != null && node != existingGuestTable && !(node instanceof TableRow)) {
-                node = node.getParent();
-            }
+                // go up from the target node until a row is found or it's clear the
+                // target node wasn't a node.
+                while (node != null && node != existingGuestTable && !(node instanceof TableRow)) {
+                    node = node.getParent();
+                }
 
-            // if is part of a row or the row,
-            // handle event instead of using standard handling
-            if (node instanceof TableRow) {
-                // prevent further handling
-                evt.consume();
+                // if is part of a row or the row,
+                // handle event instead of using standard handling
+                if (node instanceof TableRow) {
+                    // prevent further handling
+                    evt.consume();
 
-                TableRow row = (TableRow) node;
-                TableView tv = row.getTableView();
+                    TableRow row = (TableRow) node;
+                    TableView tv = row.getTableView();
 
-                // focus the tableview
-                tv.requestFocus();
+                    // focus the tableview
+                    tv.requestFocus();
 
-                if (!row.isEmpty()) {
-                    // handle selection for non-empty nodes
-                    int index = row.getIndex();
-                    if (row.isSelected()) {
-                        tv.getSelectionModel().clearSelection(index);
-                    } else {
-                        tv.getSelectionModel().select(index);
+                    if (!row.isEmpty()) {
+                        // handle selection for non-empty nodes
+                        int index = row.getIndex();
+                        if (row.isSelected()) {
+                            tv.getSelectionModel().clearSelection(index);
+                        } else {
+                            tv.getSelectionModel().select(index);
+                        }
                     }
                 }
-            }
-        });
-            
-        }catch(Exception e){
+            });
+
+        } catch (Exception e) {
             System.out.println("table not created");
             e.printStackTrace();
         }
-        
-        
-        
+
         col_guestId.setCellValueFactory(new PropertyValueFactory<>("guest_id"));
         col_guestName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Guest, String>, ObservableValue<String>>() {
-                 @Override
-                 public ObservableValue<String> call(
-                         TableColumn.CellDataFeatures<Guest, String> p) {
-                     return new SimpleStringProperty(p.getValue().getGuest_fname()
-                             + " " + p.getValue().getGuest_lname());
-                 }
-             });
-        existingGuestTable.setItems(guestList);
+            @Override
+            public ObservableValue<String> call(
+                    TableColumn.CellDataFeatures<Guest, String> p) {
+                return new SimpleStringProperty(p.getValue().getGuest_fname()
+                        + " " + p.getValue().getGuest_lname());
+            }
+        });
+
         existingGuestTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        
-        
+
     }
+
     
     @FXML
     void btnAddToListWasClicked(ActionEvent event) {
@@ -185,22 +173,27 @@ import javafx.util.Callback;
     
     @FXML
     public void btnInviteToEventWasClicked(ActionEvent event) throws SQLException {
-        
-        try{
-        for (int i = 0; i < guestId.size(); i++){
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-         int rs = conn.createStatement().executeUpdate("INSERT INTO invitation(event_id, guest_id, admin_id) SELECT '"+eventId+"', '"+guestId.get(i)+"','"+LoginController.adminUser.getAdmin_id()+"' WHERE NOT EXISTS(SELECT 1 FROM invitation WHERE event_id ='"+eventId+"' AND guest_id ='"+guestId.get(i)+"')");
-         
-         
-             conn.close();
-         
-         System.out.println("succesfully updated");
-        }
-        }catch (Exception e){
+       
+        try {
+            
+            DatabaseManager.inviteGuest(guestId, eventId);
+
+                System.out.println("succesfully updated");
+
+                //System.out.println("btninvitetoevent event Id" + eventId + "guest id" + guestId.get(i) + "admin id" + LoginController.adminUser.getAdmin_id());
+            
+            String header = "Invite success!";
+            String content = "Guests have been successfully invited to event";
+            Alertbox.AlertInfo(header, content);
+        } catch (Exception e) {
+            String header = "Invite unsuccessful";
+            String content = "Please select and add existing guests to guest list first!";
+            Alertbox.AlertError(header, content);
             System.out.println("unable to invite");
             e.printStackTrace();
+
         }
-       
+
     }
      @FXML
     private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException, SQLException {

@@ -21,6 +21,7 @@ import javafx.scene.layout.AnchorPane;
  * @author cathy
  */
 public class A_CreateEventController {
+
     @FXML
     TextField eventId;
     @FXML
@@ -40,9 +41,8 @@ public class A_CreateEventController {
     @FXML
     private AnchorPane eventPane;
 
-    
-     @FXML
-    public void btnCreateEventWasClicked() throws SQLException{
+    @FXML
+    public void btnCreateEventWasClicked() throws SQLException {
 
         String Name = eventName.getText();
 
@@ -52,55 +52,34 @@ public class A_CreateEventController {
         String sTime = startTime.getText();
         String eTime = endTime.getText();
         String eInstructions = instructions.getText();
-    
-        
-       
-        try{
-             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-             String query = "INSERT INTO event" 
-                    + " (event_name, event_address, event_description, event_date, event_start_time, event_end_time, event_instructions)"
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
-        
-             PreparedStatement psmt = conn.prepareStatement(query);
-             
-             
-             psmt.setString(1, Name);
-     
-             psmt.setString(2, Address);
-             psmt.setString(3, Description);
-             psmt.setString(4, Date); 
-             psmt.setString(5, sTime);
-             psmt.setString(6, eTime); 
-             psmt.setString(7, eInstructions); 
-             
-             psmt.executeUpdate();
-             psmt.close();
-       
-             conn.close();
-             
-             String header = "Event created!";
+
+        try {
+            DatabaseManager.createEvent(Name, Address, Description, Date, sTime, eTime, eInstructions);
+
+            String header = "Event created!";
             String content = "Event was successfully created!";
             Alertbox.AlertInfo(header, content);
-             System.out.println("data inserted successfully");
-             
-        } catch(Exception e){
+            System.out.println("data inserted successfully");
+
+        } catch (Exception e) {
             e.printStackTrace();
             String header = "Unable to create event";
             String content = "Please fill out all contents of 'create event'";
             Alertbox.AlertError(header, content);
             System.out.println("data not inserted");
-           
-        } 
-    
-}
+
+        }
+
+    }
+
     @FXML
     private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
-     
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventInviteGuest.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
         A_ViewEventInviteGuestController controller = loader.getController();
         controller.passData(eventName.getText());
         eventPane.getChildren().setAll(pane);
     }
-    
+
 }

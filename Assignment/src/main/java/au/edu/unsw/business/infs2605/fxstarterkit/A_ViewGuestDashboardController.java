@@ -49,24 +49,15 @@ public class A_ViewGuestDashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs = conn.createStatement().executeQuery("select * from guest");
-
-            while (rs.next()) {
-                guestList.add(new Guest(rs.getString("guest_fname"),
-                        rs.getString("guest_lname"), rs.getString("guest_email"),
-                        rs.getInt("guest_id")));
-            }
+            guest_table.setItems(DatabaseManager.getGuests());
             col_firstName.setCellValueFactory(new PropertyValueFactory<>("guest_fname"));
             col_lastName.setCellValueFactory(new PropertyValueFactory<>("guest_lname"));
             col_guestEmail.setCellValueFactory(new PropertyValueFactory<>("guest_email"));
             col_guestId.setCellValueFactory(new PropertyValueFactory<>("guest_id"));
-            guest_table.setItems(guestList);
 
-            conn.close();
-            rs.close();
         } catch (Exception e) {
             System.out.println("table not created");
+            e.printStackTrace();
         }
 
     }

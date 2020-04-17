@@ -15,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class DatabaseManager {
 
-    private static ObservableList<Events> event_data = FXCollections.observableArrayList();
+   
     private static final String TABLE_NAME_FOR_EVENT = "event";
     private static final String TABLE_NAME_FOR_GUEST = "guest";
     private static final String TABLE_NAME_FOR_ADMIN = "admin";
@@ -48,11 +48,7 @@ public class DatabaseManager {
         }
     }
 
-    public static void populateEventsData() {
-        // ArrayList<Events> eventsList = DatabaseManager.getEventDetails();
-        //event_data = FXCollections.observableArrayList(eventsList);
-
-    }
+    
 
     private static boolean createEvent() {
         boolean wasThisMethodSuccessful = false;
@@ -451,7 +447,7 @@ public class DatabaseManager {
         return preparedReturn;
     }
 
-    //A_ViewEventsController uses this to set Events table
+    //A_ViewEventsController + A_GuestsInviteEventController + G_ViewEventController uses this to set Events table
     public static ObservableList<Event> getEvents() {
         DatabaseManager.openConnection();
         ArrayList<Event> eventList = new ArrayList<>();
@@ -471,13 +467,13 @@ public class DatabaseManager {
         return FXCollections.observableArrayList(eventList);
     }
 
-    //A_ViewEventController uses this to view a specific event
+    //A_ViewEventController + A_EditEventController  uses this to pre-set fields of a selected event
     public static Event getEventsByEventId(int id) {
         DatabaseManager.openConnection();
         Event events = null;
         try {
             //Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs = sharedConnection.createStatement().executeQuery("select * from " + DatabaseManager.TABLE_NAME_FOR_EVENT + " where event_id = "+id);
+            ResultSet rs = sharedConnection.createStatement().executeQuery("select * from " + DatabaseManager.TABLE_NAME_FOR_EVENT + " where event_id = " + id);
             while (rs.next()) {
                 events = new Event(rs.getInt("event_id"), rs.getString("event_name"),
                         rs.getString("event_date"), rs.getString("event_start_time"), rs.getString("event_end_time"), rs.getString("event_address"), rs.getString("event_description"), rs.getString("event_instructions"));
@@ -491,70 +487,69 @@ public class DatabaseManager {
             return events;
         }
     }
-    
+
     //A_VIewEventGuestList controller uses this to set up pie chart
-    public static ArrayList getRSVPCount(int id) throws SQLException{
-        
-       ArrayList<Integer> rsvp = new ArrayList<Integer>();
-       
-       try{
-         Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs1 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) " +
-            "FROM rsvp r " +
-            "JOIN invitation i ON i.invitation_id = r.invitation_id " +
-            "JOIN event e ON e.event_id = i.event_id " +
-            "JOIN guest g ON g.guest_id = i.guest_id " +
-            "WHERE r.decision = 'Yes' " +
-            "AND e.event_id ='"+id+"'");
-            
-        
+    public static ArrayList getRSVPCount(int id) throws SQLException {
 
-            ResultSet rs2 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) " +
-            "FROM rsvp r " +
-            "JOIN invitation i ON i.invitation_id = r.invitation_id " +
-            "JOIN event e ON e.event_id = i.event_id " +
-            "JOIN guest g ON g.guest_id = i.guest_id " +
-            "WHERE r.decision = 'No' " +
-            "AND e.event_id ='"+id+"'");
+        ArrayList<Integer> rsvp = new ArrayList<Integer>();
 
-            ResultSet rs3 = conn.createStatement().executeQuery("SELECT COUNT(g.guest_id) " +
-            "FROM guest g " +
-            "JOIN invitation i ON g.guest_id = i.guest_id " +
-            "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id " +
-            "JOIN event e ON e.event_id = i.event_id " +
-            "WHERE e.event_id ='"+id+"'" +
-            "AND r.decision IS NULL");
-            
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+            ResultSet rs1 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) "
+                    + "FROM rsvp r "
+                    + "JOIN invitation i ON i.invitation_id = r.invitation_id "
+                    + "JOIN event e ON e.event_id = i.event_id "
+                    + "JOIN guest g ON g.guest_id = i.guest_id "
+                    + "WHERE r.decision = 'Yes' "
+                    + "AND e.event_id ='" + id + "'");
+
+            ResultSet rs2 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) "
+                    + "FROM rsvp r "
+                    + "JOIN invitation i ON i.invitation_id = r.invitation_id "
+                    + "JOIN event e ON e.event_id = i.event_id "
+                    + "JOIN guest g ON g.guest_id = i.guest_id "
+                    + "WHERE r.decision = 'No' "
+                    + "AND e.event_id ='" + id + "'");
+
+            ResultSet rs3 = conn.createStatement().executeQuery("SELECT COUNT(g.guest_id) "
+                    + "FROM guest g "
+                    + "JOIN invitation i ON g.guest_id = i.guest_id "
+                    + "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id "
+                    + "JOIN event e ON e.event_id = i.event_id "
+                    + "WHERE e.event_id ='" + id + "'"
+                    + "AND r.decision IS NULL");
+
             rsvp.add(rs1.getInt("COUNT(rsvp_id)"));
             rsvp.add(rs2.getInt("COUNT(rsvp_id)"));
             rsvp.add(rs3.getInt("COUNT(g.guest_id)"));
-            
+
             conn.close();
             rs1.close();
             rs2.close();
             rs3.close();
-       }catch (Exception e){
-           e.printStackTrace();
-       }finally{
-           return rsvp;
-       }
-    } 
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return rsvp;
+        }
+    }
+
     public static ObservableList<RSVPGuestWrapper> getRsvpGetGuest(int id) {
         DatabaseManager.openConnection();
         ArrayList<RSVPGuestWrapper> rsvpList = new ArrayList<>();
         try {
-              Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs = conn.createStatement().executeQuery("SELECT g.guest_fname, g.guest_lname, r.decision " +
-            "FROM guest g " +
-            "JOIN invitation i ON g.guest_id = i.guest_id " +
-            "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id " +
-            "JOIN event e ON e.event_id = i.event_id " +
-            "WHERE e.event_id ='"+id+"'");
-            
-             while (rs.next()) {
-                 rsvpList.add(new RSVPGuestWrapper(rs.getString("guest_fname"),
-                         rs.getString("guest_lname"), rs.getString("decision")));
-             
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT g.guest_fname, g.guest_lname, r.decision "
+                    + "FROM guest g "
+                    + "JOIN invitation i ON g.guest_id = i.guest_id "
+                    + "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id "
+                    + "JOIN event e ON e.event_id = i.event_id "
+                    + "WHERE e.event_id ='" + id + "'");
+
+            while (rs.next()) {
+                rsvpList.add(new RSVPGuestWrapper(rs.getString("guest_fname"),
+                        rs.getString("guest_lname"), rs.getString("decision")));
+
             }
             DatabaseManager.closeConnection();
             rs.close();
@@ -564,8 +559,8 @@ public class DatabaseManager {
         return FXCollections.observableArrayList(rsvpList);
     }
 
-    //A_ViewEventInviteGuestController uses this to set up guest table
-     public static ObservableList<Guest> getGuests() {
+    //A_ViewEventInviteGuestController + A_ViewGuestDashboard Controller uses this to set up guest table
+    public static ObservableList<Guest> getGuests() {
         DatabaseManager.openConnection();
         ArrayList<Guest> guestList = new ArrayList<>();
         try {
@@ -584,4 +579,306 @@ public class DatabaseManager {
         return FXCollections.observableArrayList(guestList);
     }
 
+    //A_ViewEventInviteGuestController uses this to invite guests
+    public static void inviteGuest(ArrayList guestId, int eventId) throws SQLException {
+        ArrayList<Integer> guest_id = guestId;
+
+        for (int i = 0; i < guest_id.size(); i++) {
+            DatabaseManager.openConnection();
+            int rs = sharedConnection.createStatement().executeUpdate("INSERT INTO invitation(event_id, guest_id, admin_id) SELECT '" + eventId + "', '" + guest_id.get(i) + "','" + LoginController.adminUser.getAdmin_id() + "' WHERE NOT EXISTS(SELECT 1 FROM invitation WHERE event_id ='" + eventId + "' AND guest_id ='" + guestId.get(i) + "')");
+
+            DatabaseManager.closeConnection();
+
+        }
+    }
+
+    public static void createEvent(String name, String address, String desc, String date, String sTime, String eTime, String inst) {
+        try {
+            DatabaseManager.openConnection();
+            String query = "INSERT INTO event"
+                    + " (event_name, event_address, event_description, event_date, event_start_time, event_end_time, event_instructions)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement psmt = sharedConnection.prepareStatement(query);
+
+            psmt.setString(1, name);
+            psmt.setString(2, address);
+            psmt.setString(3, desc);
+            psmt.setString(4, date);
+            psmt.setString(5, sTime);
+            psmt.setString(6, eTime);
+            psmt.setString(7, inst);
+
+            psmt.executeUpdate();
+            psmt.close();
+
+            DatabaseManager.closeConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //A_ViewEventINviteNewGuestController uses this to create guest code
+    public static String generateGuestCode(String fname, String lname) {
+        String codeName = fname + lname;
+        String actualName = codeName.replaceAll("[^a-zA-Z]", "");
+        int digits = (int) Math.floor(1000 + Math.random() * 9000);
+        String code = actualName + digits;
+        String guestCode = code;
+        return guestCode;
+    }
+
+    //A_ViewEventInviteNewGuestController + A_CreateGuestController uses this to create new guest
+    public static void createGuest(String fname, String lname, String phone, String email, String diet, String guestCode, String gender) throws SQLException {
+        try {
+            DatabaseManager.openConnection();
+            String query = "INSERT INTO guest"
+                    + " (guest_fname, guest_lname, guest_phone, guest_email, diet_require, guest_access_code, guest_gender)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement psmt = sharedConnection.prepareStatement(query);
+
+            psmt.setString(1, fname);
+            psmt.setString(2, lname);
+            psmt.setString(3, phone);
+            psmt.setString(4, email);
+            psmt.setString(5, diet);
+            psmt.setString(6, guestCode);
+            psmt.setString(7, gender);
+
+            psmt.executeUpdate();
+            psmt.close();
+
+            DatabaseManager.closeConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //A_ViewEventInviteNewGuestController uses this to invite new guest
+
+    public static void inviteNewGuest(String guestCode, int eventId) throws SQLException {
+        try {
+            DatabaseManager.openConnection();
+            Statement st = sharedConnection.createStatement();
+            ResultSet resultSet = st.executeQuery("SELECT guest_id FROM guest WHERE guest_access_code = '" + guestCode + "'");
+
+            int guestId = Integer.parseInt(resultSet.getString(1));
+            int rs = sharedConnection.createStatement().executeUpdate("INSERT INTO invitation(event_id, guest_id, admin_id) SELECT '" + eventId + "', '" + guestId + "','" + LoginController.adminUser.getAdmin_id() + "' WHERE NOT EXISTS(SELECT 1 FROM invitation WHERE event_id ='" + eventId + "' AND guest_id ='" + guestId + "')");
+            resultSet.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    //A_EditEventController uses this to edit an event
+    public static void editEvent(int eventId, String name, String address, String desc, String date, String sTime, String eTime, String inst) throws SQLException {
+        DatabaseManager.openConnection();
+        String query = "update event set event_name = ?, event_address = ?, event_description = ?, event_date = ?, event_start_time = ?, event_end_time = ?, event_instructions = ? where event_id ='" + eventId + "'";
+        PreparedStatement psmt = sharedConnection.prepareStatement(query);
+
+        psmt.setString(1, name);
+        psmt.setString(2, address);
+        psmt.setString(3, desc);
+        psmt.setString(4, date);
+        psmt.setString(5, sTime);
+        psmt.setString(6, eTime);
+        psmt.setString(7, inst);
+
+        psmt.execute();
+        psmt.close();
+        DatabaseManager.closeConnection();
+    }
+//A_ViewGuestProfileController + A_EditGuestController uses this to pre-set fields of selected guest
+
+    public static Guest getGuestByGuestId(int id) {
+        DatabaseManager.openConnection();
+        Guest guests = null;
+        try {
+            //Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+            ResultSet rs = sharedConnection.createStatement().executeQuery("select * from " + DatabaseManager.TABLE_NAME_FOR_GUEST + " where guest_id = " + id);
+            while (rs.next()) {
+                guests = new Guest(rs.getInt("guest_id"), rs.getString("guest_fname"),
+                        rs.getString("guest_lname"), rs.getString("guest_email"), rs.getString("guest_phone"), rs.getString("diet_require"), rs.getString("guest_access_code"), rs.getString("guest_gender"));
+
+            }
+            DatabaseManager.closeConnection();
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return guests;
+        }
+    }
+
+    //G_DashboardController +A_ViewGuestProfile uses this
+    public static ObservableList<RSVPEventWrapper> getRsvpGetEvent(int id) {
+        DatabaseManager.openConnection();
+        ArrayList<RSVPEventWrapper> rsvpList = new ArrayList<>();
+        try {
+
+            ResultSet rs = sharedConnection.createStatement().executeQuery("SELECT e.event_name, e.event_date, r.decision "
+                    + "FROM event e "
+                    + "JOIN invitation i ON e.event_id = i.event_id "
+                    + "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id "
+                    + "JOIN guest g ON g.guest_id = i.guest_id "
+                    + "WHERE g.guest_id = '" + id + "'");
+
+            while (rs.next()) {
+                rsvpList.add(new RSVPEventWrapper(rs.getString("event_name"),
+                        rs.getString("event_date"), rs.getString("decision")));
+            }
+            DatabaseManager.closeConnection();
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return FXCollections.observableArrayList(rsvpList);
+    }
+
+    //A_GuestsInviteEventController uses this to invite guest to an event
+    public static void inviteToEvent(int eventId, int guestId) throws SQLException {
+        try {
+            DatabaseManager.openConnection();
+            int rs = sharedConnection.createStatement().executeUpdate("INSERT INTO invitation(event_id, guest_id, admin_id) SELECT '" + eventId + "', '" + guestId + "','" + LoginController.adminUser.getAdmin_id() + "' WHERE NOT EXISTS(SELECT 1 FROM invitation WHERE event_id ='" + eventId + "' AND guest_id ='" + guestId + "')");
+            DatabaseManager.closeConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void editGuest(int guestId, String fname, String lname, String email, String phone, String diet, String gender) throws SQLException {
+
+        DatabaseManager.openConnection();
+        String query = "update guest set guest_fname = ?, guest_lname = ?, guest_email = ?, guest_phone = ?, diet_require = ?, guest_gender = ? where guest_id ='" + guestId + "'";
+        PreparedStatement psmt = sharedConnection.prepareStatement(query);
+
+        psmt.setString(1, fname);
+        psmt.setString(2, lname);
+        psmt.setString(3, email);
+        psmt.setString(4, phone);
+        psmt.setString(5, gender);
+        psmt.setString(6, diet);
+
+        psmt.execute();
+        psmt.close();
+        DatabaseManager.closeConnection();
+    }
+
+    public static int getGuestIdByGuestNameGuestDate(String name, String date) throws SQLException {
+        DatabaseManager.openConnection();
+        ResultSet rs = sharedConnection.createStatement().executeQuery("SELECT event_id "
+                + "FROM event "
+                + "WHERE event_name ='" + name + "'"
+                + "AND event_date='" + date + "'");
+
+        int eventId = rs.getInt(1);
+        rs.close();
+        DatabaseManager.closeConnection();
+
+        return eventId;
+    }
+
+    //G_ViewRSVPController + G_EditRSVP  uses this to pre-set rsvp for a selected guest
+    public static ArrayList getRsvpByGuestIdEventId(int eventId, int guestId) throws SQLException {
+        ArrayList<String> rsvp = new ArrayList<String>();
+        try {
+            DatabaseManager.openConnection();
+            ResultSet rs = sharedConnection.createStatement().executeQuery("SELECT g.diet_require, r.decision, e.event_name, e.event_date, e.event_start_time, e.event_end_time, e.event_address "
+                    + "FROM guest g "
+                    + "JOIN invitation i ON g.guest_id = i.guest_id "
+                    + "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id "
+                    + "JOIN event e ON e.event_id = i.event_id "
+                    + "WHERE e.event_id ='" + eventId + "'"
+                    + "AND g.guest_id ='" + guestId + "'");
+
+            rsvp.add(rs.getString("event_name"));
+            rsvp.add(rs.getString("event_date"));
+            rsvp.add(rs.getString("event_start_time"));
+            rsvp.add(rs.getString("event_end_time"));
+            rsvp.add(rs.getString("event_address"));
+            rsvp.add(rs.getString("diet_require"));
+            rsvp.add(rs.getString("decision"));
+            DatabaseManager.closeConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return rsvp;
+        }
+
+    }
+
+    //G_SubmitRSVPController uses this
+    public static int getInvitationId(int eventId, int guestId) throws SQLException {
+        DatabaseManager.openConnection();
+        ResultSet rs = sharedConnection.createStatement().executeQuery("SELECT invitation_id "
+                + "FROM invitation "
+                + "WHERE event_id ='" + eventId + "'"
+                + "AND guest_id ='" + guestId + "'");
+        int invitationId = rs.getInt(1);
+
+        rs.close();
+        DatabaseManager.closeConnection();
+        return invitationId;
+    }
+    //G_SubmitRSVPController uses this
+
+    public static void submitRSVP(int invitationId, String decision) throws SQLException {
+        DatabaseManager.openConnection();
+        String RsvpQuery = "INSERT OR IGNORE INTO rsvp"
+                + " (decision, invitation_id)"
+                + " VALUES (?, ?)";
+
+        PreparedStatement rsvpPsmt = sharedConnection.prepareStatement(RsvpQuery);
+
+        rsvpPsmt.setString(1, decision);
+
+        rsvpPsmt.setInt(2, invitationId);
+        rsvpPsmt.execute();
+        rsvpPsmt.close();
+        DatabaseManager.closeConnection();
+    }
+    //G_SubmitRSVPController + G_EditRSVP uses this
+
+    public static void updateGuestDiet(int guestId, String diet) throws SQLException {
+        DatabaseManager.openConnection();
+        String guestQuery = "UPDATE guest SET diet_require = ? WHERE guest_id ='" + guestId + "'";
+
+        PreparedStatement guestPsmt = sharedConnection.prepareStatement(guestQuery);
+        guestPsmt.setString(1, diet);
+
+        guestPsmt.execute();
+        guestPsmt.close();
+        DatabaseManager.closeConnection();
+    }
+//G_EditRSVP uses this
+    public static void updateRSVP(int invitationId, String decision) throws SQLException {
+        DatabaseManager.openConnection();
+
+        String RsvpQuery = "UPDATE rsvp SET decision = ? WHERE invitation_id ='" + invitationId + "'";
+        PreparedStatement rsvpPsmt = sharedConnection.prepareStatement(RsvpQuery);
+        rsvpPsmt.setString(1, decision);
+        rsvpPsmt.execute();
+        rsvpPsmt.close();
+        DatabaseManager.closeConnection();
+    }
+    
+    public static ObservableList<Event> getEventsByRunsheet() {
+        DatabaseManager.openConnection();
+        ArrayList<Event> eventList = new ArrayList<>();
+        try {
+           
+             ResultSet rs = sharedConnection.createStatement().executeQuery("select * from event WHERE event_runsheet IS NOT NULL");
+            while (rs.next()) {
+                Event events = new Event(rs.getInt("event_id"), rs.getString("event_name"),
+                        rs.getString("event_date"), rs.getString("event_start_time"), rs.getString("event_end_time"), rs.getString("event_address"), rs.getString("event_description"), rs.getString("event_instructions"));
+                eventList.add(events);
+            }
+            DatabaseManager.closeConnection();
+            // rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return FXCollections.observableArrayList(eventList);
+    }
 }

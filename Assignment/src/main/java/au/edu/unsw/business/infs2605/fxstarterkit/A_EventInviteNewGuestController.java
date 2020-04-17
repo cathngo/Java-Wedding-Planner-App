@@ -86,44 +86,26 @@ public class A_EventInviteNewGuestController {
         String Male = rb1.getText();
         String Female = rb2.getText();
        
-       String codeName = FirstName + LastName;
-       String actualName = codeName.replaceAll("[^a-zA-Z]", "");
-       int digits = (int)Math.floor(1000 + Math.random() * 9000);
-       String code = actualName + digits;
-       guestCode = code;
+        
+        //generate guest code for guest
+       guestCode = DatabaseManager.generateGuestCode(FirstName, LastName);
+       
        
        
        
 
 
         try{
-             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-             String query = "INSERT INTO guest" 
-                    + " (guest_fname, guest_lname, guest_phone, guest_email, diet_require, guest_access_code, guest_gender)"
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
-        
-             PreparedStatement psmt = conn.prepareStatement(query);
              
-             
-             psmt.setString(1, FirstName);
-             psmt.setString(2, LastName);
-             psmt.setString(3, Phone);
-             psmt.setString(4, Email); 
-             psmt.setString(5, Dietary);
-             psmt.setString(6, guestCode); 
              
             if (rb1.isSelected()) {
-                psmt.setString(7, Male);
+                DatabaseManager.createGuest(FirstName, LastName, Phone, Email, Dietary, guestCode, Male);
             } else if (rb2.isSelected()) {
-                psmt.setString(7, Female);
+                 DatabaseManager.createGuest(FirstName, LastName, Phone, Email, Dietary, guestCode, Female);
             }
             
           
-             psmt.executeUpdate();
-             psmt.close();
-            
-       
-             conn.close();
+             
              System.out.println("data inserted successfully");
            
              
@@ -131,11 +113,16 @@ public class A_EventInviteNewGuestController {
         } catch(Exception e){
             e.printStackTrace();
             System.out.println("data not inserted");
+            String header = "Unable to add to guest list";
+            String content = "Please fill out all contents of 'create new guest'";
+            Alertbox.AlertError(header, content);
         }
+        
+        
         
        guestList.add(FirstName + " " + LastName);
        guestListView.setItems(guestList);
-     
+        
         
     }
 
@@ -143,22 +130,20 @@ public class A_EventInviteNewGuestController {
     public void btnInviteToEventWasClicked(ActionEvent event) throws SQLException {
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            Statement st = conn.createStatement();
-            ResultSet resultSet = st.executeQuery("SELECT guest_id FROM guest WHERE guest_access_code = '" + guestCode + "'");
-
-            guestId = Integer.parseInt(resultSet.getString(1));
-            int rs = conn.createStatement().executeUpdate("INSERT INTO invitation(event_id, guest_id, admin_id) SELECT '" + eventId + "', '" + guestId + "','" + LoginController.adminUser.getAdmin_id() + "' WHERE NOT EXISTS(SELECT 1 FROM invitation WHERE event_id ='" + eventId + "' AND guest_id ='" + guestId + "')");
-            resultSet.close();
-
-            conn.close();
-
+           DatabaseManager.inviteNewGuest(guestCode, eventId);
+            
+            System.out.println("btninvitetoevent guestcode" + guestCode +"guest id" +guestId+ "event Id" + eventId +"adminId" + LoginController.adminUser.getAdmin_id());
+            String header = "Invite success!";
+            String content = "Guests have been successfully invited to event";
+            Alertbox.AlertInfo(header, content);
         } catch (Exception e) {
+            String header = "Invite unsuccessful";
+            String content = "Please create and add a guest to the guest list first";
+            Alertbox.AlertError(header, content);
             e.printStackTrace();
         }
 
     }
-    
  
      @FXML
     public void btnEventsWasClicked(ActionEvent event) throws IOException {

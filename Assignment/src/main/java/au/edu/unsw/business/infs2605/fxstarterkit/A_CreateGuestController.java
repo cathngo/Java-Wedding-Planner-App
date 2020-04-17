@@ -38,6 +38,7 @@ public class A_CreateGuestController {
     private RadioButton rb2;
     @FXML
     private AnchorPane guestsPane;
+    private String guestCode;
    
 
     
@@ -52,41 +53,22 @@ public class A_CreateGuestController {
         String Male = rb1.getText();
         String Female = rb2.getText();
        
-        String codeName = FirstName + LastName;
-        String actualName = codeName.replaceAll("[^a-zA-Z]", "");
-        int digits = (int)Math.floor(1000 + Math.random() * 9000);
-       String guestCode = actualName + digits;
+        
+        //generate guest code for guest
+       guestCode = DatabaseManager.generateGuestCode(FirstName, LastName);
 
 
 
         
-       
         try{
-             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-             String query = "INSERT INTO guest" 
-                    + " (guest_fname, guest_lname, guest_phone, guest_email, diet_require, guest_access_code, guest_gender)"
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
-        
-             PreparedStatement psmt = conn.prepareStatement(query);
              
-             
-             psmt.setString(1, FirstName);
-             psmt.setString(2, LastName);
-             psmt.setString(3, Phone);
-             psmt.setString(4, Email); 
-             psmt.setString(5, Dietary);
-             psmt.setString(6, guestCode); 
              
             if (rb1.isSelected()) {
-                psmt.setString(7, Male);
+                DatabaseManager.createGuest(FirstName, LastName, Phone, Email, Dietary, guestCode, Male);
             } else if (rb2.isSelected()) {
-                psmt.setString(7, Female);
+                 DatabaseManager.createGuest(FirstName, LastName, Phone, Email, Dietary, guestCode, Female);
             }
-
-             psmt.executeUpdate();
-             psmt.close();
-       
-             conn.close();
+            
              String header = "Guest created!";
             String content = "Guest was successfully created!";
             Alertbox.AlertInfo(header, content);

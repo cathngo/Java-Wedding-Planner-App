@@ -39,7 +39,7 @@ public class App extends Application {
         //DatabaseManager.printObjectsInTable("event");
         DatabaseManager.printObjectsInTable("admin");
         DatabaseManager.printObjectsInTable("guest");
-        DatabaseManager.populateEventsData();
+       
         
         
         //System.out.println(System.getProperty("user.dir"));
