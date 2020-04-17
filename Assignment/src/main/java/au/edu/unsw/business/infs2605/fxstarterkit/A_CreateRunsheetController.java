@@ -108,7 +108,7 @@ public class A_CreateRunsheetController {
     }
 
     @FXML
-    void btnCreateRunsheetWasClicked(ActionEvent event) throws IOException, SQLException {
+    void btnCreateRunsheetWasClicked(ActionEvent event) throws IOException, SQLException, Exception {
         
         //create pdf document
      
@@ -125,23 +125,25 @@ public class A_CreateRunsheetController {
         
         //event name font
         contentStream.beginText();
-        contentStream.setFont(edoFont,50);
+        contentStream.setFont(edoFont,45);
         contentStream.setNonStrokingColor(249,193,118);
-        contentStream.newLineAtOffset(67, 673);
-        contentStream.setLeading(55f);
+        contentStream.newLineAtOffset(67, 650);
+        contentStream.setLeading(18f);
         contentStream.showText(eventName);
         contentStream.newLine();
         //description black font
-        contentStream.setFont(JSFont,22);
-        //setting position for line
-        contentStream.newLineAtOffset(50, 700);
-        contentStream.setNonStrokingColor(0,0,0);
-        contentStream.setLeading(32);
         
-        
-        
-        for (int i = 0; i < event_time.size(); i++){
-        contentStream.showText(event_time.get(i) + ": " + event_activity.get(i));
+        contentStream.setLeading(20);
+        contentStream.newLine();
+        contentStream.setFont(JSFont, 14);
+        contentStream.setNonStrokingColor(0, 0, 0);
+       
+     //wrap text
+    
+
+        for (int i = 0; i < event_time.size(); i++) {
+        A_InvitationPDFController.insertTextColumn(contentStream, event_time.get(i) + ": " + event_activity.get(i), JSFont, 14, 750, 14);
+        //contentStream.showText(event_time.get(i) + ": " + event_activity.get(i));
         contentStream.newLine();
         }
 
@@ -163,8 +165,8 @@ public class A_CreateRunsheetController {
         doc.close();
         System.out.println("successfully printed pdf");
         
-        BLOB runsheet = new BLOB();
-        runsheet.updateRunsheet(eventId, "runsheet" + eventId + ".pdf");
+        //BLOB runsheet = new BLOB();
+        //runsheet.updateRunsheet(eventId, "runsheet" + eventId + ".pdf");
       
     }
     

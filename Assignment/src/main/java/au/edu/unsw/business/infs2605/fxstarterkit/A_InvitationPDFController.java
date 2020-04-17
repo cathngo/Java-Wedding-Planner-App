@@ -26,14 +26,14 @@ public class A_InvitationPDFController {
     public static void createNewInvPDF() throws IOException, Exception{
         //put invitation id in there next time
         //makes a copy of the invitation pdf and edit it
-        File source = new File("C:\\Users\\Mimi\\Documents\\GitHub\\infs2605-20t1-EverlastingBelongGame\\Assignment\\src\\main\\resources\\au\\edu\\unsw\\business\\infs2605\\fxstarterkit\\images\\invTemplateFinal.pdf");
-        File dest = new File("C:\\Users\\Mimi\\Documents\\GitHub\\infs2605-20t1-EverlastingBelongGame\\Assignment\\src\\main\\resources\\au\\edu\\unsw\\business\\infs2605\\fxstarterkit\\images\\newinvitation.pdf");
+        File source = new File(""+System.getProperty("user.dir")+"\\src\\main\\resources\\au\\edu\\unsw\\business\\infs2605\\fxstarterkit\\images\\invTemplateFinal.pdf");
+        File dest = new File(""+System.getProperty("user.dir")+"\\src\\main\\resources\\au\\edu\\unsw\\business\\infs2605\\fxstarterkit\\images\\newinvitation.pdf");
         Files.copy(source.toPath(), dest.toPath());
         PDDocument doc = PDDocument.load(dest);
         PDPage page = doc.getPage(0);
         
-        PDFont edoFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File ("C:\\Users\\Mimi\\Documents\\GitHub\\infs2605-20t1-EverlastingBelongGame\\Assignment\\src\\main\\resources\\edo.ttf")));
-        PDFont JSFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File ("C:\\Users\\Mimi\\Documents\\GitHub\\infs2605-20t1-EverlastingBelongGame\\Assignment\\src\\main\\resources\\JosefinSans-Light.ttf")));
+        PDFont edoFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+"\\src\\main\\resources\\edo.ttf")));
+        PDFont JSFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+"\\src\\main\\resources\\JosefinSans-Light.ttf")));
         PDPageContentStream contentStream = new PDPageContentStream(doc, page,true,true,true);
         
         String eventName1 = "SANDY'S";
