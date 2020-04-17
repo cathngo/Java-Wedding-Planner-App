@@ -14,6 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -36,54 +38,39 @@ import javafx.stage.Stage;
  *
  * @author cathy
  */
-public class A_ViewAllEventsController implements Initializable {
+public class A_ViewAllEventsController {
 
     @FXML
-    private TableView<Event> eventTable;
+    public TableView<Event> eventTable;
     @FXML
-    private TableColumn<Event, Integer> col_eId;
+    public TableColumn<Event, Integer> col_eId;
     @FXML
-    private TableColumn<Event, String> col_eName;
+    public TableColumn<Event, String> col_eName;
     @FXML
-    private TableColumn<Event, String> col_eDate;
+    public TableColumn<Event, String> col_eDate;
     @FXML
-    private TableColumn<Event, String> col_eStartTime;
+    public TableColumn<Event, String> col_eStartTime;
     @FXML
-    private TableColumn<Event, String> col_eEndTime;
+    public TableColumn<Event, String> col_eEndTime;
     @FXML
     private AnchorPane eventPane;
-
-    ObservableList<Event> eventList = FXCollections.observableArrayList();
+    
 
     private int eventId;
 
     private String eventName;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
+    public void initialize() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs = conn.createStatement().executeQuery("select * from event");
-
-            while (rs.next()) {
-                eventList.add(new Event(rs.getInt("event_id"),
-                        rs.getString("event_name"), rs.getString("event_date"), rs.getString("event_start_time"),
-                        rs.getString("event_end_time")));
-            }
+            eventTable.setItems(DatabaseManager.getEvents());
             col_eId.setCellValueFactory(new PropertyValueFactory<>("event_id"));
             col_eName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
             col_eDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
             col_eStartTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
             col_eEndTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
 
-            eventTable.setItems(eventList);
-
-            conn.close();
-            rs.close();
         } catch (Exception e) {
-            System.out.println("table not created");
-
+            e.printStackTrace();
         }
 
     }

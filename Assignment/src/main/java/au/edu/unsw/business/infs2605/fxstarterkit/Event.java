@@ -5,6 +5,9 @@
  */
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author jaydenso
@@ -19,7 +22,8 @@ public class Event {
     String event_address;
     String event_description;
     String event_instructions;
-
+    
+   
     public Event(int event_id, String event_name, String event_date, String event_start_time, String event_end_time, String event_address, String event_description, String event_instructions) {
         this.event_id = event_id;
         this.event_name = event_name;

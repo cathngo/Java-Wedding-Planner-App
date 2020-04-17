@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.beans.property.IntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,38 +49,22 @@ public class A_ViewEventController {
     private int eventId;
 
     public void passEventId(int id) throws SQLException {
-       this.eventId = id;
+        this.eventId = id;
         event_id.setText(Integer.toString(id));
-        
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM event where event_id =  " + id);
+        Event myEvent = DatabaseManager.getEventsByEventId(id);
 
-        while (rs.next()) {
-            String location = rs.getString("event_address");
-            String description = rs.getString("event_description");
-            String instructions = rs.getString("event_instructions");
-            String name = rs.getString("event_name");
-            String date = rs.getString("event_date");
-            String sTime = rs.getString("event_start_time");
-            String eTime = rs.getString("event_end_time");
-
-            eventAddress.setText(location);
-            eventDesc.setText(description);
-            eventInstructions.setText(instructions);
-            eventName.setText(name);
-            eventDate.setText(date);
-            eventTime.setText(sTime + " - " + eTime);
-        
-        }
-        
-        conn.close();
-        rs.close();
+        eventAddress.setText(myEvent.getEvent_address());
+        eventDesc.setText(myEvent.getEvent_description());
+        eventInstructions.setText(myEvent.getEvent_instructions());
+        eventName.setText(myEvent.getEvent_name());
+        eventDate.setText(myEvent.getEvent_date());
+        eventTime.setText(myEvent.getEvent_start_time() + " - " + myEvent.getEvent_end_time());
 
     }
-    
+
     @FXML
     private void btnGuestListWasClicked(ActionEvent event) throws IOException, SQLException {
-        
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventGuestList.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
         A_ViewEventGuestListController controller = loader.getController();
@@ -87,27 +72,27 @@ public class A_ViewEventController {
         controller.getEventId(eventId);
         controller.getRsvpData(eventId);
         eventPane.getChildren().setAll(pane);
-        
+
         System.out.println("guestLists event id:" + eventId);
-        
+
     }
-  @FXML
+
+    @FXML
     private void btnEditWasClicked(ActionEvent event) throws IOException, SQLException {
-        
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_EditEvent.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
         A_EditEventController controller = loader.getController();
         controller.getEventId(eventId);
-        controller.passData(eventId);      
+        controller.passData(eventId);
         eventPane.getChildren().setAll(pane);
-        
+
         System.out.println("edit event id:" + eventId);
     }
-    
+
     @FXML
     public void btnEventsWasClicked(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllEvents.fxml"));
         eventPane.getChildren().setAll(pane);
     }
 }
-

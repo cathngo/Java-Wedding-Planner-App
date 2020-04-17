@@ -73,17 +73,11 @@ import javafx.util.Callback;
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         try{
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs = conn.createStatement().executeQuery("select * from guest");
-            
-            while (rs.next()){
-                guestList.add(new Guest(rs.getInt("guest_id"),rs.getString("guest_fname"),
-              rs.getString("guest_lname")));
+            existingGuestTable.setItems(DatabaseManager.getGuests());
            
-            }
             
-            conn.close();
-            rs.close();
+            
+           
             
             existingGuestTable.addEventFilter(MouseEvent.MOUSE_PRESSED, evt -> {
             Node node = evt.getPickResult().getIntersectedNode();
@@ -134,7 +128,7 @@ import javafx.util.Callback;
                              + " " + p.getValue().getGuest_lname());
                  }
              });
-        existingGuestTable.setItems(guestList);
+        
         existingGuestTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         
         

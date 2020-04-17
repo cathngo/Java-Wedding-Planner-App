@@ -56,6 +56,7 @@ public class A_ViewEventGuestListController {
     
     ObservableList<RSVPGuestWrapper>rsvpList = FXCollections.observableArrayList();
     
+    ArrayList<Integer> rsvpCount = new ArrayList<Integer>(); 
     private int eventId;
     
   
@@ -63,46 +64,20 @@ public class A_ViewEventGuestListController {
     
    
        public void getRsvpData(int id) throws SQLException {
-           
+        this.eventId = id;
         pieChartData = FXCollections.observableArrayList();
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs1 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) " +
-            "FROM rsvp r " +
-            "JOIN invitation i ON i.invitation_id = r.invitation_id " +
-            "JOIN event e ON e.event_id = i.event_id " +
-            "JOIN guest g ON g.guest_id = i.guest_id " +
-            "WHERE r.decision = 'Yes' " +
-            "AND e.event_id ='"+id+"'");
-
-            ResultSet rs2 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) " +
-            "FROM rsvp r " +
-            "JOIN invitation i ON i.invitation_id = r.invitation_id " +
-            "JOIN event e ON e.event_id = i.event_id " +
-            "JOIN guest g ON g.guest_id = i.guest_id " +
-            "WHERE r.decision = 'No' " +
-            "AND e.event_id ='"+id+"'");
-
-            ResultSet rs3 = conn.createStatement().executeQuery("SELECT COUNT(g.guest_id) " +
-            "FROM guest g " +
-            "JOIN invitation i ON g.guest_id = i.guest_id " +
-            "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id " +
-            "JOIN event e ON e.event_id = i.event_id " +
-            "WHERE e.event_id ='"+id+"'" +
-            "AND r.decision IS NULL");
-
-            pieChartData.add(new PieChart.Data("Yes", rs1.getInt("COUNT(rsvp_id)")));
-            pieChartData.add(new PieChart.Data("No", rs2.getInt("COUNT(rsvp_id)")));
-            pieChartData.add(new PieChart.Data("Unsure", rs3.getInt("COUNT(g.guest_id)")));
-
+           rsvpCount = DatabaseManager.getRSVPCount(id);
+           
+            pieChartData.add(new PieChart.Data("Yes", rsvpCount.get(0)));
+            pieChartData.add(new PieChart.Data("No", rsvpCount.get(1)));
+            pieChartData.add(new PieChart.Data("Unsure", rsvpCount.get(2)));
+           
             pieChart.setData(pieChartData);
             pieChart.setLabelsVisible(true);
           
-            conn.close();
-            rs1.close();
-            rs2.close();
-            rs3.close();
+            
             
             System.out.println("pie chart eventId: " +id);
 
@@ -167,22 +142,7 @@ public class A_ViewEventGuestListController {
         this.eventId = id;
       
          try{
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs = conn.createStatement().executeQuery("SELECT g.guest_fname, g.guest_lname, r.decision " +
-            "FROM guest g " +
-            "JOIN invitation i ON g.guest_id = i.guest_id " +
-            "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id " +
-            "JOIN event e ON e.event_id = i.event_id " +
-            "WHERE e.event_id ='"+id+"'");
-            
-          
-
-            
-            
-             while (rs.next()) {
-                 rsvpList.add(new RSVPGuestWrapper(rs.getString("guest_fname"),
-                         rs.getString("guest_lname"), rs.getString("decision")));
-             }
+             rsvp_table.setItems(DatabaseManager.getRsvpGetGuest(id));
              col_guestName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RSVPGuestWrapper, String>, ObservableValue<String>>() {
                  @Override
                  public ObservableValue<String> call(
@@ -196,10 +156,8 @@ public class A_ViewEventGuestListController {
         
  
         
-        rsvp_table.setItems(rsvpList);
-        
-        conn.close();
-        rs.close();
+   
+       
         
          System.out.println("rsvptable event Id " +eventId);
         }catch(Exception e){
