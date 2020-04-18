@@ -14,7 +14,7 @@
     -fx-text-fill: white;
     -fx-pref-width: 140;
     -fx-pref-height: 44;
-    
+    -fx-cursor: hand;
 }
 
 .button:hover{
