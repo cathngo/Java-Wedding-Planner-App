@@ -1,6 +1,7 @@
 
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
@@ -82,12 +83,28 @@ public class G_ViewEventController {
            Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler " + ""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf");
        }catch(Exception e){
            System.out.println("unsuccessful");
+           String header = "Unable to view runsheet";
+            String content = "Runsheet is not available for this event";
+            Alertbox.AlertError(header, content);
+           e.printStackTrace();
+       }
+    }
+    
+    @FXML
+    public void btnViewInvitationWasClicked(ActionEvent event) throws IOException, SQLException{
+       try{
+           Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler " + ""+System.getProperty("user.dir")+"\\invitation" + eventId + ".pdf");
+       }catch(Exception e){
+           System.out.println("unsuccessful");
+           String header = "Unable to view invitation";
+            String content = "Invitation is not available for this event";
+            Alertbox.AlertError(header, content);
            e.printStackTrace();
        }
         
-        
-        
     }
+        
+    
 }
 
     

@@ -21,13 +21,14 @@ import javafx.scene.layout.AnchorPane;
 
 /**
  *
- * @author jaydenso
+ * @author cathy
  */
-public class A_CreateInvitationController implements Initializable {
+public class A_InvitationSelectEventController implements Initializable {
 
     @FXML
-    private TableView<Event> invitation_table;
-
+    private TableView<Event> eventTable;
+    @FXML
+    private TableColumn<Event, Integer> col_eId;
     @FXML
     private TableColumn<Event, String> col_eName;
     @FXML
@@ -39,14 +40,19 @@ public class A_CreateInvitationController implements Initializable {
     @FXML
     private AnchorPane invitationPane;
 
+    ObservableList<Event> eventList = FXCollections.observableArrayList();
+
     private int eventId;
+
+    private String eventName;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            invitation_table.setItems(DatabaseManager.getEventsByInvitation());
+            eventTable.setItems(DatabaseManager.getEvents());
 
+            col_eId.setCellValueFactory(new PropertyValueFactory<>("event_id"));
             col_eName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
             col_eDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
             col_eStartTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
@@ -54,32 +60,43 @@ public class A_CreateInvitationController implements Initializable {
 
         } catch (Exception e) {
             System.out.println("table not created");
-            e.printStackTrace();
 
         }
 
     }
 
     @FXML
-    public void btnCreateInvitationWasClicked(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_InvitationSelectEvent.fxml"));
+    public void btnBackWasClicked(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_CreateInvitation.fxml"));
         invitationPane.getChildren().setAll(pane);
     }
-    
+
     @FXML
-    public void btnViewInvitationWasClicked(ActionEvent event) throws IOException {
-        
-        try{
-           Event selectedEvent = invitation_table.getSelectionModel().getSelectedItem();
-        eventId = selectedEvent.getEvent_id();
-           Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler " + ""+System.getProperty("user.dir")+"\\invitation" + eventId + ".pdf");
-       }catch(Exception e){
-           String header = "Unable to view invitation";
-            String content = "Please select an event from the table";
+    public void btnInvitationsWasClicked(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_CreateInvitation.fxml"));
+        invitationPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    public void btnCreateInvitationWasClicked(ActionEvent event) throws Exception {
+
+        try {
+            Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
+            eventId = selectedEvent.getEvent_id();
+            A_InvitationPDFController.createNewInvPDF(eventId);
+            
+            BLOB invitation = new BLOB();
+            invitation.updateInvitation(eventId, "invitation" + eventId +".pdf");
+            
+            String header = "Invitation Success!";
+            String content = "Invitation was successfully created!";
+            Alertbox.AlertInfo(header, content);
+            
+        } catch (Exception e) {
+            String header = "Unable to proceed";
+            String content = "Either event not selected or invitation already exists";
             Alertbox.AlertError(header, content);
-           System.out.println("unsuccessful");
-           e.printStackTrace();
-       }
-       
+        }
+
     }
 }

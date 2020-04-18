@@ -28,6 +28,7 @@ public class App extends Application {
     
         
 
+
         //A_InvitationPDFController.createNewInvPDF(1);
         
         scene = new Scene(loadFXML("Login"));

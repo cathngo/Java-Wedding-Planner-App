@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="runsheetPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_EditRunsheetController">
+   <children>
+      <VBox prefHeight="540.0" prefWidth="771.0">
+         <children>
+            <ToolBar prefHeight="71.0" prefWidth="771.0" style="-fx-background-color: #0000;">
+              <items>
+                <Button mnemonicParsing="false" onAction="#btnRunsheetsWasClicked" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Runsheets" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt;Edit Runsheet" textFill="#8fdca9" />
+              </items>
+            </ToolBar>
+            <AnchorPane prefHeight="49.0" prefWidth="600.0">
+               <children>
+                  <Text layoutX="46.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Runsheet for:" wrappingWidth="339.984375">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="event_name" layoutX="339.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandy's Birthday" wrappingWidth="257.984375">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="334.0" prefWidth="771.0">
+               <children>
+                  <ScrollPane layoutX="45.0" pickOnBounds="false" prefHeight="316.0" prefWidth="682.0">
+                     <content>
+                        <Pane pickOnBounds="false" prefHeight="501.0" prefWidth="661.0">
+                           <children>
+                              <Text layoutX="21.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="163.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Activity:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="26.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Instructions">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <ListView fx:id="runsheetList" layoutX="22.0" layoutY="90.0" prefHeight="354.0" prefWidth="612.0" />
+                              <Text layoutX="21.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Runsheet:" wrappingWidth="75.30490112304688">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="time" layoutX="71.0" layoutY="13.0" prefHeight="25.0" prefWidth="77.0" />
+                              <TextField fx:id="activity" layoutX="219.0" layoutY="13.0" prefHeight="27.0" prefWidth="268.0" />
+                              <Button layoutX="533.0" layoutY="13.0" mnemonicParsing="false" onAction="#btnAddItemsWasClicked" prefHeight="27.0" prefWidth="100.0" text="Add Items" />
+                           </children>
+                        </Pane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="79.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="btnInviteGuests" layoutX="71.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="49.0" prefWidth="160.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnCreateEvent" layoutX="550.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnUpdateWasClicked" prefHeight="49.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Update " textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

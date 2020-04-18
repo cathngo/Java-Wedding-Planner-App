@@ -9,17 +9,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-import javafx.application.HostServices;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
-import javafx.application.*;
-import javafx.scene.paint.Color;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDTrueTypeFont;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 
 /**
@@ -31,7 +25,7 @@ public class A_InvitationPDFController {
         //put invitation id in there next time
         //makes a copy of the invitation pdf and edit it
         File source = new File(""+System.getProperty("user.dir")+"\\src\\main\\resources\\au\\edu\\unsw\\business\\infs2605\\fxstarterkit\\images\\invitationTemplate.pdf");
-        File dest = new File(""+System.getProperty("user.dir")+"\\src\\main\\resources\\au\\edu\\unsw\\business\\infs2605\\fxstarterkit\\images\\invitation" + event_id +".pdf");
+        File dest = new File(""+System.getProperty("user.dir")+"\\invitation" + event_id + ".pdf");
         Files.copy(source.toPath(), dest.toPath());
         PDDocument doc = PDDocument.load(dest);
         PDPage page = doc.getPage(0);
@@ -118,6 +112,8 @@ public class A_InvitationPDFController {
         contentStream.close();
         doc.save(dest);
         doc.close();      
+        
+        
     }
     
     //This wrap text method puts text into a column of a certain width. If a word overflows the

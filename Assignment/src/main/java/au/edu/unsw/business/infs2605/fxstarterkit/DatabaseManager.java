@@ -62,6 +62,7 @@ public class DatabaseManager {
                     + "event_start_time TEXT, "
                     + "event_end_time TEXT, "
                     + "event_instructions TEXT, "
+                    + "event_invitation BLOB, "
                     + "event_runsheet BLOB)";
 
             Statement smt = sharedConnection.createStatement();
@@ -723,7 +724,7 @@ public class DatabaseManager {
         }
     }
 
-    //G_DashboardController +A_ViewGuestProfile uses this
+    //A_ViewGuestProfile uses this
     public static ObservableList<RSVPEventWrapper> getRsvpGetEvent(int id) {
         DatabaseManager.openConnection();
         ArrayList<RSVPEventWrapper> rsvpList = new ArrayList<>();
@@ -875,6 +876,7 @@ public class DatabaseManager {
         DatabaseManager.closeConnection();
     }
     
+    //A_ViewAllRunsheetsController uses this for runsheet table
     public static ObservableList<Event> getEventsByRunsheet() {
         DatabaseManager.openConnection();
         ArrayList<Event> eventList = new ArrayList<>();
@@ -893,4 +895,76 @@ public class DatabaseManager {
         }
         return FXCollections.observableArrayList(eventList);
     }
+    
+    
+    public static ObservableList<Event> getEventsByInvitation() {
+        DatabaseManager.openConnection();
+        ArrayList<Event> eventList = new ArrayList<>();
+        try {
+           
+             ResultSet rs = sharedConnection.createStatement().executeQuery("select * from event WHERE event_invitation IS NOT NULL");
+            while (rs.next()) {
+                Event events = new Event(rs.getInt("event_id"), rs.getString("event_name"),
+                        rs.getString("event_date"), rs.getString("event_start_time"), rs.getString("event_end_time"), rs.getString("event_address"), rs.getString("event_description"), rs.getString("event_instructions"));
+                eventList.add(events);
+            }
+            DatabaseManager.closeConnection();
+            // rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return FXCollections.observableArrayList(eventList);
+    }
+    
+     public static ObservableList<RSVPEventWrapper> getNullRsvpGetEvent(int id) {
+        DatabaseManager.openConnection();
+        ArrayList<RSVPEventWrapper> rsvpList = new ArrayList<>();
+        try {
+
+            ResultSet rs = sharedConnection.createStatement().executeQuery("SELECT e.event_name, e.event_date, r.decision "
+                    + "FROM event e "
+                    + "JOIN invitation i ON e.event_id = i.event_id "
+                    + "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id "
+                    + "JOIN guest g ON g.guest_id = i.guest_id "
+                    + "WHERE r.decision IS NULL "
+                    + "AND g.guest_id ='" + id + "'");
+
+            while (rs.next()) {
+                rsvpList.add(new RSVPEventWrapper(rs.getString("event_name"),
+                        rs.getString("event_date"), rs.getString("decision")));
+            }
+            DatabaseManager.closeConnection();
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return FXCollections.observableArrayList(rsvpList);
+    }
+     
+     //G_Dashboard controller uses this to view responded events
+     public static ObservableList<RSVPEventWrapper> getNotNullRsvpGetEvent(int id) {
+        DatabaseManager.openConnection();
+        ArrayList<RSVPEventWrapper> rsvpList = new ArrayList<>();
+        try {
+
+            ResultSet rs = sharedConnection.createStatement().executeQuery("SELECT e.event_name, e.event_date, r.decision "
+                    + "FROM event e "
+                    + "JOIN invitation i ON e.event_id = i.event_id "
+                    + "JOIN rsvp r ON r.invitation_id = i.invitation_id "
+                    + "JOIN guest g ON g.guest_id = i.guest_id "
+                    + "WHERE g.guest_id = '" + id + "'");
+
+            while (rs.next()) {
+                rsvpList.add(new RSVPEventWrapper(rs.getString("event_name"),
+                        rs.getString("event_date"), rs.getString("decision")));
+            }
+            DatabaseManager.closeConnection();
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return FXCollections.observableArrayList(rsvpList);
+    }
 }
+        
+

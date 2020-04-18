@@ -98,7 +98,14 @@ public class G_SubmitRSVPController {
 
     @FXML
     public void btnBackWasClicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("G_Dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("G_ViewAllInvitations.fxml"));
+        AnchorPane pane = (AnchorPane) loader.load();
+        dashboardPane.getChildren().setAll(pane);
+    }
+    
+    @FXML
+    public void btnPendingInvitations(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("G_ViewAllInvitations.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
         dashboardPane.getChildren().setAll(pane);
     }

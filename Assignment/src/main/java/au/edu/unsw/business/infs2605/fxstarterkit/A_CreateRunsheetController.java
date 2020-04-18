@@ -1,5 +1,6 @@
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
 
 public class A_CreateRunsheetController {
 
@@ -29,6 +32,8 @@ public class A_CreateRunsheetController {
     private TextField activity;
     @FXML
     private ListView<String> runsheetList;
+    @FXML
+    private Stage primaryStage;
     
     ObservableList<String>runsheet = FXCollections.observableArrayList();
     ArrayList<String> event_time = new ArrayList<String>();
@@ -94,8 +99,13 @@ public class A_CreateRunsheetController {
     @FXML
     void btnCreateRunsheetWasClicked(ActionEvent event) throws IOException, SQLException, Exception {
         
+       // DirectoryChooser directoryChooser = new DirectoryChooser();
+        //directoryChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+        //File selectedDirectory = directoryChooser.showDialog(primaryStage);
+        //System.out.println(selectedDirectory.getAbsolutePath());
         
      A_RunsheetPDFController.createNewRunsheetPDF(event_time, event_activity, eventName, eventId);
+     
             
         
         
