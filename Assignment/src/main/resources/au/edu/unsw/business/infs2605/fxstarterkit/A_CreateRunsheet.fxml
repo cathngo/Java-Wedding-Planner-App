@@ -74,8 +74,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnInviteGuests" layoutX="71.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="49.0" prefWidth="160.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
-                  <Button fx:id="btnCreateEvent" layoutX="550.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnCreateRunsheetWasClicked" prefHeight="49.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create Runsheet" textFill="WHITE" />
+                  <Button fx:id="btnInviteGuests" layoutX="71.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="49.0" prefWidth="160.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnCreateEvent" layoutX="550.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnCreateRunsheetWasClicked" prefHeight="49.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Create Runsheet" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

@@ -61,7 +61,7 @@ public class LoginController {
         btnLogin.setStyle("-fx-background-color: #8FDCA9");
     }
     
-        @FXML
+    @FXML
     private void btnExit(MouseEvent event) throws Exception {
         btnLogin.setStyle("-fx-background-color: #232323");
     }

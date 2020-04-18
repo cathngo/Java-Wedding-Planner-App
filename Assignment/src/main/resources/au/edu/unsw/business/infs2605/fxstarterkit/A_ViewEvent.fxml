@@ -93,8 +93,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnEdit" layoutX="97.0" layoutY="22.0" mnemonicParsing="false" onAction="#btnEditWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit" textFill="WHITE" />
-                  <Button fx:id="btnGuestList" layoutX="554.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnGuestListWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Guest List" textFill="WHITE" />
+                  <Button fx:id="btnEdit" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnEditWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Edit" textFill="WHITE" />
+                  <Button fx:id="btnGuestList" layoutX="554.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnGuestListWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Guest List" textFill="WHITE" />
                   <Circle fill="#bfbdbd" layoutX="380.0" layoutY="50.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
                   <Circle fill="WHITE" layoutX="409.0" layoutY="50.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
                </children>

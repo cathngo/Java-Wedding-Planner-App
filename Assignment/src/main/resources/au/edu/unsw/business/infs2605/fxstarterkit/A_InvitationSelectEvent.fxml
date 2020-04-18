@@ -39,8 +39,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="94.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnCreateNewEvent" layoutX="26.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
-                  <Button fx:id="btnViewDetails" layoutX="425.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnCreateInvitationWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Generate Invitation PDF" textFill="WHITE" />
+                  <Button fx:id="btnCreateNewEvent" layoutX="26.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnViewDetails" layoutX="425.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnCreateInvitationWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Create Invitation PDF" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

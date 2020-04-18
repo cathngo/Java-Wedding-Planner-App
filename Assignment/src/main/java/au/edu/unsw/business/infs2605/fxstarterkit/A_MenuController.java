@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -31,11 +32,13 @@ public class A_MenuController implements Initializable {
     @FXML
     private AnchorPane ap;
 
+    @FXML 
+    private Button btn_home;
+    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        
     }
-    
+
     
     @FXML
     private void home(MouseEvent event) {

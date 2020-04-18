@@ -61,8 +61,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnBack" layoutX="69.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
-                  <Button fx:id="createGuest" layoutX="543.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnCreateGuestWasClicked" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create" textFill="WHITE" />
+                  <Button fx:id="btnBack" layoutX="69.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
+                  <Button fx:id="createGuest" layoutX="543.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnCreateGuestWasClicked" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Create" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

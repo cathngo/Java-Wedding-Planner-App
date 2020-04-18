@@ -40,9 +40,9 @@
             </AnchorPane>
             <AnchorPane prefHeight="94.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnViewRunsheet" layoutX="538.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnViewRunsheetWasClicked" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Runsheet" textFill="WHITE" />
-                  <Button fx:id="btnCreateRunsheet" layoutX="83.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnCreateRunsheetWasClicked" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create Runsheet" textFill="WHITE" />
-                  <Button fx:id="btnCreateRunsheet1" layoutX="315.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnEditRunsheetWasClicked" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit Runsheet" textFill="WHITE" />
+                  <Button fx:id="btnViewRunsheet" layoutX="538.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnViewRunsheetWasClicked" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="View Runsheet" textFill="WHITE" />
+                  <Button fx:id="btnCreateRunsheet" layoutX="83.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnCreateRunsheetWasClicked" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Create Runsheet" textFill="WHITE" />
+                  <Button fx:id="btnCreateRunsheet1" layoutX="315.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnEditRunsheetWasClicked" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Edit Runsheet" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

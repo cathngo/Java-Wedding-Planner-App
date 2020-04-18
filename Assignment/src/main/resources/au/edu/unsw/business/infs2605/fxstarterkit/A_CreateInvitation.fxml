@@ -40,8 +40,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="94.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnCreateInvitation" layoutX="415.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnViewInvitationWasClicked" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Invitation PDF" textFill="WHITE" />
-                  <Button fx:id="btnCreateInvitation1" layoutX="26.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnCreateInvitationWasClicked" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create Invitation" textFill="WHITE" />
+                  <Button fx:id="btnCreateInvitation" layoutX="415.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnViewInvitationWasClicked" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="View Invitation PDF" textFill="WHITE" />
+                  <Button fx:id="btnCreateInvitation1" layoutX="26.0" layoutY="9.0" mnemonicParsing="false" onAction="#btnCreateInvitationWasClicked" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Create Invitation" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

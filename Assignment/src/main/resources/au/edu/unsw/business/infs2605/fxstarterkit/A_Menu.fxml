@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,7 +14,7 @@
    <left>
       <VBox prefHeight="357.0" prefWidth="124.0" style="-fx-background-color: #89BD96#89BD96 #89BD96#89BD96;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btn_home" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#home" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Home" textFill="WHITE">
+            <Button fx:id="btn_home" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#home" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" styleClass="menuButton" stylesheets="@stylesheet.css" text="Home" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
@@ -24,8 +25,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Button fx:id="btn_dashboard" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openDashboard" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Dashboard" textFill="WHITE">
+            <Button fx:id="btn_dashboard" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openDashboard" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" styleClass="menuButton" stylesheets="@stylesheet.css" text="Dashboard" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
@@ -36,8 +40,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Button fx:id="btn_events" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openEvents" prefHeight="76.0" prefWidth="153.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Events" textFill="WHITE">
+            <Button fx:id="btn_events" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openEvents" prefHeight="76.0" prefWidth="153.0" style="-fx-background-color: #0000; -fx-border-color: white;" styleClass="menuButton" stylesheets="@stylesheet.css" text="Events" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
@@ -48,8 +55,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Button fx:id="btn_guests" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openGuests" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Guests" textFill="WHITE">
+            <Button fx:id="btn_guests" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openGuests" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" styleClass="menuButton" stylesheets="@stylesheet.css" text="Guests" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
@@ -60,8 +70,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Button fx:id="btn_invitation" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openInvitation" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Invitation" textFill="WHITE">
+            <Button fx:id="btn_invitation" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openInvitation" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" styleClass="menuButton" stylesheets="@stylesheet.css" text="Invitation" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
@@ -72,8 +85,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Button fx:id="btn_runsheets" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openRunsheets" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Runsheets" textFill="WHITE">
+            <Button fx:id="btn_runsheets" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openRunsheets" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" styleClass="menuButton" stylesheets="@stylesheet.css" text="Runsheets" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
@@ -84,8 +100,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Button fx:id="btn_abouts" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openAbouts" prefHeight="90.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Abouts" textFill="WHITE">
+            <Button fx:id="btn_abouts" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openAbouts" prefHeight="90.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" styleClass="menuButton" stylesheets="@stylesheet.css" text="About" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
@@ -96,6 +115,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
       </VBox>

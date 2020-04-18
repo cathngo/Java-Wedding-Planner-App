@@ -58,10 +58,10 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnInviteNewGuest" layoutX="551.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnInviteNewGuestWasClicked" prefHeight="47.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite New Guest" textFill="WHITE" />
+                  <Button fx:id="btnInviteNewGuest" layoutX="551.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnInviteNewGuestWasClicked" prefHeight="47.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Invite New Guest" textFill="WHITE" />
                   <Circle fill="WHITE" layoutX="368.0" layoutY="50.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
                   <Circle fill="#bfbdbd" layoutX="386.0" layoutY="50.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
-                  <Button fx:id="btnBack" layoutX="65.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="47.0" prefWidth="156.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnBack" layoutX="65.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="47.0" prefWidth="156.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

@@ -93,8 +93,8 @@
                </children></AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnEditGuest" layoutX="61.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnEditGuestWasClicked" prefHeight="49.0" prefWidth="167.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit" textFill="WHITE" />
-                  <Button fx:id="btnInviteGuest" layoutX="527.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnInviteGuestWasClicked" prefHeight="49.0" prefWidth="155.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite Guest" textFill="WHITE" />
+                  <Button fx:id="btnEditGuest" layoutX="61.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnEditGuestWasClicked" prefHeight="49.0" prefWidth="167.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Edit" textFill="WHITE" />
+                  <Button fx:id="btnInviteGuest" layoutX="527.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnInviteGuestWasClicked" prefHeight="49.0" prefWidth="155.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Invite Guest" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

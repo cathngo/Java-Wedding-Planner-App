@@ -45,8 +45,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnInviteToEvent" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnInviteToEventWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite To Event" textFill="WHITE" />
-                  <Button fx:id="btnBack" layoutX="20.0" layoutY="19.0" mnemonicParsing="false" onAction="#btnBackGuestWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnInviteToEvent" layoutX="435.0" layoutY="4.0" mnemonicParsing="false" onAction="#btnInviteToEventWasClicked" prefHeight="32.0" prefWidth="134.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Invite To Event" textFill="WHITE" />
+                  <Button fx:id="btnBack" layoutX="31.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnBackGuestWasClicked" prefHeight="32.0" prefWidth="132.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

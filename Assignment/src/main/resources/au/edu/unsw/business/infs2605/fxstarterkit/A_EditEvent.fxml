@@ -85,7 +85,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnUpdateEvent" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnUpdateEventWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Update Event" textFill="WHITE" />
+                  <Button fx:id="btnUpdateEvent" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnUpdateEventWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" styleClass="smallbutton" stylesheets="@stylesheet.css" text="Update Event" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

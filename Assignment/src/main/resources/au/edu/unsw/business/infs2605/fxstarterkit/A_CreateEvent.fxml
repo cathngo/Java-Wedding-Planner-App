@@ -85,8 +85,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnInviteGuests" layoutX="29.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="47.0" prefWidth="166.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
-                  <Button fx:id="btnCreateEvent" layoutX="557.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnCreateEventWasClicked" prefHeight="49.0" prefWidth="166.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create Event" textFill="WHITE" />
+                  <Button fx:id="btnInviteGuests" layoutX="29.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="47.0" prefWidth="166.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnCreateEvent" layoutX="579.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnCreateEventWasClicked" prefHeight="49.0" prefWidth="166.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Create Event" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

@@ -56,10 +56,10 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnInviteNewGuest" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnInviteNewGuestWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite New Guest" textFill="WHITE" />
+                  <Button fx:id="btnInviteNewGuest" layoutX="429.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnInviteNewGuestWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" styleClass="smallbutton" stylesheets="@stylesheet.css" text="Invite New Guest" textFill="WHITE" />
                   <Circle fill="WHITE" layoutX="291.0" layoutY="46.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
                   <Circle fill="#bfbdbd" layoutX="309.0" layoutY="46.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
-                  <Button fx:id="btnBack" layoutX="23.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnBack" layoutX="23.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" styleClass="smallbutton" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>
