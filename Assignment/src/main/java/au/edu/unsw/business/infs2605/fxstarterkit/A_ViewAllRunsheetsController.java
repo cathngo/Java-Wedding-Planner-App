@@ -42,6 +42,7 @@ public class A_ViewAllRunsheetsController implements Initializable {
     ObservableList<Event> runsheetList = FXCollections.observableArrayList();
 
     private int eventId;
+    private String eventName;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -84,4 +85,31 @@ public class A_ViewAllRunsheetsController implements Initializable {
         }
 
     }
+    
+    @FXML
+    public void btnEditRunsheetWasClicked(ActionEvent event) throws IOException {
+
+        try {
+            Event selectedEvent = runsheetTable.getSelectionModel().getSelectedItem();
+            eventId = selectedEvent.getEvent_id();
+            eventName = selectedEvent.getEvent_name();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("A_EditRunsheet.fxml"));
+            AnchorPane pane = (AnchorPane) loader.load();
+            A_EditRunsheetController controller = loader.getController();
+            controller.getEventName(eventName);
+            controller.getEventId(eventId);
+            runsheetPane.getChildren().setAll(pane);
+            
+            System.out.println("btnEditRunsheet eventId, eventName " + eventId + eventName);
+
+            System.out.println("invite guests event id:" + eventId);
+        } catch (Exception e) {
+            String header = "Unable to edit runsheet";
+            String content = "Please select a runsheet from the table";
+            Alertbox.AlertError(header, content);
+        }
+
+    }
+    
+   
 }

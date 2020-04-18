@@ -1,6 +1,7 @@
 
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
@@ -87,9 +88,6 @@ public class G_ViewEventController {
             Alertbox.AlertError(header, content);
            e.printStackTrace();
        }
-        
-        
-        
     }
     
     @FXML

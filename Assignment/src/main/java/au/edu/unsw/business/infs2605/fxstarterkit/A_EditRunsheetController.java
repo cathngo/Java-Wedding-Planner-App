@@ -1,8 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
-import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,12 +17,14 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
-public class A_CreateRunsheetController {
-
-    @FXML
+/**
+ *
+ * @author cathy
+ */
+public class A_EditRunsheetController {
+   @FXML
     private AnchorPane runsheetPane;
 
     @FXML
@@ -41,25 +46,16 @@ public class A_CreateRunsheetController {
     
     private String eventName;
     private int eventId;
-   
-
     
-    public void passEventName(String name){
-        this.eventName = name;
-        event_name.setText(name);
-    }
-    
-    public void passEventId(int id){
+    public void getEventId(int id){
         this.eventId = id;
     }
     
-   
-    @FXML
-    void btnBackWasClicked(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_RunsheetSelectEvent.fxml"));
-        runsheetPane.getChildren().setAll(pane);
+    public void getEventName(String name){
+                            
+        this.eventName = name;
+        event_name.setText(name);
     }
-    
     @FXML
     void btnAddItemsWasClicked(ActionEvent event) throws IOException {
         runsheetList.setCellFactory(param -> new ListCell<String>(){
@@ -97,37 +93,23 @@ public class A_CreateRunsheetController {
     }
 
     @FXML
-    void btnCreateRunsheetWasClicked(ActionEvent event) throws IOException, SQLException, Exception {
-        
-       // DirectoryChooser directoryChooser = new DirectoryChooser();
-        //directoryChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
-        //File selectedDirectory = directoryChooser.showDialog(primaryStage);
-        //System.out.println(selectedDirectory.getAbsolutePath());
-        
-     A_RunsheetPDFController.createNewRunsheetPDF(event_time, event_activity, eventName, eventId);
-     
-            
-        
-        
-        String header = "Runsheet Success!";
-        String content = "Runsheet was successfully created!";
-        Alertbox.AlertInfo(header, content);
-        BLOB runsheet = new BLOB();
-        runsheet.updateRunsheet(eventId, "runsheet" + eventId + ".pdf");
-      
-    }
-    
-
-    @FXML
-    void btnInviteGuestsWasClicked(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_RunsheetSelectEvent.fxml"));
-        runsheetPane.getChildren().setAll(pane);
-    }
-    
-    @FXML
-    void btnRunsheetsWasClicked(ActionEvent event) throws IOException {
+    void btnBackWasClicked(ActionEvent  event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllRunsheets.fxml"));
         runsheetPane.getChildren().setAll(pane);
     }
 
+    @FXML
+    void btnRunsheetsWasClicked(ActionEvent  event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllRunsheets.fxml"));
+        runsheetPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    void btnUpdateWasClicked(ActionEvent  event) throws Exception {
+        String header = "Update Success!";
+        String content = "Runsheet was successfully updated!";
+        Alertbox.AlertInfo(header, content);
+        A_RunsheetPDFController.editRunsheetPDF(event_time, event_activity, eventName, eventId);
+        System.out.println("btn update eventId eventName " + eventName + eventId);
+    }
 }
