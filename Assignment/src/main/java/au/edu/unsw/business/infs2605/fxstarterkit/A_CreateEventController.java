@@ -6,9 +6,6 @@
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
  * @author cathy
  */
 public class A_CreateEventController {
+
     @FXML
     TextField eventId;
     @FXML
@@ -40,9 +38,8 @@ public class A_CreateEventController {
     @FXML
     private AnchorPane eventPane;
 
-    
-     @FXML
-    public void btnCreateEventWasClicked() throws SQLException{
+    @FXML
+    public void btnCreateEventWasClicked() throws SQLException {
 
         String Name = eventName.getText();
 
@@ -52,47 +49,40 @@ public class A_CreateEventController {
         String sTime = startTime.getText();
         String eTime = endTime.getText();
         String eInstructions = instructions.getText();
-    
-        
-       
-        try{
-             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-             String query = "INSERT INTO event" 
-                    + " (event_name, event_address, event_description, event_date, event_start_time, event_end_time, event_instructions)"
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
-        
-             PreparedStatement psmt = conn.prepareStatement(query);
-             
-             
-             psmt.setString(1, Name);
-     
-             psmt.setString(2, Address);
-             psmt.setString(3, Description);
-             psmt.setString(4, Date); 
-             psmt.setString(5, sTime);
-             psmt.setString(6, eTime); 
-             psmt.setString(7, eInstructions); 
-             
-             psmt.executeUpdate();
-             psmt.close();
-       
-             conn.close();
-             System.out.println("data inserted successfully");
-             
-        } catch(Exception e){
+
+        try {
+             if(eventName.getText().isEmpty()||eventAddress.getText().isEmpty()||eventDescription.getText().isEmpty()||eventDate.getText().isEmpty()||startTime.getText().isEmpty()||endTime.getText().isEmpty()){
+            String header = "Unable to add to create event";
+            String content = "Please fill out all contents of 'create event'";
+            Alertbox.AlertError(header, content);
+        } else {
+            DatabaseManager.createEvent(Name, Address, Description, Date, sTime, eTime, eInstructions);
+
+            String header = "Event created!";
+            String content = "Event was successfully created!";
+            Alertbox.AlertInfo(header, content);
+            System.out.println("data inserted successfully");
+             }
+        } catch (Exception e) {
             e.printStackTrace();
+            String header = "Unable to create event";
+            String content = "Please fill out all contents of 'create event'";
+            Alertbox.AlertError(header, content);
             System.out.println("data not inserted");
-           
-        } 
-    
-}
+
+        }
+
+    }
+
     @FXML
-    private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
-     
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventInviteGuest.fxml"));
-        AnchorPane pane = (AnchorPane) loader.load();
-        A_ViewEventInviteGuestController controller = loader.getController();
-        controller.passData(eventName.getText());
+    private void btnBackWasClicked(ActionEvent event) throws IOException, SQLException {
+
+      AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllEvents.fxml"));
+        eventPane.getChildren().setAll(pane);
+    }
+@FXML
+    public void btnEventsWasClicked(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllEvents.fxml"));
         eventPane.getChildren().setAll(pane);
     }
 }

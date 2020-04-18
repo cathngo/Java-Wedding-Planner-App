@@ -10,14 +10,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="eventPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_CreateEventController">
+<AnchorPane fx:id="eventPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_CreateEventController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="540.0" prefWidth="771.0">
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Create Event" textFill="#8fdca9" />
+                <Button mnemonicParsing="false" onAction="#btnEventsWasClicked" prefHeight="27.0" prefWidth="98.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Create Event" textFill="#8fdca9" />
               </items>
             </ToolBar>
             <AnchorPane prefHeight="49.0" prefWidth="600.0">
@@ -29,48 +29,48 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="265.0" prefWidth="600.0">
+            <AnchorPane prefHeight="361.0" prefWidth="771.0">
                <children>
-                  <ScrollPane pickOnBounds="false" prefHeight="257.0" prefWidth="600.0">
+                  <ScrollPane layoutX="19.0" pickOnBounds="false" prefHeight="349.0" prefWidth="720.0">
                      <content>
-                        <Pane pickOnBounds="false" prefHeight="501.0" prefWidth="582.0">
+                        <Pane pickOnBounds="false" prefHeight="343.0" prefWidth="770.0">
                            <children>
-                              <Text layoutX="404.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Time:">
+                              <Text layoutX="507.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Time:">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="403.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Time:">
+                              <Text layoutX="507.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Time:">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
                               <Text layoutX="26.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Name:">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="eventName" layoutX="116.0" layoutY="12.0" prefHeight="27.0" prefWidth="434.0" />
-                              <TextField fx:id="startTime" layoutX="470.0" layoutY="55.0" prefHeight="27.0" prefWidth="80.0" />
-                              <Text layoutX="28.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
+                              <TextField fx:id="eventName" layoutX="130.0" layoutY="12.0" prefHeight="27.0" prefWidth="544.0" />
+                              <TextField fx:id="startTime" layoutX="594.0" layoutY="58.0" prefHeight="27.0" prefWidth="80.0" />
+                              <Text layoutX="26.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="eventDate" layoutX="71.0" layoutY="67.0" prefHeight="27.0" prefWidth="88.0" />
+                              <TextField fx:id="eventDate" layoutX="69.0" layoutY="67.0" prefHeight="27.0" prefWidth="109.0" />
                               <Text layoutX="27.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="endTime" layoutX="470.0" layoutY="90.0" prefHeight="27.0" prefWidth="80.0" />
-                              <TextField fx:id="eventAddress" layoutX="24.0" layoutY="148.0" prefHeight="32.0" prefWidth="525.0" />
+                              <TextField fx:id="endTime" layoutX="594.0" layoutY="97.0" prefHeight="27.0" prefWidth="80.0" />
+                              <TextField fx:id="eventAddress" layoutX="24.0" layoutY="148.0" prefHeight="32.0" prefWidth="652.0" />
                               <Text layoutX="26.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="eventDescription" alignment="TOP_LEFT" layoutX="24.0" layoutY="222.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="102.0" prefWidth="525.0" />
+                              <TextField fx:id="eventDescription" alignment="TOP_LEFT" layoutX="24.0" layoutY="222.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="102.0" prefWidth="655.0" />
                               <Text layoutX="26.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Instructions">
                                  <font>
                                     <Font size="14.0" />
@@ -85,8 +85,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnInviteGuests" layoutX="29.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnInviteGuestsWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite Guests" textFill="WHITE" />
-                  <Button fx:id="btnCreateEvent" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnCreateEventWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create Event" textFill="WHITE" />
+                  <Button fx:id="btnInviteGuests" layoutX="29.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="47.0" prefWidth="166.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnCreateEvent" layoutX="557.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnCreateEventWasClicked" prefHeight="49.0" prefWidth="166.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Create Event" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

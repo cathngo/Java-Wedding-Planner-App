@@ -7,9 +7,6 @@ package au.edu.unsw.business.infs2605.fxstarterkit;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,27 +54,20 @@ public class A_ViewAllRunsheetsController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
          
         try{
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs = conn.createStatement().executeQuery("select * from event WHERE event_runsheet IS NOT NULL");
+            runsheetTable.setItems(DatabaseManager.getEventsByRunsheet());
             
-            while (rs.next()){
-                runsheetList.add(new Event( rs.getInt("event_id"),
-                 rs.getString("event_name"),rs.getString("event_date"),rs.getString("event_start_time"),
-              rs.getString("event_end_time")));
-            }
            
              col_eName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
              col_eDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
              col_eStartTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
              col_eEndTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
         
- 
+        }
         
-        runsheetTable.setItems(runsheetList);
         
-        conn.close();
-        rs.close();
-        }catch(Exception e){
+        
+       
+        catch(Exception e){
             System.out.println("table not created");
             e.printStackTrace();
             

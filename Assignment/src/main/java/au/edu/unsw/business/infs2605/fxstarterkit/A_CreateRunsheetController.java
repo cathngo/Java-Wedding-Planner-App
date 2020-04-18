@@ -1,34 +1,18 @@
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDTrueTypeFont;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 public class A_CreateRunsheetController {
 
@@ -108,61 +92,16 @@ public class A_CreateRunsheetController {
     }
 
     @FXML
-    void btnCreateRunsheetWasClicked(ActionEvent event) throws IOException, SQLException {
-        
-        //create pdf document
-     
-        
-        File source = new File(""+System.getProperty("user.dir")+"\\src\\main\\resources\\au\\edu\\unsw\\business\\infs2605\\fxstarterkit\\images\\event_runsheet.pdf");
-        File dest = new File(""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf");
-        Files.copy(source.toPath(), dest.toPath());
-        PDDocument doc = PDDocument.load(dest);
-        PDPage page = doc.getPage(0);
-        
-        PDFont edoFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+"\\src\\main\\resources\\edo.ttf")));
-        PDFont JSFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+"\\src\\main\\resources\\JosefinSans-Light.ttf")));
-        PDPageContentStream contentStream = new PDPageContentStream(doc, page,true,true,true);
-        
-        //event name font
-        contentStream.beginText();
-        contentStream.setFont(edoFont,50);
-        contentStream.setNonStrokingColor(249,193,118);
-        contentStream.newLineAtOffset(67, 673);
-        contentStream.setLeading(55f);
-        contentStream.showText(eventName);
-        contentStream.newLine();
-        //description black font
-        contentStream.setFont(JSFont,22);
-        //setting position for line
-        contentStream.newLineAtOffset(50, 700);
-        contentStream.setNonStrokingColor(0,0,0);
-        contentStream.setLeading(32);
+    void btnCreateRunsheetWasClicked(ActionEvent event) throws IOException, SQLException, Exception {
         
         
+     A_RunsheetPDFController.createNewRunsheetPDF(event_time, event_activity, eventName, eventId);
+            
         
-        for (int i = 0; i < event_time.size(); i++){
-        contentStream.showText(event_time.get(i) + ": " + event_activity.get(i));
-        contentStream.newLine();
-        }
-
-        //Ending the content stream
-        contentStream.endText();
         
-       
-
-        System.out.println("Content added");
-
-        //Closing the content stream
-        contentStream.close();
-       
-
-        //Saving the document
-        doc.save(dest);
-
-        //Closing the document
-        doc.close();
-        System.out.println("successfully printed pdf");
-        
+        String header = "Runsheet Success!";
+        String content = "Runsheet was successfully created!";
+        Alertbox.AlertInfo(header, content);
         BLOB runsheet = new BLOB();
         runsheet.updateRunsheet(eventId, "runsheet" + eventId + ".pdf");
       

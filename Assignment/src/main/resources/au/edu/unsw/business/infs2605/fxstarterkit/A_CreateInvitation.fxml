@@ -9,29 +9,29 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_CreateInvitationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_CreateInvitationController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="541.0" prefWidth="772.0">
          <children>
-            <AnchorPane prefHeight="65.0" prefWidth="600.0">
+            <AnchorPane prefHeight="109.0" prefWidth="772.0">
                <children>
-                  <Text layoutX="25.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Invitation" wrappingWidth="257.984375">
+                  <Text layoutX="22.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Invitation" wrappingWidth="257.984375">
                      <font>
                         <Font size="32.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="274.0" prefWidth="600.0">
+            <AnchorPane prefHeight="342.0" prefWidth="772.0">
                <children>
-                  <ScrollPane layoutX="24.0" layoutY="21.0" prefHeight="225.0" prefWidth="542.0">
+                  <ScrollPane layoutX="24.0" layoutY="21.0" prefHeight="307.0" prefWidth="694.0">
                      <content>
-                        <TableView prefHeight="464.0" prefWidth="524.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
+                        <TableView prefHeight="464.0" prefWidth="676.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
                            <columns>
-                              <TableColumn fx:id="col_EventName" prefWidth="216.0" text="Name" />
-                              <TableColumn fx:id="col_EventDate" prefWidth="96.0" text="Date" />
-                              <TableColumn fx:id="col_EventTimeStart" prefWidth="116.0" text="Time Start" />
-                              <TableColumn fx:id="col_EventTimeEnd" prefWidth="113.0" text="Time End" />
+                              <TableColumn fx:id="col_EventName" prefWidth="231.49289512634277" text="Name" />
+                              <TableColumn fx:id="col_EventDate" prefWidth="151.507080078125" text="Date" />
+                              <TableColumn fx:id="col_EventTimeStart" prefWidth="158.29800415039062" text="Time Start" />
+                              <TableColumn fx:id="col_EventTimeEnd" prefWidth="135.20196533203125" text="Time End" />
                            </columns>
                         </TableView>
                      </content>

@@ -15,6 +15,7 @@ public class RSVPEventWrapper {
     private String decision;
     private String event_start_time;
     private String event_end_time;
+    private String event_address;
     private int event_id;
 
     public RSVPEventWrapper(String event_name, String event_date, String decision, String event_start_time, String event_end_time, int event_id) {

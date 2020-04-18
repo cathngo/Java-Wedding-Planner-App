@@ -13,49 +13,44 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="eventPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_ViewEventInviteNewGuestController">
+<AnchorPane fx:id="eventPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_ViewEventInviteNewGuestController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="540.0" prefWidth="771.0">
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button mnemonicParsing="false" onAction="#btnEventsWasClicked" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events" />
-                  <Button mnemonicParsing="false" onAction="#btnViewEventsWasClicked" prefHeight="27.0" prefWidth="95.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Events" />
+                <Button mnemonicParsing="false" onAction="#btnEventsWasClicked" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events" />
+                  <Button mnemonicParsing="false" onAction="#btnViewEventsWasClicked" prefHeight="27.0" prefWidth="112.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Events" />
                   <Button mnemonicParsing="false" onAction="#btnGuestListWasClicked" prefHeight="27.0" prefWidth="95.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Guest List" />
                   <Button mnemonicParsing="false" onAction="#btnInviteGuestsWasClicked" prefHeight="27.0" prefWidth="122.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Invite Guests" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="132.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Invite New Guests" textFill="#8fdca9" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="154.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Invite New Guests" textFill="#8fdca9" />
               </items>
             </ToolBar>
-            <AnchorPane prefHeight="49.0" prefWidth="600.0">
+            <AnchorPane prefHeight="79.0" prefWidth="771.0">
                <children>
-                  <Text fx:id="eventName" layoutX="157.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandy's Birthday" textAlignment="CENTER" wrappingWidth="239.59569183350038">
+                  <Text fx:id="eventName" layoutX="266.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandy's Birthday" textAlignment="CENTER" wrappingWidth="239.59569183350038">
                      <font>
                         <Font size="28.0" />
                      </font>
                   </Text>
-                  <Text layoutX="23.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create New Guest" wrappingWidth="152.11895751953125">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="381.0" prefWidth="538.0">
+            <AnchorPane prefHeight="414.0" prefWidth="771.0">
                <children>
-                  <Text layoutX="295.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest List">
+                  <Text layoutX="389.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest List">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button fx:id="btnInviteToEvent" layoutX="446.0" layoutY="229.0" mnemonicParsing="false" onAction="#btnInviteToEventWasClicked" text="Invite To Event" />
-                  <ListView fx:id="guestListView" layoutX="300.0" layoutY="31.0" prefHeight="193.0" prefWidth="240.0" />
-                  <AnchorPane layoutX="20.0" layoutY="11.0" prefHeight="237.0" prefWidth="255.0">
+                  <Button fx:id="btnInviteToEvent" layoutX="608.0" layoutY="351.0" mnemonicParsing="false" onAction="#btnInviteToEventWasClicked" text="Invite To Event" />
+                  <ListView fx:id="guestListView" layoutX="389.0" layoutY="40.0" prefHeight="296.0" prefWidth="329.0" />
+                  <AnchorPane layoutX="20.0" layoutY="24.0" prefHeight="313.0" prefWidth="349.0">
                      <children>
-                        <ScrollPane layoutY="-7.0" prefHeight="244.0" prefWidth="255.0">
+                        <ScrollPane layoutY="17.0" prefHeight="296.0" prefWidth="329.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="246.0" prefWidth="240.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="273.0" prefWidth="334.0">
                                  <children>
-                                    <Pane layoutX="-1.0" prefHeight="237.0" prefWidth="240.0">
+                                    <Pane layoutX="-1.0" prefHeight="268.0" prefWidth="344.0">
                                        <children>
                                           <Text layoutX="14.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
                                           <Text layoutX="14.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
@@ -69,21 +64,26 @@
                                           <RadioButton fx:id="rb1" layoutX="85.0" layoutY="5.0" mnemonicParsing="false" text="Male" />
                                           <RadioButton fx:id="rb2" layoutX="138.0" layoutY="5.0" mnemonicParsing="false" text="Female" />
                                           <Text layoutX="14.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" />
-                                          <TextField fx:id="diet" layoutX="13.0" layoutY="199.0" prefHeight="32.0" prefWidth="220.0" />
                                        </children>
                                     </Pane>
+                                    <TextField fx:id="diet" layoutX="103.0" layoutY="227.0" prefHeight="32.0" prefWidth="220.0" />
                                  </children></AnchorPane>
                           </content>
                         </ScrollPane>
                      </children>
                   </AnchorPane>
+                  <Button fx:id="btnAddTotList" layoutX="224.0" layoutY="351.0" mnemonicParsing="false" onAction="#btnAddToListWasClicked" text="Add to Guest List" />
+                  <Text layoutX="20.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create New Guest" wrappingWidth="246.11895751953125">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Circle fill="WHITE" layoutX="291.0" layoutY="46.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
-                  <Circle fill="#bfbdbd" layoutX="309.0" layoutY="46.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
-                  <Button fx:id="btnAddTotList" layoutX="146.0" layoutY="-13.0" mnemonicParsing="false" onAction="#btnAddToListWasClicked" text="Add to Guest List" />
+                  <Circle fill="WHITE" layoutX="380.0" layoutY="28.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
+                  <Circle fill="#bfbdbd" layoutX="398.0" layoutY="28.0" radius="6.0" stroke="#a4a4a4" strokeType="INSIDE" />
                </children>
             </AnchorPane>
          </children>

@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="guestsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_ViewGuestProfileController">
+<AnchorPane fx:id="guestsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.A_ViewGuestProfileController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="540.0" prefWidth="770.0">
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
@@ -21,71 +21,71 @@
             </ToolBar>
             <AnchorPane prefHeight="49.0" prefWidth="600.0">
                <children>
-                  <Text fx:id="guestName" layoutX="27.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jayden So" wrappingWidth="257.984375">
+                  <Text fx:id="guestName" layoutX="31.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jayden So" wrappingWidth="257.984375">
                      <font>
-                        <Font size="28.0" />
+                        <Font size="40.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="279.0" prefWidth="600.0">
+            <AnchorPane prefHeight="354.0" prefWidth="770.0">
                <children>
-                  <Text layoutX="28.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest ID:">
+                  <Text layoutX="37.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest ID:">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font></Text>
-                  <Text layoutX="28.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Details">
+                  <Text layoutX="39.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Details">
                      <font>
-                        <Font size="15.0" />
+                        <Font size="19.0" />
                      </font></Text>
-                  <TableView fx:id="event_details_table" layoutX="28.0" layoutY="154.0" prefHeight="99.0" prefWidth="547.0">
+                  <TableView fx:id="event_details_table" layoutX="39.0" layoutY="168.0" prefHeight="182.0" prefWidth="668.0">
                      <columns>
-                        <TableColumn fx:id="col_eventName" prefWidth="230.0" text="Event Name" />
-                        <TableColumn fx:id="col_eventDate" prefWidth="234.0" text="Date" />
-                        <TableColumn fx:id="col_eventRsvp" prefWidth="82.0" text="RSVP" />
+                        <TableColumn fx:id="col_eventName" prefWidth="320.0" text="Event Name" />
+                        <TableColumn fx:id="col_eventDate" prefWidth="211.0" text="Date" />
+                        <TableColumn fx:id="col_eventRsvp" prefWidth="136.0" text="RSVP" />
                      </columns>
                   </TableView>
-                  <Text layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+                  <Text layoutX="37.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Text>
-                  <Text layoutX="28.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number:">
+                  <Text layoutX="37.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number:">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Text>
                   <Text layoutX="352.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" wrappingWidth="78.548828125">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Text>
-                  <Text layoutX="352.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Access Code:" wrappingWidth="100.2080078125">
+                  <Text layoutX="352.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Access Code:" wrappingWidth="121.68115234375">
                      <font>
-                        <Font name="System Bold Italic" size="14.0" />
+                        <Font name="System Bold Italic" size="17.0" />
                      </font>
                   </Text>
-                  <Text fx:id="guestId" fill="#5e5e5e" layoutX="93.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1002834" wrappingWidth="78.548828125">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="guestEmail" fill="#5e5e5e" layoutX="75.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="jaydenso@gmail.com" wrappingWidth="268.548828125">
+                  <Text fx:id="guestId" fill="#5e5e5e" layoutX="117.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1002834" wrappingWidth="78.548828125">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="guestGender" fill="#5e5e5e" layoutX="410.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Male" wrappingWidth="268.548828125">
+                  <Text fx:id="guestEmail" fill="#5e5e5e" layoutX="93.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="jaydenso@gmail.com" wrappingWidth="268.548828125">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="guestPhone" fill="#5e5e5e" layoutX="132.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0432 332 283" wrappingWidth="268.548828125">
+                  <Text fx:id="guestGender" fill="#5e5e5e" layoutX="420.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Male" wrappingWidth="268.548828125">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="guestAccessCode" fill="#5e5e5e" layoutX="442.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JaydenSo4092" wrappingWidth="155.199951171875">
+                  <Text fx:id="guestPhone" fill="#5e5e5e" layoutX="162.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0432 332 283" wrappingWidth="268.548828125">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="guestAccessCode" fill="#5e5e5e" layoutX="474.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JaydenSo4092" wrappingWidth="155.199951171875">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -93,8 +93,8 @@
                </children></AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnEditGuest" layoutX="29.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnEditGuestWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit" textFill="WHITE" />
-                  <Button fx:id="btnInviteGuest" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnInviteGuestWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite Guest" textFill="WHITE" />
+                  <Button fx:id="btnEditGuest" layoutX="61.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnEditGuestWasClicked" prefHeight="49.0" prefWidth="167.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit" textFill="WHITE" />
+                  <Button fx:id="btnInviteGuest" layoutX="527.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnInviteGuestWasClicked" prefHeight="49.0" prefWidth="155.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Invite Guest" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

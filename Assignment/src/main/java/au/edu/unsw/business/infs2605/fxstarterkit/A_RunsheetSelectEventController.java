@@ -10,9 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,15 +18,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 /**
  *
@@ -61,24 +54,15 @@ public class A_RunsheetSelectEventController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs = conn.createStatement().executeQuery("select * from event");
-
-            while (rs.next()) {
-                eventList.add(new Event(rs.getInt("event_id"),
-                        rs.getString("event_name"), rs.getString("event_date"), rs.getString("event_start_time"),
-                        rs.getString("event_end_time")));
-            }
+             eventTable.setItems(DatabaseManager.getEvents());
+           
             col_eId.setCellValueFactory(new PropertyValueFactory<>("event_id"));
             col_eName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
             col_eDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
             col_eStartTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
             col_eEndTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
 
-            eventTable.setItems(eventList);
-
-            conn.close();
-            rs.close();
+            
         } catch (Exception e) {
             System.out.println("table not created");
 
@@ -99,7 +83,7 @@ public class A_RunsheetSelectEventController implements Initializable {
     }
     @FXML
     public void btnNextWasClicked(ActionEvent event) throws IOException {
-        
+        try{
             Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
             eventId = selectedEvent.getEvent_id();
             eventName = selectedEvent.getEvent_name();
@@ -109,6 +93,11 @@ public class A_RunsheetSelectEventController implements Initializable {
             controller.passEventId(eventId);
             controller.passEventName(eventName);
             runsheetPane.getChildren().setAll(pane);
+        }catch (Exception e){
+            String header = "Unable to proceed";
+            String content = "Please select an event from the table";
+            Alertbox.AlertError(header, content);
+        }
 
         }
     }
