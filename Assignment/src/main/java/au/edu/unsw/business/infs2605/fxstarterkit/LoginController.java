@@ -17,7 +17,7 @@ import javafx.scene.input.MouseEvent;
 
 /**
  *
- * @author jaydenso
+ * @author mimi
  */
 public class LoginController {
     public static Guest guestUser;
@@ -118,5 +118,9 @@ public class LoginController {
             lblIncorrectAccessCode.setVisible(true);
         }
     }
-
+    
+    @FXML
+    private void btnForgotPasswordWasClicked(ActionEvent event) throws Exception{
+        pageSwitcher.switchPage(event, "ForgotPassword.fxml");
+    }
 }
