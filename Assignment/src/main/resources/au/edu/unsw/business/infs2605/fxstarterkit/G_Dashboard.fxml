@@ -42,19 +42,14 @@
                         </TableView>
                      </content>
                   </ScrollPane>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#869e8b" height="67.0" layoutX="461.0" layoutY="31.0" stroke="TRANSPARENT" strokeType="INSIDE" width="236.0" />
-                  <Text fill="WHITE" layoutX="500.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 | New Invitations">
+                  <Rectangle fx:id="btnEditRsvpWasClicked" arcHeight="5.0" arcWidth="5.0" fill="#869e8b" height="67.0" layoutX="461.0" layoutY="31.0" stroke="TRANSPARENT" strokeType="INSIDE" width="236.0" />
+                  <Text fill="WHITE" layoutX="533.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit RSVP">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button fx:id="btnRsvp" layoutX="461.0" layoutY="156.0" mnemonicParsing="false" onAction="#btnRsvpWasClicked" prefHeight="52.0" prefWidth="236.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="RSVP to Event" textFill="WHITE" />
-                  <AnchorPane layoutX="8.0" layoutY="326.0" prefHeight="75.0" prefWidth="697.0">
-                     <children>
-                        <Button fx:id="btnViewDetails" layoutX="23.0" layoutY="29.0" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="52.0" prefWidth="229.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Details" textFill="WHITE" />
-                     </children>
-                  </AnchorPane>
-                  <Button fx:id="btnRsvp1" layoutX="461.0" layoutY="262.0" mnemonicParsing="false" onAction="#btnEditRsvpWasClicked" prefHeight="52.0" prefWidth="236.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit RSVP" textFill="WHITE" />
+                  <AnchorPane layoutX="8.0" layoutY="326.0" prefHeight="75.0" prefWidth="697.0" />
+                  <Button fx:id="btnViewDetails" layoutX="464.0" layoutY="130.0" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="52.0" prefWidth="229.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Details" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

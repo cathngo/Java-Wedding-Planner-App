@@ -69,7 +69,7 @@ public class BLOB {
             pstmt.setInt(2, eventId);
 
             pstmt.executeUpdate();
-            System.out.println("Stored the file in the BLOB column.");
+            System.out.println("Stored the runsheet in the BLOB column.");
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -90,7 +90,7 @@ public class BLOB {
             pstmt.setInt(2, eventId);
 
             pstmt.executeUpdate();
-            System.out.println("Stored the file in the BLOB column.");
+            System.out.println("Stored the invitation in the BLOB column.");
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

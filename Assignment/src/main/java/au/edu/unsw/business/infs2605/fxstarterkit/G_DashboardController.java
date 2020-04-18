@@ -41,7 +41,7 @@ public class G_DashboardController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         guestId = LoginController.guestUser.getGuest_id();
         try {
-            dashboard_table.setItems(DatabaseManager.getRsvpGetEvent(guestId));
+            dashboard_table.setItems(DatabaseManager.getNotNullRsvpGetEvent(guestId));
 
             col_eventName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
             col_eventDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
@@ -80,67 +80,35 @@ public class G_DashboardController implements Initializable {
 
     }
 
-    @FXML
-    public void btnRsvpWasClicked(ActionEvent event) throws IOException, SQLException {
-        selectedEvent = dashboard_table.getSelectionModel().getSelectedItem();
+   
 
+    @FXML
+    public void btnEditRsvpWasClicked(ActionEvent event) throws IOException, SQLException {
+       
         try {
-            if (selectedEvent.getDecision() == null) {
+            
                 selectedEvent = dashboard_table.getSelectionModel().getSelectedItem();
                 String date = selectedEvent.getEvent_date();
                 String name = selectedEvent.getEvent_name().replace("'", "''");
                 eventId = DatabaseManager.getGuestIdByGuestNameGuestDate(name, date);
-                FXMLLoader viewEventloader = new FXMLLoader(getClass().getResource("G_SubmitRSVP.fxml"));
-                AnchorPane pane = (AnchorPane) viewEventloader.load();
-                G_SubmitRSVPController controller = viewEventloader.getController();
-                controller.getEventId(eventId);
-                controller.passEventId(eventId);
-                dashboardPane.getChildren().setAll(pane);
-            } else {
-                String header = "Error: You have already submitted an RSVP";
-                String content = "To change your response, go to 'Edit RSVP'";
-                Alertbox.AlertError(header, content);
-            }
-            System.out.println("btnRsvp event id: " + eventId);
-        } catch (Exception e) {
-
-            String header = "Unable to RSVP to event";
-            String content = "Please select an event from the table ";
-            Alertbox.AlertError(header, content);
-            e.printStackTrace();
-
-        }
-    }
-
-    @FXML
-    public void btnEditRsvpWasClicked(ActionEvent event) throws IOException {
-        selectedEvent = dashboard_table.getSelectionModel().getSelectedItem();
-
-        try {
-            if (selectedEvent.getDecision() != null) {
-                selectedEvent = dashboard_table.getSelectionModel().getSelectedItem();
-                String date = selectedEvent.getEvent_date();
-                String name = selectedEvent.getEvent_name().replace("'", "''");
-                eventId = DatabaseManager.getGuestIdByGuestNameGuestDate(name, date);
+                
                 FXMLLoader viewEventloader = new FXMLLoader(getClass().getResource("G_DashboardEditRSVP.fxml"));
                 AnchorPane pane = (AnchorPane) viewEventloader.load();
                 G_DashboardEditRSVPController controller = viewEventloader.getController();
                 controller.getEventId(eventId);
                 controller.passEventId(eventId);
                 dashboardPane.getChildren().setAll(pane);
-            } else {
-                String header = "Error: You have not yet submitted an RSVP";
-                String content = "To submit your response, go to 'RSVP to Event'";
-                Alertbox.AlertError(header, content);
-            }
-            System.out.println("btnRsvp event id: " + eventId);
-        } catch (Exception e) {
+          
+        }catch (Exception e) {
 
             String header = "Unable to edit RSVP";
             String content = "Please select an event from the table ";
             Alertbox.AlertError(header, content);
             e.printStackTrace();
 
-        }
+                 }
     }
 }
+        
+    
+

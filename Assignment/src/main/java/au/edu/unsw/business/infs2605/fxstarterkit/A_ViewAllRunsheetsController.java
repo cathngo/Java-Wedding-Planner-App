@@ -23,81 +23,65 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author jaydenso
  */
-public class A_ViewAllRunsheetsController implements Initializable{
+public class A_ViewAllRunsheetsController implements Initializable {
+
     @FXML
     private AnchorPane runsheetPane;
     @FXML
     private TableView<Event> runsheetTable;
-  
-    @FXML
-    private TableColumn<Event,String> col_eName;
-   @FXML
-    private TableColumn<Event,String> col_eDate;
-    @FXML
-    private TableColumn<Event,String> col_eStartTime;
-    @FXML
-    private TableColumn<Event,String> col_eEndTime;
-   
 
-    ObservableList<Event>runsheetList = FXCollections.observableArrayList();
-    
-    
+    @FXML
+    private TableColumn<Event, String> col_eName;
+    @FXML
+    private TableColumn<Event, String> col_eDate;
+    @FXML
+    private TableColumn<Event, String> col_eStartTime;
+    @FXML
+    private TableColumn<Event, String> col_eEndTime;
+
+    ObservableList<Event> runsheetList = FXCollections.observableArrayList();
+
     private int eventId;
-    
-    
-    
-    
 
-  
-     
-   @Override
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
-         
-        try{
+
+        try {
             runsheetTable.setItems(DatabaseManager.getEventsByRunsheet());
-            
-           
-             col_eName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
-             col_eDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
-             col_eStartTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
-             col_eEndTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
-        
-        }
-        
-        
-        
-       
-        catch(Exception e){
+
+            col_eName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
+            col_eDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
+            col_eStartTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
+            col_eEndTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
+
+        } catch (Exception e) {
             System.out.println("table not created");
             e.printStackTrace();
-            
-        }
-        
-       
-        
-       
-    }
-       
 
-    
-    
-    
+        }
+
+    }
+
     @FXML
     public void btnCreateRunsheetWasClicked(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_RunsheetSelectEvent.fxml"));
         runsheetPane.getChildren().setAll(pane);
     }
-    
+
     @FXML
     public void btnViewRunsheetWasClicked(ActionEvent event) throws IOException {
-        Event selectedEvent = runsheetTable.getSelectionModel().getSelectedItem();
-        eventId = selectedEvent.getEvent_id();
-        try{
-           Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler " + ""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf");
-       }catch(Exception e){
-           System.out.println("unsuccessful");
-           e.printStackTrace();
-       }
-       
+
+        try {
+            Event selectedEvent = runsheetTable.getSelectionModel().getSelectedItem();
+            eventId = selectedEvent.getEvent_id();
+            Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler " + "" + System.getProperty("user.dir") + "\\runsheet" + eventId + ".pdf");
+        } catch (Exception e) {
+            System.out.println("unsuccessful");
+            String header = "Unable to view runsheet";
+            String content = "Please select an event from the table";
+            Alertbox.AlertError(header, content);
+            e.printStackTrace();
+        }
+
     }
 }

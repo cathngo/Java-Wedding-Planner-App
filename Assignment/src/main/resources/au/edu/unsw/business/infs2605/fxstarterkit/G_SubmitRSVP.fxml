@@ -17,6 +17,7 @@
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
                 <Button fx:id="btnDashboard" mnemonicParsing="false" onAction="#btnDashboardWasClicked" prefHeight="27.0" prefWidth="122.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Dashboard" />
+                  <Button fx:id="btnDashboard1" mnemonicParsing="false" onAction="#btnPendingInvitations" prefHeight="27.0" prefWidth="146.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt;Pending Invitations" />
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="159.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt;  RSVP to Event" textFill="#8fdca9" />
               </items>
             </ToolBar>
@@ -83,7 +84,7 @@
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
                   <Button fx:id="btnBack" layoutX="29.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
-                  <Button fx:id="btnSubmit" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnSubmitWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Submit" textFill="WHITE" />
+                  <Button fx:id="btnSubmit" layoutX="573.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnSubmitWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Submit" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

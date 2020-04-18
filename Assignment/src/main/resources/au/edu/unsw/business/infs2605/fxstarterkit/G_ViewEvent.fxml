@@ -83,7 +83,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button layoutX="63.0" layoutY="18.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="170.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Download Invitation" textFill="WHITE" />
+                  <Button layoutX="63.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnViewInvitationWasClicked" prefHeight="47.0" prefWidth="170.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Invitation" textFill="WHITE" />
                   <Button layoutX="489.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnViewRunsheetWasClicked" prefHeight="47.0" prefWidth="163.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Runsheet" textFill="WHITE" />
                </children>
             </AnchorPane>
