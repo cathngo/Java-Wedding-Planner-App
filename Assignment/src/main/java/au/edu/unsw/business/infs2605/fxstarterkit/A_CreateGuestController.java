@@ -6,9 +6,6 @@
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -61,7 +58,11 @@ public class A_CreateGuestController {
 
         
         try{
-             
+             if(fname.getText().isEmpty()||lname.getText().isEmpty()||number.getText().isEmpty()||email.getText().isEmpty()){
+            String header = "Unable to create guest";
+            String content = "Please fill out all contents of 'create guest'";
+            Alertbox.AlertError(header, content);
+        } else{
              
             if (rb1.isSelected()) {
                 DatabaseManager.createGuest(FirstName, LastName, Phone, Email, Dietary, guestCode, Male);
@@ -73,7 +74,7 @@ public class A_CreateGuestController {
             String content = "Guest was successfully created!";
             Alertbox.AlertInfo(header, content);
              System.out.println("data inserted successfully");
-             
+             }  
         } catch(Exception e){
             String header = "Unable to create guest";
             String content = "Please fill out all contents of 'create guest'";

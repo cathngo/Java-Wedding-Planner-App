@@ -5,9 +5,6 @@
  */
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
-
 /**
  *
  * @author jaydenso

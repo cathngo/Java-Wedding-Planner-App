@@ -3,9 +3,6 @@ package au.edu.unsw.business.infs2605.fxstarterkit;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -38,36 +35,29 @@ import javafx.util.Callback;
     public class A_EventInviteGuestController implements Initializable{
      @FXML
     private TableView<Guest> existingGuestTable;
-   
+
     @FXML
-    private TableColumn<Integer,String> col_guestId;
+    private TableColumn<Integer, String> col_guestId;
     @FXML
-    private TableColumn<Guest,String> col_guestName;
+    private TableColumn<Guest, String> col_guestName;
     @FXML
     private Text eventName;
-   
+
     @FXML
     private AnchorPane eventPane;
-    
+
     @FXML
     private ListView<String> guestListView;
-    
+
     private int eventId;
-    
+
     private String event_name;
 
-     
-
-
-   
-    ObservableList<Guest>guestList = FXCollections.observableArrayList();
-    ObservableList<String>newGuestList = FXCollections.observableArrayList();
+    ObservableList<Guest> guestList = FXCollections.observableArrayList();
+    ObservableList<String> newGuestList = FXCollections.observableArrayList();
     ArrayList<Integer> guestId = new ArrayList<Integer>();
-    
 
-  
-     
-     @Override
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         try {
@@ -125,26 +115,42 @@ import javafx.util.Callback;
 
     }
 
-    
-    @FXML
+     @FXML
     void btnAddToListWasClicked(ActionEvent event) {
         
-        for (TablePosition<Guest, ?> pos : existingGuestTable.getSelectionModel().getSelectedCells()) {
+       
+        try {
+            if(existingGuestTable.getSelectionModel().isEmpty()){
+                String header = "Unable to add to guest list";
+            String content = "Please select existing guests first!";
+            Alertbox.AlertError(header, content);
+            } else{
+            for (TablePosition<Guest, ?> pos : existingGuestTable.getSelectionModel().getSelectedCells()) {
 
-            int row = pos.getRow();
-            Guest data = existingGuestTable.getItems().get(row);
-            String fname = data.getGuest_fname();
-            String lname = data.getGuest_lname();
-            int id = data.getGuest_id();
-            guestId.add(id);
-            newGuestList.add(fname + " " + lname);
-            guestListView.setItems(newGuestList);
-            
-            // etc etc etc
+                int row = pos.getRow();
+                Guest data = existingGuestTable.getItems().get(row);
+                String fname = data.getGuest_fname();
+                String lname = data.getGuest_lname();
+                int id = data.getGuest_id();
+                guestId.add(id);
+                newGuestList.add(fname + " " + lname);
+                guestListView.setItems(newGuestList);
+
+                System.out.println("btnAddtoList guestId" + id);
+                // etc etc etc
+            }
+            }
+        } catch (Exception e) {
+           
+        
         }
+        
+            
+        
     }
-    
-    public void getEventId(int id){
+
+
+    public void getEventId(int id) {
         this.eventId = id;
     }
       @FXML
@@ -171,20 +177,28 @@ import javafx.util.Callback;
     }
     
     
-    @FXML
+     @FXML
     public void btnInviteToEventWasClicked(ActionEvent event) throws SQLException {
-       
+
         try {
-            
+             if(guestListView.getItems().isEmpty() ){
+             String header = "Invite unsuccessful";
+            String content = "Please select and add existing guests to guest list first!";
+            Alertbox.AlertError(header, content);
+            System.out.println("unable to invite");
+
+    }else{
+        
+    
             DatabaseManager.inviteGuest(guestId, eventId);
 
-                System.out.println("succesfully updated");
+            System.out.println("succesfully updated");
 
-                //System.out.println("btninvitetoevent event Id" + eventId + "guest id" + guestId.get(i) + "admin id" + LoginController.adminUser.getAdmin_id());
-            
+            //System.out.println("btninvitetoevent event Id" + eventId + "guest id" + guestId.get(i) + "admin id" + LoginController.adminUser.getAdmin_id());
             String header = "Invite success!";
             String content = "Guests have been successfully invited to event";
             Alertbox.AlertInfo(header, content);
+             }
         } catch (Exception e) {
             String header = "Invite unsuccessful";
             String content = "Please select and add existing guests to guest list first!";
@@ -193,8 +207,10 @@ import javafx.util.Callback;
             e.printStackTrace();
 
         }
+       
+            }
 
-    }
+
      @FXML
     private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
      

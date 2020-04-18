@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.cell.PropertyValueFactory;
+
 
 public class DatabaseManager {
 
@@ -21,7 +21,6 @@ public class DatabaseManager {
     private static final String TABLE_NAME_FOR_ADMIN = "admin";
     private static final String TABLE_NAME_FOR_INVITATION = "invitation";
     private static final String TABLE_NAME_FOR_RSVP = "rsvp";
-    private static Connection conn;
     private static Connection sharedConnection;
 
     private static boolean openConnection() {
@@ -390,8 +389,8 @@ public class DatabaseManager {
     }
 
     public static String printObjectsInTable(String table) throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-        Statement st = conn.createStatement();
+      DatabaseManager.openConnection();
+        Statement st = sharedConnection.createStatement();
         ResultSet resultSet = st.executeQuery("SELECT * from " + table);
         ResultSetMetaData rsmd = resultSet.getMetaData();
         int columnsNumber = rsmd.getColumnCount();
@@ -404,7 +403,9 @@ public class DatabaseManager {
                 System.out.print(rsmd.getColumnName(i) + ": " + columnValue);
             }
             System.out.println("");
+       
         }
+        DatabaseManager.closeConnection();
         return table;
     }
 
@@ -494,8 +495,8 @@ public class DatabaseManager {
         ArrayList<Integer> rsvp = new ArrayList<Integer>();
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs1 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) "
+           DatabaseManager.openConnection();
+            ResultSet rs1 = sharedConnection.createStatement().executeQuery("SELECT COUNT(rsvp_id) "
                     + "FROM rsvp r "
                     + "JOIN invitation i ON i.invitation_id = r.invitation_id "
                     + "JOIN event e ON e.event_id = i.event_id "
@@ -503,7 +504,7 @@ public class DatabaseManager {
                     + "WHERE r.decision = 'Yes' "
                     + "AND e.event_id ='" + id + "'");
 
-            ResultSet rs2 = conn.createStatement().executeQuery("SELECT COUNT(rsvp_id) "
+            ResultSet rs2 = sharedConnection.createStatement().executeQuery("SELECT COUNT(rsvp_id) "
                     + "FROM rsvp r "
                     + "JOIN invitation i ON i.invitation_id = r.invitation_id "
                     + "JOIN event e ON e.event_id = i.event_id "
@@ -511,7 +512,7 @@ public class DatabaseManager {
                     + "WHERE r.decision = 'No' "
                     + "AND e.event_id ='" + id + "'");
 
-            ResultSet rs3 = conn.createStatement().executeQuery("SELECT COUNT(g.guest_id) "
+            ResultSet rs3 = sharedConnection.createStatement().executeQuery("SELECT COUNT(g.guest_id) "
                     + "FROM guest g "
                     + "JOIN invitation i ON g.guest_id = i.guest_id "
                     + "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id "
@@ -523,7 +524,7 @@ public class DatabaseManager {
             rsvp.add(rs2.getInt("COUNT(rsvp_id)"));
             rsvp.add(rs3.getInt("COUNT(g.guest_id)"));
 
-            conn.close();
+            DatabaseManager.closeConnection();
             rs1.close();
             rs2.close();
             rs3.close();
@@ -538,8 +539,8 @@ public class DatabaseManager {
         DatabaseManager.openConnection();
         ArrayList<RSVPGuestWrapper> rsvpList = new ArrayList<>();
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
-            ResultSet rs = conn.createStatement().executeQuery("SELECT g.guest_fname, g.guest_lname, r.decision "
+            DatabaseManager.openConnection();
+            ResultSet rs = sharedConnection.createStatement().executeQuery("SELECT g.guest_fname, g.guest_lname, r.decision "
                     + "FROM guest g "
                     + "JOIN invitation i ON g.guest_id = i.guest_id "
                     + "LEFT JOIN rsvp r ON r.invitation_id = i.invitation_id "
@@ -654,22 +655,33 @@ public class DatabaseManager {
             e.printStackTrace();
         }
     }
-    //A_ViewEventInviteNewGuestController uses this to invite new guest
+    //A_ViewEventInviteNewGuestController uses this to fetch guest_id
 
-    public static void inviteNewGuest(String guestCode, int eventId) throws SQLException {
-        try {
-            DatabaseManager.openConnection();
-            Statement st = sharedConnection.createStatement();
-            ResultSet resultSet = st.executeQuery("SELECT guest_id FROM guest WHERE guest_access_code = '" + guestCode + "'");
-
-            int guestId = Integer.parseInt(resultSet.getString(1));
-            int rs = sharedConnection.createStatement().executeUpdate("INSERT INTO invitation(event_id, guest_id, admin_id) SELECT '" + eventId + "', '" + guestId + "','" + LoginController.adminUser.getAdmin_id() + "' WHERE NOT EXISTS(SELECT 1 FROM invitation WHERE event_id ='" + eventId + "' AND guest_id ='" + guestId + "')");
-            resultSet.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    public static int getGuestIdByCode(String guestCode) throws SQLException {
+        int guestId = 0;
+           try{
+               DatabaseManager.openConnection();
+           
+          
+            ResultSet rs = sharedConnection.createStatement().executeQuery("SELECT guest_id FROM guest WHERE guest_access_code = '" + guestCode + "'");
+            while(rs.next()){
+            guestId = rs.getInt("guest_id");
+            
+             
+            }
+           }catch(Exception e){
+               e.printStackTrace();
+              
+           }finally{
+           return guestId;
+           }
+       
     }
+    
+   
+        
+       
+    
 
     //A_EditEventController uses this to edit an event
     public static void editEvent(int eventId, String name, String address, String desc, String date, String sTime, String eTime, String inst) throws SQLException {
