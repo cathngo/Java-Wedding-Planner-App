@@ -43,8 +43,8 @@
                      <content>
                         <TableView fx:id="rsvp_table" prefHeight="353.0" prefWidth="312.0">
                           <columns>
-                            <TableColumn fx:id="col_guestName" prefWidth="139.85591506958008" text="Guest" />
-                            <TableColumn fx:id="col_decision" prefWidth="54.644073486328125" text="RSVP" />
+                            <TableColumn fx:id="col_guestName" prefWidth="204.40002822875977" text="Guest" />
+                            <TableColumn fx:id="col_decision" prefWidth="95.19996643066406" text="RSVP" />
                           </columns>
                         </TableView>
                      </content>

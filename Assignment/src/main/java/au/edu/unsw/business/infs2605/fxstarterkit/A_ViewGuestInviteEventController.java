@@ -128,6 +128,7 @@ public class A_ViewGuestInviteEventController implements Initializable {
         A_ViewGuestProfileController controller = loader.getController();
         controller.loadGuestData(guestId);
         controller.getGuestId(guestId);
+        controller.passGuestName(guest_name);
         guestsPane.getChildren().setAll(pane);
 
         System.out.println("btn back guestId" + guestId);

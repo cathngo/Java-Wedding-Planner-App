@@ -40,8 +40,8 @@
                   <ListView layoutX="44.0" layoutY="34.0" prefHeight="193.0" prefWidth="200.0" />
                   <TableView fx:id="existingGuestTable" layoutX="44.0" layoutY="27.0" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                      <TableColumn fx:id="col_guestId" prefWidth="35.5999755859375" text="ID" />
-                        <TableColumn fx:id="col_guestName" prefWidth="164.00003814697266" text="Name" />
+                      <TableColumn fx:id="col_guestId" prefWidth="46.0" text="ID" />
+                        <TableColumn fx:id="col_guestName" prefWidth="152.79999542236328" text="Name" />
                     </columns>
                   </TableView>
                   <Button fx:id="btnAddTotList" layoutX="136.0" layoutY="229.0" mnemonicParsing="false" onAction="#btnAddToListWasClicked" text="Add to Guest List" />

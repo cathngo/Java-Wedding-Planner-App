@@ -106,10 +106,17 @@ public class A_EditRunsheetController {
 
     @FXML
     void btnUpdateWasClicked(ActionEvent  event) throws Exception {
+        
+        if (runsheetList.getItems().isEmpty()){
+            String header = "Update Unsuccessful";
+            String content = "Please add items to the runsheet";
+            Alertbox.AlertError(header, content);
+        }else{
         String header = "Update Success!";
         String content = "Runsheet was successfully updated!";
         Alertbox.AlertInfo(header, content);
         A_RunsheetPDFController.editRunsheetPDF(event_time, event_activity, eventName, eventId);
         System.out.println("btn update eventId eventName " + eventName + eventId);
+        }
     }
 }

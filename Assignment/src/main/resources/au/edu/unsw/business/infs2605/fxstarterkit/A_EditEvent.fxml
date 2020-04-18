@@ -16,7 +16,7 @@
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events" />
+                <Button mnemonicParsing="false" onAction="#btnEventsWasClicked" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events" />
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Edit Event" textFill="#8fdca9" />
               </items>
             </ToolBar>
@@ -86,6 +86,8 @@
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
                   <Button fx:id="btnUpdateEvent" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnUpdateEventWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" styleClass="smallbutton" stylesheets="@stylesheet.css" text="Update Event" textFill="WHITE" />
+                  <Button fx:id="btnUpdateEvent" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnUpdateEventWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Update Event" textFill="WHITE" />
+                  <Button fx:id="btnUpdateEvent1" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

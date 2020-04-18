@@ -43,7 +43,7 @@
                   <TableView fx:id="existingGuestTable" layoutX="44.0" layoutY="34.0" prefHeight="244.0" prefWidth="305.0">
                     <columns>
                       <TableColumn fx:id="col_guestId" text="ID" />
-                        <TableColumn fx:id="col_guestName" prefWidth="224.0" text="Name" />
+                        <TableColumn fx:id="col_guestName" prefWidth="224.0000030517578" text="Name" />
                     </columns>
                   </TableView>
                   <Button fx:id="btnAddTotList" layoutX="224.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnAddToListWasClicked" text="Add to Guest List" />

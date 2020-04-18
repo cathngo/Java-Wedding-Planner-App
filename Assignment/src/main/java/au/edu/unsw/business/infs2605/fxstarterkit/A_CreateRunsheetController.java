@@ -103,18 +103,19 @@ public class A_CreateRunsheetController {
         //directoryChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
         //File selectedDirectory = directoryChooser.showDialog(primaryStage);
         //System.out.println(selectedDirectory.getAbsolutePath());
-        
+        try{
      A_RunsheetPDFController.createNewRunsheetPDF(event_time, event_activity, eventName, eventId);
      
-            
-        
-        
         String header = "Runsheet Success!";
         String content = "Runsheet was successfully created!";
         Alertbox.AlertInfo(header, content);
         BLOB runsheet = new BLOB();
         runsheet.updateRunsheet(eventId, "runsheet" + eventId + ".pdf");
-      
+        }catch (Exception e){
+            String header = "Unable to create Runsheet";
+            String content = "Runsheet already exists";
+            Alertbox.AlertError(header, content);
+        }
     }
     
 

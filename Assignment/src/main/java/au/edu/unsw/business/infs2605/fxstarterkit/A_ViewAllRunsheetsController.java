@@ -71,19 +71,18 @@ public class A_ViewAllRunsheetsController implements Initializable {
 
     @FXML
     public void btnViewRunsheetWasClicked(ActionEvent event) throws IOException {
-
-        try {
-            Event selectedEvent = runsheetTable.getSelectionModel().getSelectedItem();
-            eventId = selectedEvent.getEvent_id();
-            Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler " + "" + System.getProperty("user.dir") + "\\runsheet" + eventId + ".pdf");
-        } catch (Exception e) {
+        Event selectedEvent = runsheetTable.getSelectionModel().getSelectedItem();
+    if (runsheetTable.getSelectionModel().isEmpty()){
             System.out.println("unsuccessful");
             String header = "Unable to view runsheet";
-            String content = "Please select an event from the table";
+            String content = "Please select an event first";
             Alertbox.AlertError(header, content);
-            e.printStackTrace();
-        }
-
+            
+    }else{
+            eventId = selectedEvent.getEvent_id();
+            Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler " + "" + System.getProperty("user.dir") + "\\runsheet" + eventId + ".pdf");
+    }
+        
     }
     
     @FXML
