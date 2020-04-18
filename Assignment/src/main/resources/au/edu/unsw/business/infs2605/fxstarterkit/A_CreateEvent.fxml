@@ -31,9 +31,9 @@
             </AnchorPane>
             <AnchorPane prefHeight="361.0" prefWidth="771.0">
                <children>
-                  <ScrollPane layoutX="19.0" pickOnBounds="false" prefHeight="349.0" prefWidth="720.0">
+                  <ScrollPane layoutX="19.0" pickOnBounds="false" prefHeight="359.0" prefWidth="720.0">
                      <content>
-                        <Pane pickOnBounds="false" prefHeight="343.0" prefWidth="770.0">
+                        <Pane pickOnBounds="false" prefHeight="476.0" prefWidth="770.0">
                            <children>
                               <Text layoutX="507.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Time:">
                                  <font>
@@ -70,13 +70,13 @@
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="eventDescription" alignment="TOP_LEFT" layoutX="24.0" layoutY="222.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="102.0" prefWidth="655.0" />
-                              <Text layoutX="26.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Instructions">
+                              <TextField fx:id="eventDescription" alignment="TOP_LEFT" layoutX="24.0" layoutY="222.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="73.0" prefWidth="655.0" />
+                              <Text layoutX="24.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Instructions">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="instructions" alignment="TOP_LEFT" layoutX="24.0" layoutY="372.0" prefHeight="102.0" prefWidth="525.0" />
+                              <TextField fx:id="instructions" alignment="TOP_LEFT" layoutX="24.0" layoutY="329.0" prefHeight="92.0" prefWidth="655.0" />
                            </children>
                         </Pane>
                      </content>
