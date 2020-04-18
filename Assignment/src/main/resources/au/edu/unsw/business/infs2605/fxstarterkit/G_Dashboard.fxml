@@ -7,7 +7,6 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -42,14 +41,9 @@
                         </TableView>
                      </content>
                   </ScrollPane>
-                  <Rectangle fx:id="btnEditRsvpWasClicked" arcHeight="5.0" arcWidth="5.0" fill="#869e8b" height="67.0" layoutX="461.0" layoutY="31.0" stroke="TRANSPARENT" strokeType="INSIDE" width="236.0" />
-                  <Text fill="WHITE" layoutX="533.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit RSVP">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
                   <AnchorPane layoutX="8.0" layoutY="326.0" prefHeight="75.0" prefWidth="697.0" />
                   <Button fx:id="btnViewDetails" layoutX="464.0" layoutY="130.0" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="52.0" prefWidth="229.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Details" textFill="WHITE" />
+                  <Button fx:id="btnViewDetails1" layoutX="464.0" layoutY="37.0" mnemonicParsing="false" onAction="#btnEditRsvpWasClicked" prefHeight="75.0" prefWidth="229.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit RSVP" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>
