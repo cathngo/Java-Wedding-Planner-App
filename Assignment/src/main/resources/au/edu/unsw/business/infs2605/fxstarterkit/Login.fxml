@@ -22,40 +22,27 @@
                   <Font name="Helvetica" size="41.0" />
                </font>
             </Text>
-            <Text fill="#474a49" layoutX="76.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" textAlignment="CENTER" wrappingWidth="151.0">
+            <Text fill="#474a49" layoutX="76.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" textAlignment="CENTER" wrappingWidth="151.0">
                <font>
                   <Font name="System Bold Italic" size="22.0" />
                </font>
             </Text>
-            <PasswordField fx:id="pwfAccessCode" layoutX="58.0" layoutY="234.0" prefHeight="26.0" prefWidth="189.0" promptText="access code" />
-            <Button fx:id="btnLogin" layoutX="59.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnLoginWasClicked" onMouseEntered="#btnHovered" onMouseExited="#btnExit" opacity="0.96" prefHeight="32.0" prefWidth="192.0" style="-fx-background-color: #232323#232323;" text="LOGIN" textFill="#f7f6f6">
+            <PasswordField fx:id="pwfAccessCode" layoutX="58.0" layoutY="220.0" prefHeight="26.0" prefWidth="189.0" promptText="access code" />
+            <Button fx:id="btnLogin" layoutX="59.0" layoutY="271.0" mnemonicParsing="false" onAction="#btnLoginWasClicked" onMouseEntered="#btnHovered" onMouseExited="#btnExit" opacity="0.96" prefHeight="32.0" prefWidth="192.0" style="-fx-background-color: #232323#232323;" text="LOGIN" textFill="#f7f6f6">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Text fill="#474a49" layoutX="31.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't Have Account?" textAlignment="CENTER" wrappingWidth="151.0">
-               <font>
-                  <Font name="System Bold Italic" size="9.0" />
-               </font>
-            </Text>
-            <Label fx:id="lblIncorrectCredentials" alignment="CENTER" layoutX="152.0" layoutY="113.0" text="Incorrect credentials!" textFill="#e31414">
+            <Label fx:id="lblIncorrectCredentials" alignment="CENTER" layoutX="152.0" layoutY="156.0" text="Incorrect credentials!" textFill="#e31414">
                <font>
                   <Font name="System Bold Italic" size="9.0" />
                </font>
             </Label>
-            <Label fx:id="lblIncorrectAccessCode" layoutX="154.0" layoutY="260.0" text="Incorrect access code!" textFill="#e31414">
+            <Label fx:id="lblIncorrectAccessCode" layoutX="154.0" layoutY="246.0" text="Incorrect access code!" textFill="#e31414">
                <font>
                   <Font name="System Bold Italic" size="9.0" />
                </font>
             </Label>
-            <Button fx:id="btnSignUp" layoutX="145.0" layoutY="328.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="50.0" style="-fx-background-color: TRANSPARENT;" text="Sign Up" underline="true">
-               <font>
-                  <Font size="9.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="btnForgotPassword" layoutX="143.0" layoutY="153.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="108.0" style="-fx-background-color: TRANSPARENT;" text="Forgot your password?" underline="true">
+            <Button fx:id="btnForgotPassword" layoutX="60.0" layoutY="308.0" mnemonicParsing="false" onAction="#btnForgotPasswordWasClicked" prefHeight="20.0" prefWidth="190.0" style="-fx-background-color: TRANSPARENT;" text="Forgot your password or access code?" underline="true">
                <font>
                   <Font size="9.0" />
                </font>
