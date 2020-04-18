@@ -26,12 +26,12 @@
                <children>
                   <ScrollPane layoutX="24.0" layoutY="21.0" prefHeight="225.0" prefWidth="542.0">
                      <content>
-                        <TableView prefHeight="464.0" prefWidth="524.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
+                        <TableView fx:id="invitation_table" prefHeight="464.0" prefWidth="524.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
                            <columns>
-                              <TableColumn fx:id="col_EventName" prefWidth="216.0" text="Name" />
-                              <TableColumn fx:id="col_EventDate" prefWidth="96.0" text="Date" />
-                              <TableColumn fx:id="col_EventTimeStart" prefWidth="116.0" text="Time Start" />
-                              <TableColumn fx:id="col_EventTimeEnd" prefWidth="113.0" text="Time End" />
+                              <TableColumn fx:id="col_eName" prefWidth="216.0" text="Name" />
+                              <TableColumn fx:id="col_eDate" prefWidth="96.0" text="Date" />
+                              <TableColumn fx:id="col_eStartTime" prefWidth="116.0" text="Time Start" />
+                              <TableColumn fx:id="col_eEndTime" prefWidth="113.0" text="Time End" />
                            </columns>
                         </TableView>
                      </content>

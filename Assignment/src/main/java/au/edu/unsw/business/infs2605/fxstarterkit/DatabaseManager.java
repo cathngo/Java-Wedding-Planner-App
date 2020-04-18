@@ -62,6 +62,7 @@ public class DatabaseManager {
                     + "event_start_time TEXT, "
                     + "event_end_time TEXT, "
                     + "event_instructions TEXT, "
+                    + "event_invitation BLOB, "
                     + "event_runsheet BLOB)";
 
             Statement smt = sharedConnection.createStatement();
@@ -875,6 +876,7 @@ public class DatabaseManager {
         DatabaseManager.closeConnection();
     }
     
+    //A_ViewAllRunsheetsController uses this for runsheet table
     public static ObservableList<Event> getEventsByRunsheet() {
         DatabaseManager.openConnection();
         ArrayList<Event> eventList = new ArrayList<>();
@@ -893,4 +895,26 @@ public class DatabaseManager {
         }
         return FXCollections.observableArrayList(eventList);
     }
+    
+    
+    public static ObservableList<Event> getEventsByInvitation() {
+        DatabaseManager.openConnection();
+        ArrayList<Event> eventList = new ArrayList<>();
+        try {
+           
+             ResultSet rs = sharedConnection.createStatement().executeQuery("select * from event WHERE event_invitation IS NOT NULL");
+            while (rs.next()) {
+                Event events = new Event(rs.getInt("event_id"), rs.getString("event_name"),
+                        rs.getString("event_date"), rs.getString("event_start_time"), rs.getString("event_end_time"), rs.getString("event_address"), rs.getString("event_description"), rs.getString("event_instructions"));
+                eventList.add(events);
+            }
+            DatabaseManager.closeConnection();
+            // rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return FXCollections.observableArrayList(eventList);
+    }
 }
+        
+

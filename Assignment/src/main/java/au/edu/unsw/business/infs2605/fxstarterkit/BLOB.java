@@ -76,9 +76,80 @@ public class BLOB {
         }
     }
       
+      public void updateInvitation(int eventId, String filename) {
+        // update sql
+        String updateSQL = "UPDATE event "
+                + "SET event_invitation = ? "
+                + "WHERE event_id =?";
+
+        try (Connection conn = connect();
+                PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
+
+            // set parameters
+            pstmt.setBytes(1, readFile(filename));
+            pstmt.setInt(2, eventId);
+
+            pstmt.executeUpdate();
+            System.out.println("Stored the file in the BLOB column.");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+      
       public void readRunsheet(int eventId, String filename) {
         // update sql
         String selectSQL = "SELECT event_runsheet FROM event WHERE event_id=?";
+        ResultSet rs = null;
+        FileOutputStream fos = null;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            conn = connect();
+            pstmt = conn.prepareStatement(selectSQL);
+            pstmt.setInt(1, eventId);
+            rs = pstmt.executeQuery();
+
+            // write binary stream into file
+            File file = new File(filename);
+            fos = new FileOutputStream(file);
+
+            System.out.println("Writing BLOB to file " + file.getAbsolutePath());
+            while (rs.next()) {
+                InputStream input = rs.getBinaryStream("picture");
+                byte[] buffer = new byte[1024];
+                while (input.read(buffer) > 0) {
+                    fos.write(buffer);
+                }
+            }
+        } catch (SQLException | IOException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+
+                if (conn != null) {
+                    conn.close();
+                }
+                if (fos != null) {
+                    fos.close();
+                }
+
+            } catch (SQLException | IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+      
+      public void readInvitation(int eventId, String filename) {
+        // update sql
+        String selectSQL = "SELECT event_invitation FROM event WHERE event_id=?";
         ResultSet rs = null;
         FileOutputStream fos = null;
         Connection conn = null;
