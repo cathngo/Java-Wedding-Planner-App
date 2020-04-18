@@ -7,13 +7,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.About">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.About">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="540.0" prefWidth="771.0">
          <children>
-            <AnchorPane prefHeight="65.0" prefWidth="600.0">
+            <AnchorPane prefHeight="128.0" prefWidth="771.0">
                <children>
-                  <Text layoutX="25.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About" wrappingWidth="257.984375">
+                  <Text layoutX="64.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About" wrappingWidth="257.984375">
                      <font>
                         <Font size="32.0" />
                      </font>
@@ -22,7 +22,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="439.0" prefWidth="600.0">
                <children>
-                  <ImageView fitHeight="221.0" fitWidth="532.0" layoutX="24.0" layoutY="27.0">
+                  <ImageView fitHeight="291.0" fitWidth="641.0" layoutX="65.0" layoutY="26.0">
                      <image>
                         <Image url="@images/about-statement.png" />
                      </image>

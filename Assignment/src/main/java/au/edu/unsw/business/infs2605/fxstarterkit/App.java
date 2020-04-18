@@ -27,7 +27,8 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
     
         
-        //A_InvitationPDFController.createNewInvPDF();
+
+        A_InvitationPDFController.createNewInvPDF(1);
         
         scene = new Scene(loadFXML("Login"));
         

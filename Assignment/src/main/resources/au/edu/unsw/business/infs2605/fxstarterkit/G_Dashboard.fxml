@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="dashboardPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.G_DashboardController">
+<AnchorPane fx:id="dashboardPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.G_DashboardController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="540.0" prefWidth="771.0">
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
@@ -22,39 +22,39 @@
             </ToolBar>
             <AnchorPane prefHeight="49.0" prefWidth="600.0">
                <children>
-                  <Text layoutX="27.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard" wrappingWidth="257.984375">
+                  <Text layoutX="28.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard" wrappingWidth="257.984375">
                      <font>
-                        <Font size="28.0" />
+                        <Font size="41.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="306.0" prefWidth="668.0">
+            <AnchorPane prefHeight="450.0" prefWidth="771.0">
                <children>
-                  <ScrollPane layoutX="29.0" layoutY="18.0" prefHeight="219.0" prefWidth="279.0">
+                  <ScrollPane layoutX="31.0" layoutY="31.0" prefHeight="301.0" prefWidth="411.0">
                      <content>
-                        <TableView fx:id="dashboard_table" prefHeight="353.0" prefWidth="261.0">
+                        <TableView fx:id="dashboard_table" prefHeight="353.0" prefWidth="388.0">
                           <columns>
                             <TableColumn fx:id="col_eventName" prefWidth="158.7093505859375" text="Event" />
-                            <TableColumn fx:id="col_eventDate" prefWidth="52.79063415527344" text="Date" />
-                              <TableColumn fx:id="col_eventRsvp" prefWidth="49.39479064941406" text="RSVP" />
+                            <TableColumn fx:id="col_eventDate" prefWidth="127.0" text="Date" />
+                              <TableColumn fx:id="col_eventRsvp" prefWidth="101.0" text="RSVP" />
                           </columns>
                         </TableView>
                      </content>
                   </ScrollPane>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#869e8b" height="67.0" layoutX="334.0" layoutY="31.0" stroke="TRANSPARENT" strokeType="INSIDE" width="236.0" />
-                  <Text fill="WHITE" layoutX="382.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 | New Invitations">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#869e8b" height="67.0" layoutX="461.0" layoutY="31.0" stroke="TRANSPARENT" strokeType="INSIDE" width="236.0" />
+                  <Text fill="WHITE" layoutX="500.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 | New Invitations">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button fx:id="btnRsvp" layoutX="399.0" layoutY="143.0" mnemonicParsing="false" onAction="#btnRsvpWasClicked" prefHeight="52.0" prefWidth="107.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="RSVP to Event" textFill="WHITE" />
-                  <AnchorPane layoutX="8.0" layoutY="244.0" prefHeight="79.0" prefWidth="600.0">
+                  <Button fx:id="btnRsvp" layoutX="461.0" layoutY="156.0" mnemonicParsing="false" onAction="#btnRsvpWasClicked" prefHeight="52.0" prefWidth="236.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="RSVP to Event" textFill="WHITE" />
+                  <AnchorPane layoutX="8.0" layoutY="326.0" prefHeight="75.0" prefWidth="697.0">
                      <children>
-                        <Button fx:id="btnViewDetails" layoutX="119.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Details" textFill="WHITE" />
-                        <Button fx:id="btnRsvp1" layoutX="394.0" layoutY="-11.0" mnemonicParsing="false" onAction="#btnEditRsvpWasClicked" prefHeight="52.0" prefWidth="107.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit RSVP" textFill="WHITE" />
+                        <Button fx:id="btnViewDetails" layoutX="23.0" layoutY="29.0" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="52.0" prefWidth="229.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Details" textFill="WHITE" />
                      </children>
                   </AnchorPane>
+                  <Button fx:id="btnRsvp1" layoutX="461.0" layoutY="262.0" mnemonicParsing="false" onAction="#btnEditRsvpWasClicked" prefHeight="52.0" prefWidth="236.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit RSVP" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

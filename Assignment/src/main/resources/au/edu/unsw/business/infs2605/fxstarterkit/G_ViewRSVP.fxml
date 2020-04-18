@@ -7,89 +7,89 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="dashboardPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.G_ViewRSVPController">
+<AnchorPane fx:id="dashboardPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.G_ViewRSVPController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="540.0" prefWidth="771.0">
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button fx:id="btnDashboard" mnemonicParsing="false" onAction="#btnDashboardWasClicked" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Dashboard" />
-                  <Button fx:id="btnViewDetails" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Details" textFill="#0a0a0a" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="63.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; RSVP" textFill="#8fdca9" />
+                <Button fx:id="btnDashboard" mnemonicParsing="false" onAction="#btnDashboardWasClicked" prefHeight="27.0" prefWidth="119.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Dashboard" />
+                  <Button fx:id="btnViewDetails" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="27.0" prefWidth="134.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Details" textFill="#0a0a0a" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="112.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; RSVP" textFill="#8fdca9" />
               </items>
             </ToolBar>
-            <AnchorPane prefHeight="49.0" prefWidth="600.0">
+            <AnchorPane prefHeight="160.0" prefWidth="771.0">
                <children>
-                  <Text fx:id="eventName" layoutX="27.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandy's Birthday " wrappingWidth="314.984375">
+                  <Text fx:id="eventName" layoutX="22.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandy's Birthday " wrappingWidth="314.984375">
                      <font>
-                        <Font size="28.0" />
+                        <Font size="35.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="265.0" prefWidth="600.0">
+            <AnchorPane prefHeight="384.0" prefWidth="771.0">
                <children>
-                  <Text layoutX="26.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
+                  <Text layoutX="24.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="205.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="24.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="24.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Can you attend this event?">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="24.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you have any dietary requirements?">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="eventDate" fill="#5e5e5e" layoutX="74.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="02/04/2020">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="311.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+                  <Text fx:id="eventTime" fill="#5e5e5e" layoutX="263.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6pm - 9pm">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="26.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location">
+                  <Text fx:id="eventAddress" fill="#5e5e5e" layoutX="24.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sydney Opera House, Bennelong Point, Sydney NSW 2000">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="24.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Can you attend this event?">
+                  <Text fx:id="rsvpDecision" fill="#5e5e5e" layoutX="24.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yes" wrappingWidth="551.3779907226562">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="23.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you have any dietary requirements?">
+                  <Text fx:id="guestDiet" fill="#5e5e5e" layoutX="24.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Default value is N/A" wrappingWidth="551.3779907226562">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="eventDate" fill="#5e5e5e" layoutX="68.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="02/04/2020">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="eventTime" fill="#5e5e5e" layoutX="355.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6pm - 9pm">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="eventAddress" fill="#5e5e5e" layoutX="26.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sydney Opera House, Bennelong Point, Sydney NSW 2000">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="rsvpDecision" fill="#5e5e5e" layoutX="24.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yes" wrappingWidth="551.3779907226562">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="guestDiet" fill="#5e5e5e" layoutX="23.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Default value is N/A" wrappingWidth="551.3779907226562">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Text>
-                  <Text fill="#da3030" layoutX="183.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+                  <Text fill="#da3030" layoutX="14.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="79.0" prefWidth="600.0">
+            <AnchorPane prefHeight="189.0" prefWidth="771.0">
                <children>
-                  <Button fx:id="btnBack" layoutX="29.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
-                  <Button fx:id="btnEdit" layoutX="432.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnEditWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit" textFill="WHITE" />
+                  <Button fx:id="btnBack" layoutX="70.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="49.0" prefWidth="159.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnEdit" layoutX="543.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnEditWasClicked" prefHeight="49.0" prefWidth="152.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Edit" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>
