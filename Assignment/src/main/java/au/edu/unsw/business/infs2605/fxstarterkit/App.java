@@ -27,17 +27,21 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
     
         
+
         A_InvitationPDFController.createNewInvPDF(1);
         
         scene = new Scene(loadFXML("Login"));
-
+        
         stage.setScene(scene);
         stage.show();
         DatabaseManager.setupDatabaseOnFirstRun();
+        
         //use this for testing and viewing table content
-        DatabaseManager.printObjectsInTable("event");
+        //DatabaseManager.printObjectsInTable("event");
         DatabaseManager.printObjectsInTable("admin");
         DatabaseManager.printObjectsInTable("guest");
+       
+        
         
         //System.out.println(System.getProperty("user.dir"));
  
@@ -54,6 +58,8 @@ public class App extends Application {
 
     public static void main(String[] args) throws SQLException {  
         launch();
+        
+       
     }
 
 }
