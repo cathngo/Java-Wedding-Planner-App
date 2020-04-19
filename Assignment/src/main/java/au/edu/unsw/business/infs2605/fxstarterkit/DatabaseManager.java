@@ -454,7 +454,7 @@ public class DatabaseManager {
         DatabaseManager.openConnection();
         ArrayList<Event> eventList = new ArrayList<>();
         try {
-            //Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+            
             ResultSet rs = sharedConnection.createStatement().executeQuery("select * from " + DatabaseManager.TABLE_NAME_FOR_EVENT);
             while (rs.next()) {
                 Event events = new Event(rs.getInt("event_id"), rs.getString("event_name"),
@@ -462,7 +462,7 @@ public class DatabaseManager {
                 eventList.add(events);
             }
             DatabaseManager.closeConnection();
-            // rs.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -474,7 +474,7 @@ public class DatabaseManager {
         DatabaseManager.openConnection();
         Event events = null;
         try {
-            //Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+            
             ResultSet rs = sharedConnection.createStatement().executeQuery("select * from " + DatabaseManager.TABLE_NAME_FOR_EVENT + " where event_id = " + id);
             while (rs.next()) {
                 events = new Event(rs.getInt("event_id"), rs.getString("event_name"),
@@ -566,7 +566,7 @@ public class DatabaseManager {
         DatabaseManager.openConnection();
         ArrayList<Guest> guestList = new ArrayList<>();
         try {
-            //Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+          
             ResultSet rs = sharedConnection.createStatement().executeQuery("select * from " + DatabaseManager.TABLE_NAME_FOR_GUEST);
             while (rs.next()) {
                 Guest guests = new Guest(rs.getInt("guest_id"), rs.getString("guest_fname"),
@@ -593,7 +593,8 @@ public class DatabaseManager {
 
         }
     }
-
+    
+//A_CreateEventController uses this to create an event
     public static void createEvent(String name, String address, String desc, String date, String sTime, String eTime, String inst) {
         try {
             DatabaseManager.openConnection();
@@ -620,7 +621,7 @@ public class DatabaseManager {
         }
     }
 
-    //A_ViewEventINviteNewGuestController uses this to create guest code
+    //A_ViewEventInviteNewGuestController uses this to create guest code
     public static String generateGuestCode(String fname, String lname) {
         String codeName = fname + lname;
         String actualName = codeName.replaceAll("[^a-zA-Z]", "");
@@ -656,34 +657,26 @@ public class DatabaseManager {
             e.printStackTrace();
         }
     }
+    
     //A_ViewEventInviteNewGuestController uses this to fetch guest_id
-
     public static int getGuestIdByCode(String guestCode) throws SQLException {
         int guestId = 0;
            try{
                DatabaseManager.openConnection();
            
-          
-            ResultSet rs = sharedConnection.createStatement().executeQuery("SELECT guest_id FROM guest WHERE guest_access_code = '" + guestCode + "'");
+                      ResultSet rs = sharedConnection.createStatement().executeQuery("SELECT guest_id FROM guest WHERE guest_access_code = '" + guestCode + "'");
             while(rs.next()){
             guestId = rs.getInt("guest_id");
             
-             
-            }
+                         }
            }catch(Exception e){
                e.printStackTrace();
               
            }finally{
            return guestId;
            }
-       
-    }
+           }
     
-   
-        
-       
-    
-
     //A_EditEventController uses this to edit an event
     public static void editEvent(int eventId, String name, String address, String desc, String date, String sTime, String eTime, String inst) throws SQLException {
         DatabaseManager.openConnection();
@@ -702,13 +695,13 @@ public class DatabaseManager {
         psmt.close();
         DatabaseManager.closeConnection();
     }
+    
 //A_ViewGuestProfileController + A_EditGuestController uses this to pre-set fields of selected guest
-
     public static Guest getGuestByGuestId(int id) {
         DatabaseManager.openConnection();
         Guest guests = null;
         try {
-            //Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+            
             ResultSet rs = sharedConnection.createStatement().executeQuery("select * from " + DatabaseManager.TABLE_NAME_FOR_GUEST + " where guest_id = " + id);
             while (rs.next()) {
                 guests = new Guest(rs.getInt("guest_id"), rs.getString("guest_fname"),
@@ -724,7 +717,7 @@ public class DatabaseManager {
         }
     }
 
-    //A_ViewGuestProfile uses this
+    //A_ViewGuestProfile uses this to set up events table with rsvp column
     public static ObservableList<RSVPEventWrapper> getRsvpGetEvent(int id) {
         DatabaseManager.openConnection();
         ArrayList<RSVPEventWrapper> rsvpList = new ArrayList<>();
@@ -760,6 +753,7 @@ public class DatabaseManager {
         }
     }
 
+    //A_EditGuestController uses this to edit a guest
     public static void editGuest(int guestId, String fname, String lname, String email, String phone, String diet, String gender) throws SQLException {
 
         DatabaseManager.openConnection();
@@ -778,6 +772,7 @@ public class DatabaseManager {
         DatabaseManager.closeConnection();
     }
 
+    
     public static int getGuestIdByGuestNameGuestDate(String name, String date) throws SQLException {
         DatabaseManager.openConnection();
         ResultSet rs = sharedConnection.createStatement().executeQuery("SELECT event_id "
