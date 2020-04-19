@@ -246,4 +246,10 @@ public class A_ViewEventInviteGuestController implements Initializable {
 
     }
 
+    @FXML
+    void btnRemoveWasClicked(ActionEvent event) {
+        int index = guestListView.getSelectionModel().getSelectedIndex();
+        guestListView.getItems().remove(index);
+        guestId.remove(index);
+    }
 }
