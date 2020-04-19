@@ -117,7 +117,7 @@
                         <Image url="@images/app-name.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="49.0" fitWidth="72.0" layoutX="721.0" layoutY="4.0">
+                  <ImageView fitHeight="44.0" fitWidth="65.0" layoutX="740.0" layoutY="6.0">
                      <image>
                         <Image url="@images/avatar-icon.png" />
                      </image>
