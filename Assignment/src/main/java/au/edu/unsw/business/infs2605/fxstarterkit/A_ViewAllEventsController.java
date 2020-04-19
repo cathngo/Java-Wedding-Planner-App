@@ -8,7 +8,6 @@ package au.edu.unsw.business.infs2605.fxstarterkit;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,9 +37,6 @@ public class A_ViewAllEventsController {
     public TableColumn<Event, String> col_eEndTime;
     
     @FXML
-    private TextField searchField;
-    
-    @FXML
     private AnchorPane eventPane;
     
 
@@ -56,21 +52,13 @@ public class A_ViewAllEventsController {
             col_eDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
             col_eStartTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
             col_eEndTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
-            
-            
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
-    
-    @FXML
-    private void searchEvents(){
-        
-        String searchString = searchField.getText();
-        eventTable.setItems(DatabaseManager.getEvents());
-    }
+
    
 
     @FXML
