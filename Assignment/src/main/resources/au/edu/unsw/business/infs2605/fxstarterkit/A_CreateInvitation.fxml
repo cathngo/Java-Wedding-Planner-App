@@ -24,9 +24,9 @@
             </AnchorPane>
             <AnchorPane prefHeight="337.0" prefWidth="677.0">
                <children>
-                  <ScrollPane layoutX="47.0" layoutY="3.0" prefHeight="337.0" prefWidth="677.0">
+                  <ScrollPane layoutX="47.0" layoutY="3.0" prefHeight="321.0" prefWidth="678.0">
                      <content>
-                        <TableView fx:id="invitation_table" layoutX="58.0" layoutY="12.0" prefHeight="338.0" prefWidth="656.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css">
+                        <TableView fx:id="invitation_table" layoutX="58.0" layoutY="12.0" prefHeight="320.0" prefWidth="656.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css">
                            <columns>
                               <TableColumn fx:id="col_eName" prefWidth="216.0" text="Name" />
                               <TableColumn fx:id="col_eDate" prefWidth="96.0" text="Date" />

@@ -16,7 +16,7 @@
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="95.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Dashboard" textFill="#8fdca9" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="95.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Dashboard" textFill="#76b58b" />
               </items>
             </ToolBar>
             <AnchorPane prefHeight="49.0" prefWidth="600.0">

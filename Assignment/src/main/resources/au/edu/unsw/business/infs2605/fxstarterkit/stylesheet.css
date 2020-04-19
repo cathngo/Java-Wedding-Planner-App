@@ -66,3 +66,10 @@
     -fx-layout-Y: 80;
     -fx-font-size: 36;
 }
+
+.breadcrumbButton{
+    -fx-text-fill: #76b58b !important;
+    -fx-cursor: hand;
+    -fx-background-color: #0000;
+    -fx-underline: true;
+}

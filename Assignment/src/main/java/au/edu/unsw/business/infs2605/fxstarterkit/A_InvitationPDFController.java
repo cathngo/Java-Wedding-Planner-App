@@ -1,3 +1,4 @@
+
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
 import java.io.File;
@@ -14,40 +15,40 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDTrueTypeFont;
 
+
 /**
  *
  * @author mimi
  */
 public class A_InvitationPDFController {
-
-    public static void createNewInvPDF(int event_id) throws IOException, Exception {
-
+    public static void createNewInvPDF(int event_id) throws IOException, Exception{
+        
         //makes a copy of the invitation pdf and edit it
-        File source = new File("" + System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "au" + File.separator + "edu" + File.separator + "unsw" + File.separator + "business" + File.separator + "infs2605" + File.separator + "fxstarterkit" + File.separator + "images" + File.separator + "invitationTemplate.pdf");
-        File dest = new File("" + System.getProperty("user.dir") + File.separator + "invitation" + event_id + ".pdf");
+        File source = new File(""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"au"+File.separator+"edu"+File.separator+"unsw"+File.separator+"business"+File.separator+"infs2605"+File.separator+"fxstarterkit"+File.separator+"images"+File.separator+"invitationTemplate.pdf");
+        File dest = new File(""+System.getProperty("user.dir")+File.separator+"invitation" + event_id + ".pdf");
         Files.copy(source.toPath(), dest.toPath());
         PDDocument doc = PDDocument.load(dest);
         PDPage page = doc.getPage(0);
-
-        PDFont edoFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File("" + System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "edo.ttf")));
-        PDFont JSFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File("" + System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "JosefinSans-Light.ttf")));
-        PDFont JSFontBold = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File("" + System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "JosefinSans-Regular.ttf")));
-
-        PDPageContentStream contentStream = new PDPageContentStream(doc, page, true, true, true);
+        
+        PDFont edoFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"edo.ttf")));
+        PDFont JSFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"JosefinSans-Light.ttf")));
+        PDFont JSFontBold = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File ("" + System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"JosefinSans-Regular.ttf")));
+        
+        PDPageContentStream contentStream = new PDPageContentStream(doc, page,true,true,true);
         Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
         PreparedStatement ps = conn.prepareStatement("Select * FROM event WHERE event_id = ?");
-        ps.setInt(1, event_id);
+        ps.setInt(1,event_id);
         ResultSet rs = ps.executeQuery();
-
+        
         String eventName = null;
         String description = null;
         String location = null;
         String date = null;
         String start_time = null;
         String end_time = null;
-        String instructions = null;
-
-        while (rs.next()) {
+        String instructions = null; 
+        
+        while(rs.next()){
             eventName = rs.getString("event_name");
             description = rs.getString("event_description");
             location = rs.getString("event_address");
@@ -58,10 +59,10 @@ public class A_InvitationPDFController {
         }
 
         contentStream.beginText();
-
+        
         //event name, large yellow font 
-        contentStream.setFont(edoFont, 60);
-        contentStream.setNonStrokingColor(249, 193, 118);
+        contentStream.setFont(edoFont,60);
+        contentStream.setNonStrokingColor(249,193,118);
         contentStream.newLineAtOffset(67, 715);//655
         contentStream.setLeading(60f);
         insertTextColumn(contentStream, eventName, edoFont, 60, 270, 60);//275
@@ -69,86 +70,86 @@ public class A_InvitationPDFController {
         //description in black jsfont
         contentStream.setLeading(15);
         contentStream.newLine();
-        contentStream.setFont(JSFont, 20);
-        contentStream.setNonStrokingColor(0, 0, 0);
+        contentStream.setFont(JSFont,20);
+        contentStream.setNonStrokingColor(0,0,0);
         insertTextColumn(contentStream, description, JSFont, 20, 270, 25);
         contentStream.setLeading(55);
-        contentStream.setNonStrokingColor(249, 193, 118);
-        contentStream.setFont(JSFontBold, 22);
+        contentStream.setNonStrokingColor(249,193,118);
+        contentStream.setFont(JSFontBold,22);
 
         //location
         contentStream.newLine();
         contentStream.showText("Location:");
         contentStream.setLeading(25);
-        contentStream.setNonStrokingColor(0, 0, 0);
-        contentStream.setFont(JSFont, 20);
-        insertTextColumn(contentStream, location, JSFont, 20, 270, 25);
+        contentStream.setNonStrokingColor(0,0,0);        
+        contentStream.setFont(JSFont,20);
+        insertTextColumn(contentStream, location, JSFont, 20, 270, 25);        
         contentStream.setLeading(40);
 
         //date
-        contentStream.setNonStrokingColor(249, 193, 118);
-        contentStream.setFont(JSFontBold, 22);
+        contentStream.setNonStrokingColor(249,193,118);
+        contentStream.setFont(JSFontBold,22);        
         contentStream.newLine();
         contentStream.showText("Date & Time:");
         contentStream.setLeading(25);
-        contentStream.setNonStrokingColor(0, 0, 0);
+        contentStream.setNonStrokingColor(0,0,0);        
         contentStream.newLine();
-        contentStream.setFont(JSFont, 20);
+        contentStream.setFont(JSFont,20);
         contentStream.showText(date + " " + start_time + " - " + end_time);
-        contentStream.setLeading(40);
+        contentStream.setLeading(40);        
 
         //special instructions
-        contentStream.setNonStrokingColor(249, 193, 118);
-        contentStream.setFont(JSFontBold, 22);
+        contentStream.setNonStrokingColor(249,193,118);
+        contentStream.setFont(JSFontBold,22);       
         contentStream.newLine();
         contentStream.showText("Special Instructions: ");
-        contentStream.setLeading(25);
-        contentStream.setNonStrokingColor(0, 0, 0);
-        contentStream.setFont(JSFont, 20);
-        insertTextColumn(contentStream, instructions, JSFont, 20, 270, 25);
-
+        contentStream.setLeading(25);       
+        contentStream.setNonStrokingColor(0,0,0);        
+        contentStream.setFont(JSFont,20);        
+        insertTextColumn(contentStream, instructions, JSFont, 20, 270, 25);        
+        
         contentStream.endText();
         contentStream.close();
         doc.save(dest);
-        doc.close();
-
+        doc.close();      
+                
     }
-
+    
     //This wrap text method puts text into a column of a certain width. If a word overflows the
     //column width it puts these words on a new line. Works with different fonts and sizes.
     //Be sure to set the font size and colour before this method too
-    public static void insertTextColumn(PDPageContentStream contentStream, String string, PDFont font, int fontSize, float width, int leading) throws Exception {
+    public static void insertTextColumn(PDPageContentStream contentStream, String string, PDFont font, int fontSize, float width, int leading)throws Exception{
         int lastLetter = 0;
         int firstLetter = 0;
         String thisLine;
         String word[] = string.split(" ");
 
-        try {
-            for (int y = 0; y < string.length(); y++) {
+        try{
+            for(int y=0; y<string.length(); y++){
                 contentStream.setLeading(leading);
-                if (y == string.length() - 1) {
-                    if ((font.getStringWidth(string.substring(firstLetter, y + 1)) / 1000 * fontSize) > width) {
+                if(y==string.length()-1){
+                    if((font.getStringWidth(string.substring(firstLetter,y+1)) / 1000 * fontSize)>width){
                         contentStream.newLine();
                         thisLine = string.substring(firstLetter, lastLetter);
                         contentStream.showText(thisLine);
                         firstLetter = lastLetter + 1;
                     }
-
                     contentStream.newLine();
-                    thisLine = string.substring(firstLetter, y + 1);
+                    thisLine = string.substring(firstLetter,y+1);
                     contentStream.showText(thisLine);
                 }
-                if (string.charAt(y) == ' ') {
-                    if ((font.getStringWidth(string.substring(firstLetter, y)) / 1000 * fontSize) > width) {
+                if(string.charAt(y) == ' '){
+                    if((font.getStringWidth(string.substring(firstLetter,y)) / 1000 * fontSize)>width){
                         contentStream.newLine();
-                        thisLine = string.substring(firstLetter, lastLetter);
+                        thisLine = string.substring(firstLetter,lastLetter);
                         contentStream.showText(thisLine);
                         firstLetter = lastLetter + 1;
                     }
                     lastLetter = y;
                 }
             }
-        } catch (Exception e) {
+        }
+        catch(Exception e){
             System.out.println(e);
         }
     }
