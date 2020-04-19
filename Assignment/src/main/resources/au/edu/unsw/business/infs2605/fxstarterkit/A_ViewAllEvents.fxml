@@ -12,33 +12,33 @@
    <children>
       <VBox prefHeight="540.0" prefWidth="771.0">
          <children>
-            <AnchorPane prefHeight="120.0" prefWidth="771.0">
+            <AnchorPane prefHeight="100.0" prefWidth="771.0" stylesheets="@stylesheet.css">
                <children>
-                  <Text layoutX="53.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Events" wrappingWidth="257.984375">
+                  <Text layoutX="58.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Events" wrappingWidth="257.984375">
                      <font>
-                        <Font size="38.0" />
+                        <Font size="36.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="314.0" prefWidth="771.0">
                <children>
-                  <TableView fx:id="eventTable" layoutX="53.0" layoutY="-3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="654.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;">
+                  <TableView fx:id="eventTable" layoutX="58.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="337.0" prefWidth="677.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;" styleClass="TableView" stylesheets="@stylesheet.css">
                     <columns>
-                      <TableColumn fx:id="col_eId" prefWidth="56.39999198913574" text="ID" />
+                      <TableColumn fx:id="col_eId" prefWidth="56.0" text="ID" />
                       <TableColumn fx:id="col_eName" prefWidth="199.5" text="Name" />
                         <TableColumn fx:id="col_eDate" prefWidth="121.0" text="Date" />
-                        <TableColumn fx:id="col_eStartTime" prefWidth="152.5" text="Time Start" />
-                        <TableColumn fx:id="col_eEndTime" prefWidth="134.5" text="Time End" />
+                        <TableColumn fx:id="col_eStartTime" prefWidth="134.39999389648438" text="Time Start" />
+                        <TableColumn fx:id="col_eEndTime" prefWidth="138.39996337890625" text="Time End" />
                     </columns>
                   </TableView>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="93.0" prefWidth="771.0">
+            <AnchorPane prefHeight="110.0" prefWidth="771.0">
                <children>
                   <Button fx:id="btnInviteGuests" layoutX="315.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnInviteGuestsWasClicked" prefHeight="44.0" prefWidth="140.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Invite Guests" textFill="WHITE" />
-                  <Button fx:id="btnCreateNewEvent" layoutX="54.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnCreateNewEventWasClicked" prefHeight="44.0" prefWidth="140.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Create New Event" textFill="WHITE" />
-                  <Button fx:id="btnViewDetails" layoutX="566.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="44.0" prefWidth="140.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="View Details" textFill="WHITE" />
+                  <Button fx:id="btnCreateNewEvent" layoutX="58.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnCreateNewEventWasClicked" prefHeight="44.0" prefWidth="140.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Create New Event" textFill="WHITE" />
+                  <Button fx:id="btnViewDetails" layoutX="573.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnViewDetailsWasClicked" prefHeight="44.0" prefWidth="140.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="View Details" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

@@ -37,3 +37,32 @@
     -fx-font-weight: bold;
     -fx-background-color:#76b58b !important;
 }
+.centeredTextArea .scroll-pane .content .text {
+    -fx-text-alignment: center;
+}
+
+.TableView{
+    -fx-pref-width: 654;
+    -fx-pref-height: 290;
+    -fx-alignment: center;
+}
+
+.topAnchorPane{
+    -fx-pref-height: 100;
+    
+}
+
+.bottomAnchorPane{
+    -fx-pref-height: 94;
+    
+}
+
+.TableViewIdColumn{
+    -fx-pref-width:56;
+}
+
+.pageHeading{
+    -fx-Layout-X: 53;
+    -fx-layout-Y: 80;
+    -fx-font-size: 36;
+}
