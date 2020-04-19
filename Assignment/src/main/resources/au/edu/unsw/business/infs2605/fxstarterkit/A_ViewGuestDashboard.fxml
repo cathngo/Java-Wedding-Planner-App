@@ -24,11 +24,11 @@
             </AnchorPane>
             <AnchorPane prefHeight="314.0" prefWidth="771.0">
                <children>
-                  <ScrollPane layoutX="46.0" prefHeight="306.0" prefWidth="676.0">
+                  <ScrollPane layoutX="46.0" prefHeight="290.0" prefWidth="653.0">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="308.0" prefWidth="673.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="276.0" prefWidth="655.0">
                            <children>
-                              <TableView fx:id="guest_table" prefHeight="314.0" prefWidth="685.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;" styleClass="TableView" stylesheets="@stylesheet.css">
+                              <TableView fx:id="guest_table" prefHeight="302.0" prefWidth="660.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;" styleClass="TableView" stylesheets="@stylesheet.css">
                                  <columns>
                                     <TableColumn fx:id="col_guestId" prefWidth="56.0" text="ID" />
                                     <TableColumn fx:id="col_firstName" prefWidth="145.60004425048828" text="First Name" />
@@ -44,9 +44,9 @@
             </AnchorPane>
             <AnchorPane prefHeight="110.0" prefWidth="771.0">
                <children>
-                  <Button fx:id="btnInviteGuest" alignment="CENTER" layoutX="315.0" layoutY="5.0" mnemonicParsing="false" onAction="#loadInviteGuest" prefHeight="58.0" prefWidth="0.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Invite Guest" textFill="WHITE" />
-                  <Button fx:id="btnCreateNewGuest" layoutX="58.0" layoutY="4.0" mnemonicParsing="false" onAction="#loadCreateGuest" prefHeight="58.0" prefWidth="0.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Create New Guest" textFill="WHITE" />
-                  <Button fx:id="btnViewGuests" layoutX="573.0" layoutY="4.0" mnemonicParsing="false" onAction="#loadViewGuest" prefHeight="58.0" prefWidth="0.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="View Guests" textFill="WHITE" />
+                  <Button fx:id="btnInviteGuest" alignment="CENTER" layoutX="311.0" mnemonicParsing="false" onAction="#loadInviteGuest" prefHeight="58.0" prefWidth="0.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Invite Guest" textFill="WHITE" />
+                  <Button fx:id="btnCreateNewGuest" layoutX="49.0" mnemonicParsing="false" onAction="#loadCreateGuest" prefHeight="58.0" prefWidth="0.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Create New Guest" textFill="WHITE" />
+                  <Button fx:id="btnViewGuests" layoutX="560.0" layoutY="-1.0" mnemonicParsing="false" onAction="#loadViewGuest" prefHeight="58.0" prefWidth="0.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="View Guests" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>
