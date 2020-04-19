@@ -39,7 +39,6 @@ public class A_ViewAllEventsController {
     @FXML
     private AnchorPane eventPane;
     
-
     private int eventId;
 
     private String eventName;
@@ -52,7 +51,6 @@ public class A_ViewAllEventsController {
             col_eDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
             col_eStartTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
             col_eEndTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
-
         } catch (Exception e) {
             e.printStackTrace();
         }

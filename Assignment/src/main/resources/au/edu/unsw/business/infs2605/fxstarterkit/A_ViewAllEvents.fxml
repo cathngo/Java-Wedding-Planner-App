@@ -22,7 +22,7 @@
                         <Font size="38.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="searchField" layoutX="480.0" layoutY="75.0" onAction="#searchEvents" prefHeight="27.0" prefWidth="227.0" promptText="search events" />
+                  <TextField layoutX="480.0" layoutY="75.0" prefHeight="27.0" prefWidth="227.0" promptText="search events" />
                   <ImageView fitHeight="21.0" fitWidth="20.0" layoutX="454.0" layoutY="78.0">
                      <image>
                         <Image url="@images/search-icon.png" />
