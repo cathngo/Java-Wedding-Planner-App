@@ -74,7 +74,7 @@ public class A_ViewAllRunsheetsController implements Initializable {
     public void btnViewRunsheetWasClicked(ActionEvent event) throws IOException {
         Event selectedEvent = runsheetTable.getSelectionModel().getSelectedItem();
         eventId = selectedEvent.getEvent_id();
-      File dest = new File(""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf");
+      File dest = new File(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf");
        DetectOS.open(dest);
         
     }
