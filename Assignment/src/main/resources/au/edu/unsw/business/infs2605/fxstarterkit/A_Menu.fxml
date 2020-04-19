@@ -137,6 +137,7 @@
                         <Image url="@images/avatar-icon.png" />
                      </image>
                   </ImageView>
+                  <Button layoutX="774.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnLogOutWasClicked" text="Log Out" />
                </children>
             </AnchorPane>
          </children>
