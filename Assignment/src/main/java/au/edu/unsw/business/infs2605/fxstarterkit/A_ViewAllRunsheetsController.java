@@ -5,6 +5,7 @@
  */
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -72,16 +73,9 @@ public class A_ViewAllRunsheetsController implements Initializable {
     @FXML
     public void btnViewRunsheetWasClicked(ActionEvent event) throws IOException {
         Event selectedEvent = runsheetTable.getSelectionModel().getSelectedItem();
-    if (runsheetTable.getSelectionModel().isEmpty()){
-            System.out.println("unsuccessful");
-            String header = "Unable to view runsheet";
-            String content = "Please select an event first";
-            Alertbox.AlertError(header, content);
-            
-    }else{
-            eventId = selectedEvent.getEvent_id();
-            Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler " + "" + System.getProperty("user.dir") + "\\runsheet" + eventId + ".pdf");
-    }
+        eventId = selectedEvent.getEvent_id();
+      File dest = new File(""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf");
+       DetectOS.open(dest);
         
     }
     
