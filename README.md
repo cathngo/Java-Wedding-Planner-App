@@ -7,103 +7,59 @@ Please open this file in GitHub for easier readability!
 | User: admin462 Pw: hello21  |  Code: PeterKim2341 |
 | User: admin29138 Pw: chocolate23 | Code: WilliamWong9837 |
 | User: admin239 Pw: yellowblue34 | Code: KellyLu0193  |
-## System Requirements
-For macOS:
-- macOS **10.14 Mojave** or **macOS 10.15 Catalina** (using 10.14 Mojave if you need to maintain backwards compatibility with other 32-bit software that you need installed on your computer).
-- Older versions of macOS might not work properly. If your computer does not support at least macOS 10.14 Mojave, it may be too old to run the required sofware anyway.
-- It is always best practice to keep your computer updated with the latest updates from Apple. This is important not only for compatibility with new software, but also to receive security patches.
 
-For Windows:
-- Windows 10, **build 1903 (May 2019 update)** or newer.
-- All Windows 10 computers can update to the latest build using the **Windows 10 Update Assistant**: https://support.microsoft.com/en-au/help/3159635/windows-10-update-assistant
-- Windows 8/8.1 will probably work, but we cannot assist with your setup unless you are running Windows 10.
-- Windows 7 will probably work, but we cannot assist with your setup unless you are running Windows 10. On Windows 7, you will need to install PowerShell 3: https://www.microsoft.com/en-au/download/details.aspx?id=34595
-- It is always best practice to keep your computer updated with the latest updates from Microsoft. This is important not only for compatibility with new software, but also to receive security patches.
+For more sample credentials for login, run "DatabaseManager.printObjectsInTable("admin")" OR "DatabaseManager.printObjectsInTable("guest")" in App.java to view all credentials.
 
-## Setup Instructions for macOS
-1. Install Homebrew: https://brew.sh/
-2. Copy and paste this into Terminal and hit the `ENTER` key on your keyboard to execute the command:
-    ```
-    brew tap AdoptOpenJDK/openjdk; brew cask install adoptopenjdk11 netbeans github scenebuilder
-    ```
-    - While the command is executing, you will see lines of information appear on the Terminal. This is diagnostic information, it is not problematic.
-    - You may be required to enter your administrator password. If prompted to do so, enter it. You will not see any dots appear to represent the hidden characters of your password, only the blinking terminal cursor staying at the same spot on the screen, but fear not - your password is being entered!
-    - The command has finished executing once no more lines of information continue to appear in the Terminal and you just have the same prompt you had when you first opened the Terminal.
-    
-    
-3. Now execute this command:
-    ```
-    /usr/libexec/java_home | tr -d '\n' | pbcopy
-    ```
-    - The first part, `/usr/libexec/java_home`, identifies the location of the JDK we installed in step 2.
-    - The pipe symbol, `|`, sends information from the first part to the second part.
-    - `tr -d '\n'` strips away the "new line" ("enter") symbol.
-    - `pbcopy` copies data to the clipboard.
+## Admin View Features
+There are four main functions on the side menu: **Events**, **Guests**, **Invitation** and **Runsheets**. The following tables explain the features availale for each function:
 
-4. Go to Finder, and use the keyboard shortcut Command + SHIFT + G to open the "Go to Folder" pop-up. Now use Command + V to paste the data we acquired in step 3.
+**Events**
+|  Feature  | Navigation  | Description  |
+|---|---|---|
+|  View Events | Events  | -Able to see all events created in a table.<br/> -To view a particular event in more detail, select an event and press ‘View Details’.|
+|  Create Event |  Events -> Create New Event |  Able to create a new event |
+|  Edit Event |  Events -> View Details -> Edit |  Able to edit an existing event |
+|  View Guest List | Events -> View Details -> Guest List  | Able to see the guests invited to  a particular event, followed by a **RSVP pie chart**  |
+|   Invite Existing Guests|  Events -> View Details -> Guest List -> Invite Guests <br/> OR <br/> Event -> Invite Guests| -You will be able to select multiple guests from the ‘Existing Guests’ table and add them to a ‘Guest List’ by clicking ‘Add to Guest List’.<br/> -Remove guests from guest list through ‘Remove’. <br/> -Press ‘Invite to Event’ to invite all guests in the Guest List.|
+|  Create and Invite New Guests | Events -> View Details -> Guest List -> Invite Guests  -> Invite New Guests  <br/>OR<br/>Event -> Invite Guests -> Invite New Guests| Able to create a guest and add them to the guest list for an event |
 
-5. Now you are in a folder with items `bin`, `bundle`, `conf`, ... `man`, `release`. Open the folder called `jmods`. You will now see that it contains a lot of files that all end with the file extension `.jmod`.
+**Guests**
+|  Feature  | Navigation   |  Description |
+|---|---|---|
+|  View Guest | Guests  |  -Able to see all existing guests. <br/> - To view a particular guest in more detail, select a guest and press 'View Guest'<br/> -Able to view a guest's unique **access code** |
+| Create Guest  | Guests -> View Guest  | -Able to create a new guest. <br/> - Automatically generates **guest access code** when created  |
+|  Edit Guest | Guest -> View Guest -> Edit  |  Able to edit an existing guest |
+|  Invite Guest | Guest -> View Guest -> Edit -> Invite Guest <br/> OR <br/> Guest -> Invite Guest -> Invite to Event  |  Able to select an event to invite a guest to |
 
-6. Go to https://gluonhq.com/products/javafx/ and download the "Product" called **JavaFX Mac OS X jmods**. You will get a ZIP file - extract it by double-clicking it. You can see it contains 7 files that end with the file extension `.jmod`. Copy this into the folder from step 5.
+**Invitation**
+|  Feature | Navigation  |  Description |
+|---|---|---|
+|  View Invitations |  Invitations | -Able to view all created invitations.  <br/> -Select an invitation and press 'View Invitation PDF' to open the invitation in a PDF viewer |
+| Create Invitation  |  Invitations -> Create Invitation -> Create Invitation PDF |After selecting an event, an invitation PDF will be automatically created for the event   |
 
-7. Clone this repository using **GitHub Desktop** (you installed this in step 2). You can see where, in your computer, the repository was cloned to by going to GitHub Desktop and hovering over the repository name.
+**Runsheets**
+|  Feature | Navigation  | Description  |
+|---|---|---|
+| View Runsheets  | Runsheets   | -Able to view all created runsheets <br/>  -Select a runsheet and press 'View Runsheet PDF' to open the runsheet in a PDF viewer |
+|  Create Runsheet | Runsheets -> Create Runsheet -> Select Event -> Create Runsheet | -Able to add contents to a runsheet and generate it into a PDF |
+|  Edit Runsheet |  Runsheets -> Edit Runsheet | -**NOTE: must close the runsheet if it is opened in another program before editing** <br/> -eg. if 'View Runsheet PDF' was clicked, ensure the PDF is closed before editing runsheet  |
 
-8. Open **Apache NetBeans 11**. On the first time you open it, you might receive a message asking if you want to import settings or configuration from NetBeans version 8 (if you previously had it installed). Do **not** allow NetBeans 11 to import these settings or configuration from NetBeans 8.  (If you have accidentally allowed NetBeans 11 to import settings or configuration from NetBeans 8, you can reinstall NetBeans 11 with the command `brew cask remove adoptopenjdk11; brew cask install adoptopenjdk11`.)
+## Guest View Features
 
-9. In NetBeans 11, click on **Help --> About** and confirm that the versions for **Java** and **Runtime** are both version 11. If you see anything like "1.8", you will need to configure your NetBeans to use JDK 11.
+**Guest Dashboard**
 
-10. Open this repository in NetBeans 11. You will see that it compiles to a working JavaFX app.
+|  Feature | Navigation   |  Description |
+|---|---|---|
+|  View Invitations Guest Has Already Responded Too |  Dashboard |  Able to see all events guest has already submitted an RSVP to |
+|  Edit RSVP |  Dashboard -> Edit RSVP <br/> OR <br/> Dashboard -> View Details -> View RSVP -> Edit | Able to edit a RSVP to a particular event that is selected  |
+|  View Event Details | Dashboard -> View Details  |  Able to view the details of a particular event that is selected |
+|  View RSVP |  Dashboard -> View Details -> View RSVP | Able to view a submitted RSVP to a particular event  |
+|  View Invitation PDF | Dashboard -> View Details -> View Invitation  |  -Opens the invitation of the event in a PDF viewer program if available|
+|  View Runsheet PDF | Dashboard -> View Details -> View Runsheet  |  -Opens the runsheet of the event in a PDF viewer program if available |
 
+**Invitation**
+|  Feature | Navigation   | Description  |
+|---|---|---|
+|  View Pending Invitations |  Invitation | Able to view invitations guest has not yet submitted an RSVP for  |
+|  Submit RSVP | Invitation -> Submit RSVP  | Able to submit a RSVP to an event yet to be responded to  |
 
-
-## Setup Instructions for Windows
-1. Install Chocolatey: https://chocolatey.org/
-2. Open the Windows Start Menu and type `cmd`. Right click the **Command Prompt** menu item and select **Run as administrator**. Copy and paste this into Command Prompt and hit the `ENTER` key on your keyboard to execute the command:
-    ```
-    cinst -y adoptopenjdk11 apache-netbeans.portable github-desktop
-    ```
-    - While the command is executing, you will see lines of information appear on the Command Prompt. This is diagnostic information, it is not problematic.
-    - The command has finished executing once no more lines of information continue to appear in the Command Prompt and you just have the same prompt you had when you first opened the Command Prompt: `C:\Windows\system32>`.
-    - If the command seems to be stuck, try hitting the `ENTER` key a few times to push it along... :)
-
-3. Go to `C:\Program Files\AdoptOpenJDK\` in Windows Explorer and open the folder inside it that is named along the lines of `jdk-11.0.6.10-hotspot` (your version number might be higher, this is OK).
-
-4. Now you are in a folder with items `bin`, `bundle`, `conf`, ... `man`, `release`. Open the folder called `jmods`. You will now see that it contains a lot of files that all end with the file extension `.jmod`.
-
-5. Go to https://gluonhq.com/products/javafx/ and download the "Product" called **JavaFX Windows jmods**. You will get a ZIP file - extract it. You can see it contains 7 files that end with the file extension `.jmod`. Copy this into the folder from step 4.
-
-6. Go to https://gluonhq.com/products/scene-builder/ - download and install **Scene Builder for Java 11**.
-
-7. Clone this repository using **GitHub Desktop** (you installed this in step 2). You can see where, in your computer, the repository was cloned to by going to GitHub Desktop and hovering over the repository name.
-
-8. Open **Apache NetBeans 11**. On the first time you open it, you might receive a message asking if you want to import settings or configuration from NetBeans version 8 (if you previously had it installed). Do **not** allow NetBeans 11 to import these settings or configuration from NetBeans 8. (If you have accidentally allowed NetBeans 11 to import settings or configuration from NetBeans 8, you can uninstall NetBeans 11 with the command `choco uninstall -y apache-netbeans.portable` and then repeat step 2.)
-
-9. In NetBeans 11, click on **NetBeans --> About NetBeans** and confirm that the versions for **Java** and **Runtime** are both version 11. If you see anything like "1.8", you will need to configure your NetBeans to use JDK 11.
-
-10. Open this repository in NetBeans 11. You will see that it compiles to a working JavaFX app.
-
-## Configuring NetBeans 11 to use JDK 11
-
-1. Open the folder in which NetBeans 11 configuration lives:
-    - On macOS, that is `/Applications/NetBeans/Apache NetBeans 11.2.app/Contents/Resources/NetBeans/netbeans/etc`, you can navigate there using similar technique to Step 4 in the Setup Instructions for macOS.
-    - On Windows, that is `C:\ProgramData\chocolatey\lib\apache-netbeans.portable\App\netbeans\etc`.
-    
-2. Open the file `netbeans.conf` for editing:
-    - On macOS, you can edit the file by just opening it using `TextEdit.app`, which is built into macOS.
-    - On Windows, you can't just use Notepad (it will render the file poorly). You can install Notepad++ (`cinst -y notepadplusplus.install`) and then open Notepad++ **as administrator** to edit the file.
-    
-3. Search for "netbeans_jdkhome". On that line, remove the `#` at the start of the line.
-
-4. Replace `/path/to/jdk` with the actual path for JDK 11:
-    - On macOS, you already copied the path to clipboard using Step 3 in the Setup Instructions for macOS.
-    - On Windows, you discovered the full path in Step 3 in the Setup Instructions for macOS. Be sure the include the final part of the path also, i.e., do not drop the part with `jdk-11.0.6.10-hotspot` (your version number might be higher, this is OK).
-
-5. That line now looks something like:
-
-    ```
-    netbeans_jdkhome="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"
-    ```
-    
-6. Save the `netbeans.conf` file.
-
-7. Repeat step 9 of the Setup Instructions for your platform to confirm you are now using JDK 11.
