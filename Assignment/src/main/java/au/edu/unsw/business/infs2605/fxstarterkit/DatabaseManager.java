@@ -621,7 +621,7 @@ public class DatabaseManager {
         }
     }
 
-    //A_ViewEventInviteNewGuestController uses this to create guest code
+    //A_ViewEventInviteNewGuestController + A_CreateGuest uses this to create guest code
     public static String generateGuestCode(String fname, String lname) {
         String codeName = fname + lname;
         String actualName = codeName.replaceAll("[^a-zA-Z]", "");

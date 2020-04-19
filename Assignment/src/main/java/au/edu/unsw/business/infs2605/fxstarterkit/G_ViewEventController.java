@@ -35,9 +35,9 @@ public class G_ViewEventController {
 
     public void passEventId(int id) throws SQLException {
         this.eventId = id;
-
+        //get event by event id
         Event myEvent = DatabaseManager.getEventsByEventId(id);
-
+        //loads event details
         eventName.setText(myEvent.getEvent_name());
         eventDate.setText(myEvent.getEvent_date());
         eventTime.setText(myEvent.getEvent_start_time() + " - " + myEvent.getEvent_end_time());
@@ -49,7 +49,7 @@ public class G_ViewEventController {
 
     public void getEventId(int id) {
         this.eventId = id;
-        System.out.println(eventId);
+  
     }
 
     @FXML
@@ -57,12 +57,11 @@ public class G_ViewEventController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("G_ViewRSVP.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
+        
         G_ViewRSVPController controller = loader.getController();
         controller.getEventId(eventId);
         controller.passEventId(eventId);
         dashboardPane.getChildren().setAll(pane);
-
-        System.out.println("btnViewRsvp event id: " + eventId);
 
     }
 
@@ -75,25 +74,28 @@ public class G_ViewEventController {
 
     @FXML
     public void btnViewRunsheetWasClicked(ActionEvent event) throws IOException, SQLException {
-      File runsheetDirectory = new File(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf");
-      if (runsheetDirectory.exists()){
-       DetectOS.open(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf");
-      } else {
-           String header = "Unable to open Runsheet";
-           String content = "Runsheet is unavailable for this event";
-           Alertbox.AlertError(header, content);
-      }
+        File runsheetDirectory = new File("" + System.getProperty("user.dir") + File.separator + "runsheet" + eventId + ".pdf");
+        //if runsheet exists
+        if (runsheetDirectory.exists()) {
+            //open the runsheet pdf in a pdf viewer
+            DetectOS.open("" + System.getProperty("user.dir") + File.separator + "runsheet" + eventId + ".pdf");
+        } else {
+            //alertbox error is runsheet in unavailable for the event
+            String header = "Unable to open Runsheet";
+            String content = "Runsheet is unavailable for this event";
+            Alertbox.AlertError(header, content);
+        }
     }
 
     @FXML
     public void btnViewInvitationWasClicked(ActionEvent event) throws IOException, SQLException {
-        File invitationDirectory = new File(""+System.getProperty("user.dir")+File.separator+"invitation" + eventId + ".pdf");
-        if (invitationDirectory.exists()){
-        DetectOS.open(""+System.getProperty("user.dir")+File.separator+"invitation" + eventId + ".pdf");
-        }else{
-             String header = "Unable to open Invitation";
-           String content = "Invitation is unavailable for this event";
-           Alertbox.AlertError(header, content);
+        File invitationDirectory = new File("" + System.getProperty("user.dir") + File.separator + "invitation" + eventId + ".pdf");
+        if (invitationDirectory.exists()) {
+            DetectOS.open("" + System.getProperty("user.dir") + File.separator + "invitation" + eventId + ".pdf");
+        } else {
+            String header = "Unable to open Invitation";
+            String content = "Invitation is unavailable for this event";
+            Alertbox.AlertError(header, content);
         }
-}
+    }
 }

@@ -31,8 +31,11 @@ public class G_DashboardController implements Initializable {
     private TableColumn<RSVPEventWrapper, String> col_eventRsvp;
     @FXML
     private AnchorPane dashboardPane;
+
     private int eventId;
+
     private RSVPEventWrapper selectedEvent;
+
     private int guestId;
 
     ObservableList<RSVPEventWrapper> eventList = FXCollections.observableArrayList();
@@ -41,6 +44,7 @@ public class G_DashboardController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         guestId = LoginController.guestUser.getGuest_id();
         try {
+            //sets tableview of events which guest has already responded to
             dashboard_table.setItems(DatabaseManager.getNotNullRsvpGetEvent(guestId));
 
             col_eventName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
@@ -70,8 +74,8 @@ public class G_DashboardController implements Initializable {
             viewEventController.passEventId(eventId);
             dashboardPane.getChildren().setAll(pane);
 
-            System.out.println("btnViewDetails event id: " + eventId);
         } catch (Exception e) {
+            //alertbox error is event was not selected
             String header = "Unable to view details of event";
             String content = "Please select an event from the table ";
             Alertbox.AlertError(header, content);
@@ -80,35 +84,30 @@ public class G_DashboardController implements Initializable {
 
     }
 
-   
-
     @FXML
     public void btnEditRsvpWasClicked(ActionEvent event) throws IOException, SQLException {
-       
-        try {
-            
-                selectedEvent = dashboard_table.getSelectionModel().getSelectedItem();
-                String date = selectedEvent.getEvent_date();
-                String name = selectedEvent.getEvent_name().replace("'", "''");
-                eventId = DatabaseManager.getGuestIdByGuestNameGuestDate(name, date);
-                
-                FXMLLoader viewEventloader = new FXMLLoader(getClass().getResource("G_DashboardEditRSVP.fxml"));
-                AnchorPane pane = (AnchorPane) viewEventloader.load();
-                G_DashboardEditRSVPController controller = viewEventloader.getController();
-                controller.getEventId(eventId);
-                controller.passEventId(eventId);
-                dashboardPane.getChildren().setAll(pane);
-          
-        }catch (Exception e) {
 
+        try {
+
+            selectedEvent = dashboard_table.getSelectionModel().getSelectedItem();
+            String date = selectedEvent.getEvent_date();
+            String name = selectedEvent.getEvent_name().replace("'", "''");
+            eventId = DatabaseManager.getGuestIdByGuestNameGuestDate(name, date);
+
+            FXMLLoader viewEventloader = new FXMLLoader(getClass().getResource("G_DashboardEditRSVP.fxml"));
+            AnchorPane pane = (AnchorPane) viewEventloader.load();
+            G_DashboardEditRSVPController controller = viewEventloader.getController();
+            controller.getEventId(eventId);
+            controller.passEventId(eventId);
+            dashboardPane.getChildren().setAll(pane);
+
+        } catch (Exception e) {
+            //alertbox error if event was not selected
             String header = "Unable to edit RSVP";
             String content = "Please select an event from the table ";
             Alertbox.AlertError(header, content);
             e.printStackTrace();
 
-                 }
+        }
     }
 }
-        
-    
-

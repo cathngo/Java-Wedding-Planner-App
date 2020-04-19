@@ -38,6 +38,7 @@ public class A_EditGuestController {
     private AnchorPane guestsPane;
 
     private int guestId;
+
     private String guestName;
 
     @FXML
@@ -54,8 +55,10 @@ public class A_EditGuestController {
         try {
 
             if (rb1.isSelected()) {
+                //updates guest with new information
                 DatabaseManager.editGuest(guestId, FirstName, LastName, Phone, Email, Male, Diet);
             } else if (rb2.isSelected()) {
+                //updates guest with new information
                 DatabaseManager.editGuest(guestId, FirstName, LastName, Phone, Email, Female, Diet);
 
             }
@@ -75,24 +78,22 @@ public class A_EditGuestController {
     }
 
     public void loadGuestData(int guestId) throws SQLException {
-
+        //gets guest id of selected guest
         Guest myGuest = DatabaseManager.getGuestByGuestId(guestId);
+        //presets the textfields with current information
+        fname.setText(myGuest.getGuest_fname());
+        lname.setText(myGuest.getGuest_lname());
+        email.setText(myGuest.getGuest_email());
+        number.setText(myGuest.getGuest_phone());
+        diet.setText(myGuest.getDiet_require());
 
-            fname.setText(myGuest.getGuest_fname());
-            lname.setText(myGuest.getGuest_lname());
-            email.setText(myGuest.getGuest_email());
-            number.setText(myGuest.getGuest_phone());
-            diet.setText(myGuest.getDiet_require());
-
-            if (myGuest.getGuest_gender().equals(rb1.getText())) {
-                rb1.setSelected(true);
-            } else if (myGuest.getGuest_gender().equals(rb2.getText())) {
-                rb2.setSelected(true);
-            }
-
+        if (myGuest.getGuest_gender().equals(rb1.getText())) {
+            rb1.setSelected(true);
+        } else if (myGuest.getGuest_gender().equals(rb2.getText())) {
+            rb2.setSelected(true);
         }
 
-    
+    }
 
     public void getGuestId(int id) {
         this.guestId = id;
@@ -128,9 +129,6 @@ public class A_EditGuestController {
     public void btnGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestDashboard.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
-
         guestsPane.getChildren().setAll(pane);
-
     }
-
 }

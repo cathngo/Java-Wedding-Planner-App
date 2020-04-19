@@ -19,8 +19,7 @@ public class Event {
     String event_address;
     String event_description;
     String event_instructions;
-    
-   
+
     public Event(int event_id, String event_name, String event_date, String event_start_time, String event_end_time, String event_address, String event_description, String event_instructions) {
         this.event_id = event_id;
         this.event_name = event_name;
@@ -31,15 +30,14 @@ public class Event {
         this.event_description = event_description;
         this.event_instructions = event_instructions;
     }
-    
-    //A_ViewGuestInviteEvent controller uses this
+
     public Event(int event_id, String event_name, String event_date, String event_start_time, String event_end_time) {
         this.event_id = event_id;
         this.event_name = event_name;
         this.event_date = event_date;
         this.event_start_time = event_start_time;
         this.event_end_time = event_end_time;
-   
+
     }
 
     public int getEvent_id() {
@@ -106,7 +104,4 @@ public class Event {
         this.event_instructions = event_instructions;
     }
 
-    
-
-   
 }

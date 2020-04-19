@@ -43,12 +43,14 @@ public class A_ViewAllRunsheetsController implements Initializable {
     ObservableList<Event> runsheetList = FXCollections.observableArrayList();
 
     private int eventId;
+    
     private String eventName;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
+            //sets tableview of events
             runsheetTable.setItems(DatabaseManager.getEventsByRunsheet());
 
             col_eName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
@@ -74,7 +76,7 @@ public class A_ViewAllRunsheetsController implements Initializable {
     public void btnViewRunsheetWasClicked(ActionEvent event) throws IOException {
         Event selectedEvent = runsheetTable.getSelectionModel().getSelectedItem();
         eventId = selectedEvent.getEvent_id();
-      
+      //Opens runsheet PDF
        DetectOS.open(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf");
         
     }
@@ -94,10 +96,8 @@ public class A_ViewAllRunsheetsController implements Initializable {
             controller.getEventId(eventId);
             runsheetPane.getChildren().setAll(pane);
             
-            System.out.println("btnEditRunsheet eventId, eventName " + eventId + eventName);
-
-            System.out.println("invite guests event id:" + eventId);
         } catch (Exception e) {
+            //alertbox error is runsheet was not selected
             String header = "Unable to edit runsheet";
             String content = "Please select a runsheet from the table";
             Alertbox.AlertError(header, content);

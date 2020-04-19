@@ -50,6 +50,7 @@ public class A_EditEventController {
         String eInstructions = instructions.getText();
 
         try {
+            //updates event with new information
             DatabaseManager.editEvent(eventId, Name, Address, Description, Date, sTime, eTime, eInstructions);
 
             System.out.println("data updated successfully for event id =" + eventId);
@@ -67,9 +68,9 @@ public class A_EditEventController {
 
     public void passData(int id) throws SQLException {
         this.eventId = id;
-
+        //gets the eventId for the selected event
         Event myEvent = DatabaseManager.getEventsByEventId(id);
-
+        //pre-sets the textfields with current information
         eventName.setText(myEvent.getEvent_name());
         eventAddress.setText(myEvent.getEvent_address());
         eventDescription.setText(myEvent.getEvent_description());
@@ -85,8 +86,7 @@ public class A_EditEventController {
     }
     
     @FXML
-    private void btnBackWasClicked(ActionEvent event) throws IOException, SQLException {
-
+    public void btnBackWasClicked(ActionEvent event) throws IOException, SQLException {
       AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllEvents.fxml"));
         eventPane.getChildren().setAll(pane);
     }

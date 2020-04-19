@@ -14,18 +14,18 @@ import javafx.scene.control.Alert.AlertType;
  * @author cathy
  */
 public class Alertbox {
-    
-    public static void AlertError(String header, String content){
+//Reference edstem - Hyundong Seo 
+    public static void AlertError(String header, String content) {
         Alert alert = new Alert(AlertType.ERROR);
-            alert.setHeaderText(header);
-            alert.setContentText(content);
-            alert.showAndWait();
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
-    
-    public static void AlertInfo(String header, String content){
+
+    public static void AlertInfo(String header, String content) {
         Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setHeaderText(header);
-            alert.setContentText(content);
-            alert.showAndWait();
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

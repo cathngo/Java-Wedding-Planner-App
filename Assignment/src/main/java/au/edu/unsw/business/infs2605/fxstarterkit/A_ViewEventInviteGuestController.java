@@ -58,33 +58,28 @@ public class A_ViewEventInviteGuestController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
         try {
+            //sets tableview of existing guests
             existingGuestTable.setItems(DatabaseManager.getGuests());
 
             existingGuestTable.addEventFilter(MouseEvent.MOUSE_PRESSED, evt -> {
                 Node node = evt.getPickResult().getIntersectedNode();
 
-                // go up from the target node until a row is found or it's clear the
-                // target node wasn't a node.
                 while (node != null && node != existingGuestTable && !(node instanceof TableRow)) {
                     node = node.getParent();
                 }
 
-                // if is part of a row or the row,
-                // handle event instead of using standard handling
                 if (node instanceof TableRow) {
-                    // prevent further handling
-                    evt.consume();
 
+                    evt.consume();
                     TableRow row = (TableRow) node;
                     TableView tv = row.getTableView();
 
-                    // focus the tableview
                     tv.requestFocus();
 
                     if (!row.isEmpty()) {
-                        // handle selection for non-empty nodes
+
                         int index = row.getIndex();
                         if (row.isSelected()) {
                             tv.getSelectionModel().clearSelection(index);
@@ -96,11 +91,12 @@ public class A_ViewEventInviteGuestController implements Initializable {
             });
 
         } catch (Exception e) {
-            System.out.println("table not created");
+
             e.printStackTrace();
         }
 
         col_guestId.setCellValueFactory(new PropertyValueFactory<>("guest_id"));
+        //Reference: Stack Overflow
         col_guestName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Guest, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(
@@ -116,36 +112,32 @@ public class A_ViewEventInviteGuestController implements Initializable {
 
     @FXML
     void btnAddToListWasClicked(ActionEvent event) {
-        
-       
+
         try {
-            if(existingGuestTable.getSelectionModel().isEmpty()){
+            //alertbox error is guest is not selected
+            if (existingGuestTable.getSelectionModel().isEmpty()) {
                 String header = "Unable to add to guest list";
-            String content = "Please select existing guests first!";
-            Alertbox.AlertError(header, content);
-            } else{
-            for (TablePosition<Guest, ?> pos : existingGuestTable.getSelectionModel().getSelectedCells()) {
+                String content = "Please select existing guests first!";
+                Alertbox.AlertError(header, content);
+            } else {
+                //adds selected guests into the guest list
+                for (TablePosition<Guest, ?> pos : existingGuestTable.getSelectionModel().getSelectedCells()) {
 
-                int row = pos.getRow();
-                Guest data = existingGuestTable.getItems().get(row);
-                String fname = data.getGuest_fname();
-                String lname = data.getGuest_lname();
-                int id = data.getGuest_id();
-                guestId.add(id);
-                newGuestList.add(fname + " " + lname);
-                guestListView.setItems(newGuestList);
+                    int row = pos.getRow();
+                    Guest data = existingGuestTable.getItems().get(row);
+                    String fname = data.getGuest_fname();
+                    String lname = data.getGuest_lname();
+                    int id = data.getGuest_id();
+                    guestId.add(id);
+                    newGuestList.add(fname + " " + lname);
+                    guestListView.setItems(newGuestList);
 
-                System.out.println("btnAddtoList guestId" + id);
-                // etc etc etc
-            }
+                }
             }
         } catch (Exception e) {
-           
-        
+
         }
-        
-            
-        
+
     }
 
     public void getEventId(int id) {
@@ -156,49 +148,49 @@ public class A_ViewEventInviteGuestController implements Initializable {
     public void btnBackWasClicked(ActionEvent event) throws SQLException, IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventGuestList.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
+
         A_ViewEventGuestListController controller = loader.getController();
         controller.passEventName(event_name);
         controller.getEventId(eventId);
         controller.getRsvpData(eventId);
         eventPane.getChildren().setAll(pane);
 
-        System.out.println("back eventid:" + eventId);
     }
 
     @FXML
     public void btnGuestListWasClicked(ActionEvent event) throws SQLException, IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventGuestList.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
+
         A_ViewEventGuestListController controller = loader.getController();
         controller.passEventName(event_name);
         controller.getEventId(eventId);
         controller.getRsvpData(eventId);
         eventPane.getChildren().setAll(pane);
 
-        System.out.println("btn guestlit eventid:" + eventId);
     }
 
     @FXML
     private void btnViewEventsWasClicked(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEvent.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
+                
         A_ViewEventController controller = loader.getController();
         controller.passEventId(eventId);
         eventPane.getChildren().setAll(pane);
 
-        System.out.println("btn view events eventid:" + eventId);
     }
 
     @FXML
     public void btnInviteNewGuestWasClicked(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventInviteNewGuest.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
+
         A_ViewEventInviteNewGuestController controller = loader.getController();
         controller.getEventId(eventId);
         controller.passEventName(event_name);
         eventPane.getChildren().setAll(pane);
 
-        System.out.println("btn invite new guests eventid:" + eventId);
     }
 
     @FXML
@@ -211,34 +203,32 @@ public class A_ViewEventInviteGuestController implements Initializable {
     public void btnInviteToEventWasClicked(ActionEvent event) throws SQLException {
 
         try {
-             if(guestListView.getItems().isEmpty() ){
-             String header = "Invite unsuccessful";
-            String content = "Please select and add existing guests to guest list first!";
-            Alertbox.AlertError(header, content);
-            System.out.println("unable to invite");
+            if (guestListView.getItems().isEmpty()) {
+                //alertbox if guest list is empty
+                String header = "Invite unsuccessful";
+                String content = "Please select and add existing guests to guest list first!";
+                Alertbox.AlertError(header, content);
+                System.out.println("unable to invite");
 
-    }else{
-        
-    
-            DatabaseManager.inviteGuest(guestId, eventId);
-
-            System.out.println("succesfully updated");
-
-            //System.out.println("btninvitetoevent event Id" + eventId + "guest id" + guestId.get(i) + "admin id" + LoginController.adminUser.getAdmin_id());
-            String header = "Invite success!";
-            String content = "Guests have been successfully invited to event";
-            Alertbox.AlertInfo(header, content);
-             }
+            } else {
+                //invite guest to event
+                DatabaseManager.inviteGuest(guestId, eventId);
+                //alertbox if invite was successful
+                String header = "Invite success!";
+                String content = "Guests have been successfully invited to event";
+                Alertbox.AlertInfo(header, content);
+            }
         } catch (Exception e) {
+            //alertbox is invit was unsuccessful
             String header = "Invite unsuccessful";
             String content = "Please select and add existing guests to guest list first!";
             Alertbox.AlertError(header, content);
-            System.out.println("unable to invite");
+
             e.printStackTrace();
 
         }
-       
-            }
+
+    }
 
     public void passData(String name) throws SQLException {
         this.event_name = name;
@@ -246,8 +236,9 @@ public class A_ViewEventInviteGuestController implements Initializable {
 
     }
 
+    //method to remove guest from guest list
     @FXML
-    void btnRemoveWasClicked(ActionEvent event) {
+    public void btnRemoveWasClicked(ActionEvent event) {
         int index = guestListView.getSelectionModel().getSelectedIndex();
         guestListView.getItems().remove(index);
         guestId.remove(index);

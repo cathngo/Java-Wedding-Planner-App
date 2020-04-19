@@ -18,19 +18,14 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 
-//REMINDER TO MAKE THE README
+
 public class App extends Application {
 
     private static Scene scene;
 
     @Override
     public void start(Stage stage) throws Exception {
-    
-        
 
-
-        //A_InvitationPDFController.createNewInvPDF(1);
-        
         scene = new Scene(loadFXML("Login"));
         
         stage.setScene(scene);
@@ -38,14 +33,9 @@ public class App extends Application {
         DatabaseManager.setupDatabaseOnFirstRun();
         
         //use this for testing and viewing table content
-        //DatabaseManager.printObjectsInTable("event");
         DatabaseManager.printObjectsInTable("admin");
         DatabaseManager.printObjectsInTable("guest");
-       
-        
-        
-        //System.out.println(System.getProperty("user.dir"));
- 
+
     }
 
     static void setRoot(String fxml) throws IOException {
@@ -59,8 +49,6 @@ public class App extends Application {
 
     public static void main(String[] args) throws SQLException {  
         launch();
-        
        
     }
-
 }

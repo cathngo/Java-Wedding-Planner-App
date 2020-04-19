@@ -24,7 +24,8 @@ import javafx.scene.text.Text;
  * @author cathy
  */
 public class A_ViewEventInviteNewGuestController {
- @FXML
+
+    @FXML
     private AnchorPane eventPane;
 
     @FXML
@@ -59,12 +60,12 @@ public class A_ViewEventInviteNewGuestController {
     private String guestCode;
     private int guestId;
 
-   ObservableList<String> guestList = FXCollections.observableArrayList();
+    ObservableList<String> guestList = FXCollections.observableArrayList();
     ObservableList<Integer> guests = FXCollections.observableArrayList();
     ArrayList<Integer> guest_id = new ArrayList<Integer>();
 
     @FXML
-    void btnAddToListWasClicked(ActionEvent event) throws SQLException {
+    public void btnAddToListWasClicked(ActionEvent event) throws SQLException {
         String FirstName = fname.getText();
         String LastName = lname.getText();
         String Phone = number.getText();
@@ -78,32 +79,33 @@ public class A_ViewEventInviteNewGuestController {
         guestCode = code;
 
         try {
-            if(fname.getText().isEmpty()||lname.getText().isEmpty()||number.getText().isEmpty()||email.getText().isEmpty()){
-            String header = "Unable to add to guest list";
-            String content = "Please fill out all contents of 'create new guest'";
-            Alertbox.AlertError(header, content);
-        } else{
-            if (rb1.isSelected()) {
-                DatabaseManager.createGuest(FirstName, LastName, Phone, Email, Dietary, guestCode, Male);
-            } else if (rb2.isSelected()) {
-                DatabaseManager.createGuest(FirstName, LastName, Phone, Email, Dietary, guestCode, Female);
-            }
+            //alertbox error if fields are empty
+            if (fname.getText().isEmpty() || lname.getText().isEmpty() || number.getText().isEmpty() || email.getText().isEmpty()) {
+                String header = "Unable to add to guest list";
+                String content = "Please fill out all contents of 'create new guest'";
+                Alertbox.AlertError(header, content);
+            } else {
+                //guest is created
+                if (rb1.isSelected()) {
+                    DatabaseManager.createGuest(FirstName, LastName, Phone, Email, Dietary, guestCode, Male);
+                } else if (rb2.isSelected()) {
+                    DatabaseManager.createGuest(FirstName, LastName, Phone, Email, Dietary, guestCode, Female);
+                }
+                //gets guest id by their guest access code
+                guestId = DatabaseManager.getGuestIdByCode(code);
+                //stores into an arraylist 
+                guest_id.add(guestId);
 
-            guestId = DatabaseManager.getGuestIdByCode(code);
-            guest_id.add(guestId);
-            guestList.add(FirstName + " " + LastName);
-            guestListView.setItems(guestList);
-            System.out.println("data inserted successfully");
+                guestList.add(FirstName + " " + LastName);
+                //adds created guest to guestlist view
+                guestListView.setItems(guestList);
+                System.out.println("data inserted successfully");
             }
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("data not inserted");
-            
-        }
-        
-        
 
-        
+        }
 
     }
 
@@ -111,14 +113,16 @@ public class A_ViewEventInviteNewGuestController {
     public void btnInviteToEventWasClicked(ActionEvent event) throws SQLException {
 
         try {
+            //alertbox is guest list is empty
             if (guestListView.getItems().isEmpty()) {
                 String header = "Invite unsuccessful";
                 String content = "Please create and add a guest to the guest list first";
                 Alertbox.AlertError(header, content);
             } else {
+                //invites guest to event
                 DatabaseManager.inviteGuest(guest_id, eventId);
 
-                System.out.println("btninvitetoevent guestcode" + guestCode + "guest id" + guestId + "event Id" + eventId + "adminId" + LoginController.adminUser.getAdmin_id());
+                //alertbox is invite was successfuly
                 String header = "Invite success!";
                 String content = "Guests have been successfully invited to event";
                 Alertbox.AlertInfo(header, content);
@@ -130,29 +134,28 @@ public class A_ViewEventInviteNewGuestController {
 
     }
 
-
     @FXML
     public void btnGuestListWasClicked(ActionEvent event) throws SQLException, IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventGuestList.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
+
         A_ViewEventGuestListController controller = loader.getController();
         controller.passEventName(eventName.getText());
         controller.getEventId(eventId);
         controller.getRsvpData(eventId);
         eventPane.getChildren().setAll(pane);
 
-        System.out.println("btn guestlist eventid:" + eventId);
     }
 
     @FXML
     private void btnViewEventsWasClicked(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEvent.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
+
         A_ViewEventController controller = loader.getController();
         controller.passEventId(eventId);
         eventPane.getChildren().setAll(pane);
 
-        System.out.println("btn guestlist eventid:" + eventId);
     }
 
     @FXML
@@ -163,14 +166,13 @@ public class A_ViewEventInviteNewGuestController {
 
     @FXML
     private void btnInviteGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewEventInviteGuest.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
+
         A_ViewEventInviteGuestController controller = loader.getController();
         controller.passData(eventName.getText());
         controller.getEventId(eventId);
         eventPane.getChildren().setAll(pane);
-        System.out.println("btn invite guests eventid:" + eventId);
 
     }
 

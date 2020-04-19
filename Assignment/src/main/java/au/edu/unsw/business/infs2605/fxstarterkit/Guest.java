@@ -29,7 +29,7 @@ public class Guest {
         this.diet_require = diet_require;
         this.guest_gender = guest_gender;
     }
-        //viewguestdashboardcontroller uses this
+       
     public Guest(String guest_fname, String guest_lname, String guest_email, int guest_id) {
         this.guest_fname = guest_fname;
         this.guest_lname = guest_lname;
@@ -37,7 +37,7 @@ public class Guest {
         this.guest_id = guest_id;
         }
         
-        //A_ViewEventInviteGuestController uses this
+      
     public Guest(int guest_id, String guest_fname, String guest_lname){
         this.guest_id = guest_id;
         this.guest_fname = guest_fname;
