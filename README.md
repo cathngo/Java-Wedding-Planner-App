@@ -11,7 +11,7 @@ Please open this file in GitHub for easier readability!
 For more sample credentials for login, run "DatabaseManager.printObjectsInTable("admin")" OR "DatabaseManager.printObjectsInTable("guest")" in App.java to view all credentials.
 
 ## Admin View Features
-There are four main functions on the side menu: **Events**, **Guests**, **Invitation** and **Runsheets**. The following tables explain the features availale for each function:
+There are four main functions on the side menu: **Events**, **Guests**, **Invitation** and **Runsheets**. The following tables explain the features available for each function:
 
 **Events**
 |  Feature  | Navigation  | Description  |
