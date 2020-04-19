@@ -47,13 +47,6 @@ public class A_MenuController implements Initializable {
         bp.setCenter(ap);
         
     }
-    
-    @FXML
-    private void openDashboard(MouseEvent event) {
-        loadPage("A_Dashboard");
-        
-    }
-    
     @FXML
     private void openEvents(MouseEvent event) {
         loadPage("A_ViewAllEvents");
