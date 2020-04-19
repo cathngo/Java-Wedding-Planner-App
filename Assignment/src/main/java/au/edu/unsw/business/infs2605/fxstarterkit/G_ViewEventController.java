@@ -75,31 +75,14 @@ public class G_ViewEventController {
 
     @FXML
     public void btnViewRunsheetWasClicked(ActionEvent event) throws IOException, SQLException {
-            File runsheetDirectory = new File(System.getProperty("user.dir") + "\\runsheet" + eventId + ".pdf");
-            if(runsheetDirectory.exists()){
-            Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler " + "" + System.getProperty("user.dir") + "\\runsheet" + eventId + ".pdf");
-            } else {
-            System.out.println("unsuccessful");
-            String header = "Unable to view runsheet";
-            String content = "Runsheet is not available for this event";
-            Alertbox.AlertError(header, content);
-            }
+       
+       DetectOS.open(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf");
         
     }
 
     @FXML
     public void btnViewInvitationWasClicked(ActionEvent event) throws IOException, SQLException {
-        File invitationDirectory = new File(System.getProperty("user.dir") + "\\invitation" + eventId + ".pdf");
-        if (invitationDirectory.exists()) {
-            Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler " + "" + System.getProperty("user.dir") + "\\invitation" + eventId + ".pdf");
+        DetectOS.open(""+System.getProperty("user.dir")+File.separator+"invitation" + eventId + ".pdf");
 
-        } else {
-            System.out.println("unsuccessful");
-            String header = "Unable to view invitation";
-            String content = "Invitation is not available for this event";
-            Alertbox.AlertError(header, content);
-
-        }
-    }
-
+}
 }

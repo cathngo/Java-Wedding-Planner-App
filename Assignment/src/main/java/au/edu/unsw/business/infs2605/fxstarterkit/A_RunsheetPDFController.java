@@ -23,16 +23,16 @@ import org.apache.pdfbox.pdmodel.font.PDTrueTypeFont;
 public class A_RunsheetPDFController {
     
      public static void createNewRunsheetPDF(ArrayList event_time, ArrayList event_activity, String eventName, int eventId ) throws IOException, Exception{
-        File source = new File(""+System.getProperty("user.dir")+"\\src\\main\\resources\\au\\edu\\unsw\\business\\infs2605\\fxstarterkit\\images\\event_runsheet.pdf");
-        File dest = new File(""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf");
+        File source = new File(""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"au"+File.separator+"edu"+File.separator+"unsw"+File.separator+"business"+File.separator+"infs2605"+File.separator+"fxstarterkit"+File.separator+"images"+File.separator+"event_runsheet.pdf");
+        File dest = new File(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf");
         Files.copy(source.toPath(), dest.toPath());
         
         
         PDDocument doc = PDDocument.load(dest);
         PDPage page = doc.getPage(0);
         
-        PDFont edoFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+"\\src\\main\\resources\\edo.ttf")));
-        PDFont JSFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+"\\src\\main\\resources\\JosefinSans-Light.ttf")));
+        PDFont edoFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"edo.ttf")));
+        PDFont JSFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"JosefinSans-Light.ttf")));
         PDPageContentStream contentStream = new PDPageContentStream(doc, page,true,true,true);
         
         //event name font
@@ -81,8 +81,8 @@ public class A_RunsheetPDFController {
      }
      
       public static void editRunsheetPDF(ArrayList event_time, ArrayList event_activity, String eventName, int eventId ) throws IOException, Exception{
-       File file = new File(""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf"); 
-          
+       File file = new File(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf"); 
+        try{  
         if(file.delete()) 
         { 
             System.out.println("File deleted successfully"); 
@@ -91,16 +91,19 @@ public class A_RunsheetPDFController {
         { 
             System.out.println("Failed to delete the file"); 
         } 
-        File source = new File(""+System.getProperty("user.dir")+"\\src\\main\\resources\\au\\edu\\unsw\\business\\infs2605\\fxstarterkit\\images\\event_runsheet.pdf");
-        File dest = new File(""+System.getProperty("user.dir")+"\\runsheet" + eventId + ".pdf");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        File source = new File(""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"au"+File.separator+"edu"+File.separator+"unsw"+File.separator+"business"+File.separator+"infs2605"+File.separator+"fxstarterkit"+File.separator+"images"+File.separator+"event_runsheet.pdf");
+        File dest = new File(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf");
         Files.copy(source.toPath(), dest.toPath());
         
         
         PDDocument doc = PDDocument.load(dest);
         PDPage page = doc.getPage(0);
         
-        PDFont edoFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+"\\src\\main\\resources\\edo.ttf")));
-        PDFont JSFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+"\\src\\main\\resources\\JosefinSans-Light.ttf")));
+       PDFont edoFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"edo.ttf")));
+        PDFont JSFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"JosefinSans-Light.ttf")));
         PDPageContentStream contentStream = new PDPageContentStream(doc, page,true,true,true);
         
         //event name font

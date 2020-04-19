@@ -24,15 +24,15 @@ public class A_InvitationPDFController {
     public static void createNewInvPDF(int event_id) throws IOException, Exception{
         //put invitation id in there next time
         //makes a copy of the invitation pdf and edit it
-        File source = new File(""+System.getProperty("user.dir")+"\\src\\main\\resources\\au\\edu\\unsw\\business\\infs2605\\fxstarterkit\\images\\invitationTemplate.pdf");
-        File dest = new File(""+System.getProperty("user.dir")+"\\invitation" + event_id + ".pdf");
+        File source = new File(""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"au"+File.separator+"edu"+File.separator+"unsw"+File.separator+"business"+File.separator+"infs2605"+File.separator+"fxstarterkit"+File.separator+"images"+File.separator+"invitationTemplate.pdf");
+        File dest = new File(""+System.getProperty("user.dir")+File.separator+"invitation" + event_id + ".pdf");
         Files.copy(source.toPath(), dest.toPath());
         PDDocument doc = PDDocument.load(dest);
         PDPage page = doc.getPage(0);
         
-        PDFont edoFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+"\\src\\main\\resources\\edo.ttf")));
-        PDFont JSFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+"\\src\\main\\resources\\JosefinSans-Light.ttf")));
-        PDFont JSFontBold = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File ("" + System.getProperty("user.dir")+"\\src\\main\\resources\\JosefinSans-Regular.ttf")));
+        PDFont edoFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"edo.ttf")));
+        PDFont JSFont = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File (""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"JosefinSans-Light.ttf")));
+        PDFont JSFontBold = PDTrueTypeFont.loadTTF(doc, new FileInputStream(new File ("" + System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"JosefinSans-Regular.ttf")));
         
         PDPageContentStream contentStream = new PDPageContentStream(doc, page,true,true,true);
         Connection conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
