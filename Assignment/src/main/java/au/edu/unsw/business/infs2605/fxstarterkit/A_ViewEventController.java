@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
@@ -34,6 +35,7 @@ public class A_ViewEventController {
     private Text eventInstructions;
     @FXML
     private Text event_id;
+    
     @FXML
     private AnchorPane eventPane;
 
