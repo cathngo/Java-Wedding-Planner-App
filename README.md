@@ -1,8 +1,12 @@
-# INFS2605 FX Starter Kit
+# README
+Please open this file in GitHub for easier readability!
 
-## What is this?
-This is a starter kit for INFS2605 students. It will set you up to develop JavaFX applications on the Java 11 platform using NetBeans 11, OpenJDK 11 and OpenJFX 11.
-
+## Sample Credentials for Login
+|Admin User|Guest|
+|---|---|
+| User: admin462 Pw: hello21  |  Code: PeterKim2341 |
+| User: admin29138 Pw: chocolate23 | Code: WilliamWong9837 |
+| User: admin239 Pw: yellowblue34 | Code: KellyLu0193  |
 ## System Requirements
 For macOS:
 - macOS **10.14 Mojave** or **macOS 10.15 Catalina** (using 10.14 Mojave if you need to maintain backwards compatibility with other 32-bit software that you need installed on your computer).
