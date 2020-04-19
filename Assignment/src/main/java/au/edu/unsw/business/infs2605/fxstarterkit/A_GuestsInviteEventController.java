@@ -52,7 +52,7 @@ public class A_GuestsInviteEventController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            //sets tableview of eents
+            //sets tableview of events
             viewGuestTable.setItems(DatabaseManager.getEvents());
             col_eventId.setCellValueFactory(new PropertyValueFactory<>("event_id"));
             col_eventName.setCellValueFactory(new PropertyValueFactory<>("event_name"));

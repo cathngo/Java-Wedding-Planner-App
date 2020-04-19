@@ -7,8 +7,6 @@ package au.edu.unsw.business.infs2605.fxstarterkit;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;

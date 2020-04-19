@@ -205,7 +205,7 @@ public class A_ViewEventInviteGuestController implements Initializable {
         try {
             if (guestListView.getItems().isEmpty()) {
                 //alertbox if guest list is empty
-                String header = "Invite unsuccessful";
+                String header = "Invite Unsuccessful";
                 String content = "Please select and add existing guests to guest list first!";
                 Alertbox.AlertError(header, content);
                 System.out.println("unable to invite");
