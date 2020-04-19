@@ -81,19 +81,7 @@ public class A_RunsheetPDFController {
      }
      
       public static void editRunsheetPDF(ArrayList event_time, ArrayList event_activity, String eventName, int eventId ) throws IOException, Exception{
-       File file = new File(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf"); 
-        try{  
-        if(file.delete()) 
-        { 
-            System.out.println("File deleted successfully"); 
-        } 
-        else
-        { 
-            System.out.println("Failed to delete the file"); 
-        } 
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+       
         File source = new File(""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"au"+File.separator+"edu"+File.separator+"unsw"+File.separator+"business"+File.separator+"infs2605"+File.separator+"fxstarterkit"+File.separator+"images"+File.separator+"event_runsheet.pdf");
         File dest = new File(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf");
         Files.copy(source.toPath(), dest.toPath());

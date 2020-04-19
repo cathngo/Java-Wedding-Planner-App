@@ -86,6 +86,7 @@ public class A_ViewAllRunsheetsController implements Initializable {
             Event selectedEvent = runsheetTable.getSelectionModel().getSelectedItem();
             eventId = selectedEvent.getEvent_id();
             eventName = selectedEvent.getEvent_name();
+            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("A_EditRunsheet.fxml"));
             AnchorPane pane = (AnchorPane) loader.load();
             A_EditRunsheetController controller = loader.getController();

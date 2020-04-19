@@ -5,6 +5,7 @@
  */
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
@@ -107,11 +108,30 @@ public class A_EditRunsheetController {
     @FXML
     void btnUpdateWasClicked(ActionEvent  event) throws Exception {
         
+        File file = new File(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf"); 
+        try{  
+        if(file.delete()) 
+        { 
+            System.out.println("File deleted successfully"); 
+        } 
+        else
+        { 
+            System.out.println("Failed to delete the file"); 
+        } 
+        }catch(Exception e){
+            
+            e.printStackTrace();
+        }   
+        
         if (runsheetList.getItems().isEmpty()){
             String header = "Update Unsuccessful";
             String content = "Please add items to the runsheet";
             Alertbox.AlertError(header, content);
-        }else{
+        }else if (file.delete() == false){
+         String header = "Unable to edit runsheet";
+          String content = "Please close runsheet if opened in another program before editing";
+          Alertbox.AlertError(header, content);
+        } else if (file.delete() == true){
         String header = "Update Success!";
         String content = "Runsheet was successfully updated!";
         Alertbox.AlertInfo(header, content);
