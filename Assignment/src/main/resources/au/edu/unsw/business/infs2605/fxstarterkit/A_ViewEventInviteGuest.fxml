@@ -54,6 +54,7 @@
                   </Text>
                   <Button fx:id="btnInviteToEvent" layoutX="587.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnInviteToEventWasClicked" text="Invite To Event" />
                   <ListView fx:id="guestListView" layoutX="402.0" layoutY="34.0" prefHeight="251.0" prefWidth="294.0" />
+                  <Button layoutX="603.0" layoutY="4.0" mnemonicParsing="false" onAction="#btnRemoveWasClicked" text="Remove Guest" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">

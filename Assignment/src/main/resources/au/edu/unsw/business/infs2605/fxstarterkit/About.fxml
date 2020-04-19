@@ -22,9 +22,9 @@
             </AnchorPane>
             <AnchorPane prefHeight="439.0" prefWidth="600.0">
                <children>
-                  <ImageView fitHeight="291.0" fitWidth="641.0" layoutX="65.0" layoutY="26.0">
+                  <ImageView fitHeight="274.0" fitWidth="652.0" layoutX="60.0" layoutY="56.0">
                      <image>
-                        <Image url="@images/about-statement.png" />
+                        <Image url="@images/Screen%20Shot%202020-04-19%20at%202.45.03%20pm.png" />
                      </image>
                   </ImageView>
                </children>

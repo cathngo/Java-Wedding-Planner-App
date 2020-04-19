@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,6 +31,8 @@ public class G_MenuController implements Initializable {
     
     @FXML
     private AnchorPane gap;
+    
+    PageSwitcher pageSwitcher = new PageSwitcher();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -77,6 +80,13 @@ public class G_MenuController implements Initializable {
         }
     gbp.setCenter(root);
 }
+    @FXML
+    private void btnLogOutWasClicked(ActionEvent event) throws IOException{
+        LoginController.adminUser = null;
+        LoginController.guestUser = null;
+        pageSwitcher.switchPage(event, "Login.fxml");
+        
+    }
 
 }
 
