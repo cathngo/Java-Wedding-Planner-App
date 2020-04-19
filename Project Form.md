@@ -1,5 +1,7 @@
 # Project Form
 
+Note: Please open in GitHub for easier readability!
+
 |  Feature | Attempted  | Completed  | Notes  |
 |---|---|---|---|
 | UM1: Allow administrators and guests to log in  | Yes  | Yes  |-**CODE: LoginController**<br/>-Used a static variable to store current user so that the application is aware of who is logged in<br/>-Login screen allows both admin and guests to log in |
