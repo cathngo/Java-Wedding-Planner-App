@@ -42,8 +42,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button layoutX="29.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="Back" textFill="WHITE" />
-                  <Button layoutX="589.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnRsvpWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="RSVP" textFill="WHITE" />
+                  <Button layoutX="29.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" styleClass="smallbutton" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
+                  <Button layoutX="589.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnRsvpWasClicked" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: #9FD9AD#9FD9AD;" styleClass="smallbutton" stylesheets="@stylesheet.css" text="RSVP" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>
