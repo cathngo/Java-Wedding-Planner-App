@@ -5,6 +5,7 @@
  */
 package au.edu.unsw.business.infs2605.fxstarterkit;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -68,18 +69,8 @@ public class A_CreateInvitationController implements Initializable {
     
     @FXML
     public void btnViewInvitationWasClicked(ActionEvent event) throws IOException {
-        
-        try{
-           Event selectedEvent = invitation_table.getSelectionModel().getSelectedItem();
+        Event selectedEvent = invitation_table.getSelectionModel().getSelectedItem();
         eventId = selectedEvent.getEvent_id();
-           Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler " + ""+System.getProperty("user.dir")+"\\invitation" + eventId + ".pdf");
-       }catch(Exception e){
-           String header = "Unable to view invitation";
-            String content = "Please select an event from the table";
-            Alertbox.AlertError(header, content);
-           System.out.println("unsuccessful");
-           e.printStackTrace();
-       }
-       
-    }
+         DetectOS.open(""+System.getProperty("user.dir")+File.separator+"invitation" + eventId + ".pdf");
+}
 }
