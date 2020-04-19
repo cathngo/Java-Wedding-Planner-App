@@ -42,7 +42,6 @@ public class A_CreateEventController {
     public void btnCreateEventWasClicked() throws SQLException {
 
         String Name = eventName.getText();
-
         String Address = eventAddress.getText();
         String Description = eventDescription.getText();
         String Date = eventDate.getText();
@@ -51,18 +50,20 @@ public class A_CreateEventController {
         String eInstructions = instructions.getText();
 
         try {
-             if(eventName.getText().isEmpty()||eventAddress.getText().isEmpty()||eventDescription.getText().isEmpty()||eventDate.getText().isEmpty()||startTime.getText().isEmpty()||endTime.getText().isEmpty()){
-            String header = "Unable to add to create event";
-            String content = "Please fill out all contents of 'create event'";
-            Alertbox.AlertError(header, content);
-        } else {
-            DatabaseManager.createEvent(Name, Address, Description, Date, sTime, eTime, eInstructions);
+            //alertbox error if fields are empty
+            if (eventName.getText().isEmpty() || eventAddress.getText().isEmpty() || eventDescription.getText().isEmpty() || eventDate.getText().isEmpty() || startTime.getText().isEmpty() || endTime.getText().isEmpty()) {
+                String header = "Unable to add to create event";
+                String content = "Please fill out all contents of 'create event'";
+                Alertbox.AlertError(header, content);
+            } else {
+                //creates event
+                DatabaseManager.createEvent(Name, Address, Description, Date, sTime, eTime, eInstructions);
 
-            String header = "Event created!";
-            String content = "Event was successfully created!";
-            Alertbox.AlertInfo(header, content);
-            System.out.println("data inserted successfully");
-             }
+                String header = "Event created!";
+                String content = "Event was successfully created!";
+                Alertbox.AlertInfo(header, content);
+                System.out.println("data inserted successfully");
+            }
         } catch (Exception e) {
             e.printStackTrace();
             String header = "Unable to create event";
@@ -75,12 +76,12 @@ public class A_CreateEventController {
     }
 
     @FXML
-    private void btnBackWasClicked(ActionEvent event) throws IOException, SQLException {
-
-      AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllEvents.fxml"));
+    public void btnBackWasClicked(ActionEvent event) throws IOException, SQLException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllEvents.fxml"));
         eventPane.getChildren().setAll(pane);
     }
-@FXML
+
+    @FXML
     public void btnEventsWasClicked(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllEvents.fxml"));
         eventPane.getChildren().setAll(pane);

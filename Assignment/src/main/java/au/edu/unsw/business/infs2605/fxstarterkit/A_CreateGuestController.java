@@ -19,7 +19,7 @@ import javafx.scene.layout.AnchorPane;
  * @author cathy
  */
 public class A_CreateGuestController {
-      @FXML
+    @FXML
     private TextField fname;
     @FXML
     private TextField lname;
@@ -35,11 +35,12 @@ public class A_CreateGuestController {
     private RadioButton rb2;
     @FXML
     private AnchorPane guestsPane;
+    
     private String guestCode;
    
 
     
-     @FXML
+    @FXML
     public void btnCreateGuestWasClicked() throws SQLException{
 
         String FirstName = fname.getText();
@@ -49,46 +50,36 @@ public class A_CreateGuestController {
         String Dietary = diet.getText();
         String Male = rb1.getText();
         String Female = rb2.getText();
-       
-        
-        //generate guest code for guest
+               
+       //generate guest code for guest
        guestCode = DatabaseManager.generateGuestCode(FirstName, LastName);
-
-
-
-        
+    
         try{
+            //alertbox error if fields are empty
              if(fname.getText().isEmpty()||lname.getText().isEmpty()||number.getText().isEmpty()||email.getText().isEmpty()){
             String header = "Unable to create guest";
             String content = "Please fill out all contents of 'create guest'";
             Alertbox.AlertError(header, content);
+            
         } else{
-             
             if (rb1.isSelected()) {
                 DatabaseManager.createGuest(FirstName, LastName, Phone, Email, Dietary, guestCode, Male);
             } else if (rb2.isSelected()) {
                  DatabaseManager.createGuest(FirstName, LastName, Phone, Email, Dietary, guestCode, Female);
             }
-            
-             String header = "Guest created!";
+            //alertbox if guest created successfully
+            String header = "Guest created!";
             String content = "Guest was successfully created!";
             Alertbox.AlertInfo(header, content);
-             System.out.println("data inserted successfully");
+            System.out.println("data inserted successfully");
              }  
         } catch(Exception e){
-            String header = "Unable to create guest";
-            String content = "Please fill out all contents of 'create guest'";
-            Alertbox.AlertError(header, content);
             e.printStackTrace();
             System.out.println("data not inserted");
-        }
-           
-     
-        
-    
+        }  
 }
     @FXML
-    private void btnBackWasClicked(ActionEvent event) throws IOException {
+    public void btnBackWasClicked(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewGuestDashboard.fxml"));
         guestsPane.getChildren().setAll(pane);
     }
@@ -97,9 +88,6 @@ public class A_CreateGuestController {
     public void btnGuestsWasClicked(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestDashboard.fxml"));
         AnchorPane pane = (AnchorPane) loader.load();
-       
         guestsPane.getChildren().setAll(pane);
-        
     }
-
 }

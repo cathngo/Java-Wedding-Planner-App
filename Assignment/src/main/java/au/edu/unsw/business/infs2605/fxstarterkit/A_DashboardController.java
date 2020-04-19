@@ -12,9 +12,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -24,19 +21,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class A_DashboardController implements Initializable {
 
-    @FXML
-    private Button btn_guestspg;
-    @FXML
-    private Button btn_invitationpg;
-    @FXML
-    private Button btn_eventpg;
-    @FXML
     private AnchorPane dashboardPane;
-    
-    @FXML
-    private TableColumn<?, ?> UpcomingEventsColumn;
-    @FXML
-    private TableView<?> upcomingEventsTable;
 
     //link buttons to change the anchorpane
     @FXML
@@ -56,15 +41,10 @@ public class A_DashboardController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllEvents.fxml"));
         dashboardPane.getChildren().setAll(pane);
     }
-    
-    //load data into the upcoming events table
-    //@FXML private TableView<DatabaseManager> tableView;
-    //@FXML private TableColumn<DatabaseManager, String> UpcomingEventsColumn;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //UpcomingEventsColumn.setCellValueFactory(new PropertyValueFactory<DatabaseManager, String>("event_name"));
+
     }
     
-
 }

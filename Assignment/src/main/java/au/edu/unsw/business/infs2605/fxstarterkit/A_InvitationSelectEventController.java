@@ -44,12 +44,13 @@ public class A_InvitationSelectEventController implements Initializable {
 
     private int eventId;
 
-    private String eventName;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
+            //sets tableview of events
             eventTable.setItems(DatabaseManager.getEvents());
 
             col_eId.setCellValueFactory(new PropertyValueFactory<>("event_id"));
@@ -59,8 +60,7 @@ public class A_InvitationSelectEventController implements Initializable {
             col_eEndTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
 
         } catch (Exception e) {
-            System.out.println("table not created");
-
+            e.printStackTrace();
         }
 
     }
@@ -83,19 +83,22 @@ public class A_InvitationSelectEventController implements Initializable {
         try {
             Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
             eventId = selectedEvent.getEvent_id();
+            //creates invitation pdf
             A_InvitationPDFController.createNewInvPDF(eventId);
-            
+            //stores the invitation into the database
             BLOB invitation = new BLOB();
             invitation.updateInvitation(eventId, "invitation" + eventId +".pdf");
-            
+            //alertbox is invitation was successfully created
             String header = "Invitation Success!";
             String content = "Invitation was successfully created!";
             Alertbox.AlertInfo(header, content);
             
         } catch (Exception e) {
+            //alertbox if the invitation is not created
             String header = "Unable to proceed";
             String content = "Either event not selected or invitation already exists";
             Alertbox.AlertError(header, content);
+            e.printStackTrace();
         }
 
     }

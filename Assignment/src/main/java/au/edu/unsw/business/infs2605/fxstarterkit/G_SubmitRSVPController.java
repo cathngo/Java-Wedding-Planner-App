@@ -48,9 +48,9 @@ public class G_SubmitRSVPController {
     public void passEventId(int id) throws SQLException {
 
         this.eventId = id;
-
+        //gets event by event id
         Event myEvent = DatabaseManager.getEventsByEventId(id);
-
+        //loads event information
         eventName.setText(myEvent.getEvent_name());
         eventDate.setText(myEvent.getEvent_date());
         eventTime.setText(myEvent.getEvent_start_time() + " - " + myEvent.getEvent_end_time());
@@ -71,16 +71,19 @@ public class G_SubmitRSVPController {
         guestId = LoginController.guestUser.getGuest_id();
 
         try {
+            //gets invitation id by event id and guest id
             invitationId = DatabaseManager.getInvitationId(eventId, guestId);
 
+            //if guest selects yes
             if (rb1.isSelected()) {
-
+                //submit rsvp as yes into database
                 DatabaseManager.submitRSVP(invitationId, Yes);
+                //if guest selects no
             } else if (rb2.isSelected()) {
-
+                //submit rsvp as no into database
                 DatabaseManager.submitRSVP(invitationId, No);
             }
-
+            //submit guest dietary requirement into database
             DatabaseManager.updateGuestDiet(guestId, diet);
 
             String header = "RSVP Success!";
@@ -102,7 +105,7 @@ public class G_SubmitRSVPController {
         AnchorPane pane = (AnchorPane) loader.load();
         dashboardPane.getChildren().setAll(pane);
     }
-    
+
     @FXML
     public void btnPendingInvitations(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("G_ViewAllInvitations.fxml"));

@@ -51,18 +51,17 @@ public class A_RunsheetSelectEventController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-             eventTable.setItems(DatabaseManager.getEvents());
-           
+            //sets tableview of events
+            eventTable.setItems(DatabaseManager.getEvents());
+
             col_eId.setCellValueFactory(new PropertyValueFactory<>("event_id"));
             col_eName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
             col_eDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
             col_eStartTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
             col_eEndTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
 
-            
         } catch (Exception e) {
             System.out.println("table not created");
-
         }
 
     }
@@ -78,24 +77,26 @@ public class A_RunsheetSelectEventController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllRunsheets.fxml"));
         runsheetPane.getChildren().setAll(pane);
     }
+
     @FXML
     public void btnNextWasClicked(ActionEvent event) throws IOException {
-        try{
+        try {
             Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
             eventId = selectedEvent.getEvent_id();
             eventName = selectedEvent.getEvent_name();
+            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("A_CreateRunsheet.fxml"));
             AnchorPane pane = (AnchorPane) loader.load();
             A_CreateRunsheetController controller = loader.getController();
+            
             controller.passEventId(eventId);
             controller.passEventName(eventName);
             runsheetPane.getChildren().setAll(pane);
-        }catch (Exception e){
+        } catch (Exception e) {
             String header = "Unable to proceed";
             String content = "Please select an event from the table";
             Alertbox.AlertError(header, content);
         }
 
-        }
     }
-
+}

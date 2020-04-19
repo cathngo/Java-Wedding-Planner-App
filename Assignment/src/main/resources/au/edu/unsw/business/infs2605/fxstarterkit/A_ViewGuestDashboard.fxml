@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -23,14 +24,22 @@
             </AnchorPane>
             <AnchorPane prefHeight="314.0" prefWidth="771.0">
                <children>
-                  <TableView fx:id="guest_table" layoutX="58.0" layoutY="12.0" prefHeight="337.0" prefWidth="677.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;" styleClass="TableView" stylesheets="@stylesheet.css">
-                     <columns>
-                        <TableColumn fx:id="col_guestId" prefWidth="56.0" text="ID" />
-                        <TableColumn fx:id="col_firstName" prefWidth="145.60004425048828" text="First Name" />
-                        <TableColumn fx:id="col_lastName" prefWidth="145.60003662109375" text="Last Name" />
-                        <TableColumn fx:id="col_guestEmail" prefWidth="306.3999938964844" text="Email" />
-                     </columns>
-                  </TableView>
+                  <ScrollPane layoutX="46.0" prefHeight="306.0" prefWidth="676.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="308.0" prefWidth="673.0">
+                           <children>
+                              <TableView fx:id="guest_table" prefHeight="314.0" prefWidth="685.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;" styleClass="TableView" stylesheets="@stylesheet.css">
+                                 <columns>
+                                    <TableColumn fx:id="col_guestId" prefWidth="56.0" text="ID" />
+                                    <TableColumn fx:id="col_firstName" prefWidth="145.60004425048828" text="First Name" />
+                                    <TableColumn fx:id="col_lastName" prefWidth="145.60003662109375" text="Last Name" />
+                                    <TableColumn fx:id="col_guestEmail" prefWidth="306.3999938964844" text="Email" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="110.0" prefWidth="771.0">

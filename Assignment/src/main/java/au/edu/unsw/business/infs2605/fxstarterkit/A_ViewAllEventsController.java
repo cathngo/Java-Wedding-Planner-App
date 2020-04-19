@@ -44,6 +44,7 @@ public class A_ViewAllEventsController {
 
     public void initialize() {
         try {
+            //sets tableview of events
             eventTable.setItems(DatabaseManager.getEvents());
             col_eId.setCellValueFactory(new PropertyValueFactory<>("event_id"));
             col_eName.setCellValueFactory(new PropertyValueFactory<>("event_name"));
@@ -69,7 +70,6 @@ public class A_ViewAllEventsController {
             A_ViewEventController controller = loader.getController();
             controller.passEventId(eventId);
             eventPane.getChildren().setAll(pane);
-            System.out.println("view details event id:" + eventId);
 
         } catch (Exception e) {
             String header = "Unable to view details of event";
@@ -90,15 +90,17 @@ public class A_ViewAllEventsController {
             Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
             eventId = selectedEvent.getEvent_id();
             eventName = selectedEvent.getEvent_name();
+            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("A_EventInviteGuest.fxml"));
             AnchorPane pane = (AnchorPane) loader.load();
+            
             A_EventInviteGuestController controller = loader.getController();
             controller.passData(eventName);
             controller.getEventId(eventId);
             eventPane.getChildren().setAll(pane);
 
-            System.out.println("invite guests event id:" + eventId);
         } catch (Exception e) {
+            //alertbox is event was not selected
             String header = "Unable to invite guests for this event";
             String content = "Please select an event from the table 'Your Events'";
             Alertbox.AlertError(header, content);

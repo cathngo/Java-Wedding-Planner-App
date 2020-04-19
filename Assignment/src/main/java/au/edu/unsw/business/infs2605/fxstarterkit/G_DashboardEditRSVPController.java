@@ -44,21 +44,24 @@ public class G_DashboardEditRSVPController {
     private int eventId;
     private int invitationId;
     private int guestId;
+
     private ArrayList<String> rsvp = new ArrayList<String>();
 
     public void passEventId(int id) throws SQLException {
         guestId = LoginController.guestUser.getGuest_id();
-
+        //gets rsvp by guest id and event id
         rsvp = DatabaseManager.getRsvpByGuestIdEventId(eventId, guestId);
-
+        //loads the information
         eventName.setText(rsvp.get(0));
         eventDate.setText(rsvp.get(1));
         eventTime.setText(rsvp.get(2) + " - " + rsvp.get(3));
         eventAddress.setText(rsvp.get(4));
         guestDiet.setText(rsvp.get(5));
 
+        //if guest is a male, fill the male radio button
         if (rsvp.get(6).equals(rb1.getText())) {
             rb1.setSelected(true);
+            //if guest is a female, fill the female radio button
         } else if (rsvp.get(6).equals(rb2.getText())) {
             rb2.setSelected(true);
         }
@@ -77,23 +80,27 @@ public class G_DashboardEditRSVPController {
         String no = rb2.getText();
 
         try {
+            //gets the invitation id by event id and guest id
             invitationId = DatabaseManager.getInvitationId(eventId, guestId);
 
+            //if user selects yes
             if (rb1.isSelected()) {
-
+                //update RSVP with yes
                 DatabaseManager.updateRSVP(invitationId, yes);
+                //if user selects no
             } else if (rb2.isSelected()) {
-
+                //update RSVP with no
                 DatabaseManager.updateRSVP(invitationId, no);
             }
-
+            //update guest dietary requirements by their input
             DatabaseManager.updateGuestDiet(guestId, diet);
-
+            //alertbox if update was successful
             String header = "Update Success!";
             String content = "RSVP was successfully edited!";
             Alertbox.AlertInfo(header, content);
 
         } catch (Exception e) {
+            //alertbox if update was unsuccessful
             System.out.println("data not inserted");
             String header = "Update Unsuccessful";
             String content = "Please select if you can attend this event";

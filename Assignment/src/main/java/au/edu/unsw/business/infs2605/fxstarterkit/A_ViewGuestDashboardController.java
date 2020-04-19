@@ -37,14 +37,16 @@ public class A_ViewGuestDashboardController implements Initializable {
     private TableColumn<Guest, String> col_guestEmail;
     @FXML
     private int guestId;
+
     private String guestName;
 
     ObservableList<Guest> guestList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
         try {
+            //sets tableview of guests
             guest_table.setItems(DatabaseManager.getGuests());
             col_firstName.setCellValueFactory(new PropertyValueFactory<>("guest_fname"));
             col_lastName.setCellValueFactory(new PropertyValueFactory<>("guest_lname"));
@@ -52,32 +54,33 @@ public class A_ViewGuestDashboardController implements Initializable {
             col_guestId.setCellValueFactory(new PropertyValueFactory<>("guest_id"));
 
         } catch (Exception e) {
-            System.out.println("table not created");
+
             e.printStackTrace();
         }
 
     }
 
-    /**
-     * Initializes the controller class.
-     */
     @FXML
     private void loadInviteGuest(ActionEvent event) throws IOException, SQLException {
         try {
+            //gets the guest id of the selected guest
             Guest selectedGuest = guest_table.getSelectionModel().getSelectedItem();
             guestId = selectedGuest.getGuest_id();
+
             String guestFname = selectedGuest.getGuest_fname();
             String guestLname = selectedGuest.getGuest_lname();
             guestName = guestFname + " " + guestLname;
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("A_GuestsInviteEvent.fxml"));
             AnchorPane pane = (AnchorPane) loader.load();
+
             A_GuestsInviteEventController controller = loader.getController();
             controller.passGuestName(guestName);
             controller.getGuestId(guestId);
             guestsPane.getChildren().setAll(pane);
 
-            System.out.println("load invite guest guest id: " + guestId + " guest name:" + guestName);
         } catch (Exception e) {
+            //alertbox error if guest is not selected
             String header = "Unable to invite guest to an event";
             String content = "Please select a guest from the table 'Guests'";
             Alertbox.AlertError(header, content);
@@ -95,19 +98,22 @@ public class A_ViewGuestDashboardController implements Initializable {
         try {
             Guest selectedGuest = guest_table.getSelectionModel().getSelectedItem();
             guestId = selectedGuest.getGuest_id();
+
             String guestFname = selectedGuest.getGuest_fname();
             String guestLname = selectedGuest.getGuest_lname();
             guestName = guestFname + " " + guestLname;
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("A_ViewGuestProfile.fxml"));
             AnchorPane pane = (AnchorPane) loader.load();
+
             A_ViewGuestProfileController controller = loader.getController();
             controller.loadGuestData(guestId);
             controller.passGuestName(guestName);
             controller.getGuestId(guestId);
             guestsPane.getChildren().setAll(pane);
 
-            System.out.println("load view guest guest id: " + guestId + " guest name:" + guestName);
         } catch (Exception e) {
+
             String header = "Unable to view details of guest";
             String content = "Please select a guest from the table 'Guests'";
             Alertbox.AlertError(header, content);

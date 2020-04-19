@@ -10,6 +10,7 @@ package au.edu.unsw.business.infs2605.fxstarterkit;
  * @author cathy
  */
 public class RSVPEventWrapper {
+    //class to combine RSVP and Event into one table
     private String event_name;
     private String event_date;
     private String decision;

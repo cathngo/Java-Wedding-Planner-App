@@ -12,7 +12,7 @@ import java.io.File;
  * @author cathy
  */
 public class DetectOS {
-
+    //Reference: Stack Overflow - detects the OS of the user
     private static boolean isWindows = false;
     private static boolean isLinux = false;
     private static boolean isMac = false;

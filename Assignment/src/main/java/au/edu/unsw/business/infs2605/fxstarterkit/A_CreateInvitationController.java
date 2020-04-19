@@ -9,8 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +26,6 @@ public class A_CreateInvitationController implements Initializable {
 
     @FXML
     private TableView<Event> invitation_table;
-
     @FXML
     private TableColumn<Event, String> col_eName;
     @FXML
@@ -44,7 +41,7 @@ public class A_CreateInvitationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+    //sets tableview of events
         try {
             invitation_table.setItems(DatabaseManager.getEventsByInvitation());
 
@@ -56,9 +53,7 @@ public class A_CreateInvitationController implements Initializable {
         } catch (Exception e) {
             System.out.println("table not created");
             e.printStackTrace();
-
         }
-
     }
 
     @FXML
@@ -66,11 +61,12 @@ public class A_CreateInvitationController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_InvitationSelectEvent.fxml"));
         invitationPane.getChildren().setAll(pane);
     }
-    
+
     @FXML
     public void btnViewInvitationWasClicked(ActionEvent event) throws IOException {
         Event selectedEvent = invitation_table.getSelectionModel().getSelectedItem();
         eventId = selectedEvent.getEvent_id();
-         DetectOS.open(""+System.getProperty("user.dir")+File.separator+"invitation" + eventId + ".pdf");
-}
+        //Opens the Invitation PDF in a pdf viewer
+        DetectOS.open("" + System.getProperty("user.dir") + File.separator + "invitation" + eventId + ".pdf");
+    }
 }

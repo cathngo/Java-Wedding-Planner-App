@@ -23,7 +23,7 @@ import java.sql.SQLException;
  * @author cathy
  */
 public class BLOB {
-    
+    //reference SQlite Tutorial - stores pdf into database
     
      private byte[] readFile(String file) {
         ByteArrayOutputStream bos = null;

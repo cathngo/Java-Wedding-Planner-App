@@ -44,11 +44,12 @@ public class G_EditRSVPController {
     private int eventId;
     private int invitationId;
     private int guestId;
+    
     private ArrayList<String> rsvp = new ArrayList<String>();
 
     public void passEventId(int id) throws SQLException {
         guestId = LoginController.guestUser.getGuest_id();
-
+       
         rsvp = DatabaseManager.getRsvpByGuestIdEventId(eventId, guestId);
 
         eventName.setText(rsvp.get(0));

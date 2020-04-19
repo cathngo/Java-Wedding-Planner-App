@@ -18,7 +18,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 /**
  *
@@ -39,14 +38,13 @@ public class A_EditRunsheetController {
     private TextField activity;
     @FXML
     private ListView<String> runsheetList;
-    @FXML
-    private Stage primaryStage;
 
     ObservableList<String> runsheet = FXCollections.observableArrayList();
     ArrayList<String> event_time = new ArrayList<String>();
     ArrayList<String> event_activity = new ArrayList<String>();
 
     private String eventName;
+
     private int eventId;
 
     public void getEventId(int id) {
@@ -54,13 +52,13 @@ public class A_EditRunsheetController {
     }
 
     public void getEventName(String name) {
-
         this.eventName = name;
         event_name.setText(name);
     }
 
     @FXML
-    void btnAddItemsWasClicked(ActionEvent event) throws IOException {
+    public void btnAddItemsWasClicked(ActionEvent event) throws IOException {
+        //Reference: StackOverflow
         runsheetList.setCellFactory(param -> new ListCell<String>() {
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -68,76 +66,62 @@ public class A_EditRunsheetController {
                 if (empty || item == null) {
                     setGraphic(null);
                     setText(null);
-                    // other stuff to do...
-
                 } else {
 
-                    // set the width's
                     setMinWidth(param.getWidth());
                     setMaxWidth(param.getWidth());
                     setPrefWidth(param.getWidth());
-
-                    // allow wrapping
                     setWrapText(true);
-
                     setText(item.toString());
-
                 }
             }
         });
+
         runsheet.add(time.getText() + ":  " + activity.getText());
         runsheetList.setItems(runsheet);
-
         event_time.add(time.getText());
         event_activity.add(activity.getText());
 
     }
 
     @FXML
-    void btnBackWasClicked(ActionEvent event) throws IOException {
+    public void btnBackWasClicked(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllRunsheets.fxml"));
         runsheetPane.getChildren().setAll(pane);
     }
 
     @FXML
-    void btnRunsheetsWasClicked(ActionEvent event) throws IOException {
+    public void btnRunsheetsWasClicked(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("A_ViewAllRunsheets.fxml"));
         runsheetPane.getChildren().setAll(pane);
     }
 
     @FXML
-    void btnUpdateWasClicked(ActionEvent event) throws Exception {
-
+    public void btnUpdateWasClicked(ActionEvent event) throws Exception {
+        //alertbox error if runsheet list is empty
         if (runsheetList.getItems().isEmpty()) {
             String header = "Update Unsuccessful";
             String content = "Please add items to the runsheet";
             Alertbox.AlertError(header, content);
         } else {
-           File file = new File(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf"); 
-        try{  
-        if(file.delete()) 
-        { 
-            System.out.println("File deleted successfully"); 
-            String header = "Update Success!";
-            String content = "Runsheet was successfully updated!";
-            Alertbox.AlertInfo(header, content);
-            A_RunsheetPDFController.editRunsheetPDF(event_time, event_activity, eventName, eventId);
-            System.out.println("btn update eventId eventName " + eventName + eventId);
-        } 
-        else
-        { 
-            System.out.println("Failed to delete the file"); 
-            String header = "Unable to edit runsheet";
-            String content = "close runsheet if opened in another program";
-            Alertbox.AlertError(header, content);
-        
-        } 
-        }catch(Exception e){
-            
-            e.printStackTrace();
-        }   
-
-            
+            File file = new File("" + System.getProperty("user.dir") + File.separator + "runsheet" + eventId + ".pdf");
+            try {
+                //delete the existing runsheet so that it can be replaced with a new runsheet
+                if (file.delete()) {
+                    String header = "Update Success!";
+                    String content = "Runsheet was successfully updated!";
+                    Alertbox.AlertInfo(header, content);
+                    //create the runsheet pdf
+                    A_RunsheetPDFController.editRunsheetPDF(event_time, event_activity, eventName, eventId);
+                } else {
+                    //alertbox error if the runsheet is opened in another program and cannot be deleted
+                    String header = "Unable to edit runsheet";
+                    String content = "close runsheet if opened in another program";
+                    Alertbox.AlertError(header, content);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

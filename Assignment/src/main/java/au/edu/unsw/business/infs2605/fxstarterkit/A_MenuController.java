@@ -28,15 +28,12 @@ import javafx.scene.layout.BorderPane;
 public class A_MenuController implements Initializable {
  
     @FXML
-    private BorderPane bp;
-    
+    private BorderPane bp;    
     @FXML
     private AnchorPane ap;
 
-    @FXML 
-    private Button btn_home;
-    
     PageSwitcher pageSwitcher = new PageSwitcher();
+    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
     }
