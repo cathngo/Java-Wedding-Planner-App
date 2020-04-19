@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.About">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.AboutPageController">
    <children>
       <VBox prefHeight="540.0" prefWidth="771.0">
          <children>
@@ -22,11 +21,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="439.0" prefWidth="600.0">
                <children>
-                  <ImageView fitHeight="392.0" fitWidth="563.0" layoutX="111.0" preserveRatio="true" smooth="false">
-                     <image>
-                        <Image url="@images/aboutPage.png" />
-                     </image>
-                  </ImageView>
+                  <TextArea editable="false" layoutX="59.0" layoutY="18.0" opacity="0.92" prefHeight="326.0" prefWidth="667.0" styleClass="centeredTextArea" stylesheets="@stylesheet.css" text="&#10;Copyright © 2020. We, the developers of this software application, declare that it is our work towards an assessment item submitted to fulfil the requirements of INFS2605 (UNSW Sydney). We declare that it is our own work, except where acknowledged, and has not been submitted for academic credit elsewhere. We acknowledge that the assessor of this item may, for the purpose of assessing this item: Reproduce this assessment item and provide a copy to another member of the University; and/or, Communicate a copy of this assessment item to a plagiarism checking service (which may then retain a copy of the assessment item on its database for the purpose of future plagiarism checking). We certify that we have read and understood the UNSW University Rules in respect of Student Academic Misconduct.&#10;&#10;REFERENCES &#10;Edo Regular Font Version 1.0 2006 Vic Fieger&#10;Vic Fieger License v1.00&#10;&#10;Josefin Sans Font 2010 Santiago Orozco&#10;SIL Open Font License Version 1.1 2007&#10;&#10;Apache PDFBox® Library 2.0.19 &#10;Apache License v2.0&#10;All rights reserved.&#10;&#10;Images and icons sourced from Canva stock media&#10;One-time Use License Agreement&#10;&#10;Code sourced from Stack Overflow are referenced in file comments&#10;&#10;Database storage methods sourced from &#10;Copyright © 2020 SQLite Tutorial. All rights Reserved.&#10;" wrapText="true" />
                </children>
             </AnchorPane>
          </children>
