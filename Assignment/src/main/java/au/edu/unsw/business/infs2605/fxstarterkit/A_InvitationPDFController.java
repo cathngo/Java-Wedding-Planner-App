@@ -22,7 +22,7 @@ import org.apache.pdfbox.pdmodel.font.PDTrueTypeFont;
  */
 public class A_InvitationPDFController {
     public static void createNewInvPDF(int event_id) throws IOException, Exception{
-        //put invitation id in there next time
+        
         //makes a copy of the invitation pdf and edit it
         File source = new File(""+System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"au"+File.separator+"edu"+File.separator+"unsw"+File.separator+"business"+File.separator+"infs2605"+File.separator+"fxstarterkit"+File.separator+"images"+File.separator+"invitationTemplate.pdf");
         File dest = new File(""+System.getProperty("user.dir")+File.separator+"invitation" + event_id + ".pdf");
@@ -112,8 +112,7 @@ public class A_InvitationPDFController {
         contentStream.close();
         doc.save(dest);
         doc.close();      
-        
-        
+                
     }
     
     //This wrap text method puts text into a column of a certain width. If a word overflows the
@@ -135,15 +134,6 @@ public class A_InvitationPDFController {
                         contentStream.showText(thisLine);
                         firstLetter = lastLetter + 1;
                     }
-
-                    //special situation where there are 2 words
-                    /**if((word.length==2) &&(font.getStringWidth(string.substring(firstLetter,y)) / 1000 * fontSize)>width){
-                        contentStream.newLine();
-                        contentStream.showText(word[0]);
-                        contentStream.newLine();
-                        contentStream.showText(word[1]);
-                        break;
-                    }**/
                     contentStream.newLine();
                     thisLine = string.substring(firstLetter,y+1);
                     contentStream.showText(thisLine);

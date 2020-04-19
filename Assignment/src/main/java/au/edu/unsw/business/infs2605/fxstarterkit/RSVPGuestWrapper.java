@@ -45,8 +45,5 @@ public class RSVPGuestWrapper {
     public void setDecision(String decision) {
         this.decision = decision;
     }
-
-    
-    
-    
+   
 }

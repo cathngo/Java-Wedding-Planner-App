@@ -37,16 +37,16 @@
             </AnchorPane>
             <AnchorPane prefHeight="414.0" prefWidth="771.0">
                <children>
-                  <Text layoutX="389.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest List">
+                  <Text layoutX="404.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest List">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button fx:id="btnInviteToEvent" layoutX="608.0" layoutY="351.0" mnemonicParsing="false" onAction="#btnInviteToEventWasClicked" text="Invite To Event" />
-                  <ListView fx:id="guestListView" layoutX="389.0" layoutY="40.0" prefHeight="296.0" prefWidth="329.0" />
+                  <Button fx:id="btnInviteToEvent" layoutX="623.0" layoutY="351.0" mnemonicParsing="false" onAction="#btnInviteToEventWasClicked" text="Invite To Event" />
+                  <ListView fx:id="guestListView" layoutX="404.0" layoutY="40.0" prefHeight="296.0" prefWidth="329.0" />
                   <AnchorPane layoutX="20.0" layoutY="24.0" prefHeight="313.0" prefWidth="349.0">
                      <children>
-                        <ScrollPane layoutY="17.0" prefHeight="296.0" prefWidth="329.0">
+                        <ScrollPane layoutX="9.0" layoutY="17.0" prefHeight="296.0" prefWidth="329.0">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="273.0" prefWidth="334.0">
                                  <children>
@@ -55,25 +55,25 @@
                                           <Text layoutX="14.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
                                           <Text layoutX="14.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
                                           <Text layoutX="14.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number:" />
-                                          <Text layoutX="14.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />
+                                          <Text layoutX="14.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />
                                           <Text layoutX="14.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dietary Requirements:" />
-                                          <TextField fx:id="fname" layoutX="84.0" layoutY="35.0" prefHeight="24.0" prefWidth="142.0" />
-                                          <TextField fx:id="lname" layoutX="84.0" layoutY="69.0" prefHeight="24.0" prefWidth="142.0" />
-                                          <TextField fx:id="number" layoutX="109.0" layoutY="106.0" prefHeight="25.0" prefWidth="117.0" />
-                                          <TextField fx:id="email" layoutX="56.0" layoutY="138.0" prefHeight="25.0" prefWidth="170.0" />
+                                          <TextField fx:id="fname" layoutX="84.0" layoutY="35.0" prefHeight="25.0" prefWidth="224.0" />
+                                          <TextField fx:id="lname" layoutX="84.0" layoutY="69.0" prefHeight="25.0" prefWidth="224.0" />
+                                          <TextField fx:id="number" layoutX="109.0" layoutY="106.0" prefHeight="25.0" prefWidth="199.0" />
+                                          <TextField fx:id="email" layoutX="53.0" layoutY="141.0" prefHeight="25.0" prefWidth="255.0" />
                                           <RadioButton fx:id="rb1" layoutX="85.0" layoutY="5.0" mnemonicParsing="false" text="Male" />
                                           <RadioButton fx:id="rb2" layoutX="138.0" layoutY="5.0" mnemonicParsing="false" text="Female" />
                                           <Text layoutX="14.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" />
+                                          <TextField fx:id="diet" layoutX="14.0" layoutY="211.0" prefHeight="32.0" prefWidth="294.0" />
                                        </children>
                                     </Pane>
-                                    <TextField fx:id="diet" layoutX="103.0" layoutY="227.0" prefHeight="32.0" prefWidth="220.0" />
                                  </children></AnchorPane>
                           </content>
                         </ScrollPane>
                      </children>
                   </AnchorPane>
                   <Button fx:id="btnAddTotList" layoutX="224.0" layoutY="351.0" mnemonicParsing="false" onAction="#btnAddToListWasClicked" text="Add to Guest List" />
-                  <Text layoutX="20.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create New Guest" wrappingWidth="246.11895751953125">
+                  <Text layoutX="30.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create New Guest" wrappingWidth="246.11895751953125">
                      <font>
                         <Font size="18.0" />
                      </font>

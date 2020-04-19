@@ -23,7 +23,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="314.0" prefWidth="771.0">
                <children>
-                  <TableView fx:id="eventTable" layoutX="58.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="337.0" prefWidth="677.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;" styleClass="TableView" stylesheets="@stylesheet.css">
+                  <TableView fx:id="eventTable" layoutX="58.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="337.0" prefWidth="642.0" style="-fx-my-cell-background: #9FD9AD#9FD9AD;" styleClass="TableView" stylesheets="@stylesheet.css">
                     <columns>
                       <TableColumn fx:id="col_eId" prefWidth="56.0" text="ID" />
                       <TableColumn fx:id="col_eName" prefWidth="199.5" text="Name" />

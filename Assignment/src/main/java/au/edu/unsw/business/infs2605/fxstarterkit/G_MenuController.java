@@ -66,7 +66,7 @@ public class G_MenuController implements Initializable {
     
     
     @FXML
-    private void btn_Abouts(MouseEvent event) {
+    private void openAbouts(MouseEvent event) {
         loadPage("About");
         
     }

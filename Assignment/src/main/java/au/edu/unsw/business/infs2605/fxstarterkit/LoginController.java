@@ -20,8 +20,11 @@ import javafx.scene.input.MouseEvent;
  * @author mimi
  */
 public class LoginController {
+    
+    //these variables in login controller allows application to know who the current logged in user is
     public static Guest guestUser;
     public static Admin adminUser;
+    
     @FXML 
     private TextField txtUsername;
     

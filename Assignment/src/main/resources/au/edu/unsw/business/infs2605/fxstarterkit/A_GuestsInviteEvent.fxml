@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -16,8 +16,11 @@
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button mnemonicParsing="false" onAction="#btnGuestsWasClicked" prefHeight="27.0" prefWidth="67.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Guests" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Invite Guest" textFill="#8fdca9" />
+                <Button mnemonicParsing="false" onAction="#btnGuestsWasClicked" prefHeight="27.0" prefWidth="67.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Guests">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="94.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Invite Guest" textFill="#76b58b" />
               </items>
             </ToolBar>
             <AnchorPane prefHeight="49.0" prefWidth="600.0">
@@ -40,13 +43,12 @@
                         <TableColumn fx:id="col_endTime" prefWidth="105.19998168945312" text="Time End" />
                      </columns>
                   </TableView>
-                  <TextField layoutX="422.0" layoutY="1.0" text="Search" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnInviteToEvent" layoutX="435.0" layoutY="4.0" mnemonicParsing="false" onAction="#btnInviteToEventWasClicked" prefHeight="32.0" prefWidth="134.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Invite To Event" textFill="WHITE" />
-                  <Button fx:id="btnBack" layoutX="31.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnBackGuestWasClicked" prefHeight="32.0" prefWidth="132.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnInviteToEvent" layoutX="430.0" layoutY="4.0" mnemonicParsing="false" onAction="#btnInviteToEventWasClicked" prefHeight="32.0" prefWidth="134.0" style="-fx-background-color: #9FD9AD#9FD9AD;" styleClass="smallbutton" stylesheets="@stylesheet.css" text="Invite To Event" textFill="WHITE" />
+                  <Button fx:id="btnBack" layoutX="30.0" layoutY="4.0" mnemonicParsing="false" onAction="#btnBackGuestWasClicked" prefHeight="32.0" prefWidth="132.0" style="-fx-background-color: #9FD9AD#9FD9AD;" styleClass="smallbutton" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>
