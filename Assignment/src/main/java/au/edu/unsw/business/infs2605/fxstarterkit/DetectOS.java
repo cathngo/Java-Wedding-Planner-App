@@ -39,15 +39,15 @@ public class DetectOS {
     ;
     
     
-    public static boolean open(File file) {
+    public static boolean open(String file) {
         try {
             if (DetectOS.isWindows()) {
                 Runtime.getRuntime().exec(new String[]{"rundll32", "url.dll,FileProtocolHandler",
-                    file.getAbsolutePath()});
+                    file});
                 return true;
             } else if (DetectOS.isLinux() || DetectOS.isMac()) {
                 Runtime.getRuntime().exec(new String[]{"/usr/bin/open",
-                    file.getAbsolutePath()});
+                    file});
                 return true;
             } else {
                 
