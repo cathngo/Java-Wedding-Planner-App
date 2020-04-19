@@ -14,6 +14,7 @@ We started off the project with a good deal of planning, in particular familisar
 Once wireframes were completed, our team applied scrum principles by iteratively and incrementally building various working functionalities that we would piece together intoo our final app. Google Spreadsheets was used to keep track of completed work, work in progress, and tasks left to do, as well as for sharing important code that would be needed across various pages. Roadblocks, issues, and bugs that we encountered along the way were openly shared with the rest of the team so that each team member always had something to work on. 
 
 **Communication**
+
 With the occcurence of the 2020 COVID-19 global pandemic, our team was only able to meet once in person to discuss our project in the early stages. Fortunately however, the pandemic also meant that we had more time at home to spend on this project and complete it to our best ability. Because we were always home, it also meant that scheduling regular calls to update each other about our work was also relatively easy. Our team had biweekly stand-up like calls to update each other on our progress, and let each other know what we had done, what we were working on, and any problems we've encountered.
 
 
