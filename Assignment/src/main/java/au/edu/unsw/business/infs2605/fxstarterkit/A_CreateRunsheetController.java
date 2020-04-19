@@ -99,10 +99,11 @@ public class A_CreateRunsheetController {
     @FXML
     void btnCreateRunsheetWasClicked(ActionEvent event) throws IOException, SQLException, Exception {
         
-       // DirectoryChooser directoryChooser = new DirectoryChooser();
-        //directoryChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
-        //File selectedDirectory = directoryChooser.showDialog(primaryStage);
-        //System.out.println(selectedDirectory.getAbsolutePath());
+     if (runsheetList.getItems().isEmpty()) {
+            String header = "Unable to create runsheet ";
+            String content = "Please add items to the runsheet";
+            Alertbox.AlertError(header, content);
+        } else{
         try{
      A_RunsheetPDFController.createNewRunsheetPDF(event_time, event_activity, eventName, eventId);
      
@@ -116,6 +117,7 @@ public class A_CreateRunsheetController {
             String content = "Runsheet already exists";
             Alertbox.AlertError(header, content);
         }
+     }
     }
     
 

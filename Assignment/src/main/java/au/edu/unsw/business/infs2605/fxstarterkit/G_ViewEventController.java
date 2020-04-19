@@ -75,14 +75,25 @@ public class G_ViewEventController {
 
     @FXML
     public void btnViewRunsheetWasClicked(ActionEvent event) throws IOException, SQLException {
-       
+      File runsheetDirectory = new File(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf");
+      if (runsheetDirectory.exists()){
        DetectOS.open(""+System.getProperty("user.dir")+File.separator+"runsheet" + eventId + ".pdf");
-        
+      } else {
+           String header = "Unable to open Runsheet";
+           String content = "Runsheet is unavailable for this event";
+           Alertbox.AlertError(header, content);
+      }
     }
 
     @FXML
     public void btnViewInvitationWasClicked(ActionEvent event) throws IOException, SQLException {
+        File invitationDirectory = new File(""+System.getProperty("user.dir")+File.separator+"invitation" + eventId + ".pdf");
+        if (invitationDirectory.exists()){
         DetectOS.open(""+System.getProperty("user.dir")+File.separator+"invitation" + eventId + ".pdf");
-
+        }else{
+             String header = "Unable to open Invitation";
+           String content = "Invitation is unavailable for this event";
+           Alertbox.AlertError(header, content);
+        }
 }
 }
