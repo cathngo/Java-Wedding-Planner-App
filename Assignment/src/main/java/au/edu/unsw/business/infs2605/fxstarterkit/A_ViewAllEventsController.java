@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
@@ -34,10 +35,10 @@ public class A_ViewAllEventsController {
     public TableColumn<Event, String> col_eStartTime;
     @FXML
     public TableColumn<Event, String> col_eEndTime;
+    
     @FXML
     private AnchorPane eventPane;
     
-
     private int eventId;
 
     private String eventName;
@@ -50,12 +51,13 @@ public class A_ViewAllEventsController {
             col_eDate.setCellValueFactory(new PropertyValueFactory<>("event_date"));
             col_eStartTime.setCellValueFactory(new PropertyValueFactory<>("event_start_time"));
             col_eEndTime.setCellValueFactory(new PropertyValueFactory<>("event_end_time"));
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
+
+   
 
     @FXML
     private void btnViewDetailsWasClicked(ActionEvent event) throws IOException, SQLException {
