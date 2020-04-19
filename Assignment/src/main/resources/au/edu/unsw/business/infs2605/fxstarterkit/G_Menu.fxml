@@ -69,10 +69,23 @@
          <children>
             <AnchorPane prefHeight="54.0" prefWidth="902.0">
                <children>
-                  <Button layoutX="811.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnLogOutWasClicked" text="Log Out" />
+                  <Button layoutX="820.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnLogOutWasClicked" style="-fx-background-color: #0000;" text="LOGOUT" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
                   <ImageView fitHeight="39.0" fitWidth="114.0" layoutX="398.0" layoutY="8.0">
                      <image>
                         <Image url="@images/app-name.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="17.0" fitWidth="35.0" layoutX="800.0" layoutY="20.0">
+                     <image>
+                        <Image url="@images/signout%20icon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="51.0" fitWidth="78.0" layoutX="728.0" layoutY="1.0">
+                     <image>
+                        <Image url="@images/avatar-icon.png" />
                      </image>
                   </ImageView>
                </children>
