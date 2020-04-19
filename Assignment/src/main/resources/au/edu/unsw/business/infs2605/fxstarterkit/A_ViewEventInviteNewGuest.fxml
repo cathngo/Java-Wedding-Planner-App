@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
@@ -19,11 +20,23 @@
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button mnemonicParsing="false" onAction="#btnEventsWasClicked" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events" />
-                  <Button mnemonicParsing="false" onAction="#btnViewEventsWasClicked" prefHeight="27.0" prefWidth="112.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Events" />
-                  <Button mnemonicParsing="false" onAction="#btnGuestListWasClicked" prefHeight="27.0" prefWidth="95.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Guest List" />
-                  <Button mnemonicParsing="false" onAction="#btnInviteGuestsWasClicked" prefHeight="27.0" prefWidth="122.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Invite Guests" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="154.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Invite New Guests" textFill="#8fdca9" />
+                <Button mnemonicParsing="false" onAction="#btnEventsWasClicked" prefHeight="27.0" prefWidth="52.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button mnemonicParsing="false" onAction="#btnViewEventsWasClicked" prefHeight="27.0" prefWidth="94.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; View Events">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button mnemonicParsing="false" onAction="#btnGuestListWasClicked" prefHeight="27.0" prefWidth="82.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Guest List">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button mnemonicParsing="false" onAction="#btnInviteGuestsWasClicked" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Invite Guests">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Invite New Guests" textFill="#76b58b" />
               </items>
             </ToolBar>
             <AnchorPane prefHeight="79.0" prefWidth="771.0">

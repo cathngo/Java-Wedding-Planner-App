@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -16,8 +17,11 @@
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button mnemonicParsing="false" onAction="#btnEventsWasClicked" prefHeight="27.0" prefWidth="98.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Create Event" textFill="#8fdca9" />
+                <Button mnemonicParsing="false" onAction="#btnEventsWasClicked" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Events">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="94.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Create Event" textFill="#76b58b" />
               </items>
             </ToolBar>
             <AnchorPane prefHeight="49.0" prefWidth="600.0">
@@ -85,8 +89,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnInviteGuests" layoutX="29.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="47.0" prefWidth="166.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
-                  <Button fx:id="btnCreateEvent" layoutX="579.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnCreateEventWasClicked" prefHeight="49.0" prefWidth="166.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Create Event" textFill="WHITE" />
+                  <Button fx:id="btnInviteGuests" layoutX="29.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="47.0" prefWidth="166.0" style="-fx-background-color: #9FD9AD#9FD9AD;" styleClass="smallbutton" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
+                  <Button fx:id="btnCreateEvent" layoutX="579.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnCreateEventWasClicked" prefHeight="49.0" prefWidth="166.0" style="-fx-background-color: #9FD9AD#9FD9AD;" styleClass="smallbutton" stylesheets="@stylesheet.css" text="Create Event" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

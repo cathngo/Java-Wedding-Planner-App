@@ -18,22 +18,22 @@
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button mnemonicParsing="false" onAction="#btnGuestsWasClicked" prefHeight="27.0" prefWidth="86.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Guests" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="143.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Create Event" textFill="#8fdca9" />
+                <Button mnemonicParsing="false" onAction="#btnGuestsWasClicked" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Guests" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="94.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Create Event" textFill="#76b58b" />
               </items>
             </ToolBar>
             <AnchorPane prefHeight="65.0" prefWidth="771.0">
                <children>
                   <Text layoutX="27.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Guest" wrappingWidth="257.984375">
                      <font>
-                        <Font size="31.0" />
+                        <Font size="36.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="356.0" prefWidth="771.0">
                <children>
-                  <ScrollPane layoutX="6.0" prefHeight="355.0" prefWidth="727.0">
+                  <ScrollPane layoutX="23.0" prefHeight="355.0" prefWidth="727.0">
                      <content>
                         <Pane prefHeight="401.0" prefWidth="710.0">
                            <children>
@@ -61,8 +61,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnBack" layoutX="69.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
-                  <Button fx:id="createGuest" layoutX="543.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnCreateGuestWasClicked" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="Create" textFill="WHITE" />
+                  <Button fx:id="btnBack" layoutX="22.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnBackWasClicked" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #9FD9AD#9FD9AD;" styleClass="smallbutton" stylesheets="@stylesheet.css" text="Back" textFill="WHITE" />
+                  <Button fx:id="createGuest" layoutX="606.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnCreateGuestWasClicked" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #9FD9AD#9FD9AD;" styleClass="smallbutton" stylesheets="@stylesheet.css" text="Create" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

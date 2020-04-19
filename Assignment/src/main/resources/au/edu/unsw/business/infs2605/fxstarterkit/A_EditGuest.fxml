@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
@@ -18,9 +19,15 @@
          <children>
             <ToolBar prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #0000;">
               <items>
-                <Button mnemonicParsing="false" onAction="#btnGuestsWasClicked" prefHeight="27.0" prefWidth="61.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Guests" />
-                  <Button mnemonicParsing="false" onAction="#btnViewGuestWasClicked" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt;View Guest" />
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Edit Guest" textFill="#8fdca9" />
+                <Button mnemonicParsing="false" onAction="#btnGuestsWasClicked" prefHeight="27.0" prefWidth="54.0" style="-fx-background-color: #0000; -fx-underline: true;" text="Guests">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button mnemonicParsing="false" onAction="#btnViewGuestWasClicked" prefHeight="27.0" prefWidth="87.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt;View Guest">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="82.0" style="-fx-background-color: #0000; -fx-underline: true;" text="&gt; Edit Guest" textFill="#76b58b" />
               </items>
             </ToolBar>
             <AnchorPane prefHeight="49.0" prefWidth="600.0">

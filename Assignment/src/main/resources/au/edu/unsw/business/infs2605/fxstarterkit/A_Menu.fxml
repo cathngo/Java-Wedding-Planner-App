@@ -125,7 +125,10 @@
                   <Button layoutX="812.0" layoutY="13.0" mnemonicParsing="false" onAction="#btnLogOutWasClicked" prefHeight="10.0" prefWidth="83.0" style="-fx-background-color: #0000;" text="LOGOUT" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
-                     </font></Button>
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                   <ImageView fitHeight="20.0" fitWidth="29.0" layoutX="795.0" layoutY="17.0">
                      <image>
                         <Image url="@images/signout%20icon.png" />
