@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="gbp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.business.infs2605.fxstarterkit.G_MenuController">
    <left>
@@ -70,12 +69,20 @@
          <children>
             <AnchorPane prefHeight="54.0" prefWidth="902.0">
                <children>
+<<<<<<< HEAD
                   <Text fill="WHITE" layoutX="416.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INVO">
                      <font>
                         <Font name="American Typewriter" size="38.0" />
                      </font>
                   </Text>
                   <Button layoutX="811.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnLogOutWasClicked" text="Log Out" />
+=======
+                  <ImageView fitHeight="39.0" fitWidth="114.0" layoutX="398.0" layoutY="8.0">
+                     <image>
+                        <Image url="@images/app-name.png" />
+                     </image>
+                  </ImageView>
+>>>>>>> a211632eb2ad5f7ba95bff907ab412eeaa045b0a
                </children>
             </AnchorPane>
          </children>
