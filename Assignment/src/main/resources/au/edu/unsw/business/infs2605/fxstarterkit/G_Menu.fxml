@@ -13,7 +13,7 @@
    <left>
       <VBox prefHeight="357.0" prefWidth="124.0" style="-fx-background-color: #89BD96#89BD96 #89BD96#89BD96;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btn_home" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#home" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Home" textFill="WHITE">
+            <Button fx:id="btn_home" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#home" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" styleClass="menuButton" stylesheets="@stylesheet.css" text="Home" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
@@ -25,7 +25,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btn_dashboard" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openGuestDashboard" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Dashboard" textFill="WHITE">
+            <Button fx:id="btn_dashboard" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openGuestDashboard" prefHeight="76.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" styleClass="menuButton" stylesheets="@stylesheet.css" text="Dashboard" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
@@ -37,7 +37,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btn_guests" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openGuestInvitation" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Invitation" textFill="WHITE">
+            <Button fx:id="btn_guests" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openGuestInvitation" prefHeight="76.0" prefWidth="152.0" style="-fx-background-color: #0000; -fx-border-color: white;" styleClass="menuButton" stylesheets="@stylesheet.css" text="Invitation" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
@@ -49,7 +49,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btn_abouts" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openAbouts" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" text="Abouts" textFill="WHITE">
+            <Button fx:id="btn_abouts" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#openAbouts" prefHeight="83.0" prefWidth="124.0" style="-fx-background-color: #0000; -fx-border-color: white;" styleClass="menuButton" stylesheets="@stylesheet.css" text="About" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="14.0" />
                </font>
@@ -69,33 +69,12 @@
          <children>
             <AnchorPane prefHeight="54.0" prefWidth="902.0">
                <children>
-
-                  <Text fill="WHITE" layoutX="416.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INVO">
-                     <font>
-                        <Font name="American Typewriter" size="38.0" />
-                     </font>
-                  </Text>
-                  <Button layoutX="820.0" layoutY="13.0" mnemonicParsing="false" onAction="#btnLogOutWasClicked" style="-fx-background-color: #0000;" text="LOGOUT" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Button>
-
+                  <Button layoutX="811.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnLogOutWasClicked" text="Log Out" />
                   <ImageView fitHeight="39.0" fitWidth="114.0" layoutX="398.0" layoutY="8.0">
                      <image>
                         <Image url="@images/app-name.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="17.0" fitWidth="28.0" layoutX="802.0" layoutY="19.0">
-                     <image>
-                        <Image url="@images/signout%20icon.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="42.0" fitWidth="66.0" layoutX="737.0" layoutY="7.0">
-                     <image>
-                        <Image url="@images/avatar-icon.png" />
-                     </image>
-                  </ImageView>
-
                </children>
             </AnchorPane>
          </children>

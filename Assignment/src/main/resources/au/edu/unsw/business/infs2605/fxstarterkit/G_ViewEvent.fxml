@@ -24,7 +24,7 @@
                         <Font size="35.0" />
                      </font>
                   </Text>
-                  <Button fx:id="btnViewRsvp" layoutX="480.0" layoutY="24.0" mnemonicParsing="false" onAction="#btnViewRsvpWasClicked" prefHeight="47.0" prefWidth="163.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View RSVP" textFill="WHITE" />
+                  <Button fx:id="btnViewRsvp" layoutX="480.0" layoutY="24.0" mnemonicParsing="false" onAction="#btnViewRsvpWasClicked" prefHeight="47.0" prefWidth="163.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="View RSVP" textFill="WHITE" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="321.0" prefWidth="771.0">
@@ -83,8 +83,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="79.0" prefWidth="600.0">
                <children>
-                  <Button layoutX="63.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnViewInvitationWasClicked" prefHeight="47.0" prefWidth="170.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Invitation" textFill="WHITE" />
-                  <Button layoutX="489.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnViewRunsheetWasClicked" prefHeight="47.0" prefWidth="163.0" style="-fx-background-color: #9FD9AD#9FD9AD;" text="View Runsheet" textFill="WHITE" />
+                  <Button layoutX="63.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnViewInvitationWasClicked" prefHeight="47.0" prefWidth="170.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="View Invitation" textFill="WHITE" />
+                  <Button layoutX="489.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnViewRunsheetWasClicked" prefHeight="47.0" prefWidth="163.0" style="-fx-background-color: #9FD9AD#9FD9AD;" stylesheets="@stylesheet.css" text="View Runsheet" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>
